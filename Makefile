@@ -15,7 +15,8 @@ SRC_NAMES	= main
 HEADER		= $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 INCLUDE		= -I$(HEADER_DIR)
 LIB			= $(LIB_NAMES:%=-L$(LIB_DIR)/%) $(LIB_NAMES:%=-l%)
-LIB_FILES	= $(foreach n,${LIB_NAMES},${LIB_DIR}/$n/lib$n.a)
+LIB_DIRS	= $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n)
+LIB_FILES	= $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n/lib$n.a)
 OBJ			= $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
 
 all:	$(NAME)
@@ -26,8 +27,8 @@ $(NAME):	$(LIB_FILES) $(OBJ)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(foreach n,%,$(LIB_DIR)/$n/lib$n.a):	$(LIB_DIR)/%
-	$(MAKE) -C $<
+$(LIB_FILES):
+	for lib_dir in $(LIB_DIRS); do $(MAKE) -C $${lib_dir}; done
 
 clean:
 	rm -f $(OBJ)
