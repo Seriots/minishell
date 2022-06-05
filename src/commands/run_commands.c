@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   run_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 17:34:50 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:13:56 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/05 19:31:52 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/05 20:23:24 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int	run_commands(char **commands, t_shell *shell)
 {
-	t_shell	shell;
+	char	*argv[4];
+	pid_t	ppid;
 
-	(void) argc;
-	(void) argv;
-	if (init_shell(&shell, env) == -1)
-		return (1);
-	run_shell(&shell);
-	free_shell(&shell);
+	ppid = fork();
+	if (ppid == 0)
+	{
+		printf("%s\n", commands[0]);
+		argv[0] = "/bin/bash";
+		argv[1] = "-c";
+		argv[2] = commands[0];
+		argv[3] = 0;
+		execve("/bin/bash", argv, shell->env);
+		exit(0);
+	}
+	wait(NULL);
 	return (0);
 }

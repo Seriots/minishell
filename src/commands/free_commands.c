@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 17:34:50 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:13:56 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/05 19:29:18 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/05 19:30:06 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	free_commands(char **commands)
 {
-	t_shell	shell;
+	int	i;
 
-	(void) argc;
-	(void) argv;
-	if (init_shell(&shell, env) == -1)
-		return (1);
-	run_shell(&shell);
-	free_shell(&shell);
-	return (0);
+	i = 0;
+	while (commands[i])
+	{
+		free(commands[i]);
+		i++;
+	}
+	free(commands);
 }

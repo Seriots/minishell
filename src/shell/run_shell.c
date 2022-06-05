@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   run_shell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 17:34:50 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:13:56 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/05 19:31:43 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int	run_shell(t_shell *shell)
 {
-	t_shell	shell;
+	char	**commands;
 
-	(void) argc;
-	(void) argv;
-	if (init_shell(&shell, env) == -1)
-		return (1);
-	run_shell(&shell);
-	free_shell(&shell);
+	while (1)
+	{
+		commands = get_commands(shell);
+		run_commands(commands, shell);
+	}
 	return (0);
 }

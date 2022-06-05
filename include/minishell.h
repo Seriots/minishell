@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 17:34:50 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:13:56 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/05 20:12:24 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "minishell.h"
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-int	main(int argc, char **argv, char **env)
+# define SHELL_PROMPT "$> "
+
+typedef struct s_shell
 {
-	t_shell	shell;
+	char	**env;
+}	t_shell;
 
-	(void) argc;
-	(void) argv;
-	if (init_shell(&shell, env) == -1)
-		return (1);
-	run_shell(&shell);
-	free_shell(&shell);
-	return (0);
-}
+
+void	free_commands(char **commands);
+char	**get_commands(t_shell *shell);
+int		run_commands(char **commands, t_shell *shell);
+
+/*
+//	SHELL
+*/
+int		free_shell(t_shell *shell);
+int		init_shell(t_shell *shell, char **env);
+int		run_shell(t_shell *shell);
+
+#endif
