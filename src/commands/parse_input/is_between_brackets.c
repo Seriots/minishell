@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_commands.c                                     :+:      :+:    :+:   */
+/*   is_between_brackets.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:32:04 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 19:39:27 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/06 19:43:20 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <readline/history.h>
-#include <readline/readline.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include "libft.h"
-#include "minishell.h"
-
-t_tree	*get_commands(t_shell *shell)
+int	is_between_brackets(const char *input, int input_size)
 {
-	char	*input;
-	t_tree	*commands;
+	int	i;
 
-	input = readline(SHELL_PROMPT);
-	if (!input)
-		return (NULL);
-	add_history(input);
-	commands = parse_input(input, ft_strlen(input));
-	free(input);
-	return (commands);
+	i = 0;
+	if (input_size <= 0)
+		return (0);
+	while (i < input_size - 1 && input[i] == ' ')
+		i++;
+	if (input[i] != '(')
+		return (0);
+	i = input_size - 1;
+	while (i >= 0 && input[i] == ' ')
+		i--;
+	return (input[i] == ')');
 }

@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_commands.c                                     :+:      :+:    :+:   */
+/*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:32:04 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 19:30:34 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/06 19:49:07 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <readline/history.h>
-#include <readline/readline.h>
-#include <stddef.h>
-#include <stdlib.h>
 #include "libft.h"
 #include "minishell.h"
 
-t_tree	*get_commands(t_shell *shell)
+t_tree	*parse_input(const char *input, int input_size)
 {
-	char	*input;
-	t_tree	*commands;
-
-	input = readline(SHELL_PROMPT);
-	if (!input)
-		return (NULL);
-	add_history(input);
-	commands = parse_input(input, ft_strlen(input));
-	free(input);
-	return (commands);
+	if (is_between_brackets(input, input_size))
+		return (parse_input_brackets(input, input_size));
+	if (contain_or(input, input_size))
+		return (parse_input_or(input, input_size));
+	if (contain_and(input, input_size))
+		return (parse_input_and(input, input_size));
+	if (contain_pipe(input, input_size))
+		return (parse_input_pipe(input, input_size));
+	return (parse_input_simple(input, input_size));
 }

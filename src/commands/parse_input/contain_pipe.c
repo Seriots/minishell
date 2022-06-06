@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_commands.c                                     :+:      :+:    :+:   */
+/*   contain_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:32:04 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 19:47:50 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/06 19:48:06 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <readline/history.h>
-#include <readline/readline.h>
-#include <stddef.h>
-#include <stdlib.h>
 #include "libft.h"
 #include "minishell.h"
 
-t_tree	*get_commands(t_shell *shell)
+int	contain_pipe(const char *input, int input_size)
 {
-	char	*input;
-	t_tree	*commands;
+	int	size_pipe;
+	int	i;
 
-	input = readline(SHELL_PROMPT);
-	if (!input)
-		return (NULL);
-	add_history(input);
-	commands = parse_input(input, ft_strlen(input));
-	free(input);
-	return (commands);
+	size_pipe = ft_strlen(PIPE);
+	i = 0;
+	while (i < input_size - size_pipe)
+	{
+		if (ft_strncmp(input + i, PIPE, size_pipe) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
 }

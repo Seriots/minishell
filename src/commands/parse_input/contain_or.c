@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_commands.c                                     :+:      :+:    :+:   */
+/*   contain_or.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:32:04 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 19:41:37 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/06 19:46:57 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <readline/history.h>
-#include <readline/readline.h>
-#include <stddef.h>
-#include <stdlib.h>
 #include "libft.h"
 #include "minishell.h"
 
-t_tree	*get_commands(t_shell *shell)
+int	contain_or(const char *input, int input_size)
 {
-	char	*input;
-	t_tree	*commands;
+	int	size_or;
+	int	i;
 
-	input = readline(SHELL_PROMPT);
-	if (!input)
-		return (NULL);
-	add_history(input);
-	commands = parse_input(input, ft_strlen(input));
-	free(input);
-	return (commands);
+	size_or = ft_strlen(OR);
+	i = 0;
+	while (i < input_size - size_or)
+	{
+		if (ft_strncmp(input + i, OR, size_or) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
 }

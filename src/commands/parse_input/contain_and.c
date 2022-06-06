@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_commands.c                                     :+:      :+:    :+:   */
+/*   contain_and.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:32:04 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 19:47:10 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/06 19:47:35 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <readline/history.h>
-#include <readline/readline.h>
-#include <stddef.h>
-#include <stdlib.h>
 #include "libft.h"
 #include "minishell.h"
 
-t_tree	*get_commands(t_shell *shell)
+int	contain_and(const char *input, int input_size)
 {
-	char	*input;
-	t_tree	*commands;
+	int	size_and;
+	int	i;
 
-	input = readline(SHELL_PROMPT);
-	if (!input)
-		return (NULL);
-	add_history(input);
-	commands = parse_input(input, ft_strlen(input));
-	free(input);
-	return (commands);
+	size_and = ft_strlen(AND);
+	i = 0;
+	while (i < input_size - size_and)
+	{
+		if (ft_strncmp(input + i, AND, size_and) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
 }
