@@ -1,0 +1,11 @@
+{
+	"makefile.extensionOutputFolder": "./.vscode",
+	"files.associations": {
+		"libft.h": "c",
+		"minishell.h": "c",
+		"readline.h": "c",
+		"stddef.h": "c",
+		"stdlib.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
+}

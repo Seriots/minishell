@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/seriots/42_cursus/minishell'
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/signals/handle_signals.c -o obj/signals/handle_signals.o
+gcc -Wall -Werror -Wextra -g obj/commands/free_commands.o obj/commands/get_commands.o obj/commands/run_commands.o obj/main.o obj/shell/free_shell.o obj/shell/init_shell.o obj/shell/run_shell.o obj/signals/init_sigact.o obj/signals/handle_signals.o -o minishell -lreadline -Llib/ft -lft
+make: Leaving directory '/home/seriots/42_cursus/minishell'
+ 

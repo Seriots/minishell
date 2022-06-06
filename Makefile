@@ -1,5 +1,5 @@
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -g
 MAKE		= /bin/make
 
 HEADER_NAMES= libft
@@ -11,7 +11,9 @@ SRC_NAMES	= commands/free_commands \
 			  main \
 			  shell/free_shell \
 			  shell/init_shell \
-			  shell/run_shell 
+			  shell/run_shell \
+			  signals/init_sigact \
+			  signals/handle_signals
 HEADER_DIR	= include
 LIB_DIR		= lib
 SRC_DIR		= src

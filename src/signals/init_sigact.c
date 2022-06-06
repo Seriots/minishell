@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_commands.c                                     :+:      :+:    :+:   */
+/*   init_sigact.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 21:16:30 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 18:31:08 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/06 19:49:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <readline/history.h>
-#include <readline/readline.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "../../include/libft.h"
+#include <sys/types.h>
+#include <signal.h>
 #include "../../include/minishell.h"
+#include "../../include/libft.h"
 
-t_tree	*get_commands(t_shell *shell)
+/*
+*Initialisation of signal handler object
+*/
+struct sigaction	init_sigact(void)
 {
-	char	*input;
-	t_tree	*commands;
+	struct sigaction	sigact;
 
-	input = readline(SHELL_PROMPT);
-	if (!input)
-		return (NULL);
-	add_history(input);
-	commands = parse_input(input, ft_strlen(input));
-	free(input);
-	return (commands);
+	ft_memset(&sigact, '\0', sizeof(sigact));
+	sigact.sa_sigaction = get_sig;
+	sigact.sa_flags = SA_SIGINFO;
+	return (sigact);
 }
