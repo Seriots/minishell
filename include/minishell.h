@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:50:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/06 19:55:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@
 # include <signal.h>
 
 # define SHELL_PROMPT "$> "
+
+typedef struct s_command
+{
+	char	*exec_path;
+	char	**argv;
+
+	int		redir_stdin;
+	char	*pathfile_stdin;
+	int		heredoc_stdin;
+	int		redir_stdout;
+	int		redir_append_stdout;
+	char	*pathfile_stdout;
+}	t_command;
 
 typedef struct s_shell
 {
