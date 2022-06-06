@@ -1,0 +1,461 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Jun  6 18:41:17 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
+# default
+.SHELLFLAGS := -c
+# makefile (from 'Makefile', line 27)
+OBJ = $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /home/seriots/42_cursus/minishell
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"25fe6a3290ec415596628d4afc87a88c.fr","_translationsConfigFile":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/tcf.json","_cacheRoot":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr","_resolvedLanguagePackCoreLocation":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /home/seriots/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
+# makefile (from 'Makefile', line 2)
+CFLAGS = -Wall -Werror -Wextra -g
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# makefile (from 'Makefile', line 18)
+LIB_DIR = lib
+# makefile (from 'Makefile', line 8)
+SRC_NAMES = commands/free_commands commands/get_commands commands/run_commands main shell/free_shell shell/init_shell shell/run_shell signals/init_sigact signals/handle_signals
+# 'override' directive
+GNUMAKEFLAGS := 
+# makefile (from 'Makefile', line 20)
+OBJ_DIR = obj
+# environment
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# makefile (from 'Makefile', line 26)
+LIB_FILES = $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n/lib$n.a)
+# environment
+VSCODE_CWD = /mnt/c/Users/leogi/AppData/Local/Programs/Microsoft VS Code
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/seriots/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/home/seriots/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Users/leogi/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/leogi/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/leogi/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/JetBrains/PyCharm Community Edition 2021.3.1/bin:/mnt/c/Users/leogi/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
+# environment
+XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-192eadd1-6284-4f31-8516-f703f897289f.sock
+# makefile (from 'Makefile', line 24)
+LIB = -lreadline $(LIB_NAMES:%=-L$(LIB_DIR)/%) $(LIB_NAMES:%=-l%)
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/seriots/42_cursus/minishell
+# default
+.LOADED := 
+# environment
+WSL_INTEROP = /run/WSL/12_interop
+# environment
+PULSE_SERVER = /mnt/wslg/PulseServer
+# makefile (from 'Makefile', line 6)
+LIB_NAMES = ft
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/seriots
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+LOGNAME = seriots
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+MAKELEVEL := 0
+# makefile (from 'Makefile', line 3)
+MAKE = /bin/make
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 1)
+CC = gcc
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = seriots
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from 'Makefile', line 23)
+INCLUDE = -I$(HEADER_DIR)
+# makefile (from 'Makefile', line 7)
+NAME = minishell
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/leogi/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
+# default
+MAKE_COMMAND := make
+# makefile (from 'Makefile', line 17)
+HEADER_DIR = include
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# makefile (from 'Makefile', line 25)
+LIB_DIRS = $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n)
+# environment
+VSCODE_HANDLES_SIGPIPE = true
+# default
+MAKEFILES := 
+# makefile (from 'Makefile', line 19)
+SRC_DIR = src
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# makefile (from 'Makefile', line 22)
+HEADER = $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
+# environment
+HOSTTYPE = x86_64
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+WAYLAND_DISPLAY = wayland-0
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# makefile (from 'Makefile', line 5)
+HEADER_NAMES = libft
+# environment
+VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+# environment
+WSL_DISTRO_NAME = Ubuntu
+# environment
+MOTD_SHOWN = update-motd
+# variable set hash-table stats:
+# Load=87/1024=8%, Rehash=0, Collisions=11/137=8%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# src/signals (device 2080, inode 76013): 2 files, no impossibilities so far.
+# src/commands (device 2080, inode 75876): 3 files, no impossibilities so far.
+# include (device 2080, inode 75813): 1 files, no impossibilities so far.
+# . (device 2080, inode 75769): 10 files, no impossibilities.
+# src/shell (device 2080, inode 75881): 3 files, no impossibilities so far.
+# src (device 2080, inode 75875): 6 files, no impossibilities so far.
+
+# 25 files, no impossibilities in 6 directories.
+
+# Implicit Rules
+
+obj/%.o: src/%.c include/libft.h
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+src/commands/get_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:25:05.662987875
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/shell/init_shell.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:18:41.962993653
+#  File has been updated.
+#  Successfully updated.
+
+obj/signals/handle_signals.o: src/signals/handle_signals.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'signals/handle_signals'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/signals/handle_signals.o
+# automatic
+# % := 
+# automatic
+# * := signals/handle_signals
+# automatic
+# + := src/signals/handle_signals.c include/libft.h
+# automatic
+# | := 
+# automatic
+# < := src/signals/handle_signals.c
+# automatic
+# ^ := src/signals/handle_signals.c include/libft.h
+# automatic
+# ? := src/signals/handle_signals.c include/libft.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/17=12%
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/commands/run_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:18:41.962993653
+#  File has been updated.
+#  Successfully updated.
+
+all: minishell
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+obj/commands/free_commands.o: src/commands/free_commands.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/free_commands'
+#  Last modified 2022-06-06 18:21:38.492990995
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+lib/ft/libft.a:
+#  Implicit rule search has not been done.
+ 
+#  Last modified 2022-06-06 18:20:40.842991863
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 38):
+	@for lib_dir in $(LIB_DIRS); do $(MAKE) -C $${lib_dir}; done
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:41:17.212973243
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/signals/handle_signals.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:41:09.272973363
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/commands/free_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:18:41.962993653
+#  File has been updated.
+#  Successfully updated.
+
+obj/shell/run_shell.o: src/shell/run_shell.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'shell/run_shell'
+#  Last modified 2022-06-06 18:40:26.352974009
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+minishell: lib/ft/libft.a obj/commands/free_commands.o obj/commands/get_commands.o obj/commands/run_commands.o obj/main.o obj/shell/free_shell.o obj/shell/init_shell.o obj/shell/run_shell.o obj/signals/init_sigact.o obj/signals/handle_signals.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-06 18:25:10.852987796
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+#  recipe to execute (from 'Makefile', line 32):
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
+
+fclean: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 44):
+	rm -f $(NAME)
+	@for lib in $(LIB_NAMES); do $(MAKE) -C $(LIB_DIR)/$${lib} fclean; done
+
+obj/main.o: src/main.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2022-06-06 18:24:55.432988029
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:18:41.962993653
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/signals/init_sigact.o: src/signals/init_sigact.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'signals/init_sigact'
+#  Last modified 2022-06-06 18:40:46.562973705
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/shell/run_shell.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:39:29.87297486
+#  File has been updated.
+#  Successfully updated.
+
+re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 41):
+	rm -f $(OBJ)
+
+obj/shell/free_shell.o: src/shell/free_shell.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'shell/free_shell'
+#  Last modified 2022-06-06 18:24:55.442988029
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+obj/commands/get_commands.o: src/commands/get_commands.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/get_commands'
+#  Last modified 2022-06-06 18:25:10.822987797
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+obj/shell/init_shell.o: src/shell/init_shell.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'shell/init_shell'
+#  Last modified 2022-06-06 18:24:55.452988028
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+obj/commands/run_commands.o: src/commands/run_commands.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/run_commands'
+#  Last modified 2022-06-06 18:24:55.422988029
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/signals/init_sigact.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:38:20.582975903
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+include/libft.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:18:41.962993653
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/shell/free_shell.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 18:18:41.962993653
+#  File has been updated.
+#  Successfully updated.
+
+# files hash-table stats:
+# Load=28/1024=3%, Rehash=0, Collisions=3/100=3%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 65 / storage = 966 B / avg = 14 B
+# current buf: size = 8162 B / used = 966 B / count = 65 / avg = 14 B
+
+# strcache performance: lookups = 113 / hit rate = 42%
+# hash-table stats:
+# Load=65/8192=1%, Rehash=0, Collisions=3/113=3%
+# Finished Make data base on Mon Jun  6 18:41:17 2022
+
+ 

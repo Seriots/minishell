@@ -1,50 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_shell.c                                        :+:      :+:    :+:   */
+/*   handle_signals.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:49:18 by lgiband          ###   ########.fr       */
+/*   Created: 2022/06/06 18:34:53 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/06 19:49:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <signal.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <readline/history.h>
+#include <readline/readline.h>
 #include "../../include/libft.h"
 #include "../../include/minishell.h"
 
 /*
-* Check th return value of get_commands and if return is Null, quit the program.
+* get sigint (Ctrl + C)
 */
-static int	is_exit(char **commands)
+int	get_sigint(void)
 {
-	if (commands)
-		return (0);
-	printf("exit\n");
-	return (1);
+	printf("\n%s", SHELL_PROMPT);
+	rl_replace_line("", 0);
+	rl_redisplay();
+	return (0);
 }
 
 /*
-* Main loop to read user input in the shell
+*Signal getter, actually small but easy to improve
 */
-int	run_shell(t_shell *shell)
+void	get_sig(int sig, siginfo_t *siginfo, void *context)
 {
-	int					end;
-	char				**commands;
-	struct sigaction	sigact;
-
-	sigact = init_sigact();
-	end = 0;
-	sigaction(SIGINT, &sigact, NULL);
-	sigaction(SIGQUIT, &sigact, NULL);
-	while (!end)
-	{
-		commands = get_commands(shell);
-		end = is_exit(commands);
-		run_commands(commands, shell);
-	}
-	return (0);
+	(void)siginfo;
+	(void)context;
+	if (sig == SIGINT)
+		get_sigint();
 }

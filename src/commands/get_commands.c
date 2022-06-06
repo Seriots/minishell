@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:12:38 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/06 19:42:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/history.h>
 #include <readline/readline.h>
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include "libft.h"
-#include "minishell.h"
+#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 static char	**get_commands_from_input(const char *input, t_shell *shell)
 {
