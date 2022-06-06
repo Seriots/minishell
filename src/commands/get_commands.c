@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 21:16:30 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/07 01:31:55 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../include/libft.h"
-#include "../../include/minishell.h"
+#include "libft.h"
+#include "minishell.h"
 
 t_tree	*get_commands(t_shell *shell)
 {
