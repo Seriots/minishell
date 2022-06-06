@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:33:36 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/02 17:01:20 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:47:22 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+typedef struct s_tree
+{
+	void			*content;
+	struct s_tree	*left;
+	struct s_tree	*right;
+}	t_tree;
+
 int		error_base(char *base);
 double	ft_atod(const char *str);
 int		ft_atoi(const char *nptr);
@@ -40,6 +47,7 @@ int		ft_isdouble(const char *str);
 int		ft_isint(const char *str);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
+
 int		ft_lstappend(t_list **lst, void *content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -50,6 +58,7 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
+
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -74,6 +83,29 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+int		ft_treeaddback_left(t_tree **tree, void *content);
+int		ft_treeaddback_right(t_tree **tree, void *content);
+int		ft_treeaddfront_left(t_tree **tree, void *node, void *content);
+int		ft_treeaddfront_right(t_tree **tree, void *node, void *content);
+int		ft_treeaddfront_right(t_tree **tree, void *node, void *content);
+int		ft_treeaddtreeback_left(t_tree **tree, t_tree *tree_backleft);
+int		ft_treeaddtreeback_right(t_tree **tree, t_tree *tree_backright);
+void	ft_treeclear(t_tree *tree, void (*del_node)(void *),
+			void (*del_leaf)(void *));
+int	ft_treedepth(t_tree *tree);
+void	ft_treeiter_infix(t_tree *tree, void (*f_node)(void *),
+			void (*f_leaf)(void *));
+void	ft_treeiter_prefix(t_tree *tree, void (*f_node)(void *),
+			void (*f_leaf)(void *));
+void	ft_treeiter_suffix(t_tree *tree, void (*f_node)(void *),
+			void (*f_leaf)(void *));
+t_tree	*ft_treejoin(t_tree *tree_left, void *node, t_tree *tree_right);
+t_tree	*ft_treelast_left(t_tree *tree);
+t_tree	*ft_treelast_right(t_tree *tree);
+t_tree	*ft_treeleafnew(void *leaf);
+int		ft_treesize(t_tree *tree);
+
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	*ft_ultoa_base(unsigned long int nbr, char *base);

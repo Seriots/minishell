@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:12:24 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:34:17 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,23 @@
 
 # define SHELL_PROMPT "$> "
 
+typedef struct s_command
+{
+	char	*exec_path;
+	char	**argv;
+
+	int		redir_stdin;
+	char	*pathfile_stdin;
+	int		heredoc_stdin;
+	int		redir_stdout;
+	int		redir_append_stdout;
+	char	*pathfile_stdout;
+}	t_command;
+
 typedef struct s_shell
 {
 	char	**env;
 }	t_shell;
-
 
 void	free_commands(char **commands);
 char	**get_commands(t_shell *shell);
