@@ -6,11 +6,12 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:33:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 00:45:17 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:20:23 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "minishell.h"
 
@@ -20,7 +21,10 @@ t_command	*get_bzero_command(void)
 
 	command = malloc(sizeof(t_command));
 	if (!command)
+	{
+		perror("Error: malloc command");
 		return (NULL);
+	}
 	command->exec_path = NULL;
 	command->argv = NULL;
 	command->redir_stdin = 0;

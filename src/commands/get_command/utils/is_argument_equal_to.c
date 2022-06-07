@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_argument_redirection.c                          :+:      :+:    :+:   */
+/*   is_argument_equal_to.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 01:09:38 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 15:27:19 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 23:58:14 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/07 14:09:48 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "minishell.h"
 
-int	is_argument_redirection(const char *input, int input_size, int start)
+int	is_argument_equal_to(const char *arg, const char *input, int input_size,
+	int start)
 {
-	const char	*redir_arg[] = {REDIR_STDIN, REDIR_HEREDOC_STDIN, REDIR_STDOUT,
-		REDIR_APPEND_STDOUT};
-	int			i;
+	int	arg_size;
+	int	is_equal;
 
-	i = 0;
-	while (i < 4)
-	{
-		if (is_argument_equal_to(redir_arg[i], input, input_size, start))
-			return (1);
-		i++;
-	}
-	return (0);
+	arg_size = ft_strlen(arg);
+	is_equal = start + arg_size < input_size;
+	is_equal &= ft_strncmp(input + start, arg, arg_size) == 0;
+	is_equal &= ft_strchr(END_SEP, input[start + arg_size]) != NULL;
+	return (is_equal);
 }

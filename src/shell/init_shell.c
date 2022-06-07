@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 13:14:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/07 20:59:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-
-char     *get_space(char *str, size_t *length)
+static char     *get_space(char *str, size_t *length)
 {
         char    *new_str;
         size_t  i;

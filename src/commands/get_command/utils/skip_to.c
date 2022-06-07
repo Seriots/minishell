@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_argument_redirection.c                          :+:      :+:    :+:   */
+/*   skip_to.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 01:09:38 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 15:27:19 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/07 14:25:26 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/07 14:26:27 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 #include "minishell.h"
 
-int	is_argument_redirection(const char *input, int input_size, int start)
+void	skip_to(const char *arg, const char *input, int input_size, int *i)
 {
-	const char	*redir_arg[] = {REDIR_STDIN, REDIR_HEREDOC_STDIN, REDIR_STDOUT,
-		REDIR_APPEND_STDOUT};
-	int			i;
-
-	i = 0;
-	while (i < 4)
+	skip_whitespaces(input, input_size, i);
+	while (*i < input_size)
 	{
-		if (is_argument_equal_to(redir_arg[i], input, input_size, start))
-			return (1);
-		i++;
+		if (is_argument_equal_to(arg, input, input_size, *i))
+			break ;
+		skip_to_next_argument(input, input_size, i);
 	}
-	return (0);
 }
