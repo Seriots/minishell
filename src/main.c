@@ -6,20 +6,18 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:34:50 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:13:56 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/07 12:59:34 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int	main(void)
 {
 	t_shell	shell;
 
-	(void) argc;
-	(void) argv;
-	if (init_shell(&shell, env) == -1)
+	if (init_shell(&shell) == -1)
 		return (1);
 	run_shell(&shell);
 	free_shell(&shell);

@@ -6,14 +6,14 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:03:17 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:29:53 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	init_shell(t_shell *shell, char **env)
+int	init_shell(t_shell *shell)
 {
-	shell->env = env;
+	(void) shell;
 	return (0);
 }

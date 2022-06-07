@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_argument_redirection.c                          :+:      :+:    :+:   */
+/*   free_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 01:09:38 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 15:27:19 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/07 15:05:21 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/07 15:14:35 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 #include "minishell.h"
 
-int	is_argument_redirection(const char *input, int input_size, int start)
+void	free_command(void *command_addr)
 {
-	const char	*redir_arg[] = {REDIR_STDIN, REDIR_HEREDOC_STDIN, REDIR_STDOUT,
-		REDIR_APPEND_STDOUT};
-	int			i;
+	t_command	*command;
 
-	i = 0;
-	while (i < 4)
-	{
-		if (is_argument_equal_to(redir_arg[i], input, input_size, start))
-			return (1);
-		i++;
-	}
-	return (0);
+	command = (t_command *) command_addr;
+	if (!command)
+		return ;
+	if (command->exec_path)
+		free(command->exec_path);
+	if (command->argv)
+		ft_free_tab(command->argv);
+	if (command->pathfile_stdin)
+		free(command->pathfile_stdin);
+	if (command->end_heredoc)
+		free(command->end_heredoc);
+	if (command->pathfile_stdout)
+		free(command->pathfile_stdout);
+	free(command);
 }

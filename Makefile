@@ -5,7 +5,25 @@ MAKE		= /bin/make
 HEADER_NAMES= libft
 LIB_NAMES	= ft
 NAME		= minishell
-SRC_NAMES	= commands/free_commands \
+SRC_NAMES	= commands/free_command \
+			  commands/free_commands \
+			  commands/get_command/get_bzero_command \
+			  commands/get_command/get_command \
+			  commands/get_command/set_arguments \
+			  commands/get_command/set_redirections \
+			  commands/get_command/utils/count_arguments \
+			  commands/get_command/utils/count_redirections \
+			  commands/get_command/utils/get_argument_after \
+			  commands/get_command/utils/get_argument \
+			  commands/get_command/utils/is_argument_equal_to \
+			  commands/get_command/utils/is_argument_in_input \
+			  commands/get_command/utils/is_argument_redirection \
+			  commands/get_command/utils/skip_argument \
+			  commands/get_command/utils/skip_redirection \
+			  commands/get_command/utils/skip_redirections \
+			  commands/get_command/utils/skip_to \
+			  commands/get_command/utils/skip_to_next_argument \
+			  commands/get_command/utils/skip_whitespaces \
 			  commands/get_commands \
 			  commands/run_commands \
 			  main \

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 01:55:16 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:30:54 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <sys/types.h>
 # include <signal.h>
+# include "libft.h"
 
 # define SHELL_PROMPT "$> "
 
@@ -28,6 +29,7 @@
 # define REDIR_STDOUT ">"
 # define REDIR_APPEND_STDOUT ">>"
 
+# define END_SEP "\t\n\v\f\r <>"
 # define WHITESPACES "\t\n\v\f\r "
 
 typedef struct s_command
@@ -54,8 +56,9 @@ typedef int	(*t_set_redir)(t_command *, const char *, int);
 /*
 //	COMMANDS
 */
-void				free_commands(char **commands);
-char				**get_commands(t_shell *shell);
+void				free_command(void *command_addr);
+void				free_commands(t_tree *commands);
+t_tree				*get_commands(t_shell *shell);
 int					run_commands(char **commands, t_shell *shell);
 
 //	parse_input
@@ -81,7 +84,7 @@ int					set_redirections(t_command *cmd, const char *input,
 
 int					count_arguments(const char *input, int input_size);
 int					count_redirections(const char *input, int input_size);
-int					get_argument_after(const char *arg, const char *input,
+char				*get_argument_after(const char *arg, const char *input,
 						int input_size);
 int					is_argument_equal_to(const char *arg, const char *input,
 						int input_size, int start);
@@ -90,7 +93,10 @@ int					is_argument_in_input(const char *arg, const char *input,
 int					is_argument_redirection(const char *input, int input_size,
 						int start);
 void				skip_argument(const char *input, int input_size, int *i);
+void				skip_redirection(const char *input, int input_size, int *i);
 void				skip_redirections(const char *input, int input_size, int *i);
+void				skip_to(const char *arg, const char *input, int input_size,
+						int *i);
 void				skip_to_next_argument(const char *input, int input_size,
 						int *i);
 void				skip_whitespaces(const char *input, int input_size, int *i);
@@ -99,7 +105,7 @@ void				skip_whitespaces(const char *input, int input_size, int *i);
 //	SHELL
 */
 int					free_shell(t_shell *shell);
-int					init_shell(t_shell *shell, char **env);
+int					init_shell(t_shell *shell);
 int					run_shell(t_shell *shell);
 
 /*

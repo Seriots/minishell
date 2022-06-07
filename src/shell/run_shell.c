@@ -6,15 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:49:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/07 15:30:43 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <signal.h>
 #include <stdio.h>
-#include "../../include/libft.h"
-#include "../../include/minishell.h"
+#include "libft.h"
+#include "minishell.h"
 
 /*
 * Check th return value of get_commands and if return is Null, quit the program.

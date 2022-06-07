@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:10:33 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 01:31:55 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:28:56 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_tree	*get_commands(t_shell *shell)
 	char	*input;
 	t_tree	*commands;
 
+	(void) shell;
 	input = readline(SHELL_PROMPT);
 	if (!input)
 		return (NULL);
