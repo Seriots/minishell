@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_shell.c                                       :+:      :+:    :+:   */
+/*   ft_dictadd_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 19:04:23 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 13:20:26 by lgiband          ###   ########.fr       */
+/*   Created: 2022/06/07 19:14:46 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/07 19:54:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include <stdlib.h>
+#include "libft.h"
 
-int	free_shell(t_shell *shell)
+void	ft_dictadd_front(t_dict **dict, t_dict *new)
 {
-	free(shell->directory);
-	return (0);
+	if (!dict || !new)
+		return ;
+	if (*dict == 0)
+	{
+		*dict = new;
+		return ;
+	}
+	(*dict)->previous = new;
+	new->next = *dict;
+	*dict = new;
 }

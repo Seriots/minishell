@@ -5,7 +5,8 @@
 		"minishell.h": "c",
 		"readline.h": "c",
 		"stddef.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"conversions.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

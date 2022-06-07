@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:49:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/07 12:05:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 /*
 * Check th return value of get_commands and if return is Null, quit the program.
 */
-static int	is_exit(char **commands)
+static int	is_exit(t_tree	*commands)
 {
 	if (commands)
 		return (0);
@@ -33,7 +33,7 @@ static int	is_exit(char **commands)
 int	run_shell(t_shell *shell)
 {
 	int					end;
-	char				**commands;
+	t_tree				*commands;
 	struct sigaction	sigact;
 
 	sigact = init_sigact();

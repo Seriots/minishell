@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 02:49:05 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/07 13:14:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 
-static char     *get_space(char *str, size_t *length)
+char     *get_space(char *str, size_t *length)
 {
         char    *new_str;
         size_t  i;
@@ -37,7 +37,7 @@ static char     *get_space(char *str, size_t *length)
         return (new_str);
 }
 
-static char     *get_current_directory(void)
+char     *get_current_directory(void)
 {
         char    *path;
         char    *try;
@@ -50,10 +50,16 @@ static char     *get_current_directory(void)
         {
                 path = get_space(path, &length);
                 if (!path)
-                        return (0);
+                   return (0);
                 try = getcwd(path, length);
         }
-        return (path);
+		length = ft_strlen(path);
+		try = ft_calloc(sizeof(char), length);
+		if (!try)
+			return (0);
+		ft_strlcpy(try, path, length + 1);
+        free(path);
+		return (try);
 }
 
 int     init_shell(t_shell *shell, char **env)

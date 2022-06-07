@@ -13,7 +13,34 @@ SRC_NAMES	= commands/free_commands \
 			  shell/init_shell \
 			  shell/run_shell \
 			  signals/init_sigact \
-			  signals/handle_signals
+			  signals/handle_signals \
+			  commands/parse_input/contain_and \
+			  commands/parse_input/contain_or \
+			  commands/parse_input/contain_pipe \
+			  commands/parse_input/is_between_brackets \
+			  commands/parse_input/parse_input_and \
+			  commands/parse_input/parse_input_brackets \
+			  commands/parse_input/parse_input_or \
+			  commands/parse_input/parse_input_pipe \
+			  commands/parse_input/parse_input_simple \
+			  commands/parse_input/parse_input \
+			  commands/get_commands/get_argument \
+			  commands/get_commands/get_bzero_command \
+			  commands/get_commands/get_command \
+			  commands/get_commands/set_arguments \
+			  commands/get_commands/set_redirections \
+			  commands/get_commands/utils/count_arguments \
+			  commands/get_commands/utils/count_redirections \
+			  commands/get_commands/utils/get_argument_after \
+			  commands/get_commands/utils/is_argument_equal \
+			  commands/get_commands/utils/is_argument_in_input \
+			  commands/get_commands/utils/is_argument_redirection \
+			  commands/get_commands/utils/skip_argument \
+			  commands/get_commands/utils/skip_redirections \
+			  commands/get_commands/utils/skip_to_next_argument \
+			  commands/get_commands/utils/skip_whitespaces
+
+
 HEADER_DIR	= include
 LIB_DIR		= lib
 SRC_DIR		= src

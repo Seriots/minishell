@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 02:48:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/07 15:24:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ typedef struct s_shell
 	char	*directory;
 }	t_shell;
 
-typedef int	(*t_set_redir)(t_command *, const char *, int);
+typedef int	(* t_set_redir)(t_command *, const char *, int);
 
 /*
 //	COMMANDS
 */
 void				free_commands(char **commands);
-char				**get_commands(t_shell *shell);
-int					run_commands(char **commands, t_shell *shell);
+t_tree				*get_commands(t_shell *shell);
+int					run_commands(t_tree	*commands, t_shell *shell);
 
 //	parse_input
 int					contain_and(const char *input, int input_size);
@@ -100,8 +100,14 @@ void				skip_whitespaces(const char *input, int input_size, int *i);
 /*
 //	SHELL
 */
+/*free_shell.c*/
 int					free_shell(t_shell *shell);
+
+/*init_shell.c*/
+char     			*get_current_directory(void);
 int					init_shell(t_shell *shell, char **env);
+
+/*run_shell.c*/
 int					run_shell(t_shell *shell);
 
 /*

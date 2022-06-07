@@ -75,7 +75,25 @@ SRCS	= error_base.c \
 		  ft_treesize.c \
 \
 		  get_next_line.c \
-		  get_next_line_utils.c
+		  get_next_line_utils.c \
+\
+		  ft_printf/ft_printf.c \
+		  ft_printf/ft_printf_utils.c \
+		  ft_printf/ft_printf_utils2.c \
+		  ft_printf/ft_printf_components.c \
+		  ft_printf/conversions_files/ft_putstr.c \
+		  ft_printf/conversions_files/ft_putnbr.c \
+		  ft_printf/conversions_files/ft_putchar.c \
+		  ft_printf/conversions_files/ft_puthexa_min.c \
+		  ft_printf/conversions_files/ft_putpointeur.c \
+		  ft_printf/conversions_files/ft_putpointeur2.c \
+		  ft_printf/conversions_files/ft_puthexa_maj.c \
+		  ft_printf/conversions_files/ft_putnbr_unsigned.c \
+\
+		  ft_dictnew.c \
+		  ft_dictadd_front.c \
+		  ft_dictprint.c \
+		  ft_dictclear.c
 OBJS	= ${SRCS:%.c=%.o}
 
 .PHONY: all clean fclean re

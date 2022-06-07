@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Tue Jun  7 02:46:27 2022
+# Make data base, printed on Tue Jun  7 20:56:58 2022
 
 # Variables
 
@@ -15,782 +16,115 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
+DESKTOP_SESSION = ubuntu
 # default
 .SHELLFLAGS := -c
-# environment
-VSCODE_LOG_NATIVE = false
-# automatic
-?D = $(patsubst %/,%,$(dir $?))
-# automatic
-@D = $(patsubst %/,%,$(dir $@))
-# automatic
-@F = $(notdir $@)
-# makefile
-CURDIR := /home/seriots/42_cursus/minishellv2/lib/ft
-# makefile
-SHELL = /bin/sh
-# environment
-VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"25fe6a3290ec415596628d4afc87a88c.fr","_translationsConfigFile":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/tcf.json","_cacheRoot":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr","_resolvedLanguagePackCoreLocation":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/corrupted.info","_languagePackSupport":true}
-# environment
-_ = /home/seriots/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
-# makefile (from 'Makefile', line 2)
-CFLAGS = -Wall -Werror -Wextra
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
-# 'override' directive
-GNUMAKEFLAGS := 
-# environment
-XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
-# environment
-VSCODE_VERBOSE_LOGGING = true
-# makefile (from 'Makefile', line 79)
-OBJS = ${SRCS:%.c=%.o}
-# environment
-LESSOPEN = | /usr/bin/lesspipe %s
-# environment
-VSCODE_CWD = /mnt/c/Users/leogi/AppData/Local/Programs/Microsoft VS Code
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
-# environment
-PATH = /home/seriots/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/home/seriots/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Users/leogi/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/leogi/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/leogi/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/JetBrains/PyCharm Community Edition 2021.3.1/bin:/mnt/c/Users/leogi/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
-# environment
-XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
-# environment
-VSCODE_LOG_STACK = false
-# environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-cd37c70c-efd5-4311-a69d-d78bde1f7f32.sock
-# default
- 
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# automatic
-%F = $(notdir $%)
-# environment
-DISPLAY = :0
-# environment
-VSCODE_PIPE_LOGGING = true
-# environment
-PWD = /home/seriots/42_cursus/minishellv2
-# default
-.LOADED := 
-# environment
-WSL_INTEROP = /run/WSL/12_interop
-# environment
-PULSE_SERVER = /mnt/wslg/PulseServer
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
-# environment
-HOME = /home/seriots
-# environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
-# environment
-LOGNAME = seriots
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# environment
-MAKELEVEL := 1
-# default
-MAKE = $(MAKE_COMMAND)
-# makefile (from 'Makefile', line 5)
-SRCS = error_base.c ft_atod.c ft_atoi.c ft_bzero.c ft_calloc.c ft_free_tab.c ft_get_empty.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isdouble.c ft_isint.c ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c ft_strchr.c ft_strcmp.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_toupper.c ft_tolower.c ft_ultoa_base.c ft_utoa_base.c ft_lstnew.c ft_lstappend.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_treeaddback_left.c ft_treeaddback_right.c ft_treeaddfront_left.c ft_treeaddfront_right.c ft_treeaddtreeback_left.c ft_treeaddtreeback_right.c ft_treeclear.c ft_treedepth.c ft_treeiter_infix.c ft_treeiter_prefix.c ft_treeiter_suffix.c ft_treejoin.c ft_treelast_left.c ft_treelast_right.c ft_treeleafnew.c ft_treesize.c get_next_line.c get_next_line_utils.c
-# environment
-SHLVL = 0
-# makefile (from 'Makefile', line 1)
-CC = gcc
-# default
-MAKE_VERSION := 4.2.1
-# environment
-USER = seriots
-# makefile
-.DEFAULT_GOAL := all
-# makefile (from 'Makefile', line 4)
-NAME = libft.a
-# automatic
-%D = $(patsubst %/,%,$(dir $%))
-# environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/leogi/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
-# default
-MAKE_COMMAND := /bin/make
-# default
-.VARIABLES := 
-# automatic
-*F = $(notdir $*)
-# makefile
-MAKEFLAGS = pqrRw
-# environment
-MFLAGS = -pqrRw
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
-# automatic
-+F = $(notdir $+)
-# environment
-VSCODE_HANDLES_SIGPIPE = true
-# default
-MAKEFILES := 
-# automatic
-<F = $(notdir $<)
-# environment
-LC_ALL = C
-# environment
-HOSTTYPE = x86_64
-# automatic
-^F = $(notdir $^)
-# default
-SUFFIXES := 
-# environment
-WAYLAND_DISPLAY = wayland-0
-# default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# default
-.RECIPEPREFIX := 
-# environment
-LANG = C
-# environment
-TERM = xterm-256color
-# environment
-VSCODE_EXTHOST_WILL_SEND_SOCKET = true
-# environment
-WSL_DISTRO_NAME = Ubuntu
-# environment
-MOTD_SHOWN = update-motd
-# variable set hash-table stats:
-# Load=75/1024=7%, Rehash=0, Collisions=7/112=6%
-
-# Pattern-specific Variable Values
-
-# No pattern-specific variable values.
-
-# Directories
-
-# . (device 2080, inode 119042): 75 files, no impossibilities.
-
-# 75 files, no impossibilities in 1 directories.
-
-# Implicit Rules
-
-%.o: %.c
-#  recipe to execute (from 'Makefile', line 89):
-	${CC} ${CFLAGS} -o $@ -c $^
-
-# 1 implicit rules, 0 (0.0%) terminal.
-
-# Files
-
-# Not a target:
-ft_strmapi.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_lstiter.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeleafnew.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_memcpy.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_itoa.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_memcmp.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strlen.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_isdigit.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeclear.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-all: libft.a
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
-
-# Not a target:
-ft_lstlast.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_memchr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_isdouble.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-.PHONY: all clean fclean re
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_atod.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeiter_infix.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeiter_prefix.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_tolower.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strrchr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strjoin.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_split.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_get_empty.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_lstclear.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_isint.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strlcat.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeaddback_left.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-Makefile:
-#  Implicit rule search has been done.
- 
-#  Last modified 2022-06-07 02:46:03.278154327
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-ft_treeaddfront_left.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_isprint.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-error_base.o: error_base.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'error_base'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := error_base.o
-# automatic
-# % := 
-# automatic
-# * := error_base
-# automatic
-# + := error_base.c
-# automatic
-# | := 
-# automatic
-# < := error_base.c
-# automatic
-# ^ := error_base.c
-# automatic
-# ? := error_base.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
-#  recipe to execute (from 'Makefile', line 89):
-	${CC} ${CFLAGS} -o $@ -c $^
-
-libft.a: error_base.o ft_atod.o ft_atoi.o ft_bzero.o ft_calloc.o ft_free_tab.o ft_get_empty.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isdouble.o ft_isint.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_split.o ft_strchr.o ft_strcmp.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_toupper.o ft_tolower.o ft_ultoa_base.o ft_utoa_base.o ft_lstnew.o ft_lstappend.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o ft_treeaddback_left.o ft_treeaddback_right.o ft_treeaddfront_left.o ft_treeaddfront_right.o ft_treeaddtreeback_left.o ft_treeaddtreeback_right.o ft_treeclear.o ft_treedepth.o ft_treeiter_infix.o ft_treeiter_prefix.o ft_treeiter_suffix.o ft_treejoin.o ft_treelast_left.o ft_treelast_right.o ft_treeleafnew.o ft_treesize.o get_next_line.o get_next_line_utils.o
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
-#  recipe to execute (from 'Makefile', line 86):
-	ar rc $@ $^
-
-# Not a target:
-ft_striteri.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_bzero.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_lstnew.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treesize.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_putnbr_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-fclean: clean
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 95):
-	rm -f ${NAME}
-
-# Not a target:
-ft_ultoa_base.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_calloc.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_substr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-get_next_line_utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_isalpha.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_lstsize.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeaddtreeback_right.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-.DEFAULT:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_utoa_base.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strlcpy.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-error_base.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-07 02:46:03.278154327
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-ft_lstmap.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strncmp.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-re: fclean all
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-
-clean:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 92):
-	rm -f ${OBJS} ${OBJS_BONUS}
-
-# Not a target:
-ft_isalnum.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strcmp.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_lstadd_front.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_isascii.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strdup.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_lstdelone.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_memmove.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strchr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_toupper.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeiter_suffix.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strnstr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_putstr_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeaddback_right.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_free_tab.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treejoin.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeaddfront_right.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
- 
-ft_treelast_left.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_memset.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_putchar_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_atoi.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-get_next_line.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treedepth.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_strtrim.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_lstadd_back.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_lstappend.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treeaddtreeback_left.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_treelast_right.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-ft_putendl_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# files hash-table stats:
-# Load=81/1024=8%, Rehash=0, Collisions=9/179=5%
-# VPATH Search Paths
-
-# No 'vpath' search paths.
-
-# No general ('VPATH' variable) search path.
-
-# strcache buffers: 1 (0) / strings = 160 / storage = 2244 B / avg = 14 B
-# current buf: size = 8162 B / used = 2244 B / count = 160 / avg = 14 B
-
-# strcache performance: lookups = 179 / hit rate = 10%
-# hash-table stats:
-# Load=160/8192=2%, Rehash=0, Collisions=5/179=3%
-# Finished Make data base on Tue Jun  7 02:46:27 2022
-
- 
-# GNU Make 4.2.1
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
-
-# Make data base, printed on Tue Jun  7 02:46:27 2022
-
-# Variables
-
-# automatic
-<D = $(patsubst %/,%,$(dir $<))
-# automatic
-?F = $(notdir $?)
-# environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
-# default
-.SHELLFLAGS := -c
-# makefile (from 'Makefile', line 27)
+# makefile (from 'Makefile', line 54)
 OBJ = $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
 # environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
-# automatic
-@F = $(notdir $@)
+# environment
+XAUTHORITY = /mnt/nfs/homes/lgiband/.Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/seriots/42_cursus/minishellv2
+CURDIR := /mnt/nfs/homes/lgiband/cursus/circle_3/minishell
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"25fe6a3290ec415596628d4afc87a88c.fr","_translationsConfigFile":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/tcf.json","_cacheRoot":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr","_resolvedLanguagePackCoreLocation":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/seriots/.vscode-server/data/clp/25fe6a3290ec415596628d4afc87a88c.fr/corrupted.info","_languagePackSupport":true}
+VTE_VERSION = 6003
+# makefile (from 'Makefile', line 52)
+LIB_DIRS = $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n)
 # environment
-_ = /home/seriots/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/code
 # makefile (from 'Makefile', line 2)
 CFLAGS = -Wall -Werror -Wextra -g
+# environment
+JOURNAL_STREAM = 9:3249336
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# makefile (from 'Makefile', line 18)
+# makefile (from 'Makefile', line 45)
 LIB_DIR = lib
+# automatic
+@F = $(notdir $@)
 # makefile (from 'Makefile', line 8)
-SRC_NAMES = commands/free_commands commands/get_commands commands/run_commands main shell/free_shell shell/init_shell shell/run_shell signals/init_sigact signals/handle_signals
+SRC_NAMES = commands/free_commands commands/get_commands commands/run_commands main shell/free_shell shell/init_shell shell/run_shell signals/init_sigact signals/handle_signals commands/parse_input/contain_and commands/parse_input/contain_or commands/parse_input/contain_pipe commands/parse_input/is_between_brackets commands/parse_input/parse_input_and commands/parse_input/parse_input_brackets commands/parse_input/parse_input_or commands/parse_input/parse_input_pipe commands/parse_input/parse_input_simple commands/parse_input/parse_input commands/get_commands/get_argument commands/get_commands/get_bzero_command commands/get_commands/get_command commands/get_commands/set_arguments commands/get_commands/set_redirections commands/get_commands/utils/count_arguments commands/get_commands/utils/count_redirections commands/get_commands/utils/get_argument_after commands/get_commands/utils/is_argument_equal commands/get_commands/utils/is_argument_in_input commands/get_commands/utils/is_argument_redirection commands/get_commands/utils/skip_argument commands/get_commands/utils/skip_redirections commands/get_commands/utils/skip_to_next_argument commands/get_commands/utils/skip_whitespaces
+# environment
+IM_CONFIG_PHASE = 1
 # 'override' directive
 GNUMAKEFLAGS := 
-# makefile (from 'Makefile', line 20)
+# makefile (from 'Makefile', line 47)
 OBJ_DIR = obj
 # environment
-XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+# environment
+XDG_DATA_DIRS = /usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/lgiband/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/101767/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-LESSOPEN = | /usr/bin/lesspipe %s
-# makefile (from 'Makefile', line 26)
+MANAGERPID = 562685
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/101767/vscode-ipc-75664115-006c-4127-9a40-69822fee4437.sock
+# makefile (from 'Makefile', line 53)
 LIB_FILES = $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n/lib$n.a)
 # environment
-VSCODE_CWD = /mnt/c/Users/leogi/AppData/Local/Programs/Microsoft VS Code
+VSCODE_CWD = /mnt/nfs/homes/lgiband
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session18
+# environment
+KRB5CCNAME = FILE:/tmp/krb5cc_101767_IGeDpm
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/seriots/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/home/seriots/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Users/leogi/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/leogi/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/leogi/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/JetBrains/PyCharm Community Edition 2021.3.1/bin:/mnt/c/Users/leogi/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
+PATH = /mnt/nfs/homes/lgiband/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
-XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
+GPG_AGENT_INFO = /run/user/101767/gnupg/S.gpg-agent:0:1
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+SESSION_MANAGER = local/e2r4p18.clusters.42paris.fr:@/tmp/.ICE-unix/563029,unix/e2r4p18.clusters.42paris.fr:/tmp/.ICE-unix/563029
+# environment
+XDG_RUNTIME_DIR = /run/user/101767
+# makefile (from 'Makefile', line 6)
+LIB_NAMES = ft
+# environment
+XDG_MENU_PREFIX = gnome-
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-cd37c70c-efd5-4311-a69d-d78bde1f7f32.sock
-# makefile (from 'Makefile', line 24)
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = 9aca985eea694a5788eee88e06b08d8c
+# makefile (from 'Makefile', line 51)
 LIB = -lreadline $(LIB_NAMES:%=-L$(LIB_DIR)/%) $(LIB_NAMES:%=-l%)
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/lgiband
+# environment
 LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/101767/keyring/ssh
 # automatic
 %F = $(notdir $%)
 # environment
@@ -798,61 +132,79 @@ DISPLAY = :0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/seriots/42_cursus/minishellv2
+PWD = /mnt/nfs/homes/lgiband/cursus/circle_3/minishell
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/12_interop
+SSH_AGENT_PID = 562993
 # environment
-PULSE_SERVER = /mnt/wslg/PulseServer
-# makefile (from 'Makefile', line 6)
-LIB_NAMES = ft
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /home/seriots
+HOME = /mnt/nfs/homes/lgiband
 # environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
+VSCODE_CLI = 1
 # environment
-LOGNAME = seriots
+VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/lgiband/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+LOGNAME = lgiband
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+ZSH = /mnt/nfs/homes/lgiband/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 MAKELEVEL := 0
+# environment
+COLORTERM = truecolor
 # makefile (from 'Makefile', line 3)
 MAKE = /bin/make
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 0
+QT_IM_MODULE = ibus
+# environment
+SHLVL = 1
 # makefile (from 'Makefile', line 1)
 CC = gcc
 # default
 MAKE_VERSION := 4.2.1
 # environment
-USER = seriots
+USER = lgiband
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from 'Makefile', line 23)
+# makefile (from 'Makefile', line 50)
 INCLUDE = -I$(HEADER_DIR)
-# makefile (from 'Makefile', line 7)
-NAME = minishell
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+LIBVIRT_DEFAULT_URI = qemu:///system
+# environment
+LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/leogi/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
 MAKE_COMMAND := make
-# makefile (from 'Makefile', line 17)
+# makefile (from 'Makefile', line 44)
 HEADER_DIR = include
+# environment
+OLDPWD = /mnt/nfs/homes/lgiband
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/101767/vscode-6aac3135-1.67.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -861,33 +213,44 @@ MFLAGS = -pqrR
 *D = $(patsubst %/,%,$(dir $*))
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
-# makefile (from 'Makefile', line 25)
-LIB_DIRS = $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n)
 # environment
-VSCODE_HANDLES_SIGPIPE = true
+QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
-# makefile (from 'Makefile', line 19)
+# makefile (from 'Makefile', line 46)
 SRC_DIR = src
 # automatic
 <F = $(notdir $<)
 # environment
+PAGER = less
+# environment
 LC_ALL = C
- 
-# makefile (from 'Makefile', line 22)
+# makefile (from 'Makefile', line 49)
 HEADER = $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 # environment
-HOSTTYPE = x86_64
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/ae9d9b8a_77cd_47a6_9664_e4f350ea317b
 # automatic
 ^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.88
 # default
 SUFFIXES := 
 # environment
-WAYLAND_DISPLAY = wayland-0
+CHROME_DESKTOP = code-url-handler.desktop
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# makefile (from 'Makefile', line 7)
+NAME = minishell
 # default
 .RECIPEPREFIX := 
 # environment
@@ -897,13 +260,11 @@ TERM = xterm-256color
 # makefile (from 'Makefile', line 5)
 HEADER_NAMES = libft
 # environment
-VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+DOCKER_HOST = unix:///run/user/101767/docker.sock
 # environment
-WSL_DISTRO_NAME = Ubuntu
-# environment
-MOTD_SHOWN = update-motd
+VSCODE_PID = 594320
 # variable set hash-table stats:
-# Load=87/1024=8%, Rehash=0, Collisions=9/137=7%
+# Load=126/1024=12%, Rehash=0, Collisions=27/175=15%
 
 # Pattern-specific Variable Values
 
@@ -911,15 +272,21 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2080, inode 118989): 9 files, no impossibilities.
-# src (device 2080, inode 119413): No files, no impossibilities so far.
+# src/signals (device 61, inode 113149677): 4 files, no impossibilities so far.
+# src/commands (device 61, inode 113149640): 6 files, no impossibilities so far.
+# include (device 61, inode 113149553): 3 files, no impossibilities so far.
+# . (device 61, inode 113149418): 11 files, no impossibilities.
+# src/shell (device 61, inode 113149673): 5 files, no impossibilities so far.
+# src/commands/parse_input (device 61, inode 113149660): 12 files, no impossibilities so far.
+# src (device 61, inode 113149639): 3 files, no impossibilities so far.
 
-# 9 files, no impossibilities in 2 directories.
+# 44 files, no impossibilities in 7 directories.
 
+ 
 # Implicit Rules
 
 obj/%.o: src/%.c include/libft.h
-#  recipe to execute (from 'Makefile', line 35):
+#  recipe to execute (from 'Makefile', line 62):
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -927,7 +294,49 @@ obj/%.o: src/%.c include/libft.h
 # Files
 
 # Not a target:
-obj/signals/handle_signals.o:
+src/commands/get_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:03:51.061304603
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/commands/get_commands/utils/skip_argument.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/shell/init_shell.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 13:14:07.435912686
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/commands/parse_input/parse_input.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/signals/handle_signals.o: src/signals/handle_signals.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'signals/handle_signals'
+#  Last modified 2022-06-07 20:18:18.78648592
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/commands/run_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:06:13.609250481
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/commands/get_commands/get_command.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -936,81 +345,204 @@ all: minishell
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/7=0%
 
 # Not a target:
-obj/commands/free_commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-lib/ft/libft.a:
-#  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  Modification time never checked.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := lib/ft/libft.a
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := 
-# automatic
-# | := 
-# automatic
-# < := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=3/15=20%
-#  recipe to execute (from 'Makefile', line 38):
-	@for lib_dir in $(LIB_DIRS); do $(MAKE) -C $${lib_dir}; done
-
-# Not a target:
-.SUFFIXES:
+obj/commands/get_commands/utils/skip_to_next_argument.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-Makefile:
+obj/commands/get_commands/utils/count_redirections.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/commands/free_commands.o: src/commands/free_commands.c include/libft.h
 #  Implicit rule search has been done.
-#  Last modified 2022-06-07 02:46:03.278154327
+#  Implicit/static pattern stem: 'commands/free_commands'
+#  Last modified 2022-06-07 20:18:18.478486035
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+obj/commands/parse_input/parse_input_or.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/commands/parse_input/contain_or.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.861355832
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-obj/shell/run_shell.o:
+obj/commands/get_commands/utils/is_argument_redirection.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-minishell: lib/ft/libft.a obj/commands/free_commands.o obj/commands/get_commands.o obj/commands/run_commands.o obj/main.o obj/shell/free_shell.o obj/shell/init_shell.o obj/shell/run_shell.o obj/signals/init_sigact.o obj/signals/handle_signals.o
+obj/commands/parse_input/contain_pipe.o: src/commands/parse_input/contain_pipe.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/parse_input/contain_pipe'
+#  Last modified 2022-06-07 20:18:18.882485884
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/commands/parse_input/is_between_brackets.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.869355828
+#  File has been updated.
+#  Successfully updated.
+
+lib/ft/libft.a:
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-07 20:18:50.574474101
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 65):
+	@for lib_dir in $(LIB_DIRS); do $(MAKE) -C $${lib_dir}; done
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:13:57.641075615
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/commands/get_commands/utils/is_argument_equal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/commands/parse_input/parse_input_brackets.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/signals/handle_signals.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.905355815
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/commands/get_commands/set_arguments.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/commands/free_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.81335585
+#  File has been updated.
+#  Successfully updated.
+
+obj/shell/run_shell.o: src/shell/run_shell.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'shell/run_shell'
+#  Last modified 2022-06-07 20:18:18.710485948
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+obj/commands/parse_input/contain_and.o: src/commands/parse_input/contain_and.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/parse_input/contain_and'
+#  Last modified 2022-06-07 20:18:18.818485908
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+minishell: lib/ft/libft.a obj/commands/free_commands.o obj/commands/get_commands.o obj/commands/run_commands.o obj/main.o obj/shell/free_shell.o obj/shell/init_shell.o obj/shell/run_shell.o obj/signals/init_sigact.o obj/signals/handle_signals.o obj/commands/parse_input/contain_and.o obj/commands/parse_input/contain_or.o obj/commands/parse_input/contain_pipe.o obj/commands/parse_input/is_between_brackets.o obj/commands/parse_input/parse_input_and.o obj/commands/parse_input/parse_input_brackets.o obj/commands/parse_input/parse_input_or.o obj/commands/parse_input/parse_input_pipe.o obj/commands/parse_input/parse_input_simple.o obj/commands/parse_input/parse_input.o obj/commands/get_commands/get_argument.o obj/commands/get_commands/get_bzero_command.o obj/commands/get_commands/get_command.o obj/commands/get_commands/set_arguments.o obj/commands/get_commands/set_redirections.o obj/commands/get_commands/utils/count_arguments.o obj/commands/get_commands/utils/count_redirections.o obj/commands/get_commands/utils/get_argument_after.o obj/commands/get_commands/utils/is_argument_equal.o obj/commands/get_commands/utils/is_argument_in_input.o obj/commands/get_commands/utils/is_argument_redirection.o obj/commands/get_commands/utils/skip_argument.o obj/commands/get_commands/utils/skip_redirections.o obj/commands/get_commands/utils/skip_to_next_argument.o obj/commands/get_commands/utils/skip_whitespaces.o
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/7=0%
-#  recipe to execute (from 'Makefile', line 32):
+#  recipe to execute (from 'Makefile', line 59):
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
+
+# Not a target:
+obj/commands/parse_input/parse_input_pipe.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/commands/parse_input/contain_pipe.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.86535583
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/commands/parse_input/parse_input_simple.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 44):
+#  recipe to execute (from 'Makefile', line 71):
 	rm -f $(NAME)
 	@for lib in $(LIB_NAMES); do $(MAKE) -C $(LIB_DIR)/$${lib} fclean; done
 
+obj/main.o: src/main.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2022-06-07 20:18:18.594485992
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
 # Not a target:
-obj/main.o:
+obj/commands/get_commands/utils/count_arguments.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/commands/get_commands/utils/skip_whitespaces.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/commands/get_commands/utils/skip_redirections.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/commands/get_commands/get_argument.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/commands/get_commands/utils/get_argument_after.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1021,13 +553,64 @@ obj/main.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+obj/signals/init_sigact.o: src/signals/init_sigact.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'signals/init_sigact'
+#  Last modified 2022-06-07 20:18:18.742485936
+#  File has been updated.
+#  Successfully updated.
+ 
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
 # Not a target:
-obj/signals/init_sigact.o:
+src/shell/run_shell.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:05:13.453273289
+#  File has been updated.
+#  Successfully updated.
+
+obj/commands/parse_input/parse_input_and.o: src/commands/parse_input/parse_input_and.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/parse_input/parse_input_and'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/commands/parse_input/parse_input_and.o
+# automatic
+# % := 
+# automatic
+# * := commands/parse_input/parse_input_and
+# automatic
+# + := src/commands/parse_input/parse_input_and.c include/libft.h
+# automatic
+# | := 
+# automatic
+# < := src/commands/parse_input/parse_input_and.c
+# automatic
+# ^ := src/commands/parse_input/parse_input_and.c include/libft.h
+# automatic
+# ? := src/commands/parse_input/parse_input_and.c include/libft.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/17=12%
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/commands/parse_input/contain_and.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.861355832
+#  File has been updated.
+#  Successfully updated.
+
+re: fclean all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-re: fclean all
+# Not a target:
+obj/commands/get_commands/get_bzero_command.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1036,47 +619,124 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 41):
+#  recipe to execute (from 'Makefile', line 68):
 	rm -f $(OBJ)
 
+obj/shell/free_shell.o: src/shell/free_shell.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'shell/free_shell'
+#  Last modified 2022-06-07 20:18:18.630485978
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+obj/commands/get_commands.o: src/commands/get_commands.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/get_commands'
+#  Last modified 2022-06-07 20:18:18.51848602
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+obj/shell/init_shell.o: src/shell/init_shell.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'shell/init_shell'
+#  Last modified 2022-06-07 20:18:18.670485963
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
 # Not a target:
-obj/shell/free_shell.o:
+obj/commands/get_commands/utils/is_argument_in_input.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/commands/run_commands.o: src/commands/run_commands.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/run_commands'
+#  Last modified 2022-06-07 20:18:18.558486005
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/signals/init_sigact.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.905355815
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/commands/parse_input/parse_input_and.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.873355826
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+include/libft.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 20:17:00.754515272
+#  File has been updated.
+#  Successfully updated.
+
+obj/commands/parse_input/contain_or.o: src/commands/parse_input/contain_or.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/parse_input/contain_or'
+#  Last modified 2022-06-07 20:18:18.850485896
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+obj/commands/parse_input/is_between_brackets.o: src/commands/parse_input/is_between_brackets.c include/libft.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'commands/parse_input/is_between_brackets'
+#  Last modified 2022-06-07 20:18:18.906485875
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 62):
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# Not a target:
+src/shell/free_shell.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 13:20:26.92363788
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/commands/get_commands/set_redirections.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-obj/commands/get_commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/shell/init_shell.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/run_commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.889355821
+#  File has been updated.
+#  Successfully updated.
 
 # files hash-table stats:
-# Load=18/1024=2%, Rehash=0, Collisions=3/47=6%
+# Load=58/1024=6%, Rehash=0, Collisions=10/180=6%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 31 / storage = 394 B / avg = 12 B
-# current buf: size = 8162 B / used = 394 B / count = 31 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 110 / storage = 2714 B / avg = 24 B
+# current buf: size = 8162 B / used = 2714 B / count = 110 / avg = 24 B
 
-# strcache performance: lookups = 49 / hit rate = 36%
+# strcache performance: lookups = 183 / hit rate = 39%
 # hash-table stats:
-# Load=31/8192=0%, Rehash=0, Collisions=1/49=2%
-# Finished Make data base on Tue Jun  7 02:46:27 2022
+# Load=110/8192=1%, Rehash=0, Collisions=10/183=5%
+# Finished Make data base on Tue Jun  7 20:56:58 2022
 
  

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/05 20:55:16 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/07 12:06:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include "minishell.h"
 
-int	run_commands(char **commands, t_shell *shell)
+int	run_commands(t_tree	*commands, t_shell *shell)
 {
 	char	pwd[1000];
 	char	*argv[4];
@@ -27,7 +27,7 @@ int	run_commands(char **commands, t_shell *shell)
 	{
 		argv[0] = "/bin/bash";
 		argv[1] = "-c";
-		argv[2] = commands[0];
+		argv[2] = commands->content;
 		argv[3] = 0;
 		execve("/bin/bash", argv, shell->env);
 		exit(0);
