@@ -40,7 +40,6 @@ OBJ_DIR		= obj
 HEADER		= $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 INCLUDE		= -I$(HEADER_DIR)
 LIB			= -lreadline $(LIB_NAMES:%=-L$(LIB_DIR)/%) $(LIB_NAMES:%=-l%)
-LIB_DIRS	= $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n)
 LIB_FILES	= $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n/lib$n.a)
 OBJ			= $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
 
@@ -52,14 +51,14 @@ $(NAME):	$(LIB_FILES) $(OBJ)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(LIB_FILES):
-	@for lib_dir in $(LIB_DIRS); do $(MAKE) -C $${lib_dir}; done
+%.a:
+	$(MAKE) -C $(dir $@)
 
 clean:
 	rm -f $(OBJ)
 
 fclean:	clean
 	rm -f $(NAME)
-	@for lib in $(LIB_NAMES); do $(MAKE) -C $(LIB_DIR)/$${lib} fclean; done
+	@for lib_dir in $(dir $(LIB_FILES)); do $(MAKE) -C $${lib_dir} fclean; done
 
 re:	fclean all
