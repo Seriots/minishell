@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 01:55:16 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/07 02:48:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <sys/types.h>
 # include <signal.h>
+# include "libft.h"
 
 # define SHELL_PROMPT "$> "
 
@@ -47,6 +48,7 @@ typedef struct s_command
 typedef struct s_shell
 {
 	char	**env;
+	char	*directory;
 }	t_shell;
 
 typedef int	(*t_set_redir)(t_command *, const char *, int);

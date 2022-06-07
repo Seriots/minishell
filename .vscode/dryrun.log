@@ -1,6 +1,90 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/home/seriots/42_cursus/minishell'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/seriots/42_cursus/minishellv2'
+for lib_dir in lib/ft; do /bin/make -C ${lib_dir}; done
+make[1]: Entering directory '/home/seriots/42_cursus/minishellv2/lib/ft'
+gcc -Wall -Werror -Wextra -o error_base.o -c error_base.c
+gcc -Wall -Werror -Wextra -o ft_atod.o -c ft_atod.c
+gcc -Wall -Werror -Wextra -o ft_atoi.o -c ft_atoi.c
+gcc -Wall -Werror -Wextra -o ft_bzero.o -c ft_bzero.c
+gcc -Wall -Werror -Wextra -o ft_calloc.o -c ft_calloc.c
+gcc -Wall -Werror -Wextra -o ft_free_tab.o -c ft_free_tab.c
+gcc -Wall -Werror -Wextra -o ft_get_empty.o -c ft_get_empty.c
+gcc -Wall -Werror -Wextra -o ft_isalpha.o -c ft_isalpha.c
+gcc -Wall -Werror -Wextra -o ft_isdigit.o -c ft_isdigit.c
+gcc -Wall -Werror -Wextra -o ft_isalnum.o -c ft_isalnum.c
+gcc -Wall -Werror -Wextra -o ft_isascii.o -c ft_isascii.c
+gcc -Wall -Werror -Wextra -o ft_isdouble.o -c ft_isdouble.c
+gcc -Wall -Werror -Wextra -o ft_isint.o -c ft_isint.c
+gcc -Wall -Werror -Wextra -o ft_isprint.o -c ft_isprint.c
+gcc -Wall -Werror -Wextra -o ft_itoa.o -c ft_itoa.c
+gcc -Wall -Werror -Wextra -o ft_memchr.o -c ft_memchr.c
+gcc -Wall -Werror -Wextra -o ft_memcmp.o -c ft_memcmp.c
+gcc -Wall -Werror -Wextra -o ft_memcpy.o -c ft_memcpy.c
+gcc -Wall -Werror -Wextra -o ft_memmove.o -c ft_memmove.c
+gcc -Wall -Werror -Wextra -o ft_memset.o -c ft_memset.c
+ 
+gcc -Wall -Werror -Wextra -o ft_putchar_fd.o -c ft_putchar_fd.c
+gcc -Wall -Werror -Wextra -o ft_putstr_fd.o -c ft_putstr_fd.c
+gcc -Wall -Werror -Wextra -o ft_putendl_fd.o -c ft_putendl_fd.c
+gcc -Wall -Werror -Wextra -o ft_putnbr_fd.o -c ft_putnbr_fd.c
+gcc -Wall -Werror -Wextra -o ft_split.o -c ft_split.c
+gcc -Wall -Werror -Wextra -o ft_strchr.o -c ft_strchr.c
+gcc -Wall -Werror -Wextra -o ft_strcmp.o -c ft_strcmp.c
+gcc -Wall -Werror -Wextra -o ft_strdup.o -c ft_strdup.c
+gcc -Wall -Werror -Wextra -o ft_striteri.o -c ft_striteri.c
+gcc -Wall -Werror -Wextra -o ft_strjoin.o -c ft_strjoin.c
+gcc -Wall -Werror -Wextra -o ft_strlcat.o -c ft_strlcat.c
+gcc -Wall -Werror -Wextra -o ft_strlcpy.o -c ft_strlcpy.c
+gcc -Wall -Werror -Wextra -o ft_strlen.o -c ft_strlen.c
+gcc -Wall -Werror -Wextra -o ft_strmapi.o -c ft_strmapi.c
+gcc -Wall -Werror -Wextra -o ft_strncmp.o -c ft_strncmp.c
+gcc -Wall -Werror -Wextra -o ft_strnstr.o -c ft_strnstr.c
+gcc -Wall -Werror -Wextra -o ft_strrchr.o -c ft_strrchr.c
+gcc -Wall -Werror -Wextra -o ft_strtrim.o -c ft_strtrim.c
+gcc -Wall -Werror -Wextra -o ft_substr.o -c ft_substr.c
+gcc -Wall -Werror -Wextra -o ft_toupper.o -c ft_toupper.c
+gcc -Wall -Werror -Wextra -o ft_tolower.o -c ft_tolower.c
+gcc -Wall -Werror -Wextra -o ft_ultoa_base.o -c ft_ultoa_base.c
+gcc -Wall -Werror -Wextra -o ft_utoa_base.o -c ft_utoa_base.c
+gcc -Wall -Werror -Wextra -o ft_lstnew.o -c ft_lstnew.c
+gcc -Wall -Werror -Wextra -o ft_lstappend.o -c ft_lstappend.c
+gcc -Wall -Werror -Wextra -o ft_lstadd_front.o -c ft_lstadd_front.c
+gcc -Wall -Werror -Wextra -o ft_lstsize.o -c ft_lstsize.c
+gcc -Wall -Werror -Wextra -o ft_lstlast.o -c ft_lstlast.c
+gcc -Wall -Werror -Wextra -o ft_lstadd_back.o -c ft_lstadd_back.c
+gcc -Wall -Werror -Wextra -o ft_lstdelone.o -c ft_lstdelone.c
+gcc -Wall -Werror -Wextra -o ft_lstclear.o -c ft_lstclear.c
+gcc -Wall -Werror -Wextra -o ft_lstiter.o -c ft_lstiter.c
+gcc -Wall -Werror -Wextra -o ft_lstmap.o -c ft_lstmap.c
+gcc -Wall -Werror -Wextra -o ft_treeaddback_left.o -c ft_treeaddback_left.c
+gcc -Wall -Werror -Wextra -o ft_treeaddback_right.o -c ft_treeaddback_right.c
+gcc -Wall -Werror -Wextra -o ft_treeaddfront_left.o -c ft_treeaddfront_left.c
+gcc -Wall -Werror -Wextra -o ft_treeaddfront_right.o -c ft_treeaddfront_right.c
+gcc -Wall -Werror -Wextra -o ft_treeaddtreeback_left.o -c ft_treeaddtreeback_left.c
+gcc -Wall -Werror -Wextra -o ft_treeaddtreeback_right.o -c ft_treeaddtreeback_right.c
+gcc -Wall -Werror -Wextra -o ft_treeclear.o -c ft_treeclear.c
+gcc -Wall -Werror -Wextra -o ft_treedepth.o -c ft_treedepth.c
+gcc -Wall -Werror -Wextra -o ft_treeiter_infix.o -c ft_treeiter_infix.c
+gcc -Wall -Werror -Wextra -o ft_treeiter_prefix.o -c ft_treeiter_prefix.c
+gcc -Wall -Werror -Wextra -o ft_treeiter_suffix.o -c ft_treeiter_suffix.c
+gcc -Wall -Werror -Wextra -o ft_treejoin.o -c ft_treejoin.c
+gcc -Wall -Werror -Wextra -o ft_treelast_left.o -c ft_treelast_left.c
+gcc -Wall -Werror -Wextra -o ft_treelast_right.o -c ft_treelast_right.c
+gcc -Wall -Werror -Wextra -o ft_treeleafnew.o -c ft_treeleafnew.c
+gcc -Wall -Werror -Wextra -o ft_treesize.o -c ft_treesize.c
+gcc -Wall -Werror -Wextra -o get_next_line.o -c get_next_line.c
+gcc -Wall -Werror -Wextra -o get_next_line_utils.o -c get_next_line_utils.c
+ar rc libft.a error_base.o ft_atod.o ft_atoi.o ft_bzero.o ft_calloc.o ft_free_tab.o ft_get_empty.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isdouble.o ft_isint.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_split.o ft_strchr.o ft_strcmp.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_toupper.o ft_tolower.o ft_ultoa_base.o ft_utoa_base.o ft_lstnew.o ft_lstappend.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o ft_treeaddback_left.o ft_treeaddback_right.o ft_treeaddfront_left.o ft_treeaddfront_right.o ft_treeaddtreeback_left.o ft_treeaddtreeback_right.o ft_treeclear.o ft_treedepth.o ft_treeiter_infix.o ft_treeiter_prefix.o ft_treeiter_suffix.o ft_treejoin.o ft_treelast_left.o ft_treelast_right.o ft_treeleafnew.o ft_treesize.o get_next_line.o get_next_line_utils.o
+make[1]: Leaving directory '/home/seriots/42_cursus/minishellv2/lib/ft'
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/free_commands.c -o obj/commands/free_commands.o
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_commands.c -o obj/commands/get_commands.o
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/run_commands.c -o obj/commands/run_commands.o
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/main.c -o obj/main.o
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/shell/free_shell.c -o obj/shell/free_shell.o
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/shell/init_shell.c -o obj/shell/init_shell.o
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/shell/run_shell.c -o obj/shell/run_shell.o
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/signals/init_sigact.c -o obj/signals/init_sigact.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/signals/handle_signals.c -o obj/signals/handle_signals.o
 gcc -Wall -Werror -Wextra -g obj/commands/free_commands.o obj/commands/get_commands.o obj/commands/run_commands.o obj/main.o obj/shell/free_shell.o obj/shell/init_shell.o obj/shell/run_shell.o obj/signals/init_sigact.o obj/signals/handle_signals.o -o minishell -lreadline -Llib/ft -lft
-make: Leaving directory '/home/seriots/42_cursus/minishell'
+make: Leaving directory '/home/seriots/42_cursus/minishellv2'
  
