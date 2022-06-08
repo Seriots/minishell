@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:33:36 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/08 20:42:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 22:51:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
+size_t	ft_arraylen(char **array);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
@@ -170,7 +171,7 @@ char	*str_buff_join(char *str, char *mem, size_t size);
 */
 t_dict	*ft_dictnew(char *key, char *value);
 void	ft_dictadd_front(t_dict **dict, t_dict *new, void free_key(void *), void free_value(void *));
-void	ft_dictprint(t_dict *dict);
+void	ft_dictprint(t_dict *dict, char *str);
 void	ft_dictprint_values(t_dict *dict);
 void	ft_dictprint_keys(t_dict *dict);
 void	ft_dictdelone(t_dict **dict, t_dict *elem, void free_key(void *), void free_value(void *));

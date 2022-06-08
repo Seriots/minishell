@@ -45,6 +45,7 @@ SRCS	= error_base.c \
 		  ft_tolower.c \
 		  ft_ultoa_base.c \
 		  ft_utoa_base.c \
+		  ft_arraylen.c \
 \
 		  ft_lstnew.c \
 		  ft_lstappend.c \

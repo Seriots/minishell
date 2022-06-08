@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/08 21:00:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 22:21:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void				skip_whitespaces(const char *input, int input_size, int *i);
 int					free_shell(t_shell *shell);
 
 /*init_shell.c*/
+t_dict				*getarg_env(char *line);
 char     			*get_current_directory(void);
 int					init_shell(t_shell *shell, char **env);
 
