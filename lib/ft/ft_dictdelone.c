@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:57:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 20:36:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 20:48:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	ft_dictdelone(t_dict **dict, t_dict *elem, void free_key(void *),  void fre
 	next = copy->next;
 	previous = copy->previous;
 	if (free_key)
-		free(elem->key);
+		free_key(elem->key);
 	if (free_value)
-		free(elem->value);
+		free_value(elem->value);
 	if (previous)
 		previous->next = next;
 	if (next)

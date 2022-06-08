@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 20:13:45 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 20:35:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 20:48:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_dictclear(t_dict *dict, void free_key(void *),  void free_value(void *))
 	while (dict)
 	{
 		if (free_key)
-			free(elem->key);
+			free_key(dict->key);
 		if (free_value)
-			free(elem->value);
+			free_value(dict->value);
 		if (dict->next == 0)
 		{
 			free(dict);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:14:46 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 20:35:31 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 20:49:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	ft_dictmodify(t_dict *elem, t_dict *new, void free_key(void *),  voi
 	if (previous)
 		previous->next = new;
 	if (free_key)
-		free(elem->key);
+		free_key(elem->key);
 	if (free_value)
-		free(elem->value);
+		free_value(elem->value);
 	free(elem);
 }
 
