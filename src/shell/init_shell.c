@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/08 20:18:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 21:06:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,16 @@ t_dict	*getarg_env(char *line)
 		return (0);
 	while (line[key_count + value_count + 1])
 		value_count ++;
-	key = ft_calloc(sizeof(char), key_count + 1);
+	key = ft_substr(line, 0, key_count);
 	if (!key)
 		return (0);
-	value = ft_calloc(sizeof(char), value_count + 1);
+	value = ft_substr(line, key_count + 1, value_count);
 	if (!value)
 	{
 		free(key);
 		return (0);
 	}
-		
+	elem = ft_dictnew(key, value);
 	return (elem);
 }
 
@@ -104,9 +104,10 @@ t_dict	*get_env(char **env)
 	{
 		new = getarg_env(env[i]);
 		if (new)
-			ft_dictadd_back(&dict, new, 1);
+			ft_dictadd_back(&dict, new, free, free);
 		i ++;
 	}
+	return (dict);
 }
 
 int     init_shell(t_shell *shell, char **env)
