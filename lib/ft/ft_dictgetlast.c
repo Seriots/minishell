@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dictclear.c                                     :+:      :+:    :+:   */
+/*   ft_dictgetlast.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 20:13:45 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 18:05:19 by lgiband          ###   ########.fr       */
+/*   Created: 2022/06/08 17:47:18 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/08 17:56:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-void	ft_dictclear(t_dict *dict, int is_malloc)
+
+t_dict	*ft_dictget_last(t_dict *dict)
 {
 	if (!dict)
-		return ;
-	while (dict)
-	{
-		if (is_malloc)
-		{
-			free(dict->key);
-			free(dict->value);
-		}
-		if (dict->next == 0)
-		{
-			free(dict);
-			dict = 0;
-		}
-		else
-			dict = dict->next;
-		if (dict)
-			free(dict->previous);
-	}
+		return (0);
+	while (dict->next != 0)
+		dict = dict->next;
+	return (dict);
 }

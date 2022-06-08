@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dictclear.c                                     :+:      :+:    :+:   */
+/*   ft_dictgetelem_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 20:13:45 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 18:05:19 by lgiband          ###   ########.fr       */
+/*   Created: 2022/06/08 19:16:08 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/08 19:17:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-void	ft_dictclear(t_dict *dict, int is_malloc)
+
+t_dict	*ft_dictgetelem_value(t_dict *dict, void *value)
 {
-	if (!dict)
-		return ;
-	while (dict)
-	{
-		if (is_malloc)
-		{
-			free(dict->key);
-			free(dict->value);
-		}
-		if (dict->next == 0)
-		{
-			free(dict);
-			dict = 0;
-		}
-		else
-			dict = dict->next;
-		if (dict)
-			free(dict->previous);
-	}
+	if (!dict || !value)
+		return (0);
+	dict = ft_dictget_first(dict);
+	while (dict && ft_strncmp(dict->value, value, ft_strlen(value) + 1) != 0)
+		dict = dict->next;
+	return (dict);
 }

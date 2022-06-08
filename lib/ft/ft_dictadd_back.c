@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dictadd_front.c                                 :+:      :+:    :+:   */
+/*   ft_dictadd_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 19:14:46 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 19:12:42 by lgiband          ###   ########.fr       */
+/*   Created: 2022/06/08 17:50:41 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/08 19:12:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ static void	ft_dictmodify(t_dict *elem, t_dict *new, int is_malloc)
 	free(elem);
 }
 
-void	ft_dictadd_front(t_dict **dict, t_dict *new, int is_malloc)
+void	ft_dictadd_back(t_dict **dict, t_dict *new, int is_malloc)
 {
+	t_dict	*copy;
 	t_dict	*search;
 
 	if (!dict || !new)
@@ -49,9 +50,9 @@ void	ft_dictadd_front(t_dict **dict, t_dict *new, int is_malloc)
 	search = ft_dictgetelem_key(*dict, new->key);
 	if (!search)
 	{
-		(*dict)->previous = new;
-		new->next = *dict;
-		*dict = new;
+		copy = ft_dictget_last(*dict);
+		copy->next = new;
+		new->previous = copy;
 	}
 	else
 	{

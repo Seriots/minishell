@@ -1,5 +1,5 @@
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g
 
 NAME	= libft.a
 SRCS	= error_base.c \
@@ -92,7 +92,14 @@ SRCS	= error_base.c \
 \
 		  ft_dictnew.c \
 		  ft_dictadd_front.c \
+		  ft_dictadd_back.c \
 		  ft_dictprint.c \
+		  ft_dictsize.c \
+		  ft_dictgetfirst.c \
+		  ft_dictgetlast.c \
+		  ft_dictdelone.c \
+		  ft_dictgetelem_key.c \
+		  ft_dictgetelem_value.c \
 		  ft_dictclear.c
 OBJS	= ${SRCS:%.c=%.o}
 
