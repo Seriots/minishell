@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dictprint.c                                     :+:      :+:    :+:   */
+/*   ft_dictchangeval.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 19:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 19:44:00 by lgiband          ###   ########.fr       */
+/*   Created: 2022/06/08 19:34:00 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/08 19:39:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	ft_dictprint(t_dict *dict)
+void	ft_dictchangeval(t_dict **dict, void *key, void *value, int is_malloc)
 {
-	if (!dict)
+	t_dict	*elem;
+
+	if (!dict || !key || !value)
 		return ;
-	while (dict)
-	{
-		ft_printf("%s=%s\n", dict->key, dict->value);
-		dict = dict->next;
-	}
+	elem = ft_dictgetelem_key(*dict, key);
+	if (!elem)
+		return ;
+	if (is_malloc)
+		free(elem->value);
+	elem->value = value;
 }

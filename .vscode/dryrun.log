@@ -1,112 +1,5 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/mnt/nfs/homes/lgiband/cursus/circle_3/minishell'
-/bin/make -C lib/ft/
- 
-make[1]: Entering directory '/mnt/nfs/homes/lgiband/cursus/circle_3/minishell/lib/ft'
-gcc -Wall -Werror -Wextra -g -o error_base.o -c error_base.c
- 
-gcc -Wall -Werror -Wextra -g -o ft_atod.o -c ft_atod.c
-gcc -Wall -Werror -Wextra -g -o ft_atoi.o -c ft_atoi.c
-gcc -Wall -Werror -Wextra -g -o ft_bzero.o -c ft_bzero.c
-gcc -Wall -Werror -Wextra -g -o ft_calloc.o -c ft_calloc.c
-gcc -Wall -Werror -Wextra -g -o ft_free_tab.o -c ft_free_tab.c
-gcc -Wall -Werror -Wextra -g -o ft_get_empty.o -c ft_get_empty.c
-gcc -Wall -Werror -Wextra -g -o ft_isalpha.o -c ft_isalpha.c
-gcc -Wall -Werror -Wextra -g -o ft_isdigit.o -c ft_isdigit.c
-gcc -Wall -Werror -Wextra -g -o ft_isalnum.o -c ft_isalnum.c
-gcc -Wall -Werror -Wextra -g -o ft_isascii.o -c ft_isascii.c
-gcc -Wall -Werror -Wextra -g -o ft_isdouble.o -c ft_isdouble.c
-gcc -Wall -Werror -Wextra -g -o ft_isint.o -c ft_isint.c
-gcc -Wall -Werror -Wextra -g -o ft_isprint.o -c ft_isprint.c
-gcc -Wall -Werror -Wextra -g -o ft_itoa.o -c ft_itoa.c
-gcc -Wall -Werror -Wextra -g -o ft_memchr.o -c ft_memchr.c
-gcc -Wall -Werror -Wextra -g -o ft_memcmp.o -c ft_memcmp.c
-gcc -Wall -Werror -Wextra -g -o ft_memcpy.o -c ft_memcpy.c
-gcc -Wall -Werror -Wextra -g -o ft_memmove.o -c ft_memmove.c
- 
-gcc -Wall -Werror -Wextra -g -o ft_memset.o -c ft_memset.c
-gcc -Wall -Werror -Wextra -g -o ft_putchar_fd.o -c ft_putchar_fd.c
-gcc -Wall -Werror -Wextra -g -o ft_putstr_fd.o -c ft_putstr_fd.c
-gcc -Wall -Werror -Wextra -g -o ft_putendl_fd.o -c ft_putendl_fd.c
-gcc -Wall -Werror -Wextra -g -o ft_putnbr_fd.o -c ft_putnbr_fd.c
-gcc -Wall -Werror -Wextra -g -o ft_split.o -c ft_split.c
-gcc -Wall -Werror -Wextra -g -o ft_strchr.o -c ft_strchr.c
-gcc -Wall -Werror -Wextra -g -o ft_strcmp.o -c ft_strcmp.c
-gcc -Wall -Werror -Wextra -g -o ft_strdup.o -c ft_strdup.c
-gcc -Wall -Werror -Wextra -g -o ft_striteri.o -c ft_striteri.c
-gcc -Wall -Werror -Wextra -g -o ft_strjoin.o -c ft_strjoin.c
-gcc -Wall -Werror -Wextra -g -o ft_strlcat.o -c ft_strlcat.c
-gcc -Wall -Werror -Wextra -g -o ft_strlcpy.o -c ft_strlcpy.c
-gcc -Wall -Werror -Wextra -g -o ft_strlen.o -c ft_strlen.c
-gcc -Wall -Werror -Wextra -g -o ft_strmapi.o -c ft_strmapi.c
-gcc -Wall -Werror -Wextra -g -o ft_strncmp.o -c ft_strncmp.c
-gcc -Wall -Werror -Wextra -g -o ft_strnstr.o -c ft_strnstr.c
-gcc -Wall -Werror -Wextra -g -o ft_strrchr.o -c ft_strrchr.c
-gcc -Wall -Werror -Wextra -g -o ft_strtrim.o -c ft_strtrim.c
-gcc -Wall -Werror -Wextra -g -o ft_substr.o -c ft_substr.c
- 
-gcc -Wall -Werror -Wextra -g -o ft_toupper.o -c ft_toupper.c
-gcc -Wall -Werror -Wextra -g -o ft_tolower.o -c ft_tolower.c
-gcc -Wall -Werror -Wextra -g -o ft_ultoa_base.o -c ft_ultoa_base.c
-gcc -Wall -Werror -Wextra -g -o ft_utoa_base.o -c ft_utoa_base.c
-gcc -Wall -Werror -Wextra -g -o ft_lstnew.o -c ft_lstnew.c
-gcc -Wall -Werror -Wextra -g -o ft_lstappend.o -c ft_lstappend.c
-gcc -Wall -Werror -Wextra -g -o ft_lstadd_front.o -c ft_lstadd_front.c
-gcc -Wall -Werror -Wextra -g -o ft_lstsize.o -c ft_lstsize.c
-gcc -Wall -Werror -Wextra -g -o ft_lstlast.o -c ft_lstlast.c
-gcc -Wall -Werror -Wextra -g -o ft_lstadd_back.o -c ft_lstadd_back.c
-gcc -Wall -Werror -Wextra -g -o ft_lstdelone.o -c ft_lstdelone.c
-gcc -Wall -Werror -Wextra -g -o ft_lstclear.o -c ft_lstclear.c
-gcc -Wall -Werror -Wextra -g -o ft_lstiter.o -c ft_lstiter.c
-gcc -Wall -Werror -Wextra -g -o ft_lstmap.o -c ft_lstmap.c
-gcc -Wall -Werror -Wextra -g -o ft_treeaddback_left.o -c ft_treeaddback_left.c
-gcc -Wall -Werror -Wextra -g -o ft_treeaddback_right.o -c ft_treeaddback_right.c
- 
-gcc -Wall -Werror -Wextra -g -o ft_treeaddfront_left.o -c ft_treeaddfront_left.c
-gcc -Wall -Werror -Wextra -g -o ft_treeaddfront_right.o -c ft_treeaddfront_right.c
-gcc -Wall -Werror -Wextra -g -o ft_treeaddtreeback_left.o -c ft_treeaddtreeback_left.c
-gcc -Wall -Werror -Wextra -g -o ft_treeaddtreeback_right.o -c ft_treeaddtreeback_right.c
-gcc -Wall -Werror -Wextra -g -o ft_treeclear.o -c ft_treeclear.c
-gcc -Wall -Werror -Wextra -g -o ft_treedepth.o -c ft_treedepth.c
-gcc -Wall -Werror -Wextra -g -o ft_treeiter_infix.o -c ft_treeiter_infix.c
-gcc -Wall -Werror -Wextra -g -o ft_treeiter_prefix.o -c ft_treeiter_prefix.c
-gcc -Wall -Werror -Wextra -g -o ft_treeiter_suffix.o -c ft_treeiter_suffix.c
-gcc -Wall -Werror -Wextra -g -o ft_treejoin.o -c ft_treejoin.c
-gcc -Wall -Werror -Wextra -g -o ft_treelast_left.o -c ft_treelast_left.c
-gcc -Wall -Werror -Wextra -g -o ft_treelast_right.o -c ft_treelast_right.c
-gcc -Wall -Werror -Wextra -g -o ft_treeleafnew.o -c ft_treeleafnew.c
-gcc -Wall -Werror -Wextra -g -o ft_treesize.o -c ft_treesize.c
-gcc -Wall -Werror -Wextra -g -o get_next_line.o -c get_next_line.c
-gcc -Wall -Werror -Wextra -g -o get_next_line_utils.o -c get_next_line_utils.c
- 
-gcc -Wall -Werror -Wextra -g -o ft_printf/ft_printf.o -c ft_printf/ft_printf.c
- 
-gcc -Wall -Werror -Wextra -g -o ft_printf/ft_printf_utils.o -c ft_printf/ft_printf_utils.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/ft_printf_utils2.o -c ft_printf/ft_printf_utils2.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/ft_printf_components.o -c ft_printf/ft_printf_components.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/conversions_files/ft_putstr.o -c ft_printf/conversions_files/ft_putstr.c
- 
-gcc -Wall -Werror -Wextra -g -o ft_printf/conversions_files/ft_putnbr.o -c ft_printf/conversions_files/ft_putnbr.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/conversions_files/ft_putchar.o -c ft_printf/conversions_files/ft_putchar.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/conversions_files/ft_puthexa_min.o -c ft_printf/conversions_files/ft_puthexa_min.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/conversions_files/ft_putpointeur.o -c ft_printf/conversions_files/ft_putpointeur.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/conversions_files/ft_putpointeur2.o -c ft_printf/conversions_files/ft_putpointeur2.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/conversions_files/ft_puthexa_maj.o -c ft_printf/conversions_files/ft_puthexa_maj.c
-gcc -Wall -Werror -Wextra -g -o ft_printf/conversions_files/ft_putnbr_unsigned.o -c ft_printf/conversions_files/ft_putnbr_unsigned.c
-gcc -Wall -Werror -Wextra -g -o ft_dictnew.o -c ft_dictnew.c
-gcc -Wall -Werror -Wextra -g -o ft_dictadd_front.o -c ft_dictadd_front.c
-gcc -Wall -Werror -Wextra -g -o ft_dictadd_back.o -c ft_dictadd_back.c
-gcc -Wall -Werror -Wextra -g -o ft_dictprint.o -c ft_dictprint.c
- 
-gcc -Wall -Werror -Wextra -g -o ft_dictsize.o -c ft_dictsize.c
-gcc -Wall -Werror -Wextra -g -o ft_dictgetfirst.o -c ft_dictgetfirst.c
-gcc -Wall -Werror -Wextra -g -o ft_dictgetlast.o -c ft_dictgetlast.c
-gcc -Wall -Werror -Wextra -g -o ft_dictdelone.o -c ft_dictdelone.c
-gcc -Wall -Werror -Wextra -g -o ft_dictgetelem_key.o -c ft_dictgetelem_key.c
-gcc -Wall -Werror -Wextra -g -o ft_dictgetelem_value.o -c ft_dictgetelem_value.c
-gcc -Wall -Werror -Wextra -g -o ft_dictclear.o -c ft_dictclear.c
-ar rc libft.a error_base.o ft_atod.o ft_atoi.o ft_bzero.o ft_calloc.o ft_free_tab.o ft_get_empty.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isdouble.o ft_isint.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_split.o ft_strchr.o ft_strcmp.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_toupper.o ft_tolower.o ft_ultoa_base.o ft_utoa_base.o ft_lstnew.o ft_lstappend.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o ft_treeaddback_left.o ft_treeaddback_right.o ft_treeaddfront_left.o ft_treeaddfront_right.o ft_treeaddtreeback_left.o ft_treeaddtreeback_right.o ft_treeclear.o ft_treedepth.o ft_treeiter_infix.o ft_treeiter_prefix.o ft_treeiter_suffix.o ft_treejoin.o ft_treelast_left.o ft_treelast_right.o ft_treeleafnew.o ft_treesize.o get_next_line.o get_next_line_utils.o ft_printf/ft_printf.o ft_printf/ft_printf_utils.o ft_printf/ft_printf_utils2.o ft_printf/ft_printf_components.o ft_printf/conversions_files/ft_putstr.o ft_printf/conversions_files/ft_putnbr.o ft_printf/conversions_files/ft_putchar.o ft_printf/conversions_files/ft_puthexa_min.o ft_printf/conversions_files/ft_putpointeur.o ft_printf/conversions_files/ft_putpointeur2.o ft_printf/conversions_files/ft_puthexa_maj.o ft_printf/conversions_files/ft_putnbr_unsigned.o ft_dictnew.o ft_dictadd_front.o ft_dictadd_back.o ft_dictprint.o ft_dictsize.o ft_dictgetfirst.o ft_dictgetlast.o ft_dictdelone.o ft_dictgetelem_key.o ft_dictgetelem_value.o ft_dictclear.o
-make[1]: Leaving directory '/mnt/nfs/homes/lgiband/cursus/circle_3/minishell/lib/ft'
  
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/free_command.c -o obj/commands/free_command.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/free_commands.c -o obj/commands/free_commands.o
@@ -115,6 +8,7 @@ gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/get_bzero_com
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/get_command.c -o obj/commands/get_command/get_command.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/set_arguments.c -o obj/commands/get_command/set_arguments.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/set_redirections.c -o obj/commands/get_command/set_redirections.o
+ 
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/count_arguments.c -o obj/commands/get_command/utils/count_arguments.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/count_redirections.c -o obj/commands/get_command/utils/count_redirections.o
  
@@ -122,33 +16,33 @@ gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/get_arg
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/get_argument.c -o obj/commands/get_command/utils/get_argument.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/is_argument_equal_to.c -o obj/commands/get_command/utils/is_argument_equal_to.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/is_argument_in_input.c -o obj/commands/get_command/utils/is_argument_in_input.o
-gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/is_argument_redirection.c -o obj/commands/get_command/utils/is_argument_redirection.o
  
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/is_argument_redirection.c -o obj/commands/get_command/utils/is_argument_redirection.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/skip_argument.c -o obj/commands/get_command/utils/skip_argument.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/skip_redirection.c -o obj/commands/get_command/utils/skip_redirection.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/skip_redirections.c -o obj/commands/get_command/utils/skip_redirections.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/skip_to.c -o obj/commands/get_command/utils/skip_to.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/skip_to_next_argument.c -o obj/commands/get_command/utils/skip_to_next_argument.o
-gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/skip_whitespaces.c -o obj/commands/get_command/utils/skip_whitespaces.o
  
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_command/utils/skip_whitespaces.c -o obj/commands/get_command/utils/skip_whitespaces.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/get_commands.c -o obj/commands/get_commands.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/run_commands.c -o obj/commands/run_commands.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/main.c -o obj/main.o
- 
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/shell/free_shell.c -o obj/shell/free_shell.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/shell/init_shell.c -o obj/shell/init_shell.o
+ 
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/shell/run_shell.c -o obj/shell/run_shell.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/signals/init_sigact.c -o obj/signals/init_sigact.o
- 
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/signals/handle_signals.c -o obj/signals/handle_signals.o
+ 
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/contain_and.c -o obj/commands/parse_input/contain_and.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/contain_or.c -o obj/commands/parse_input/contain_or.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/contain_pipe.c -o obj/commands/parse_input/contain_pipe.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/is_between_brackets.c -o obj/commands/parse_input/is_between_brackets.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/parse_input_and.c -o obj/commands/parse_input/parse_input_and.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/parse_input_brackets.c -o obj/commands/parse_input/parse_input_brackets.o
-gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/parse_input_or.c -o obj/commands/parse_input/parse_input_or.o
  
+gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/parse_input_or.c -o obj/commands/parse_input/parse_input_or.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/parse_input_pipe.c -o obj/commands/parse_input/parse_input_pipe.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/parse_input_simple.c -o obj/commands/parse_input/parse_input_simple.o
 gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/parse_input.c -o obj/commands/parse_input/parse_input.o
@@ -156,21 +50,20 @@ gcc -Wall -Werror -Wextra -g -Iinclude -c src/commands/parse_input/parse_input.c
 make: *** No rule to make target 'obj/commands/get_commands/get_argument.o', needed by 'minishell'.
 make: *** No rule to make target 'obj/commands/get_commands/get_bzero_command.o', needed by 'minishell'.
 make: *** No rule to make target 'obj/commands/get_commands/get_command.o', needed by 'minishell'.
-make: *** No rule to make target 'obj/commands/get_commands/set_arguments.o', needed by 'minishell'.
 
+make: *** No rule to make target 'obj/commands/get_commands/set_arguments.o', needed by 'minishell'.
 make: *** No rule to make target 'obj/commands/get_commands/set_redirections.o', needed by 'minishell'.
 make: *** No rule to make target 'obj/commands/get_commands/utils/count_arguments.o', needed by 'minishell'.
-make: *** No rule to make target 'obj/commands/get_commands/utils/count_redirections.o', needed by 'minishell'.
 
+make: *** No rule to make target 'obj/commands/get_commands/utils/count_redirections.o', needed by 'minishell'.
 make: *** No rule to make target 'obj/commands/get_commands/utils/get_argument_after.o', needed by 'minishell'.
+
 make: *** No rule to make target 'obj/commands/get_commands/utils/is_argument_equal.o', needed by 'minishell'.
 make: *** No rule to make target 'obj/commands/get_commands/utils/is_argument_in_input.o', needed by 'minishell'.
-
 make: *** No rule to make target 'obj/commands/get_commands/utils/is_argument_redirection.o', needed by 'minishell'.
+
 make: *** No rule to make target 'obj/commands/get_commands/utils/skip_argument.o', needed by 'minishell'.
-
 make: *** No rule to make target 'obj/commands/get_commands/utils/skip_redirections.o', needed by 'minishell'.
-
 make: *** No rule to make target 'obj/commands/get_commands/utils/skip_to_next_argument.o', needed by 'minishell'.
 
 make: *** No rule to make target 'obj/commands/get_commands/utils/skip_whitespaces.o', needed by 'minishell'.

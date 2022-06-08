@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:14:46 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 19:12:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 19:48:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static void	ft_dictmodify(t_dict *elem, t_dict *new, int is_malloc)
 {
-	t_dict *next;
-	t_dict *previous;
+	t_dict	*next;
+	t_dict	*previous;
 
 	next = elem->next;
 	previous = elem->previous;

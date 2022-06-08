@@ -94,12 +94,16 @@ SRCS	= error_base.c \
 		  ft_dictadd_front.c \
 		  ft_dictadd_back.c \
 		  ft_dictprint.c \
+		  ft_dictprint_values.c \
+		  ft_dictprint_keys.c \
 		  ft_dictsize.c \
 		  ft_dictgetfirst.c \
 		  ft_dictgetlast.c \
 		  ft_dictdelone.c \
 		  ft_dictgetelem_key.c \
 		  ft_dictgetelem_value.c \
+		  ft_dictgetelem_number.c \
+		  ft_dictchangeval.c \
 		  ft_dictclear.c
 OBJS	= ${SRCS:%.c=%.o}
 

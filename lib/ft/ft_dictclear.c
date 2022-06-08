@@ -6,12 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 20:13:45 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 18:05:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 19:48:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+
 void	ft_dictclear(t_dict *dict, int is_malloc)
 {
 	if (!dict)
