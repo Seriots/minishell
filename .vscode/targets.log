@@ -1,4 +1,967 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+/bin/make -C lib/ft/
+ 
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+ 
+
+# Make data base, printed on Wed Jun  8 20:27:10 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = ubuntu
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /mnt/nfs/homes/lgiband/.Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /mnt/nfs/homes/lgiband/cursus/circle_3/minishell/lib/ft
+# makefile
+SHELL = /bin/sh
+# environment
+GDM_LANG = en
+# environment
+VTE_VERSION = 6003
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/code
+# makefile (from 'Makefile', line 2)
+CFLAGS = -Wall -Werror -Wextra -g
+# environment
+JOURNAL_STREAM = 9:10044306
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+IM_CONFIG_PHASE = 1
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+# environment
+XDG_DATA_DIRS = /usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/lgiband/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/101767/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'Makefile', line 109)
+OBJS = ${SRCS:%.c=%.o}
+# environment
+MANAGERPID = 777384
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/101767/vscode-ipc-107dd080-d777-40d9-bf85-6105115dcc7f.sock
+# environment
+VSCODE_CWD = /mnt/nfs/homes/lgiband
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session17
+# environment
+KRB5CCNAME = FILE:/tmp/krb5cc_101767_DqasL8
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /mnt/nfs/homes/lgiband/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/101767/gnupg/S.gpg-agent:0:1
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+SESSION_MANAGER = local/e2r3p4.clusters.42paris.fr:@/tmp/.ICE-unix/777882,unix/e2r3p4.clusters.42paris.fr:/tmp/.ICE-unix/777882
+# environment
+XDG_RUNTIME_DIR = /run/user/101767
+# environment
+LC_ALL = C
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = 866087d08eb44daeb967f3aadf977f1c
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/lgiband
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/101767/keyring/ssh
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /mnt/nfs/homes/lgiband/cursus/circle_3/minishell
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 777845
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /mnt/nfs/homes/lgiband
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/lgiband/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LOGNAME = lgiband
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+ZSH = /mnt/nfs/homes/lgiband/.oh-my-zsh
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+MAKELEVEL := 1
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+QT_IM_MODULE = ibus
+# makefile (from 'Makefile', line 5)
+SRCS = error_base.c ft_atod.c ft_atoi.c ft_bzero.c ft_calloc.c ft_free_tab.c ft_get_empty.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isdouble.c ft_isint.c ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c ft_strchr.c ft_strcmp.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_toupper.c ft_tolower.c ft_ultoa_base.c ft_utoa_base.c ft_lstnew.c ft_lstappend.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_treeaddback_left.c ft_treeaddback_right.c ft_treeaddfront_left.c ft_treeaddfront_right.c ft_treeaddtreeback_left.c ft_treeaddtreeback_right.c ft_treeclear.c ft_treedepth.c ft_treeiter_infix.c ft_treeiter_prefix.c ft_treeiter_suffix.c ft_treejoin.c ft_treelast_left.c ft_treelast_right.c ft_treeleafnew.c ft_treesize.c get_next_line.c get_next_line_utils.c ft_printf/ft_printf.c ft_printf/ft_printf_utils.c ft_printf/ft_printf_utils2.c ft_printf/ft_printf_components.c ft_printf/conversions_files/ft_putstr.c ft_printf/conversions_files/ft_putnbr.c ft_printf/conversions_files/ft_putchar.c ft_printf/conversions_files/ft_puthexa_min.c ft_printf/conversions_files/ft_putpointeur.c ft_printf/conversions_files/ft_putpointeur2.c ft_printf/conversions_files/ft_puthexa_maj.c ft_printf/conversions_files/ft_putnbr_unsigned.c ft_dictnew.c ft_dictadd_front.c ft_dictadd_back.c ft_dictprint.c ft_dictprint_values.c ft_dictprint_keys.c ft_dictsize.c ft_dictgetfirst.c ft_dictgetlast.c ft_dictdelone.c ft_dictgetelem_key.c ft_dictgetelem_value.c ft_dictgetelem_number.c ft_dictchangeval.c ft_dictclear.c
+# environment
+SHLVL = 1
+# makefile (from 'Makefile', line 1)
+CC = gcc
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = lgiband
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+LIBVIRT_DEFAULT_URI = qemu:///system
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /bin/make
+# environment
+OLDPWD = /mnt/nfs/homes/lgiband
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = en
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/101767/vscode-6aac3135-1.67.2-main.sock
+# makefile
+MAKEFLAGS = pqrRw
+# environment
+MFLAGS = -pqrRw
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# environment
+QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+PAGER = less
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0bd68a5c_e1c6_411d_8584_167ad2cbceb4
+# automatic
+^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.86
+# default
+SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# makefile (from 'Makefile', line 4)
+NAME = libft.a
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+DOCKER_HOST = unix:///run/user/101767/docker.sock
+# environment
+VSCODE_PID = 778562
+# variable set hash-table stats:
+# Load=116/1024=11%, Rehash=0, Collisions=17/152=11%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 57, inode 113149558): 91 files, no impossibilities.
+
+# 91 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+%.o: %.c
+#  recipe to execute (from 'Makefile', line 117):
+	${CC} ${CFLAGS} -o $@ -c $^
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+ft_strmapi.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_lstiter.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictgetelem_value.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeleafnew.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_memcpy.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+ 
+#  File has not been updated.
+
+# Not a target:
+ft_itoa.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/conversions_files/ft_puthexa_min.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_memcmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/conversions_files/ft_putchar.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/conversions_files/ft_putpointeur2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strlen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_isdigit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeclear.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: libft.a
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+# Not a target:
+ft_lstlast.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/conversions_files/ft_putnbr_unsigned.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_memchr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_isdouble.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_memset.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_atod.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/ft_printf_components.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeiter_infix.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictgetelem_number.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeiter_prefix.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_tolower.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictadd_back.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strrchr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strjoin.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_split.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictgetfirst.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_get_empty.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_lstclear.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/ft_printf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_isint.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strlcat.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeaddback_left.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-08 20:26:25.160872696
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+ft_treeaddfront_left.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_isprint.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+error_base.o: error_base.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'error_base'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := error_base.o
+# automatic
+# % := 
+# automatic
+# * := error_base
+# automatic
+# + := error_base.c
+# automatic
+# | := 
+# automatic
+# < := error_base.c
+# automatic
+# ^ := error_base.c
+# automatic
+# ? := error_base.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 117):
+	${CC} ${CFLAGS} -o $@ -c $^
+
+libft.a: error_base.o ft_atod.o ft_atoi.o ft_bzero.o ft_calloc.o ft_free_tab.o ft_get_empty.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isdouble.o ft_isint.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_split.o ft_strchr.o ft_strcmp.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_toupper.o ft_tolower.o ft_ultoa_base.o ft_utoa_base.o ft_lstnew.o ft_lstappend.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o ft_treeaddback_left.o ft_treeaddback_right.o ft_treeaddfront_left.o ft_treeaddfront_right.o ft_treeaddtreeback_left.o ft_treeaddtreeback_right.o ft_treeclear.o ft_treedepth.o ft_treeiter_infix.o ft_treeiter_prefix.o ft_treeiter_suffix.o ft_treejoin.o ft_treelast_left.o ft_treelast_right.o ft_treeleafnew.o ft_treesize.o get_next_line.o get_next_line_utils.o ft_printf/ft_printf.o ft_printf/ft_printf_utils.o ft_printf/ft_printf_utils2.o ft_printf/ft_printf_components.o ft_printf/conversions_files/ft_putstr.o ft_printf/conversions_files/ft_putnbr.o ft_printf/conversions_files/ft_putchar.o ft_printf/conversions_files/ft_puthexa_min.o ft_printf/conversions_files/ft_putpointeur.o ft_printf/conversions_files/ft_putpointeur2.o ft_printf/conversions_files/ft_puthexa_maj.o ft_printf/conversions_files/ft_putnbr_unsigned.o ft_dictnew.o ft_dictadd_front.o ft_dictadd_back.o ft_dictprint.o ft_dictprint_values.o ft_dictprint_keys.o ft_dictsize.o ft_dictgetfirst.o ft_dictgetlast.o ft_dictdelone.o ft_dictgetelem_key.o ft_dictgetelem_value.o ft_dictgetelem_number.o ft_dictchangeval.o ft_dictclear.o
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 114):
+	ar rc $@ $^
+
+# Not a target:
+ft_printf/ft_printf_utils2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_striteri.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_bzero.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/conversions_files/ft_putpointeur.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_lstnew.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ 
+# Not a target:
+ft_dictclear.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treesize.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_putnbr_fd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 123):
+	rm -f ${NAME}
+
+# Not a target:
+ft_ultoa_base.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_calloc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_substr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+get_next_line_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_isalpha.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_lstsize.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeaddtreeback_right.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictprint_keys.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictnew.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/ft_printf_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_utoa_base.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictdelone.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strlcpy.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/conversions_files/ft_putnbr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+error_base.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 12:01:36.613355927
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+ft_lstmap.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strncmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 120):
+	rm -f ${OBJS} ${OBJS_BONUS}
+
+# Not a target:
+ft_isalnum.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strcmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictgetelem_key.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_lstadd_front.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_isascii.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strdup.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_lstdelone.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_memmove.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictgetlast.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strchr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictsize.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_toupper.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/conversions_files/ft_puthexa_maj.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeiter_suffix.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strnstr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_putstr_fd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictprint_values.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictprint.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeaddback_right.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_free_tab.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treejoin.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeaddfront_right.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treelast_left.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+ 
+
+# Not a target:
+ft_putchar_fd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_atoi.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+get_next_line.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treedepth.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictadd_front.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_dictchangeval.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strtrim.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_lstadd_back.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_printf/conversions_files/ft_putstr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_lstappend.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treeaddtreeback_left.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_treelast_right.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_putendl_fd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=108/1024=11%, Rehash=0, Collisions=18/229=8%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 203 / storage = 3266 B / avg = 16 B
+# current buf: size = 8162 B / used = 3266 B / count = 203 / avg = 16 B
+
+# strcache performance: lookups = 222 / hit rate = 8%
+# hash-table stats:
+# Load=203/8192=2%, Rehash=0, Collisions=7/222=3%
+# Finished Make data base on Wed Jun  8 20:27:10 2022
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,11 +969,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun  8 19:45:53 2022
+# Make data base, printed on Wed Jun  8 20:27:10 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -179,6 +1141,7 @@ CC = gcc
 MAKE_VERSION := 4.2.1
 # environment
 USER = lgiband
+ 
 # makefile
 .DEFAULT_GOAL := all
 # makefile (from 'Makefile', line 68)
@@ -266,7 +1229,7 @@ DOCKER_HOST = unix:///run/user/101767/docker.sock
 # environment
 VSCODE_PID = 778562
 # variable set hash-table stats:
-# Load=127/1024=12%, Rehash=0, Collisions=25/173=14%
+# Load=127/1024=12%, Rehash=0, Collisions=23/170=14%
 
 # Pattern-specific Variable Values
 
@@ -274,17 +1237,14 @@ VSCODE_PID = 778562
 
 # Directories
 
-# src/commands (device 57, inode 113149640): 3 files, no impossibilities so far.
-# include (device 57, inode 113149553): 3 files, no impossibilities so far.
 # . (device 57, inode 113149418): 11 files, no impossibilities.
 # src (device 57, inode 113149639): No files, no impossibilities so far.
 
-# 17 files, no impossibilities in 4 directories.
+# 11 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 obj/%.o: src/%.c include/libft.h
- 
 #  recipe to execute (from 'Makefile', line 79):
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
@@ -327,13 +1287,13 @@ obj/commands/get_commands/get_command.o:
 #  File has not been updated.
 
 all: minishell
+#  Phony target (prerequisite of .PHONY).
 #  Command line target.
-#  Implicit rule search has been done.
+#  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
+#  File has not been updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
 # Not a target:
 obj/commands/get_commands/utils/skip_to_next_argument.o:
@@ -386,16 +1346,34 @@ obj/commands/get_command/utils/skip_argument.o:
 lib/ft/libft.a:
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'lib/ft/libft'
-#  Last modified 2022-06-08 19:39:55.285613964
+#  Modification time never checked.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := lib/ft/libft.a
+# automatic
+# % := 
+# automatic
+# * := lib/ft/libft
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/13=15%
 #  recipe to execute (from 'Makefile', line 82):
 	$(MAKE) -C $(dir $@)
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-07 20:59:11.249970982
+#  Last modified 2022-06-08 20:25:20.616890565
 #  File has been updated.
 #  Successfully updated.
 
@@ -429,32 +1407,11 @@ obj/commands/get_command/utils/count_redirections.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-obj/commands/free_command.o: src/commands/free_command.c include/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'commands/free_command'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := obj/commands/free_command.o
-# automatic
-# % := 
-# automatic
-# * := commands/free_command
-# automatic
-# + := src/commands/free_command.c include/libft.h
-# automatic
-# | := 
-# automatic
-# < := src/commands/free_command.c
-# automatic
-# ^ := src/commands/free_command.c include/libft.h
-# automatic
-# ? := src/commands/free_command.c include/libft.h
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/17=12%
-#  recipe to execute (from 'Makefile', line 79):
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+# Not a target:
+obj/commands/free_command.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 obj/commands/get_commands/set_arguments.o:
@@ -471,6 +1428,7 @@ obj/shell/run_shell.o:
 # Not a target:
 obj/commands/parse_input/contain_and.o:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -483,12 +1441,16 @@ obj/commands/get_command/utils/is_argument_redirection.o:
 minishell: lib/ft/libft.a obj/commands/free_command.o obj/commands/free_commands.o obj/commands/get_command/get_bzero_command.o obj/commands/get_command/get_command.o obj/commands/get_command/set_arguments.o obj/commands/get_command/set_redirections.o obj/commands/get_command/utils/count_arguments.o obj/commands/get_command/utils/count_redirections.o obj/commands/get_command/utils/get_argument_after.o obj/commands/get_command/utils/get_argument.o obj/commands/get_command/utils/is_argument_equal_to.o obj/commands/get_command/utils/is_argument_in_input.o obj/commands/get_command/utils/is_argument_redirection.o obj/commands/get_command/utils/skip_argument.o obj/commands/get_command/utils/skip_redirection.o obj/commands/get_command/utils/skip_redirections.o obj/commands/get_command/utils/skip_to.o obj/commands/get_command/utils/skip_to_next_argument.o obj/commands/get_command/utils/skip_whitespaces.o obj/commands/get_commands.o obj/commands/run_commands.o obj/main.o obj/shell/free_shell.o obj/shell/init_shell.o obj/shell/run_shell.o obj/signals/init_sigact.o obj/signals/handle_signals.o obj/commands/parse_input/contain_and.o obj/commands/parse_input/contain_or.o obj/commands/parse_input/contain_pipe.o obj/commands/parse_input/is_between_brackets.o obj/commands/parse_input/parse_input_and.o obj/commands/parse_input/parse_input_brackets.o obj/commands/parse_input/parse_input_or.o obj/commands/parse_input/parse_input_pipe.o obj/commands/parse_input/parse_input_simple.o obj/commands/parse_input/parse_input.o obj/commands/get_commands/get_argument.o obj/commands/get_commands/get_bzero_command.o obj/commands/get_commands/get_command.o obj/commands/get_commands/set_arguments.o obj/commands/get_commands/set_redirections.o obj/commands/get_commands/utils/count_arguments.o obj/commands/get_commands/utils/count_redirections.o obj/commands/get_commands/utils/get_argument_after.o obj/commands/get_commands/utils/is_argument_equal.o obj/commands/get_commands/utils/is_argument_in_input.o obj/commands/get_commands/utils/is_argument_redirection.o obj/commands/get_commands/utils/skip_argument.o obj/commands/get_commands/utils/skip_redirections.o obj/commands/get_commands/utils/skip_to_next_argument.o obj/commands/get_commands/utils/skip_whitespaces.o
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
+#  File has not been updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 #  recipe to execute (from 'Makefile', line 76):
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
+
+.PHONY: all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 obj/commands/parse_input/parse_input_pipe.o:
@@ -503,8 +1465,9 @@ obj/commands/parse_input/parse_input_simple.o:
 #  File has not been updated.
 
 fclean: clean
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 88):
 	rm -f $(NAME)
@@ -565,14 +1528,6 @@ obj/commands/get_commands/utils/get_argument_after.o:
 #  File has not been updated.
 
 # Not a target:
- 
-src/commands/free_command.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-07 20:59:11.097971011
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
 obj/signals/init_sigact.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -584,10 +1539,15 @@ obj/commands/parse_input/parse_input_and.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-re: fclean all
+re:
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  File does not exist.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 92):
+	$(MAKE) fclean
+	$(MAKE) all
+	
 
 # Not a target:
 obj/commands/get_commands/get_bzero_command.o:
@@ -596,8 +1556,9 @@ obj/commands/get_commands/get_bzero_command.o:
 #  File has not been updated.
 
 clean:
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 85):
 	rm -f $(OBJ)
@@ -669,13 +1630,6 @@ obj/commands/get_command/utils/skip_redirection.o:
 #  File has not been updated.
 
 # Not a target:
-include/libft.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-08 19:45:37.329500022
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
 obj/commands/parse_input/contain_or.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -706,19 +1660,19 @@ obj/commands/get_command/utils/is_argument_equal_to.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=7/138=5%
+# Load=62/1024=6%, Rehash=0, Collisions=8/135=6%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 83 / storage = 2533 B / avg = 30 B
-# current buf: size = 8162 B / used = 2533 B / count = 83 / avg = 30 B
+# strcache buffers: 1 (0) / strings = 79 / storage = 2454 B / avg = 31 B
+# current buf: size = 8162 B / used = 2454 B / count = 79 / avg = 31 B
 
-# strcache performance: lookups = 106 / hit rate = 21%
+# strcache performance: lookups = 97 / hit rate = 18%
 # hash-table stats:
-# Load=83/8192=1%, Rehash=0, Collisions=3/106=3%
-# Finished Make data base on Wed Jun  8 19:45:53 2022
+# Load=79/8192=1%, Rehash=0, Collisions=3/97=3%
+# Finished Make data base on Wed Jun  8 20:27:10 2022
 
  

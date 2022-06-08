@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 21:00:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 19:59:16 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_command
 
 typedef struct s_shell
 {
-	char	**env;
+	t_dict	*env;
 	char	*directory;
 }	t_shell;
 

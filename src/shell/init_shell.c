@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 20:59:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 20:18:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,57 @@ char     *get_current_directory(void)
 		return (try);
 }
 
+t_dict	*getarg_env(char *line)
+{
+	t_dict	*elem;
+	size_t	value_count;
+	size_t	key_count;
+	char	*value;
+	char	*key;
+	
+	value_count = 0;
+	key_count = 0;
+	while (line[key_count] != '=' && line[key_count])
+		key_count ++;
+	if (!line[key_count])
+		return (0);
+	while (line[key_count + value_count + 1])
+		value_count ++;
+	key = ft_calloc(sizeof(char), key_count + 1);
+	if (!key)
+		return (0);
+	value = ft_calloc(sizeof(char), value_count + 1);
+	if (!value)
+	{
+		free(key);
+		return (0);
+	}
+		
+	return (elem);
+}
+
+t_dict	*get_env(char **env)
+{
+	t_dict	*dict;
+	t_dict	*new;
+	size_t	i;
+
+	if (!env)
+		return (0);
+	i = 0;
+	dict = 0;
+	while (env[i])
+	{
+		new = getarg_env(env[i]);
+		if (new)
+			ft_dictadd_back(&dict, new, 1);
+		i ++;
+	}
+}
+
 int     init_shell(t_shell *shell, char **env)
 {
-        shell->env = env;
+        shell->env = get_env(env);
         shell->directory = get_current_directory();
         if (shell->directory == 0)
                 return (-1);

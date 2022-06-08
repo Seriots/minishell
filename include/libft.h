@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:33:36 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/08 19:45:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 20:42:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,18 +169,18 @@ char	*str_buff_join(char *str, char *mem, size_t size);
 * DICT
 */
 t_dict	*ft_dictnew(char *key, char *value);
-void	ft_dictadd_front(t_dict **dict, t_dict *new, int is_malloc);
+void	ft_dictadd_front(t_dict **dict, t_dict *new, void free_key(void *), void free_value(void *));
 void	ft_dictprint(t_dict *dict);
 void	ft_dictprint_values(t_dict *dict);
 void	ft_dictprint_keys(t_dict *dict);
-void	ft_dictdelone(t_dict **dict, t_dict *elem, int is_malloc);
-void	ft_dictclear(t_dict *dict, int is_malloc);
+void	ft_dictdelone(t_dict **dict, t_dict *elem, void free_key(void *), void free_value(void *));
+void	ft_dictclear(t_dict *dict, void free_key(void *), void free_value(void *));
 size_t	ft_dictsize(t_dict *dict);
 t_dict	*ft_dictget_first(t_dict *dict);
 t_dict	*ft_dictget_last(t_dict *dict);
-void	ft_dictadd_back(t_dict **dict, t_dict *new, int is_malloc);
+void	ft_dictadd_back(t_dict **dict, t_dict *new, void free_key(void *), void free_value(void *));
 t_dict	*ft_dictgetelem_key(t_dict *dict, void *key);
 t_dict	*ft_dictgetelem_value(t_dict *dict, void *value);
 t_dict	*ft_dictgetelem_number(t_dict *dict, size_t n);
-void	ft_dictchangeval(t_dict **dict, void *key, void *value, int is_malloc);
+void	ft_dictchangeval(t_dict **dict, void *key, void *value, void free_value(void *));
 #endif

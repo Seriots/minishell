@@ -88,4 +88,8 @@ fclean:	clean
 	rm -f $(NAME)
 	@for lib_dir in $(dir $(LIB_FILES)); do $(MAKE) -C $${lib_dir} fclean; done
 
-re:	fclean all
+re:	
+	$(MAKE) fclean
+	$(MAKE) all
+	
+.PHONY : all clean fclean re

@@ -105,9 +105,8 @@ SRCS	= error_base.c \
 		  ft_dictgetelem_number.c \
 		  ft_dictchangeval.c \
 		  ft_dictclear.c
-OBJS	= ${SRCS:%.c=%.o}
 
-.PHONY: all clean fclean re
+OBJS	= ${SRCS:%.c=%.o}
 
 all: ${NAME}
 
@@ -124,3 +123,5 @@ fclean: clean
 	rm -f ${NAME}
 
 re: fclean all
+
+.PHONY : all clean fclean re
