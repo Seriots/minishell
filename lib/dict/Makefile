@@ -24,6 +24,7 @@ SRC_NAMES	= dict_add_back \
 			  dict_print_values \
 			  dict_copy \
 			  dict_sort \
+			  dict_append \
 			  dict_size
 
 

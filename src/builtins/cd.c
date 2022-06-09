@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:18:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 15:33:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/09 22:00:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 * cd builtin command, change the current directory to current_directory/path
 * on error, return -1 and set errno.
 */
-static char	*get_path(char **path, t_shell *shell, char **arguments, size_t argc)
+static char	*get_path(char **path, t_shell *shell,
+		char **arguments, size_t argc)
 {
 	if (argc == 0)
 		*path = dict_getelem_key(shell->env, "HOME")->value;
@@ -61,7 +62,7 @@ int	cd_command(t_shell *shell, char **arguments)
 	return (0);
 }
 
-
+/*
 int	main(int argc, char *argv[], char **env)
 {
 	t_shell	shell;
@@ -69,4 +70,4 @@ int	main(int argc, char *argv[], char **env)
 	init_shell(&shell, env);
 	argv = &argv[1];
 	cd_command(&shell, argv);
-}
+}*/

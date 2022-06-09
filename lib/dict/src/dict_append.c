@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_clear.c                                       :+:      :+:    :+:   */
+/*   dict_append.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 20:13:45 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 20:52:02 by lgiband          ###   ########.fr       */
+/*   Created: 2022/06/09 19:40:22 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/09 20:35:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dict.h"
-#include "ft_printf.h"
-#include <stdlib.h>
+#include "../include/dict.h"
+#include "../include/libft.h"
+#include "../include/ft_printf.h"
 
-void	dict_clear(t_dict *dict, void free_key(void *),
-	void free_value(void *))
+void	dict_append(t_dict **dict1, t_dict **dict2)
 {
-	if (!dict)
+	t_dict	*last;
+	t_dict	*first;
+
+	if (!dict1 || !dict2)
 		return ;
-	while (dict)
+	if (!*dict2)
+		return ;
+	if (!*dict1)
+		*dict1 = *dict2;
+	else
 	{
-		if (free_key && dict->key)
-			free_key(dict->key);
-		if (free_value && dict->value)
-			free_value(dict->value);
-		if (dict->next == 0)
-		{
-			free(dict);
-			dict = 0;
-		}
-		else
-			dict = dict->next;
-		if (dict && dict->previous)
-			free(dict->previous);
+		last = dict_get_last(*dict1);
+		first = dict_get_first(*dict2);
+		last->next = first;
+		first->previous = last;
+		*dict1 = dict_get_first(*dict1);
 	}
 }

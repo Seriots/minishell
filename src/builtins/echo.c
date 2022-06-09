@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:40:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 22:02:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/09 22:00:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "../../include/minishell.h"
 
 /*
-* echo builtin command, handle the option -n at first element of char **arguments.
+* echo builtin command, handle the option -n at first
+* element of char **arguments.
 * Printf on standard output, each elements separated by one space
 */
 int	echo_command(t_shell *shell, char **arguments)

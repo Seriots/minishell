@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:07:20 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 17:11:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/09 21:09:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_dict	*dict_swap(t_dict *first, t_dict *second)
 {
 	t_dict	*next;
 	t_dict	*previous;
-	
+
 	next = second->next;
 	previous = first->previous;
 	first->next = second->next;
@@ -35,13 +35,14 @@ static t_dict	*dict_swap(t_dict *first, t_dict *second)
 void	dict_sort(t_dict **dict)
 {
 	t_dict	*copy;
-	
+
 	if (!dict || !*dict)
-		return;
+		return ;
 	copy = *dict;
 	while (copy->next)
 	{
-		if (ft_strncmp(copy->key, copy->next->key, ft_strlen(copy->key) + 1) > 0)
+		if (ft_strncmp(copy->key, copy->next->key,
+				ft_strlen(copy->key) + 1) > 0)
 		{
 			copy = dict_swap(copy, copy->next);
 			copy = dict_get_first(copy);
