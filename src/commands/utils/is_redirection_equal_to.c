@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_command.c                                     :+:      :+:    :+:   */
+/*   is_redirection_equal_to.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 15:05:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 15:14:35 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 23:58:14 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/09 02:57:53 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 #include "minishell.h"
 
-void	free_command(void *command_addr)
+int	is_redirection_equal_to(const char *redir, const char *input, int input_size,
+	int start)
 {
-	t_command	*command;
+	int	redir_size;
+	int	is_equal;
 
-	command = (t_command *) command_addr;
-	if (!command)
-		return ;
-	if (command->exec_path)
-		free(command->exec_path);
-	if (command->argv)
-		ft_free_tab(command->argv);
-	if (command->pathfile_stdin)
-		free(command->pathfile_stdin);
-	if (command->end_heredoc)
-		free(command->end_heredoc);
-	if (command->pathfile_stdout)
-		free(command->pathfile_stdout);
-	free(command);
+	redir_size = ft_strlen(redir);
+	is_equal = start + redir_size < input_size;
+	is_equal &= ft_strncmp(input + start, redir, redir_size) == 0;
+	is_equal &= ft_strchr(END_SEP_REDIR, input[start + redir_size]) == NULL;
+	return (is_equal);
 }

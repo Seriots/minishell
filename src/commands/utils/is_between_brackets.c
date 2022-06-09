@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contain_or.c                                       :+:      :+:    :+:   */
+/*   is_between_brackets.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 19:41:37 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 19:46:57 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 19:39:27 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/09 02:52:15 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 #include "minishell.h"
 
-int	contain_or(const char *input, int input_size)
+int	is_between_brackets(const char *input, int input_size)
 {
-	int	size_or;
 	int	i;
 
-	size_or = ft_strlen(OR);
+	if (input_size <= 0)
+		return (0);
 	i = 0;
-	while (i < input_size - size_or)
-	{
-		if (ft_strncmp(input + i, OR, size_or) == 0)
-			return (1);
+	while (i < input_size - 1 && ft_strchr(WHITESPACES, input[i]) != NULL)
 		i++;
-	}
-	return (0);
+	if (input[i] != '(')
+		return (0);
+	i = input_size - 1;
+	while (i > 0 && ft_strchr(WHITESPACES, input[i]) != NULL)
+		i--;
+	return (input[i] == ')');
 }

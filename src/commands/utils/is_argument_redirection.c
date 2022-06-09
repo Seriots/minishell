@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_command.c                                      :+:      :+:    :+:   */
+/*   is_argument_redirection.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 21:18:04 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 00:51:52 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/07 01:09:38 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/09 02:56:04 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 #include "minishell.h"
 
-t_command	*get_command(const char *input, int input_size)
+int	is_argument_redirection(const char *input, int input_size, int start)
 {
-	t_command	*command;
+	const char	*redir_arg[] = {REDIR_STDIN, REDIR_HEREDOC_STDIN, REDIR_STDOUT,
+		REDIR_APPEND_STDOUT};
+	int			i;
 
-	command = get_bzero_command();
-	if (!command)
-		return (NULL);
-	if (set_redirections(command, input, input_size) == -1)
-		return (NULL);
-	if (set_arguments(command, input, input_size) == -1)
-		return (NULL);
-	return (command);
+	i = 0;
+	while (i < 4)
+	{
+		if (is_redirection_equal_to(redir_arg[i], input, input_size, start))
+			return (1);
+		i++;
+	}
+	return (0);
 }

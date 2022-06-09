@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/08 21:06:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/09 02:27:27 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_dict	*getarg_env(char *line)
 		free(key);
 		return (0);
 	}
-	elem = ft_dictnew(key, value);
+	elem = dict_new(key, value);
 	return (elem);
 }
 
@@ -104,7 +104,7 @@ t_dict	*get_env(char **env)
 	{
 		new = getarg_env(env[i]);
 		if (new)
-			ft_dictadd_back(&dict, new, free, free);
+			dict_add_back(&dict, new, free, free);
 		i ++;
 	}
 	return (dict);

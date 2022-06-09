@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/08 22:21:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/09 02:42:57 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <sys/types.h>
 # include <signal.h>
-# include "libft.h"
+# include "dict.h"
+# include "tree.h"
 
 # define SHELL_PROMPT "$> "
 
@@ -52,55 +53,10 @@ typedef struct s_shell
 	char	*directory;
 }	t_shell;
 
-typedef int	(* t_set_redir)(t_command *, const char *, int);
-
 /*
 //	COMMANDS
 */
-void				free_command(void *command_addr);
-void				free_commands(t_tree *commands);
 t_tree				*get_commands(t_shell *shell);
-int					run_commands(char **commands, t_shell *shell);
-
-//	parse_input
-int					contain_and(const char *input, int input_size);
-int					contain_or(const char *input, int input_size);
-int					contain_pipe(const char *input, int input_size);
-int					is_between_brackets(const char *input, int input_size);
-t_tree				*parse_input(const char *input, int input_size);
-t_tree				*parse_input_and(const char *input, int input_size);
-t_tree				*parse_input_brackets(const char *input, int input_size);
-t_tree				*parse_input_or(const char *input, int input_size);
-t_tree				*parse_input_pipe(const char *input, int input_size);
-t_tree				*parse_input_simple(const char *input, int input_size);
-
-//	get_command
-char				*get_argument(const char *input, int input_size, int start);
-t_command			*get_bzero_command(void);
-t_command			*get_command(const char *input, int input_size);
-int					set_arguments(t_command *cmd, const char *input,
-						int input_size);
-int					set_redirections(t_command *cmd, const char *input,
-						int input_size);
-
-int					count_arguments(const char *input, int input_size);
-int					count_redirections(const char *input, int input_size);
-char				*get_argument_after(const char *arg, const char *input,
-						int input_size);
-int					is_argument_equal_to(const char *arg, const char *input,
-						int input_size, int start);
-int					is_argument_in_input(const char *arg, const char *input,
-						int input_size);
-int					is_argument_redirection(const char *input, int input_size,
-						int start);
-void				skip_argument(const char *input, int input_size, int *i);
-void				skip_redirection(const char *input, int input_size, int *i);
-void				skip_redirections(const char *input, int input_size, int *i);
-void				skip_to(const char *arg, const char *input, int input_size,
-						int *i);
-void				skip_to_next_argument(const char *input, int input_size,
-						int *i);
-void				skip_whitespaces(const char *input, int input_size, int *i);
 
 /*
 //	SHELL

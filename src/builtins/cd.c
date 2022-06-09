@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:18:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 22:45:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/09 02:27:27 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 static char	*get_path(char **path, t_shell *shell, char **arguments, size_t argc)
 {
 	if (argc == 0)
-		*path = ft_dictgetelem_key(shell->env, "HOME")->value;
+		*path = dict_getelem_key(shell->env, "HOME")->value;
 	else
 		*path = arguments[0];
 	return (*path);

@@ -5,76 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 19:58:18 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/06 20:45:25 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/09 03:47:40 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/09 04:42:15 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "libft.h"
+#include "list.h"
 #include "minishell.h"
-
-static int	set_next_command_or(t_command **command, const char **input,
-	int *input_size)
-{
-	int	size_or;
-	int	i;
-
-	if (*input_size == 0)
-	{
-		*command = NULL;
-		return (0);
-	}
-	size_or = ft_strlen(OR);
-	i = 0;
-	while (i < *input_size - size_or && ft_strncmp(*input, OR, size_or) != 0)
-		i++;
-	*command = get_command(*input, i);
-	if (!*command)
-		return (-1);
-	*input += i + size_or;
-	*input_size -= i + size_or;
-	return (0);
-}
-
-static int	init_parse_input_or(t_tree **commands, const char *input,
-	int input_size)
-{
-	t_command	*command;
-
-	if (set_next_command_or(&command, &input, &input_size) == -1)
-		return (-1);
-	*commands = ft_treeleafnew(command);
-	if (!*commands)
-	{
-		free_command(command);
-		return (-1);
-	}
-	return (0);
-}
+#include "tree.h"
 
 t_tree	*parse_input_or(const char *input, int input_size)
 {
-	t_tree		*commands;
+	t_tree		*tree;
+	t_list		*sub_commands;
 	t_command	*command;
+	int			i;
 
-	if (init_parse_input_or(&commands, input, input_size) == -1)
-		return (NULL);
-	while (1)
+	sub_commands = NULL;
+	i = 0;
+	while (i < input_size)
 	{
-		if (set_next_command_or(&command, &input, &input_size) == -1)
+		command = get_command(input, input_size, &i);
+		if (!command || list_append() == -1)
 		{
-			ft_treeclear(commands, NULL, free_command);
-			return (NULL);
-		}
-		if (!command)
-			break ;
-		if (ft_treeaddfront_right(commands, OR, command) == -1)
-		{
-			free_command(command);
-			ft_treeclear(commands, NULL, free_command);
+			if (command)
+				free_command(command);
+			list_clear(sub_commands, free_commands);
 			return (NULL);
 		}
 	}
-	return (commands);
+	tree = tree_join(sub_commands, OR);
+	if (!tree)
+		list_clear(sub_commands, free_command);
+	return (tree);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 21:13:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 22:49:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/09 02:27:27 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	env_command(t_shell *shell, char **arguments)
 {
 	(void)arguments;
-	ft_dictprint(shell->env, 0);
+	dict_print(shell->env, 0);
 }
 
 /*
