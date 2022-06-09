@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:18:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 02:27:27 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:33:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdio.h>
 #include <errno.h>
 #include "../../include/minishell.h"
 #include "../../include/libft.h"

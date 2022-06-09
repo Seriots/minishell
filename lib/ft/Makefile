@@ -8,6 +8,7 @@ NAME		= libft.a
 HEADER_NAMES= libft
 SRC_NAMES	= ft_error_base \
 			  ft_atod \
+			  ft_arraylen \
 			  ft_atoi \
 			  ft_bzero \
 			  ft_calloc \

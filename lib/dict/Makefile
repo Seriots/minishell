@@ -3,7 +3,7 @@ CFLAGS		= -Wall -Werror -Wextra
 MAKE		= /bin/make
 
 
-NAME		= dict.a
+NAME		= libdict.a
 
 HEADER_NAMES= dict \
 			  ft_printf \
@@ -22,6 +22,7 @@ SRC_NAMES	= dict_add_back \
 			  dict_print \
 			  dict_print_keys \
 			  dict_print_values \
+			  dict_copy \
 			  dict_size
 
 

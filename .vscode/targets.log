@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun  8 22:43:28 2022
+# Make data base, printed on Thu Jun  9 15:48:19 2022
 
 # Variables
 
@@ -18,7 +18,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 DESKTOP_SESSION = ubuntu
 # default
 .SHELLFLAGS := -c
-# makefile (from 'Makefile', line 71)
+# makefile (from 'Makefile', line 66)
 OBJ = $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
 # environment
 XDG_SESSION_CLASS = user
@@ -41,32 +41,32 @@ CURDIR := /mnt/nfs/homes/lgiband/cursus/circle_3/minishell
 # makefile
 SHELL = /bin/sh
 # environment
-GDM_LANG = en
-# environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/code
 # makefile (from 'Makefile', line 2)
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 # environment
-JOURNAL_STREAM = 9:10044306
+JOURNAL_STREAM = 9:2260063
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# makefile (from 'Makefile', line 63)
+# makefile (from 'Makefile', line 53)
 LIB_DIR = lib
 # automatic
 @F = $(notdir $@)
-# makefile (from 'Makefile', line 8)
-SRC_NAMES = commands/free_command commands/free_commands commands/get_command/get_bzero_command commands/get_command/get_command commands/get_command/set_arguments commands/get_command/set_redirections commands/get_command/utils/count_arguments commands/get_command/utils/count_redirections commands/get_command/utils/get_argument_after commands/get_command/utils/get_argument commands/get_command/utils/is_argument_equal_to commands/get_command/utils/is_argument_in_input commands/get_command/utils/is_argument_redirection commands/get_command/utils/skip_argument commands/get_command/utils/skip_redirection commands/get_command/utils/skip_redirections commands/get_command/utils/skip_to commands/get_command/utils/skip_to_next_argument commands/get_command/utils/skip_whitespaces commands/get_commands commands/run_commands main shell/free_shell shell/init_shell shell/run_shell signals/init_sigact signals/handle_signals commands/parse_input/contain_and commands/parse_input/contain_or commands/parse_input/contain_pipe commands/parse_input/is_between_brackets commands/parse_input/parse_input_and commands/parse_input/parse_input_brackets commands/parse_input/parse_input_or commands/parse_input/parse_input_pipe commands/parse_input/parse_input_simple commands/parse_input/parse_input commands/get_commands/get_argument commands/get_commands/get_bzero_command commands/get_commands/get_command commands/get_commands/set_arguments commands/get_commands/set_redirections commands/get_commands/utils/count_arguments commands/get_commands/utils/count_redirections commands/get_commands/utils/get_argument_after commands/get_commands/utils/is_argument_equal commands/get_commands/utils/is_argument_in_input commands/get_commands/utils/is_argument_redirection commands/get_commands/utils/skip_argument commands/get_commands/utils/skip_redirections commands/get_commands/utils/skip_to_next_argument commands/get_commands/utils/skip_whitespaces
+# makefile (from 'Makefile', line 20)
+SRC_NAMES = main shell/free_shell shell/init_shell shell/run_shell signals/init_sigact signals/handle_signals commands/parse_input/contain_and commands/parse_input/contain_or commands/parse_input/contain_pipe commands/parse_input/is_between_brackets commands/parse_input/parse_input_and commands/parse_input/parse_input_brackets commands/parse_input/parse_input_or commands/parse_input/parse_input_pipe commands/parse_input/parse_input_simple commands/parse_input/parse_input commands/get_commands/get_argument commands/get_commands/get_bzero_command commands/get_commands/get_command commands/get_commands/set_arguments commands/get_commands/set_redirections commands/get_commands/utils/count_arguments commands/get_commands/utils/count_redirections commands/get_commands/utils/get_argument_after commands/get_commands/utils/is_argument_equal commands/get_commands/utils/is_argument_in_input commands/get_commands/utils/is_argument_redirection commands/get_commands/utils/skip_argument commands/get_commands/utils/skip_redirections commands/get_commands/utils/skip_to_next_argument commands/get_commands/utils/skip_whitespaces
 # environment
 IM_CONFIG_PHASE = 1
+# makefile (from 'Makefile', line 13)
+LIBEXT_NAMES = 
 # 'override' directive
 GNUMAKEFLAGS := 
-# makefile (from 'Makefile', line 65)
+# makefile (from 'Makefile', line 61)
 OBJ_DIR = obj
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
@@ -77,17 +77,17 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/101767/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 777384
+MANAGERPID = 639517
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/101767/vscode-ipc-107dd080-d777-40d9-bf85-6105115dcc7f.sock
-# makefile (from 'Makefile', line 70)
-LIB_FILES = $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n/lib$n.a)
+VSCODE_IPC_HOOK_EXTHOST = /run/user/101767/vscode-ipc-d1dc62c5-5f38-418e-922d-6f83d0e062a8.sock
+# makefile (from 'Makefile', line 68)
+LIB_FILES = $(foreach l,$(LIB_NAMES),$(LIB_DIR)/$l/lib$l.a)
 # environment
 VSCODE_CWD = /mnt/nfs/homes/lgiband
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session17
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session11
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_101767_DqasL8
+KRB5CCNAME = FILE:/tmp/krb5cc_101767_4R5K3b
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -97,11 +97,11 @@ GPG_AGENT_INFO = /run/user/101767/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/e2r3p4.clusters.42paris.fr:@/tmp/.ICE-unix/777882,unix/e2r3p4.clusters.42paris.fr:/tmp/.ICE-unix/777882
+SESSION_MANAGER = local/e2r4p7.clusters.42paris.fr:@/tmp/.ICE-unix/639983,unix/e2r4p7.clusters.42paris.fr:/tmp/.ICE-unix/639983
 # environment
 XDG_RUNTIME_DIR = /run/user/101767
-# makefile (from 'Makefile', line 6)
-LIB_NAMES = ft
+# makefile (from 'Makefile', line 8)
+LIB_NAMES = dict ft ft_printf list tree
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -109,9 +109,9 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 866087d08eb44daeb967f3aadf977f1c
-# makefile (from 'Makefile', line 69)
-LIB = -lreadline $(LIB_NAMES:%=-L$(LIB_DIR)/%) $(LIB_NAMES:%=-l%)
+INVOCATION_ID = a4c6eceae57544a4ba252a3104f4c646
+# makefile (from 'Makefile', line 55)
+LIB = $(LIBEXT_NAMES:%=-l%) $(LIB_NAMES:%=-L$(LIB_DIR)/%) $(LIB_NAMES:%=-l%)
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -135,9 +135,11 @@ PWD = /mnt/nfs/homes/lgiband/cursus/circle_3/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 777845
+SSH_AGENT_PID = 639947
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# makefile (from 'Makefile', line 70)
+GREEN = \033[0;32m
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
@@ -180,7 +182,7 @@ MAKE_VERSION := 4.2.1
 USER = lgiband
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from 'Makefile', line 68)
+# makefile (from 'Makefile', line 63)
 INCLUDE = -I$(HEADER_DIR)
 # environment
 XDG_CURRENT_DESKTOP = Unity
@@ -192,7 +194,7 @@ LESS = -R
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := make
-# makefile (from 'Makefile', line 62)
+# makefile (from 'Makefile', line 59)
 HEADER_DIR = include
 # environment
 OLDPWD = /mnt/nfs/homes/lgiband
@@ -200,8 +202,6 @@ OLDPWD = /mnt/nfs/homes/lgiband
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
-# environment
-LANGUAGE = en
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
@@ -224,7 +224,7 @@ QT_ACCESSIBILITY = 1
 DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
-# makefile (from 'Makefile', line 64)
+# makefile (from 'Makefile', line 60)
 SRC_DIR = src
 # automatic
 <F = $(notdir $<)
@@ -232,16 +232,16 @@ SRC_DIR = src
 PAGER = less
 # environment
 LC_ALL = C
-# makefile (from 'Makefile', line 67)
+# makefile (from 'Makefile', line 65)
 HEADER = $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0bd68a5c_e1c6_411d_8584_167ad2cbceb4
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/919a293c_2f05_4ee5_b402_bb88cc25fe4a
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.86
+GNOME_TERMINAL_SERVICE = :1.89
 # default
 SUFFIXES := 
 # environment
@@ -250,7 +250,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
 GJS_DEBUG_OUTPUT = stderr
-# makefile (from 'Makefile', line 7)
+# makefile (from 'Makefile', line 6)
 NAME = minishell
 # default
 .RECIPEPREFIX := 
@@ -258,42 +258,56 @@ NAME = minishell
 LANG = C
 # environment
 TERM = xterm-256color
-# makefile (from 'Makefile', line 5)
-HEADER_NAMES = libft
+# makefile (from 'Makefile', line 15)
+HEADER_NAMES = dict ft ft_printf list tree
 # environment
 DOCKER_HOST = unix:///run/user/101767/docker.sock
 # environment
-VSCODE_PID = 778562
+VSCODE_PID = 641273
+# makefile (from 'Makefile', line 71)
+NO_COLOR = \033[0m
 # variable set hash-table stats:
-# Load=127/1024=12%, Rehash=0, Collisions=25/173=14%
+# Load=128/1024=12%, Rehash=0, Collisions=26/173=15%
 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
 
 # Directories
+
+# . (device 60, inode 113149418): 10 files, no impossibilities.
+# src (device 60, inode 113149639): 3 files, no impossibilities so far.
+
+# 13 files, no impossibilities in 2 directories.
+
  
-
-# src/commands (device 57, inode 113149640): 3 files, no impossibilities so far.
-# include (device 57, inode 113149553): 3 files, no impossibilities so far.
-# . (device 57, inode 113149418): 10 files, no impossibilities.
-# src (device 57, inode 113149639): No files, no impossibilities so far.
-
-# 16 files, no impossibilities in 4 directories.
-
 # Implicit Rules
 
-obj/%.o: src/%.c include/libft.h
-#  recipe to execute (from 'Makefile', line 79):
+obj/%.o: src/%.c | echo_compiling
+#  recipe to execute (from 'Makefile', line 101):
+	@if [ ! -d $(dir $@) ]; then \
+		mkdir -p $(dir $@); \
+	fi
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 %.a:
-#  recipe to execute (from 'Makefile', line 82):
-	$(MAKE) -C $(dir $@)
+#  recipe to execute (from 'Makefile', line 110):
+	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
+	@$(MAKE) --no-print-directory -C $(dir $@)
 
 # 2 implicit rules, 0 (0.0%) terminal.
 
 # Files
+
+lib/dict/libdict.a:
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'lib/dict/libdict'
+#  Last modified 2022-06-09 15:26:21.010017921
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 110):
+	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
+	@$(MAKE) --no-print-directory -C $(dir $@)
 
 # Not a target:
 obj/commands/get_commands/utils/skip_argument.o:
@@ -302,13 +316,7 @@ obj/commands/get_commands/utils/skip_argument.o:
 #  File has not been updated.
 
 # Not a target:
-obj/commands/get_command/utils/is_argument_in_input.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/parse_input/parse_input.o:
+obj/commands/get_commands/utils/skip_to_next_argument.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -333,13 +341,7 @@ all: minishell
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
-
-# Not a target:
-obj/commands/get_commands/utils/skip_to_next_argument.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
 # Not a target:
 obj/commands/get_commands/utils/count_redirections.o:
@@ -347,20 +349,13 @@ obj/commands/get_commands/utils/count_redirections.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/commands/free_commands.o:
+.PHONY: all clean echo_compiling fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 obj/commands/parse_input/parse_input_or.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/set_redirections.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -377,33 +372,76 @@ obj/commands/parse_input/contain_pipe.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/commands/get_command/utils/skip_argument.o:
+echo_compiling:
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := echo_compiling
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/13=15%
+#  recipe to execute (from 'Makefile', line 107):
+	@echo "\n$(GREEN)Compiling objects$(NO_COLOR)"
+
+lib/list/liblist.a:
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'lib/list/liblist'
+#  Last modified 2022-06-09 15:26:22.81401828
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 110):
+	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
+	@$(MAKE) --no-print-directory -C $(dir $@)
+
+lib/ft_printf/libft_printf.a:
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'lib/ft_printf/libft_printf'
+#  Last modified 2022-06-09 15:26:22.518018221
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 110):
+	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
+	@$(MAKE) --no-print-directory -C $(dir $@)
 
 lib/ft/libft.a:
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'lib/ft/libft'
-#  Last modified 2022-06-08 22:43:10.702290928
+#  Last modified 2022-06-09 15:26:22.086018136
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 82):
-	$(MAKE) -C $(dir $@)
+#  recipe to execute (from 'Makefile', line 110):
+	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
+	@$(MAKE) --no-print-directory -C $(dir $@)
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-08 20:25:20.616890565
+#  Last modified 2022-06-09 15:21:17.925974101
 #  File has been updated.
 #  Successfully updated.
-
-# Not a target:
-obj/commands/get_command/utils/skip_to_next_argument.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 obj/commands/get_commands/utils/is_argument_equal.o:
@@ -416,45 +454,6 @@ obj/commands/parse_input/parse_input_brackets.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/get_command.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/utils/count_redirections.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-obj/commands/free_command.o: src/commands/free_command.c include/libft.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'commands/free_command'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := obj/commands/free_command.o
-# automatic
-# % := 
-# automatic
-# * := commands/free_command
-# automatic
-# + := src/commands/free_command.c include/libft.h
-# automatic
-# | := 
-# automatic
-# < := src/commands/free_command.c
-# automatic
-# ^ := src/commands/free_command.c include/libft.h
-# automatic
-# ? := src/commands/free_command.c include/libft.h
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/17=12%
-#  recipe to execute (from 'Makefile', line 79):
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 # Not a target:
 obj/commands/get_commands/set_arguments.o:
@@ -474,26 +473,16 @@ obj/commands/parse_input/contain_and.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/commands/get_command/utils/is_argument_redirection.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-minishell: lib/ft/libft.a obj/commands/free_command.o obj/commands/free_commands.o obj/commands/get_command/get_bzero_command.o obj/commands/get_command/get_command.o obj/commands/get_command/set_arguments.o obj/commands/get_command/set_redirections.o obj/commands/get_command/utils/count_arguments.o obj/commands/get_command/utils/count_redirections.o obj/commands/get_command/utils/get_argument_after.o obj/commands/get_command/utils/get_argument.o obj/commands/get_command/utils/is_argument_equal_to.o obj/commands/get_command/utils/is_argument_in_input.o obj/commands/get_command/utils/is_argument_redirection.o obj/commands/get_command/utils/skip_argument.o obj/commands/get_command/utils/skip_redirection.o obj/commands/get_command/utils/skip_redirections.o obj/commands/get_command/utils/skip_to.o obj/commands/get_command/utils/skip_to_next_argument.o obj/commands/get_command/utils/skip_whitespaces.o obj/commands/get_commands.o obj/commands/run_commands.o obj/main.o obj/shell/free_shell.o obj/shell/init_shell.o obj/shell/run_shell.o obj/signals/init_sigact.o obj/signals/handle_signals.o obj/commands/parse_input/contain_and.o obj/commands/parse_input/contain_or.o obj/commands/parse_input/contain_pipe.o obj/commands/parse_input/is_between_brackets.o obj/commands/parse_input/parse_input_and.o obj/commands/parse_input/parse_input_brackets.o obj/commands/parse_input/parse_input_or.o obj/commands/parse_input/parse_input_pipe.o obj/commands/parse_input/parse_input_simple.o obj/commands/parse_input/parse_input.o obj/commands/get_commands/get_argument.o obj/commands/get_commands/get_bzero_command.o obj/commands/get_commands/get_command.o obj/commands/get_commands/set_arguments.o obj/commands/get_commands/set_redirections.o obj/commands/get_commands/utils/count_arguments.o obj/commands/get_commands/utils/count_redirections.o obj/commands/get_commands/utils/get_argument_after.o obj/commands/get_commands/utils/is_argument_equal.o obj/commands/get_commands/utils/is_argument_in_input.o obj/commands/get_commands/utils/is_argument_redirection.o obj/commands/get_commands/utils/skip_argument.o obj/commands/get_commands/utils/skip_redirections.o obj/commands/get_commands/utils/skip_to_next_argument.o obj/commands/get_commands/utils/skip_whitespaces.o
+minishell: lib/dict/libdict.a lib/ft/libft.a lib/ft_printf/libft_printf.a lib/list/liblist.a lib/tree/libtree.a obj/main.o obj/shell/free_shell.o obj/shell/init_shell.o obj/shell/run_shell.o obj/signals/init_sigact.o obj/signals/handle_signals.o obj/commands/parse_input/contain_and.o obj/commands/parse_input/contain_or.o obj/commands/parse_input/contain_pipe.o obj/commands/parse_input/is_between_brackets.o obj/commands/parse_input/parse_input_and.o obj/commands/parse_input/parse_input_brackets.o obj/commands/parse_input/parse_input_or.o obj/commands/parse_input/parse_input_pipe.o obj/commands/parse_input/parse_input_simple.o obj/commands/parse_input/parse_input.o obj/commands/get_commands/get_argument.o obj/commands/get_commands/get_bzero_command.o obj/commands/get_commands/get_command.o obj/commands/get_commands/set_arguments.o obj/commands/get_commands/set_redirections.o obj/commands/get_commands/utils/count_arguments.o obj/commands/get_commands/utils/count_redirections.o obj/commands/get_commands/utils/get_argument_after.o obj/commands/get_commands/utils/is_argument_equal.o obj/commands/get_commands/utils/is_argument_in_input.o obj/commands/get_commands/utils/is_argument_redirection.o obj/commands/get_commands/utils/skip_argument.o obj/commands/get_commands/utils/skip_redirections.o obj/commands/get_commands/utils/skip_to_next_argument.o obj/commands/get_commands/utils/skip_whitespaces.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
-#  recipe to execute (from 'Makefile', line 76):
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 97):
+	@echo "\n$(GREEN)Linkage $(NAME)$(NO_COLOR)"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
-
-.PHONY: all clean fclean re
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 obj/commands/parse_input/parse_input_pipe.o:
@@ -512,15 +501,27 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 88):
+#  recipe to execute (from 'Makefile', line 84):
+	@echo "\n$(GREEN)Removing $(NAME)$(NO_COLOR)"
 	rm -f $(NAME)
-	@for lib_dir in $(dir $(LIB_FILES)); do $(MAKE) -C $${lib_dir} fclean; done
+	@for lib in $(LIB_NAMES); do \
+		echo "\n$(GREEN)$(LIB_DIR)/$${lib}/: make fclean$(NO_COLOR)"; \
+		$(MAKE) --no-print-directory -C $(LIB_DIR)/$${lib}/ fclean; \
+	done
 
-# Not a target:
-obj/main.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/main.o: src/main.c | echo_compiling
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2022-06-09 15:26:23.214018359
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 101):
+	@if [ ! -d $(dir $@) ]; then \
+		mkdir -p $(dir $@); \
+	fi
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 # Not a target:
 obj/commands/get_commands/utils/count_arguments.o:
@@ -536,19 +537,6 @@ obj/commands/get_commands/utils/skip_whitespaces.o:
 
 # Not a target:
 obj/commands/get_commands/utils/skip_redirections.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/utils/skip_to.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
- 
-# Not a target:
-obj/commands/get_command/set_arguments.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -572,17 +560,21 @@ obj/commands/get_commands/utils/get_argument_after.o:
 #  File has not been updated.
 
 # Not a target:
-src/commands/free_command.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-07 20:59:11.097971011
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
 obj/signals/init_sigact.o:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+lib/tree/libtree.a:
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'lib/tree/libtree'
+#  Last modified 2022-06-09 15:26:23.178018352
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 110):
+	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
+	@$(MAKE) --no-print-directory -C $(dir $@)
 
 # Not a target:
 obj/commands/parse_input/parse_input_and.o:
@@ -598,7 +590,6 @@ re:
 #  recipe to execute (from 'Makefile', line 92):
 	$(MAKE) fclean
 	$(MAKE) all
-	
 
 # Not a target:
 obj/commands/get_commands/get_bzero_command.o:
@@ -611,8 +602,12 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 85):
+#  recipe to execute (from 'Makefile', line 77):
+	@echo "$(GREEN)Removing objects$(NO_COLOR)"
 	rm -f $(OBJ)
+	@if [ -d $(OBJ_DIR) ]; then \
+		find $(OBJ_DIR) -type d | xargs rmdir -p --ignore-fail-on-non-empty; \
+	fi
 
 # Not a target:
 obj/shell/free_shell.o:
@@ -621,25 +616,7 @@ obj/shell/free_shell.o:
 #  File has not been updated.
 
 # Not a target:
-obj/commands/get_command/utils/count_arguments.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/utils/skip_whitespaces.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/utils/skip_redirections.o:
+obj/commands/parse_input/parse_input.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -651,50 +628,13 @@ obj/shell/init_shell.o:
 #  File has not been updated.
 
 # Not a target:
-obj/commands/get_command/utils/get_argument_after.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 obj/commands/get_commands/utils/is_argument_in_input.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-obj/commands/run_commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/get_bzero_command.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/utils/skip_redirection.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-include/libft.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-08 20:42:28.372688615
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
 obj/commands/parse_input/contain_or.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/commands/get_command/utils/get_argument.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -712,25 +652,26 @@ obj/commands/get_commands/set_redirections.o:
 #  File has not been updated.
 
 # Not a target:
-obj/commands/get_command/utils/is_argument_equal_to.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-08 21:10:22.368301358
+#  File has been updated.
+#  Successfully updated.
 
 # files hash-table stats:
-# Load=64/1024=6%, Rehash=0, Collisions=8/141=6%
+# Load=47/1024=5%, Rehash=0, Collisions=5/113=4%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 83 / storage = 2535 B / avg = 30 B
-# current buf: size = 8162 B / used = 2535 B / count = 83 / avg = 30 B
+# strcache buffers: 1 (0) / strings = 68 / storage = 1693 B / avg = 24 B
+# current buf: size = 8162 B / used = 1693 B / count = 68 / avg = 24 B
 
-# strcache performance: lookups = 109 / hit rate = 23%
+# strcache performance: lookups = 95 / hit rate = 28%
 # hash-table stats:
-# Load=83/8192=1%, Rehash=0, Collisions=5/109=5%
-# Finished Make data base on Wed Jun  8 22:43:28 2022
+# Load=68/8192=1%, Rehash=0, Collisions=2/95=2%
+# Finished Make data base on Thu Jun  9 15:48:19 2022
 
  

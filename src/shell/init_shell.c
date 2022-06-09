@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 02:27:27 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:59:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char     *get_current_directory(void)
 		try = ft_calloc(sizeof(char), length);
 		if (!try)
 			return (0);
-		ft_strlcpy(try, path, length + 1);
+		ft_strlcpy(try, path, length);
         free(path);
 		return (try);
 }

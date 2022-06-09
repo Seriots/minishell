@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dict.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 22:28:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 02:21:20 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/09 15:47:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	dict_print(t_dict *dict, char *prompt);
 void	dict_print_values(t_dict *dict);
 void	dict_print_keys(t_dict *dict);
 size_t	dict_size(t_dict *dict);
+t_dict	*dict_copy(t_dict *dict);
 
 #endif
