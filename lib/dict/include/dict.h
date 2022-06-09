@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 22:28:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 01:08:17 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/09 02:21:20 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_dict	*dict_getelem_key(t_dict *dict, void *key);
 t_dict	*dict_getelem_value(t_dict *dict, void *value);
 t_dict	*dict_getelem_number(t_dict *dict, size_t n);
 t_dict	*dict_new(void *key, void *value);
-void	dict_print(t_dict *dict);
+void	dict_print(t_dict *dict, char *prompt);
 void	dict_print_values(t_dict *dict);
 void	dict_print_keys(t_dict *dict);
 size_t	dict_size(t_dict *dict);

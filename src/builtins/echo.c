@@ -6,23 +6,23 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:40:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/07 14:19:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/08 22:02:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include "../../include/libft.h"
 #include "../../include/minishell.h"
 
 /*
 * echo builtin command, handle the option -n at first element of char **arguments.
 * Printf on standard output, each elements separated by one space
 */
-int	echo_command(char **arguments)
+int	echo_command(t_shell *shell, char **arguments)
 {
 	size_t	option;
 	size_t	i;
 
+	(void)shell;
 	if (!arguments)
 		return (-1);
 	if (arguments[0] == 0)
@@ -35,19 +35,11 @@ int	echo_command(char **arguments)
 	while (arguments[i])
 	{
 		if (i != option)
-			write(1, " ", 1);
+			ft_printf(" ");
 		write(1, arguments[i], ft_strlen(arguments[i]));
 		i ++;
 	}
 	if (!option)
-		write(1, "\n", 1);
+		ft_printf("\n");
 	return (0);
 }
-
-/*
-int main(int argc, char *argv[])
-{
-	argv = &argv[1];
-	echo_command(argv);
-}
-*/
