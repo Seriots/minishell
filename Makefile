@@ -1,10 +1,22 @@
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -g
+CFLAGS		= -Wall -Werror -Wextra
 MAKE		= /bin/make
 
-HEADER_NAMES= libft
-LIB_NAMES	= ft
+
 NAME		= minishell
+
+LIB_NAMES	= dict \
+			  ft \
+			  ft_printf \
+			  list \
+			  tree
+LIBEXT_NAMES= 
+
+HEADER_NAMES= dict \
+			  ft \
+			  ft_printf \
+			  list \
+			  tree
 SRC_NAMES	= commands/free_command \
 			  commands/free_commands \
 			  commands/get_command/get_bzero_command \
@@ -59,37 +71,63 @@ SRC_NAMES	= commands/free_command \
 			  commands/get_commands/utils/skip_whitespaces
 
 
-HEADER_DIR	= include
 LIB_DIR		= lib
+
+LIB			= $(LIBEXT_NAMES:%=-l%) \
+			  $(LIB_NAMES:%=-L$(LIB_DIR)/%) \
+			  $(LIB_NAMES:%=-l%)
+
+HEADER_DIR	= include
 SRC_DIR		= src
 OBJ_DIR		= obj
 
-HEADER		= $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 INCLUDE		= -I$(HEADER_DIR)
-LIB			= -lreadline $(LIB_NAMES:%=-L$(LIB_DIR)/%) $(LIB_NAMES:%=-l%)
-LIB_FILES	= $(foreach n,$(LIB_NAMES),$(LIB_DIR)/$n/lib$n.a)
+
+HEADER		= $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 OBJ			= $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
 
-all:	$(NAME)
+LIB_FILES	= $(foreach l,$(LIB_NAMES),$(LIB_DIR)/$l/lib$l.a)
 
-$(NAME):	$(LIB_FILES) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
+GREEN		= \033[0;32m
+NO_COLOR	= \033[0m
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-%.a:
-	$(MAKE) -C $(dir $@)
+all:			$(NAME)
 
 clean:
+	@echo "$(GREEN)Removing objects$(NO_COLOR)"
 	rm -f $(OBJ)
+	@if [ -d $(OBJ_DIR) ]; then \
+		find $(OBJ_DIR) -type d | xargs rmdir -p --ignore-fail-on-non-empty; \
+	fi
 
-fclean:	clean
+fclean:			clean
+	@echo "\n$(GREEN)Removing $(NAME)$(NO_COLOR)"
 	rm -f $(NAME)
-	@for lib_dir in $(dir $(LIB_FILES)); do $(MAKE) -C $${lib_dir} fclean; done
+	@for lib in $(LIB_NAMES); do \
+		echo "\n$(GREEN)$(LIB_DIR)/$${lib}/: make fclean$(NO_COLOR)"; \
+		$(MAKE) --no-print-directory -C $(LIB_DIR)/$${lib}/ fclean; \
+	done
 
-re:	
-	$(MAKE) fclean
-	$(MAKE) all
-	
-.PHONY : all clean fclean re
+re:				fclean re
+
+
+$(NAME): $(LIB_FILES) $(OBJ)
+	@echo "\n$(GREEN)Linkage $(NAME)$(NO_COLOR)"
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
+
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c echo_compiling
+	@if [ ! -d $(dir $@) ]; then \
+		mkdir -p $(dir $@); \
+	fi
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+echo_compiling:
+	@echo "\n$(GREEN)Compiling objects$(NO_COLOR)"
+
+%.a:
+	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"; \
+	$(MAKE) --no-print-directory -C $(dir $@)
+
+
+.PHONY:			all clean echo_compiling fclean re
