@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/09 03:47:40 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 04:42:15 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/09 17:39:29 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/09 17:40:17 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,36 @@
 #include "minishell.h"
 #include "tree.h"
 
+static t_tree	*get_command_or(const char *input, int input_size, int *i)
+{
+	t_tree	*command;
+	int		j;
+
+	j = *i;
+	skip_to(OR, input, input_size, &j);
+	command = parse_input(input + *i, input_size - (j - *i));
+	skip_to_next_argument(input, input_size, &j);
+	*i = j;
+	return (command);
+}
+
 t_tree	*parse_input_or(const char *input, int input_size)
 {
 	t_tree		*tree;
 	t_list		*sub_commands;
-	t_command	*command;
+	t_tree		*command;
 	int			i;
 
 	sub_commands = NULL;
 	i = 0;
 	while (i < input_size)
 	{
-		command = get_command(input, input_size, &i);
-		if (!command || list_append() == -1)
+		command = get_command_or(input, input_size, &i);
+		if (!command || list_append(&sub_commands, command) == -1)
 		{
 			if (command)
 				free_command(command);
-			list_clear(sub_commands, free_commands);
+			list_clear(sub_commands, free_command);
 			return (NULL);
 		}
 	}

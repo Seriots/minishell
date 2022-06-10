@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_argument_equal_to.c                             :+:      :+:    :+:   */
+/*   is_sep_equal_to.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 23:58:14 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 02:55:18 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/09 17:32:32 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "minishell.h"
 
-int	is_argument_equal_to(const char *arg, const char *input, int input_size,
-	int start)
+int	is_sep_equal_to(const char *sep, const char *input,
+	int input_size, int start)
 {
-	int	arg_size;
+	int	sep_size;
 	int	is_equal;
 
-	if (is_argument_redirection(input, input_size, start))
-		return (is_redirection_equal_to(arg, input, input_size, start));
-	arg_size = ft_strlen(arg);
-	is_equal = start + arg_size < input_size;
-	is_equal &= ft_strncmp(input + start, arg, arg_size) == 0;
-	is_equal &= ft_strchr(END_SEP, input[start + arg_size]) != NULL;
+	sep_size = ft_strlen(sep);
+	is_equal = start + sep_size < input_size;
+	is_equal &= ft_strncmp(input + start, sep, sep_size) == 0;
+	is_equal &= ft_strchr(END_SEP_NOT_WSPACE, input[start + sep_size]) == NULL;
 	return (is_equal);
 }

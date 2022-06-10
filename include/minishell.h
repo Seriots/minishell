@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 02:42:57 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:11:35 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,27 @@
 # define REDIR_STDOUT ">"
 # define REDIR_APPEND_STDOUT ">>"
 
-# define END_SEP "\t\n\v\f\r <>"
+# define END_SEP "\t\n\v\f\r <>|&"
 # define WHITESPACES "\t\n\v\f\r "
+
+typedef struct s_std
+{
+	char	*pathfile;
+	int		fd;
+	int		fd_redir;
+}	t_std;
+
+typedef struct s_heredoc
+{
+	char	*end;
+	int		fd;
+}	t_heredoc;
 
 typedef struct s_command
 {
-	char	*exec_path;
 	char	**argv;
-
-	int		redir_stdin;
-	char	*pathfile_stdin;
-	int		heredoc_stdin;
-	char	*end_heredoc;
-	int		redir_stdout;
-	int		redir_append_stdout;
-	char	*pathfile_stdout;
+	t_list	*std;
+	t_list	*heredoc;
 }	t_command;
 
 typedef struct s_shell
@@ -52,6 +58,8 @@ typedef struct s_shell
 	t_dict	*env;
 	char	*directory;
 }	t_shell;
+
+typedef int	(*t_set_redir)(t_command *, const char *, int, int);
 
 /*
 //	COMMANDS

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_argument.c                                     :+:      :+:    :+:   */
+/*   run_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 00:11:09 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 15:24:30 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/10 08:06:26 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/10 08:33:37 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "minishell.h"
+#include "tree.h"
 
-char	*get_argument(const char *input, int input_size, int start)
+int	run_commands(t_tree *commands, t_shell *shell)
 {
-	int		i;
+	int	return_value;
 
-	i = start;
-	skip_argument(input, input_size, &i);
-	if (i >= input_size)
-		return (NULL);
-//	Ce qui suit est a remplacer pour prendre en compte les variables $
-//	Il ne faut pas toucher aux autres fonctions, bon courage
-	return (ft_substr(input, start, i - start));
+	if (set_heredocs(commands, shell) == -1)
+		return (-1);
+	return_value = run_tree_commands(commands, shell);
+	free_commands(commands);
+	return (return_value);
 }

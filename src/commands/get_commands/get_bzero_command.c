@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_input_simple.c                               :+:      :+:    :+:   */
+/*   get_bzero_command.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 19:48:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 03:36:44 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 21:33:49 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/10 07:14:10 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdlib.h>
 #include "libft.h"
 #include "minishell.h"
-#include "tree.h"
 
-t_tree	*parse_input_simple(const char *input, int input_size)
+t_command	*get_bzero_command(void)
 {
 	t_command	*command;
-	t_tree		*leaf_command;
 
-	command = get_command(input, input_size);
+	command = malloc(sizeof(t_command));
 	if (!command)
-		return (NULL);
-	leaf_command = tree_leafnew(command);
-	if (!leaf_command)
 	{
-		ft_putstr_fd("Error: Creating new leaf of tree failed", 2);
-		free_command(command);
+		ft_putstr_fd("Error: malloc command\n", 2);
 		return (NULL);
 	}
-	return (leaf_command);
+	command->exec_path = NULL;
+	command->argv = NULL;
+	command->redir_stdin = 0;
+	command->pathfile_stdin = NULL;
+	command->heredoc_stdin = 0;
+	command->end_heredoc = NULL;
+	command->fd_heredoc = NULL;
+	command->redir_stdout = 0;
+	command->redir_append_stdout = 0;
+	command->pathfile_stdout = NULL;
+	return (command);
 }

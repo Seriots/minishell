@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   skip_redirection.c                                 :+:      :+:    :+:   */
+/*   parse_input_simple.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 14:00:53 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 03:25:16 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 19:48:41 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/09 17:43:07 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+#include "libft.h"
 #include "minishell.h"
+#include "tree.h"
 
-void	skip_redirection(const char *input, int input_size, int *i)
+t_tree	*parse_input_simple(const char *input, int input_size)
 {
-	const char	*redir_arg[] = {REDIR_HEREDOC_STDIN, REDIR_STDIN,
-		REDIR_APPEND_STDOUT, REDIR_STDOUT};
-	int			i_redir;
+	t_command	*command;
+	t_tree		*leaf_command;
 
-	i_redir = 0;
-	while (i_redir < REDIR_NBR)
+	command = get_command(input, input_size);
+	if (!command)
+		return (NULL);
+	leaf_command = tree_leafnew(command);
+	if (!leaf_command)
 	{
-		if (is_redirection_equal_to(redir_arg[i_redir], input, input_size, *i))
-		{
-			*i += ft_strlen(redir_arg[i_redir]);
-			return ;
-		}
-		i_redir++;
+		ft_putstr_fd("Error: Failed creating new leaf", 2);
+		free_command(command);
+		return (NULL);
 	}
+	return (leaf_command);
 }

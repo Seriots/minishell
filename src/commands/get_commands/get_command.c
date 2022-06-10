@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   skip_redirections.c                                :+:      :+:    :+:   */
+/*   get_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 01:19:53 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 14:00:02 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/06 21:18:04 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/09 17:48:41 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include "minishell.h"
 
-void	skip_redirections(const char *input, int input_size, int *i)
+t_command	*get_command(const char *input, int input_size)
 {
-	while (is_argument_redirection(input, input_size, *i))
+	t_command	*command;
+
+	command = get_bzero_command();
+	if (!command)
+		return (NULL);
+	if (set_redirections(command, input, input_size) == -1)
 	{
-		skip_redirection(input, input_size, i);
-		skip_to_next_argument(input, input_size, i);
+		free_command(command);
+		return (NULL);
 	}
+	if (set_arguments(command, input, input_size) == -1)
+	{
+		free_command(command);
+		return (NULL);
+	}
+	return (command);
 }
