@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 16:57:49 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:43:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	run_shell(t_shell *shell)
 		commands = get_commands(shell);
 		end = is_exit(commands);
 		run_commands(commands, shell);
+		shell->env_str = dict_to_array(shell->env);
 	}
 	return (0);
 }
