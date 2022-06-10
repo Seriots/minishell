@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:29:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 17:29:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/10 19:56:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,53 +28,69 @@
 #include "../../include/minishell.h"
 #include <stdlib.h>
 
-static void	print_export(t_dict *dict)
+static int	invalid_identifier_unset(char *arg)
 {
-	if (!dict)
-		return ;
-	while (dict)
+	ft_putstr_fd("export: `", 2);
+	ft_putstr_fd(arg, 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
+	return (-1);
+}
+
+static int	check_arg(char *arg)
+{
+	size_t	i;
+
+	i = 0;
+	if (!arg)
+		return (0);
+	if (ft_strlen(arg) == 1 && arg[0] == '_')
+		return (2);
+	while (arg[i])
 	{
-		if (ft_strncmp(dict->key, "_", 2))
-			ft_printf("declare -x %s=\"%s\"\n", dict->key, dict->value);
-		dict = dict->next;
+		if (!ft_isalnum(arg[i]) && !(arg[i] == '_'))
+			return (0);
+		i++;
 	}
+	if (i == 0)
+		return (0);
+	return (1);
 }
 
 int	unset_command(t_shell *shell, char **arguments)
 {
 	size_t	i;
-	t_dict	*new;
-	t_dict	*copy;
+	int		error;
+	int		return_error;
 
 	i = 0;
-	if (ft_arraylen(arguments) == 0)
-	{
-		copy = dict_copy(shell->env);
-		if (!copy)
-			return (-1);
-		dict_sort(&copy);
-		print_export(copy);
-		dict_clear(copy, free, free);
-		return (0);
-	}	
+	error = 0;
+	return_error = 0;
+	if (!arguments || !arguments[0])
+		return (0);	
 	while (arguments[i])
 	{
-		new = getarg_env(arguments[i]);
-		if (!new)
-			return (-1);
-		dict_add_back(&shell->env, new, free, free);
+		error = check_arg(arguments[i]);
+		if (error == 1)
+		{
+			dict_delone(&shell->env, dict_getelem_key(shell->env, arguments[i]), free, free);
+			dict_delone(&shell->export, dict_getelem_key(shell->export, arguments[i]), free, free);
+		}
+		else if (!error)
+			invalid_identifier_unset(arguments[i]);
+		if (return_error == 0)
+			return_error = error;
 		i++;
 	}
+	return (0);
 }
 
-/*
 int	main(int argc, char *argv[], char **env)
 {
 	t_shell	shell;
 
 	init_shell(&shell, env);
 	argv = &argv[1];
-	export_command(&shell, argv);
-	dict_clear(shell.env, free, free);
-	free(shell.directory);
-}*/
+	unset_command(&shell, argv);
+	dict_print(shell.env, 0);
+	free_shell(&shell);
+}

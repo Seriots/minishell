@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 17:55:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/10 18:40:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ struct sigaction	init_sigact(void);
 int					init_export_copy(t_shell *shell, t_dict **copy,
 							t_dict **export_copy);
 int					print_export(t_shell *shell);
-int					invalid_identifier(char *arg);
+int					invalid_identifier_export(char *arg);
 int					check_key(char *arg);
 int					check_value(char *arg);
 #endif
