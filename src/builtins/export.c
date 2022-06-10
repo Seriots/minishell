@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:49:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 22:14:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/10 18:03:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,101 +16,38 @@
 #include "../../include/minishell.h"
 #include <stdlib.h>
 
-static int	init_export_copy(t_shell *shell, t_dict **copy,
-		t_dict **export_copy)
+/*
+* Export builtins command, type export -> show all env variable
+* 					type export name=value -> define an env variable
+*					type export name+=value -> concatene name variable with value
+* If any character other than letters, digit or underscore is use for the name, 
+* export of that argument fail and return an error.
+*/
+static int	add_to_export(t_shell *shell, char *copy, t_dict *new, char *arg)
 {
-	if (shell->env)
+	copy = ft_calloc(sizeof(char), ft_strlen(arg) + 1);
+	if (!copy)
+		return (-1);
+	ft_strlcpy(copy, arg, ft_strlen(arg) + 1);
+	new = dict_new(copy, 0);
+	if (!new)
 	{
-		*copy = dict_copy(shell->env);
-		if (!*copy)
-			return (-1);
+		free (copy);
+		return (-1);
 	}
-	if (shell->export)
-	{
-		*export_copy = dict_copy(shell->export);
-		if (!*export_copy)
-		{
-			dict_clear(*copy, free, free);
-			return (-1);
-		}
-		dict_append(copy, export_copy);
-	}
-	dict_sort(copy);
+	dict_add_back(&shell->export, new, free, free);
 	return (0);
 }
 
-static int	print_export(t_shell *shell)
-{
-	t_dict	*copy;
-	t_dict	*export_copy;
-
-	export_copy = 0;
-	copy = 0;
-	if (init_export_copy(shell, &copy, &export_copy))
-		return (-1);
-	export_copy = copy;
-	while (copy)
-	{
-		if (ft_strncmp(copy->key, "_", 2))
-		{
-			if (copy->value)
-				ft_printf("declare -x %s=\"%s\"\n", copy->key, copy->value);
-			else
-				ft_printf("declare -x %s\n", copy->key);
-		}
-		copy = copy->next;
-	}
-	copy = dict_get_first(export_copy);
-	dict_clear(copy, free, free);
-}
-
-static int	check_key(char *arg)
-{
-	size_t	i;
-
-	i = 0;
-	if (!arg)
-		return (0);
-	while (arg[i] && arg[i] != '=')
-	{
-		if (!ft_isalnum(arg[i]) && !(arg[i] == '_'))
-		{
-			ft_printf("export: `%s': not a valid identifier\n", arg);
-			return (0);
-		}
-		i++;
-	}
-	if (i == 0)
-	{
-		ft_printf("export: `%s': not a valid identifier\n", arg);
-		return (0);
-	}
-	return (1);
-}
-
-static int	check_value(char *arg)
-{
-	size_t	i;
-
-	i = 0;
-	if (!arg)
-		return (0);
-	while (arg[i] && arg[i] != '=')
-		i ++;
-	if (!arg[i])
-		return (0);
-	return (1);
-}
-
-static int	treat_export(t_shell *shell, char **arguments, size_t i)
+static int	treat_export(t_shell *shell, char *arg)
 {
 	t_dict	*new;
 	char	*copy;
 	t_dict	*search;
 
-	if (check_value(arguments[i]))
+	if (check_value(arg))
 	{
-		new = getarg_env(arguments[i]);
+		new = getarg_env(arg);
 		if (!new)
 			return (-1);
 		search = dict_getelem_key(shell->export, new->key);
@@ -119,33 +56,86 @@ static int	treat_export(t_shell *shell, char **arguments, size_t i)
 		dict_add_back(&shell->env, new, free, free);
 		return (0);
 	}
-	copy = ft_calloc(sizeof(char), ft_strlen(arguments[i]) + 1);
-	if (!copy)
-		return (-1);
-	ft_strlcpy(copy, arguments[i], ft_strlen(arguments[i]) + 1);
-	new = dict_new(copy, 0);
-	if (!new)
-		return (-1);
-	dict_add_back(&shell->export, new, free, free);
+	search = dict_getelem_key(shell->env, arg);
+	if (search)
+		return (0);
+	return (add_to_export(shell, copy, new, arg));
+}
+
+static int	concat_input(t_shell *shell, char *key, char *value, t_dict *search)
+{
+	t_dict	*new;
+
+	if (search)
+	{
+		free (key);
+		key = ft_strjoin(search->value, value);
+		free (search->value);
+		free (value);
+		search->value = key;
+	}
+	else
+	{
+		new = dict_new(key, value);
+		if (!new)
+		{
+			free (key);
+			free (value);
+			return (-1);
+		}
+		dict_add_back(&shell->env, new, free, free);
+		search = dict_getelem_key(shell->export, new->key);
+		if (search)
+			dict_delone(&shell->export, search, free, free);
+	}
 	return (0);
+}
+
+static int	treat_export_concat(t_shell *shell, char *arg)
+{
+	t_dict	*search;
+	size_t	i;
+	char	*key;
+	char	*value;
+
+	i = 0;
+	while (arg[i] != '+')
+		i++;
+	key = ft_substr(arg, 0, i);
+	if (!key)
+		return (-1);
+	value = ft_substr(arg, i + 2, ft_strlen(arg) - i - 2);
+	if (!value)
+	{
+		free (key);
+		return (-1);
+	}
+	search = dict_getelem_key(shell->env, key);
+	return (concat_input(shell, key, value, search));
 }
 
 int	export_command(t_shell *shell, char **arguments)
 {
 	size_t	i;
+	int		is_concat;
+	int		error;
 
 	i = 0;
+	error = 0;
 	if (ft_arraylen(arguments) == 0)
 		return (print_export(shell));
 	while (arguments[i])
 	{
-		if (check_key(arguments[i]))
-		{
-			if (treat_export(shell, arguments, i))
-				return (-1);
-		}
+		is_concat = check_key(arguments[i]);
+		if (is_concat == 1)
+			error = treat_export(shell, arguments[i]);
+		else if (is_concat == 2)
+			error = treat_export_concat(shell, arguments[i]);
+		else
+			invalid_identifier(arguments[i]);
 		i++;
 	}
+	return (0);
 }
 
 int	main(int argc, char *argv[], char **env)
