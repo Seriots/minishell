@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 22:41:51 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 22:44:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/10 15:57:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_arraylen(char **array)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!array)

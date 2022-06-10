@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 18:57:36 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 21:33:14 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int					free_shell(t_shell *shell);
 
 /*init_shell.c*/
 t_dict				*getarg_env(char *line);
-char     			*get_current_directory(void);
+char				*get_current_directory(void);
 int					init_shell(t_shell *shell, char **env);
 
 /*run_shell.c*/
@@ -153,4 +153,16 @@ void				get_sig(int sig, siginfo_t *siginfo, void *context);
 
 //	init_sigact.c
 struct sigaction	init_sigact(void);
+
+/*
+* BUILTINS
+*/
+
+/*export_utils.c*/
+int					init_export_copy(t_shell *shell, t_dict **copy,
+							t_dict **export_copy);
+int					print_export(t_shell *shell);
+int					invalid_identifier(char *arg);
+int					check_key(char *arg);
+int					check_value(char *arg);
 #endif
