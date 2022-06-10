@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 01:09:38 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 09:47:42 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 12:07:45 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	is_argument_sep(const char *input, int input_size, int start)
 {
-	const char	*sep_arg[] = {OR, AND, PIPE, REDIR_STDIN, REDIR_HEREDOC_STDIN,
+	const char	*sep_arg[] = {OR, AND, PIPE, REDIR_STDIN, REDIR_HEREDOC,
 		REDIR_STDOUT, REDIR_APPEND_STDOUT, REDIR_STDERR};
 	int			i;
 

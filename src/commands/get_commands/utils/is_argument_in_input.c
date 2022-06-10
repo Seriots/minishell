@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 22:00:30 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/07 01:53:01 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 16:50:15 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	is_argument_in_input(const char *arg, const char *input, int input_size)
 {
 	int	i;
 
-	skip_whitespaces(input, input_size, &i);
 	i = 0;
+	skip_whitespaces(input, input_size, &i);
 	while (1)
 	{
 		if (i >= input_size)

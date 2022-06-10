@@ -6,11 +6,10 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:30:34 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 03:29:43 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 17:00:05 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "minishell.h"
 
 t_tree	*parse_input(const char *input, int input_size)

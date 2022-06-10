@@ -6,10 +6,11 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 08:11:58 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 08:40:16 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 17:16:18 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "list.h"
 #include "minishell.h"
 #include "tree.h"
@@ -19,8 +20,9 @@ static int	run_or_commands(t_tree *commands, t_shell *shell)
 	int		return_value;
 	t_list	*sub_commands;
 
+	return_value = 1;
 	sub_commands = commands->childs;
-	while (return_value != 1 && sub_commands && return_value == 0)
+	while (return_value != -1 && sub_commands && return_value != 0)
 	{
 		return_value = run_tree_commands(sub_commands->content, shell);
 		sub_commands = sub_commands->next;
@@ -33,8 +35,9 @@ static int	run_and_commands(t_tree *commands, t_shell *shell)
 	int		return_value;
 	t_list	*sub_commands;
 
+	return_value = 0;
 	sub_commands = commands->childs;
-	while (return_value != -1 && sub_commands && return_value != 0)
+	while (return_value != -1 && sub_commands && return_value == 0)
 	{
 		return_value = run_tree_commands(sub_commands->content, shell);
 		sub_commands = sub_commands->next;

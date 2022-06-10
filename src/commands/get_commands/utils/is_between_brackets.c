@@ -6,11 +6,12 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:39:27 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 02:52:15 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:01:05 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "libft.h"
 #include "minishell.h"
 
 int	is_between_brackets(const char *input, int input_size)

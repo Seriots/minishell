@@ -6,15 +6,16 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:00:53 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 09:48:31 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:02:13 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "minishell.h"
 
 void	skip_sep(const char *input, int input_size, int *i)
 {
-	const char	*sep_arg[] = {OR, AND, PIPE, REDIR_HEREDOC_STDIN, REDIR_STDIN,
+	const char	*sep_arg[] = {OR, AND, PIPE, REDIR_HEREDOC, REDIR_STDIN,
 		REDIR_APPEND_STDOUT, REDIR_STDOUT, REDIR_STDERR};
 	int			i_sep;
 

@@ -9,12 +9,14 @@ HEADER_NAMES= list
 SRC_NAMES	= list_add_back \
 			  list_add_front \
 			  list_append \
+			  list_append_back \
 			  list_clear \
 			  list_delone \
 			  list_iter \
 			  list_last \
 			  list_map \
 			  list_new \
+			  list_rev \
 			  list_size
 
 

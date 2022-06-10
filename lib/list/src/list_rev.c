@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_bzero_command.c                                :+:      :+:    :+:   */
+/*   list_rev.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 21:33:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 14:37:32 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/10 17:48:26 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/10 18:01:17 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include <stdlib.h>
-#include "libft.h"
-#include "minishell.h"
+#include "list.h"
 
-t_command	*get_bzero_command(void)
+void	list_rev(t_list **l)
 {
-	t_command	*command;
-
-	command = malloc(sizeof(t_command));
-	if (!command)
-	{
-		ft_putstr_fd("Error: malloc command\n", 2);
-		return (NULL);
-	}
-	command->argv = NULL;
-	command->std = NULL;
-	return (command);
+//	JE SAIS PAS FAIRE, PLEEEEEAAAASSSEEE, PLEASE, HELP ME
+	(void) l;
+	return ;
 }
