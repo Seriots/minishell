@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:48:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 17:43:07 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:55:16 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_tree	*parse_input_simple(const char *input, int input_size)
 	command = get_command(input, input_size);
 	if (!command)
 		return (NULL);
-	leaf_command = tree_leafnew(command);
+	leaf_command = tree_new_leaf(command);
 	if (!leaf_command)
 	{
 		ft_putstr_fd("Error: Failed creating new leaf", 2);

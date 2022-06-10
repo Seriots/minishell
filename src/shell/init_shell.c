@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 19:20:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/10 15:10:38 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,13 @@ t_dict	*get_env(char **env)
 	return (dict);
 }
 
-int     init_shell(t_shell *shell, char **env)
+int	init_shell(t_shell *shell, char **env)
 {
-        shell->env = get_env(env);
-		shell->export = 0;
-        shell->directory = get_current_directory();
-        if (shell->directory == 0)
-                return (-1);
-        return (0);
+	shell->env = get_env(env);
+	shell->env_str = env;
+	shell->export = 0;
+	shell->directory = get_current_directory();
+	if (shell->directory == 0)
+		return (-1);
+	return (0);
 }

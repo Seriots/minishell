@@ -10,7 +10,7 @@ LIB_NAMES	= dict \
 			  ft_printf \
 			  list \
 			  tree
-LIBEXT_NAMES= 
+LIBEXT_NAMES= readline
 
 HEADER_NAMES= dict \
 			  ft \
@@ -23,31 +23,40 @@ SRC_NAMES	= main \
 			  shell/run_shell \
 			  signals/init_sigact \
 			  signals/handle_signals \
-			  commands/parse_input/contain_and \
-			  commands/parse_input/contain_or \
-			  commands/parse_input/contain_pipe \
-			  commands/parse_input/is_between_brackets \
-			  commands/parse_input/parse_input_and \
-			  commands/parse_input/parse_input_brackets \
-			  commands/parse_input/parse_input_or \
-			  commands/parse_input/parse_input_pipe \
-			  commands/parse_input/parse_input_simple \
-			  commands/parse_input/parse_input \
-			  commands/get_commands/get_argument \
+			  commands/free_command \
+			  commands/free_commands \
 			  commands/get_commands/get_bzero_command \
 			  commands/get_commands/get_command \
+			  commands/get_commands/get_commands \
+			  commands/get_commands/parse_input \
+			  commands/get_commands/parse_input_and \
+			  commands/get_commands/parse_input_brackets \
+			  commands/get_commands/parse_input_or \
+			  commands/get_commands/parse_input_pipe \
+			  commands/get_commands/parse_input_simple \
 			  commands/get_commands/set_arguments \
 			  commands/get_commands/set_redirections \
 			  commands/get_commands/utils/count_arguments \
 			  commands/get_commands/utils/count_redirections \
 			  commands/get_commands/utils/get_argument_after \
-			  commands/get_commands/utils/is_argument_equal \
+			  commands/get_commands/utils/get_argument \
+			  commands/get_commands/utils/is_argument_equal_to \
 			  commands/get_commands/utils/is_argument_in_input \
-			  commands/get_commands/utils/is_argument_redirection \
+			  commands/get_commands/utils/is_argument_sep \
+			  commands/get_commands/utils/is_between_brackets \
+			  commands/get_commands/utils/is_sep_equal_to \
 			  commands/get_commands/utils/skip_argument \
 			  commands/get_commands/utils/skip_redirections \
+			  commands/get_commands/utils/skip_sep \
+			  commands/get_commands/utils/skip_to \
 			  commands/get_commands/utils/skip_to_next_argument \
-			  commands/get_commands/utils/skip_whitespaces
+			  commands/get_commands/utils/skip_whitespaces \
+			  commands/run_commands/fork_and_run_sub_commands \
+			  commands/run_commands/run_command \
+			  commands/run_commands/run_commands \
+			  commands/run_commands/run_pipe_commands \
+			  commands/run_commands/run_tree_commands \
+			  commands/run_commands/set_heredocs
 
 
 LIB_DIR		= lib

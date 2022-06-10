@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 01:02:34 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 17:46:04 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 20:56:37 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int	set_arguments(t_command *cmd, const char *input, int input_size)
 		skip_to_next_argument(input, input_size, &i);
 		i_arg++;
 	}
+	cmd->argv[i_arg] = NULL;
 	return (0);
 }

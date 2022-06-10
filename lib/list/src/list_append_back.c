@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_bzero_command.c                                :+:      :+:    :+:   */
+/*   list_append_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 21:33:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 14:37:32 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/10 19:11:40 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/06/10 19:11:59 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-#include "libft.h"
-#include "minishell.h"
+#include "list.h"
 
-t_command	*get_bzero_command(void)
+int	list_append_back(t_list **lst, void *content)
 {
-	t_command	*command;
+	t_list	*elem;
 
-	command = malloc(sizeof(t_command));
-	if (!command)
-	{
-		ft_putstr_fd("Error: malloc command\n", 2);
-		return (NULL);
-	}
-	command->argv = NULL;
-	command->std = NULL;
-	return (command);
+	elem = list_new(content);
+	if (!elem)
+		return (-1);
+	list_add_back(lst, elem);
+	return (0);
 }
