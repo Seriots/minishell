@@ -3,7 +3,7 @@ CFLAGS		= -Wall -Werror -Wextra
 MAKE		= /bin/make
 
 
-NAME		= ft_printf.a
+NAME		= libft_printf.a
 
 HEADER_NAMES= conversion \
 			  ft_printf

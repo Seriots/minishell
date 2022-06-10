@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 19:34:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 01:10:22 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/09 20:12:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	dict_changeval(t_dict **dict, void *key, void *value,
 	elem = dict_getelem_key(*dict, key);
 	if (!elem)
 		return ;
-	if (free_value)
+	if (free_value && elem->value)
 		free_value(elem->value);
 	elem->value = value;
 }

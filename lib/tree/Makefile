@@ -3,7 +3,7 @@ CFLAGS		= -Wall -Werror -Wextra
 MAKE		= /bin/make
 
 
-NAME		= tree.a
+NAME		= libtree.a
 
 HEADER_NAMES= list \
 			  tree

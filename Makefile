@@ -81,6 +81,7 @@ clean:
 	fi
 
 fclean:			clean
+	rm -Rf .vscode
 	@echo "\n$(GREEN)Removing $(NAME)$(NO_COLOR)"
 	rm -f $(NAME)
 	@for lib in $(LIB_NAMES); do \
@@ -88,14 +89,16 @@ fclean:			clean
 		$(MAKE) --no-print-directory -C $(LIB_DIR)/$${lib}/ fclean; \
 	done
 
-re:				fclean re
+re:				
+	$(MAKE) fclean
+	$(MAKE) all
 
 
 $(NAME): $(LIB_FILES) $(OBJ)
 	@echo "\n$(GREEN)Linkage $(NAME)$(NO_COLOR)"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c echo_compiling
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c | echo_compiling
 	@if [ ! -d $(dir $@) ]; then \
 		mkdir -p $(dir $@); \
 	fi
@@ -105,8 +108,8 @@ echo_compiling:
 	@echo "\n$(GREEN)Compiling objects$(NO_COLOR)"
 
 %.a:
-	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"; \
-	$(MAKE) --no-print-directory -C $(dir $@)
+	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
+	@$(MAKE) --no-print-directory -C $(dir $@)
 
 
 .PHONY:			all clean echo_compiling fclean re

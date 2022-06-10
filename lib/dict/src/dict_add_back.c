@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:50:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 01:09:38 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/09 20:13:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	dict_modify(t_dict *elem, t_dict *new, void free_key(void *),
 		next->previous = new;
 	if (previous)
 		previous->next = new;
-	if (free_key)
+	if (free_key && elem->key)
 		free_key(elem->key);
-	if (free_value)
+	if (free_value && elem->value)
 		free_value(elem->value);
 	free(elem);
 }

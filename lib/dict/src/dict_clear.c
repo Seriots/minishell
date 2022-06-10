@@ -6,11 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 20:13:45 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 01:10:11 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/09 20:52:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dict.h"
+#include "ft_printf.h"
 #include <stdlib.h>
 
 void	dict_clear(t_dict *dict, void free_key(void *),
@@ -20,9 +21,9 @@ void	dict_clear(t_dict *dict, void free_key(void *),
 		return ;
 	while (dict)
 	{
-		if (free_key)
+		if (free_key && dict->key)
 			free_key(dict->key);
-		if (free_value)
+		if (free_value && dict->value)
 			free_value(dict->value);
 		if (dict->next == 0)
 		{
@@ -31,7 +32,7 @@ void	dict_clear(t_dict *dict, void free_key(void *),
 		}
 		else
 			dict = dict->next;
-		if (dict)
+		if (dict && dict->previous)
 			free(dict->previous);
 	}
 }

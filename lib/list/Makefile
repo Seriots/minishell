@@ -3,7 +3,7 @@ CFLAGS		= -Wall -Werror -Wextra
 MAKE		= /bin/make
 
 
-NAME		= list.a
+NAME		= liblist.a
 
 HEADER_NAMES= list
 SRC_NAMES	= list_add_back \
