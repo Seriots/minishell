@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 15:10:38 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:38:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static char     *get_space(char *str, size_t *length)
+char     *get_space(char *str, size_t *length)
 {
         char    *new_str;
         size_t  i;
@@ -53,10 +53,10 @@ char     *get_current_directory(void)
                 try = getcwd(path, length);
         }
 		length = ft_strlen(path);
-		try = ft_calloc(sizeof(char), length);
+		try = ft_calloc(sizeof(char), length + 1);
 		if (!try)
 			return (0);
-		ft_strlcpy(try, path, length);
+		ft_strlcpy(try, path, length + 1);
         free(path);
 		return (try);
 }
@@ -113,10 +113,12 @@ t_dict	*get_env(char **env)
 int	init_shell(t_shell *shell, char **env)
 {
 	shell->env = get_env(env);
-	shell->env_str = env;
 	shell->export = 0;
 	shell->directory = get_current_directory();
 	if (shell->directory == 0)
 		return (-1);
+	if (set_default_variable(&shell->env) == -1)
+		return (-1);
+	shell->env_str = dict_to_array(shell->env);
 	return (0);
 }

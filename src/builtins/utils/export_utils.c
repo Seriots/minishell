@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:49:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/10 17:51:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/10 18:40:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	print_export(t_shell *shell)
 	return (0);
 }
 
-int	invalid_identifier(char *arg)
+int	invalid_identifier_export(char *arg)
 {
 	ft_putstr_fd("export: `", 2);
 	ft_putstr_fd(arg, 2);

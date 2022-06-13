@@ -21,7 +21,6 @@ SRC_NAMES	= tree_adopt \
 			  tree_new_leaf \
 			  tree_size
 
-
 HEADER_DIR	= include
 SRC_DIR		= src
 OBJ_DIR		= obj

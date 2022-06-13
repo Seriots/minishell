@@ -6,8 +6,8 @@ MAKE		= /bin/make
 NAME		= minishell
 
 LIB_NAMES	= dict \
-			  ft \
 			  ft_printf \
+			  ft \
 			  list \
 			  tree
 LIBEXT_NAMES= readline
@@ -21,6 +21,7 @@ SRC_NAMES	= main \
 			  shell/free_shell \
 			  shell/init_shell \
 			  shell/run_shell \
+			  shell/utils/init_env_variable \
 			  signals/init_sigact \
 			  signals/handle_signals \
 			  commands/free_command \

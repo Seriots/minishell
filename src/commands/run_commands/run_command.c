@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   run_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 12:27:04 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 20:56:57 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:32:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include "dict.h"
-#include "libft.h"
-#include "minishell.h"
+#include "../../../include/dict.h"
+#include "../../../include/libft.h"
+#include "../../../include/minishell.h"
 
 static char	*get_path_exec(char *argv0, t_dict *env)
 {
@@ -85,7 +87,7 @@ static void	run_command_in_child(t_command *command, t_shell *shell)
 	}
 	path_exec = get_path_exec(command->argv[0], shell->env);
 	if (!path_exec)
-		exit(-1);
+		exit(-1); /* <--- check buitins command*/
 	return_value = execve(path_exec, command->argv, shell->env_str);
 	exit(return_value);
 }

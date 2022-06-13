@@ -25,6 +25,7 @@ SRC_NAMES	= dict_add_back \
 			  dict_copy \
 			  dict_sort \
 			  dict_append \
+			  dict_to_array \
 			  dict_size
 
 

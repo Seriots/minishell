@@ -6,15 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 16:57:49 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:44:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <signal.h>
 #include <stdio.h>
-#include "libft.h"
-#include "minishell.h"
+#include "../../include/libft.h"
+#include "../../include/minishell.h"
 
 /*
 * Check th return value of get_commands and if return is Null, quit the program.
@@ -45,6 +45,7 @@ int	run_shell(t_shell *shell)
 		commands = get_commands(shell);
 		end = is_exit(commands);
 		run_commands(commands, shell);
+		shell->env_str = dict_to_array(shell->env);
 	}
 	return (0);
 }

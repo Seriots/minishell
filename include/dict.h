@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 22:28:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 19:43:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/11 01:34:59 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ size_t	dict_size(t_dict *dict);
 t_dict	*dict_copy(t_dict *dict);
 void	dict_sort(t_dict **dict);
 void	dict_append(t_dict **dict1, t_dict **dict2);
+char	**dict_to_array(t_dict *dict);
 #endif

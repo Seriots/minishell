@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:49:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/10 18:03:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/10 19:55:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,11 @@ int	export_command(t_shell *shell, char **arguments)
 	size_t	i;
 	int		is_concat;
 	int		error;
+	int		return_error;
 
 	i = 0;
 	error = 0;
+	return_error = 0;
 	if (ft_arraylen(arguments) == 0)
 		return (print_export(shell));
 	while (arguments[i])
@@ -132,12 +134,14 @@ int	export_command(t_shell *shell, char **arguments)
 		else if (is_concat == 2)
 			error = treat_export_concat(shell, arguments[i]);
 		else
-			invalid_identifier(arguments[i]);
+			invalid_identifier_export(arguments[i]);
+		if (return_error == 0)
+			return_error = error;
 		i++;
 	}
 	return (0);
 }
-
+/*
 int	main(int argc, char *argv[], char **env)
 {
 	t_shell	shell;
@@ -147,4 +151,4 @@ int	main(int argc, char *argv[], char **env)
 	export_command(&shell, argv);
 	print_export(&shell);
 	free_shell(&shell);
-}
+}*/
