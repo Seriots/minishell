@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 21:13:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/10 19:52:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/13 17:13:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 #include "../../include/minishell.h"
 #include "../../include/dict.h"
+#include "../../include/ft_printf.h"
 
 /*
 * Builtins command env, print the content of env (shell->env).

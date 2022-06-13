@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 12:27:04 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 23:32:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/13 17:14:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include "../../../include/dict.h"
 #include "../../../include/libft.h"
+#include "../../../include/ft_printf.h"
 #include "../../../include/minishell.h"
 
 static char	*get_path_exec(char *argv0, t_dict *env)
@@ -62,11 +63,30 @@ static char	*get_path_exec(char *argv0, t_dict *env)
 	return (path_exec);
 }
 
+static int	command_is_builtin(char *command)
+{
+	if (!ft_strncmp(command, "cd", ft_strlen(command) + 1))
+		return (0);
+	else if (!ft_strncmp(command, "echo", ft_strlen(command) + 1))
+		return (1);
+	else if (!ft_strncmp(command, "env", ft_strlen(command) + 1))
+		return (2);
+	else if (!ft_strncmp(command, "exit", ft_strlen(command) + 1))
+		return (3);
+	else if (!ft_strncmp(command, "export", ft_strlen(command) + 1))
+		return (4);
+	else if (!ft_strncmp(command, "pwd", ft_strlen(command) + 1))
+		return (5);
+	else if (!ft_strncmp(command, "unset", ft_strlen(command) + 1))
+		return (6);
+	return (-1);		
+}
+
 static void	run_command_in_child(t_command *command, t_shell *shell)
 {
 	t_std	*std;
-	char	*path_exec;
 	int		return_value;
+	char	*path_exec;
 
 	while (command->std)
 	{
@@ -87,7 +107,7 @@ static void	run_command_in_child(t_command *command, t_shell *shell)
 	}
 	path_exec = get_path_exec(command->argv[0], shell->env);
 	if (!path_exec)
-		exit(-1); /* <--- check buitins command*/
+		exit(-1);
 	return_value = execve(path_exec, command->argv, shell->env_str);
 	exit(return_value);
 }
@@ -96,7 +116,17 @@ int	run_command(t_command *command, t_shell *shell)
 {
 	int	pid;
 	int	wstatus;
+	int	is_builtin;
+	int	return_value;
 
+	if (!command->argv || !command->argv[0])
+		return (0);
+	is_builtin = command_is_builtin(command->argv[0]);
+	if (is_builtin != -1)
+	{
+		return_value = shell->builtins[is_builtin](shell, &command->argv[1]);
+		return (return_value);
+	}
 	pid = fork();
 	if (pid == -1)
 	{

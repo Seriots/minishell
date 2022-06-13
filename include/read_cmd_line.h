@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cmd_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 02:17:02 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:13:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ enum	e_lexeme
 	redir_append_stdout,
 	redir_stdout,
 	redir_stderr,
-	argument
-};
+	argument};
 
 typedef struct s_token
 {

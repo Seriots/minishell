@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:25:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/10 19:52:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/13 15:22:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 int	pwd_command(t_shell *shell, char **arguments)
 {
 	(void)arguments;
-	ft_printf("%s", shell->directory);
+	ft_printf("%s\n", shell->directory);
 	return (0);
 }

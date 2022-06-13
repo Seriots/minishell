@@ -1,5 +1,5 @@
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -g
 MAKE		= /bin/make
 
 
@@ -17,6 +17,7 @@ HEADER_NAMES= dict \
 			  ft_printf \
 			  list \
 			  tree
+
 SRC_NAMES	= main \
 			  shell/free_shell \
 			  shell/init_shell \
@@ -24,6 +25,14 @@ SRC_NAMES	= main \
 			  shell/utils/init_env_variable \
 			  signals/init_sigact \
 			  signals/handle_signals \
+			  builtins/utils/export_utils \
+			  builtins/cd \
+			  builtins/echo \
+			  builtins/env \
+			  builtins/exit \
+			  builtins/export \
+			  builtins/pwd \
+			  builtins/unset \
 			  commands/free_command \
 			  commands/free_commands \
 			  commands/get_commands/get_bzero_command \
@@ -80,6 +89,7 @@ LIB_FILES	= $(foreach l,$(LIB_NAMES),$(LIB_DIR)/$l/lib$l.a)
 GREEN		= \033[0;32m
 NO_COLOR	= \033[0m
 
+BEGIN 		= 0
 
 all:			$(NAME)
 
@@ -103,21 +113,22 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-
 $(NAME): $(LIB_FILES) $(OBJ)
 	@echo "\n$(GREEN)Linkage $(NAME)$(NO_COLOR)"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c | echo_compiling
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
+	@if [ $(BEGIN) == 0 ] ; then \
+		echo "\n$(GREEN)Compiling objects$(NO_COLOR)"; \
+	fi
+	$(eval BEGIN=1)
 	@if [ ! -d $(dir $@) ]; then \
 		mkdir -p $(dir $@); \
 	fi
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-echo_compiling:
-	@echo "\n$(GREEN)Compiling objects$(NO_COLOR)"
 
-%.a:
+%.a: $($(MAKE) -C $(dir %.a) get_obj)
 	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
 	@$(MAKE) --no-print-directory -C $(dir $@)
 

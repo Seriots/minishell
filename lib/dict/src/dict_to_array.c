@@ -6,19 +6,22 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:22:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/11 01:38:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/13 16:46:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/dict.h"
 #include "../include/libft.h"
 #include "../include/ft_printf.h"
+#include <stdio.h>
 
 static char	*dict_to_str(t_dict *dict)
 {
 	size_t	size;
 	char	*result;
 
+	if (!dict)
+		return (0);
 	size = ft_strlen(dict->key) + ft_strlen(dict->value) + 1;
 	result = ft_calloc(sizeof(char), size + 1);
 	if (!result)

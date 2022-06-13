@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   read_cmd_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 00:07:29 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:48:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/history.h>
 #include <readline/readline.h>
 #include <stdlib.h>
-#include "cmd_line.h"
+#include "read_cmd_line.h"
 #include "tree.h"
 
 static int	set_cmd_line(const char *input, t_tree **cmd_line)

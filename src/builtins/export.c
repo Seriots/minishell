@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:49:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/10 19:55:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/13 15:01:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int	treat_export(t_shell *shell, char *arg)
 	char	*copy;
 	t_dict	*search;
 
+	copy = 0;
+	new = 0;
 	if (check_value(arg))
 	{
 		new = getarg_env(arg);

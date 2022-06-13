@@ -6,12 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:40:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/09 22:00:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/13 14:59:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 #include "../../include/minishell.h"
+#include "../../include/ft_printf.h"
 
 /*
 * echo builtin command, handle the option -n at first
@@ -37,7 +38,7 @@ int	echo_command(t_shell *shell, char **arguments)
 	{
 		if (i != option)
 			ft_printf(" ");
-		write(1, arguments[i], ft_strlen(arguments[i]));
+		ft_printf("%s", arguments[i]);
 		i ++;
 	}
 	if (!option)

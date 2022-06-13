@@ -6,12 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/11 01:38:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/13 16:35:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 #include "../../include/libft.h"
+#include "../../include/ft_printf.h"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -110,6 +111,17 @@ t_dict	*get_env(char **env)
 	return (dict);
 }
 
+static void	init_builtins(t_shell **shell)
+{
+	(*shell)->builtins[0] = &cd_command;
+	(*shell)->builtins[1] = &echo_command;
+	(*shell)->builtins[2] = &env_command;
+	(*shell)->builtins[3] = &exit_command;
+	(*shell)->builtins[4] = &export_command;
+	(*shell)->builtins[5] = &pwd_command;
+	(*shell)->builtins[6] = &unset_command;
+}
+
 int	init_shell(t_shell *shell, char **env)
 {
 	shell->env = get_env(env);
@@ -120,5 +132,8 @@ int	init_shell(t_shell *shell, char **env)
 	if (set_default_variable(&shell->env) == -1)
 		return (-1);
 	shell->env_str = dict_to_array(shell->env);
+	shell->env = get_env(shell->env_str);
+	init_builtins(&shell);
 	return (0);
 }
+

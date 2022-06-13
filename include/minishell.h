@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/10 23:21:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/13 15:40:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_shell
 	char	**env_str;
 	t_dict	*export;
 	char	*directory;
+	int		(*builtins[7])(struct s_shell *shell, char **arguments);
 }	t_shell;
 
 typedef int	(*t_set_redir)(t_command *, const char *, int, int);
@@ -158,6 +159,13 @@ struct sigaction	init_sigact(void);
 /*
 * BUILTINS
 */
+int					cd_command(t_shell *shell, char **arguments);
+int					echo_command(t_shell *shell, char **arguments);
+int					export_command(t_shell *shell, char **arguments);
+int					exit_command(t_shell *shell, char **arguments);
+int					env_command(t_shell *shell, char **arguments);
+int					unset_command(t_shell *shell, char **arguments);
+int					pwd_command(t_shell *shell, char **arguments);
 
 /*export_utils.c*/
 int					init_export_copy(t_shell *shell, t_dict **copy,

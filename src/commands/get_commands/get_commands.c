@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:41:30 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 02:45:35 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:35:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libft.h"
 #include "minishell.h"
 #include "tree.h"
+#include "ft_printf.h"
 
 t_tree	*get_commands(t_shell *shell)
 {
