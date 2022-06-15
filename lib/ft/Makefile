@@ -49,8 +49,9 @@ SRC_NAMES	= ft_error_base \
 			  ft_toupper \
 			  ft_tolower \
 			  ft_ultoa_base \
-			  ft_utoa_base
-
+			  ft_utoa_base \
+			  get_next_line \
+			  get_next_line_utils
 
 HEADER_DIR	= include
 SRC_DIR		= src
@@ -60,12 +61,14 @@ INCLUDE		= -I$(HEADER_DIR)
 
 HEADER		= $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 OBJ			= $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
+DEP			= $(SRC_NAMES:%=$(OBJ_DIR)/%.d)
 
 
 all:			$(NAME)
 
 clean:
 	rm -f $(OBJ)
+	rm -f $(DEP)
 	@if [ -d $(OBJ_DIR) ]; then \
 		find $(OBJ_DIR) -type d | xargs rmdir -p --ignore-fail-on-non-empty; \
 	fi

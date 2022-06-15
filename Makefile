@@ -10,6 +10,7 @@ LIB_NAMES	= dict \
 			  ft \
 			  list \
 			  tree
+
 LIBEXT_NAMES= readline
 
 HEADER_NAMES= dict \
@@ -68,7 +69,6 @@ SRC_NAMES	= main \
 			  commands/run_commands/run_tree_commands \
 			  commands/run_commands/set_heredocs
 
-
 LIB_DIR		= lib
 
 LIB			= $(LIBEXT_NAMES:%=-l%) \
@@ -83,18 +83,26 @@ INCLUDE		= -I$(HEADER_DIR)
 
 HEADER		= $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 OBJ			= $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
+LIB_OBJS	= 
 
 LIB_FILES	= $(foreach l,$(LIB_NAMES),$(LIB_DIR)/$l/lib$l.a)
 
-GREEN		= \033[0;32m
-NO_COLOR	= \033[0m
+_GREY		= \033[30m
+_RED		= \033[31m
+_GREEN		= \033[32m
+_YELLOW		= \033[33m
+_BLUE		= \033[34m
+_PURPLE		= \033[35m
+_CYAN		= \033[36m
+_WHITE		= \033[37m
+_NO_COLOR	= \033[0m
 
-BEGIN 		= 0
+BEGIN = 0
 
 all:			$(NAME)
 
 clean:
-	@echo "$(GREEN)Removing objects$(NO_COLOR)"
+	@echo "$(_GREEN)Removing objects$(_NO_COLOR)"
 	rm -f $(OBJ)
 	@if [ -d $(OBJ_DIR) ]; then \
 		find $(OBJ_DIR) -type d | xargs rmdir -p --ignore-fail-on-non-empty; \
@@ -102,10 +110,10 @@ clean:
 
 fclean:			clean
 	rm -Rf .vscode
-	@echo "\n$(GREEN)Removing $(NAME)$(NO_COLOR)"
+	@echo "\n$(_GREEN)Removing $(NAME)$(_NO_COLOR)"
 	rm -f $(NAME)
 	@for lib in $(LIB_NAMES); do \
-		echo "\n$(GREEN)$(LIB_DIR)/$${lib}/: make fclean$(NO_COLOR)"; \
+		echo "\n$(_GREEN)$(LIB_DIR)/$${lib}/: make fclean$(_NO_COLOR)"; \
 		$(MAKE) --no-print-directory -C $(LIB_DIR)/$${lib}/ fclean; \
 	done
 
@@ -113,24 +121,29 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
+rule_begin: BEGIN = -D BEGIN
+
 $(NAME): $(LIB_FILES) $(OBJ)
-	@echo "\n$(GREEN)Linkage $(NAME)$(NO_COLOR)"
+	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
-	@if [ $(BEGIN) == 0 ] ; then \
-		echo "\n$(GREEN)Compiling objects$(NO_COLOR)"; \
+	@if [ $(BEGIN) = 0 ]; then \
+		echo "\n$(_GREEN)Start Compiling $(_NO_COLOR)"; \
 	fi
 	$(eval BEGIN=1)
 	@if [ ! -d $(dir $@) ]; then \
+		echo "\n$(_CYAN)Create $(dir $@)$(_NO_COLOR)"; \
 		mkdir -p $(dir $@); \
 	fi
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-
-%.a: $($(MAKE) -C $(dir %.a) get_obj)
-	@echo "\n$(GREEN)$(dir $@): make$(NO_COLOR)"
+%.a: $($(MAKE) -C $(dir %.a))
+	@echo "\n$(_GREEN)$(dir $@): make$(_NO_COLOR)"
 	@$(MAKE) --no-print-directory -C $(dir $@)
 
 
-.PHONY:			all clean echo_compiling fclean re
+.PHONY:			all clean echo_compiling fclean re rule_begin
+
+
+.SILENT: make_lib

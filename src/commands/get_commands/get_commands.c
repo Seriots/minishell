@@ -6,10 +6,11 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:41:30 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 15:35:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/15 14:31:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <readline/history.h>
 #include <readline/readline.h>
 #include <stdlib.h>
