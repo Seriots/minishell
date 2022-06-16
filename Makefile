@@ -24,6 +24,7 @@ SRC_NAMES	= main \
 			  shell/init_shell \
 			  shell/run_shell \
 			  shell/utils/init_env_variable \
+			  shell/utils/init_builtins \
 			  signals/init_sigact \
 			  signals/handle_signals \
 			  builtins/utils/export_utils \

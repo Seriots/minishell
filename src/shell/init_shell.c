@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 16:35:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/16 11:31:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,50 +16,50 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char     *get_space(char *str, size_t *length)
+char	*get_space(char *str, size_t *length)
 {
-        char    *new_str;
-        size_t  i;
+	char	*new_str;
+	size_t	i;
 
-        if (*length == 0)
-                *length = 4096;
-        else
-                *length *= 2;
-        new_str = ft_calloc(sizeof(char), *length + 1);
-        if (!new_str)
-                return (0);
-        if (!str)
-                return (new_str);
-        i = -1;
-        while(str[++i])
-                new_str[i] = str[i];
-        free(str);
-        return (new_str);
+	if (*length == 0)
+		*length = 4096;
+	else
+		*length *= 2;
+	new_str = ft_calloc(sizeof(char), *length + 1);
+	if (!new_str)
+		return (0);
+	if (!str)
+		return (new_str);
+	i = -1;
+	while (str[++i])
+		new_str[i] = str[i];
+	free(str);
+	return (new_str);
 }
 
-char     *get_current_directory(void)
+char	*get_current_directory(void)
 {
-        char    *path;
-        char    *try;
-        size_t  length;
+	char	*path;
+	char	*try;
+	size_t	length;
 
-        length = 0;
-        try = 0;
-        path = 0;
-        while (!try)
-        {
-                path = get_space(path, &length);
-                if (!path)
-                   return (0);
-                try = getcwd(path, length);
-        }
-		length = ft_strlen(path);
-		try = ft_calloc(sizeof(char), length + 1);
-		if (!try)
+	length = 0;
+	try = 0;
+	path = 0;
+	while (!try)
+	{
+		path = get_space(path, &length);
+		if (!path)
 			return (0);
-		ft_strlcpy(try, path, length + 1);
-        free(path);
-		return (try);
+		try = getcwd(path, length);
+	}
+	length = ft_strlen(path);
+	try = ft_calloc(sizeof(char), length + 1);
+	if (!try)
+		return (0);
+	ft_strlcpy(try, path, length + 1);
+	free(path);
+	return (try);
 }
 
 t_dict	*getarg_env(char *line)
@@ -69,7 +69,7 @@ t_dict	*getarg_env(char *line)
 	size_t	key_count;
 	char	*value;
 	char	*key;
-	
+
 	value_count = 0;
 	key_count = 0;
 	while (line[key_count] != '=' && line[key_count])
@@ -111,17 +111,6 @@ t_dict	*get_env(char **env)
 	return (dict);
 }
 
-static void	init_builtins(t_shell **shell)
-{
-	(*shell)->builtins[0] = &cd_command;
-	(*shell)->builtins[1] = &echo_command;
-	(*shell)->builtins[2] = &env_command;
-	(*shell)->builtins[3] = &exit_command;
-	(*shell)->builtins[4] = &export_command;
-	(*shell)->builtins[5] = &pwd_command;
-	(*shell)->builtins[6] = &unset_command;
-}
-
 int	init_shell(t_shell *shell, char **env)
 {
 	shell->env = get_env(env);
@@ -129,11 +118,10 @@ int	init_shell(t_shell *shell, char **env)
 	shell->directory = get_current_directory();
 	if (shell->directory == 0)
 		return (-1);
-	if (set_default_variable(&shell->env) == -1)
+	if (set_default_variable(&shell) == -1)
 		return (-1);
 	shell->env_str = dict_to_array(shell->env);
 	shell->env = get_env(shell->env_str);
 	init_builtins(&shell);
 	return (0);
 }
-

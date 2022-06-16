@@ -1,43 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_cmd_line.h                                    :+:      :+:    :+:   */
+/*   init_builtins.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/16 10:37:06 by lgiband          ###   ########.fr       */
+/*   Created: 2022/06/16 10:42:07 by lgiband           #+#    #+#             */
+/*   Updated: 2022/06/16 10:44:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef READ_CMD_LINE_H
-# define READ_CMD_LINE_H
+#include "../../../include/minishell.h"
 
-# include "tree.h"
-
-enum	e_lexeme
+void	init_builtins(t_shell **shell)
 {
-	newline,
-	parenthesis_left,
-	parenthesis_right,
-	logical_or,
-	logical_and,
-	pipe,
-	redir_heredoc,
-	redir_stdin,
-	redir_append_stdout,
-	redir_stdout,
-	redir_stderr,
-	argument
-};
-
-typedef struct	s_token
-{
-	e_lexeme	lexeme;
-	int			i;
-	int			size;
-}				t_token;
-
-int	read_cmd_line(t_tree **cmd_line);
-
-#endif
+	(*shell)->builtins[0] = &cd_command;
+	(*shell)->builtins[1] = &echo_command;
+	(*shell)->builtins[2] = &env_command;
+	(*shell)->builtins[3] = &exit_command;
+	(*shell)->builtins[4] = &export_command;
+	(*shell)->builtins[5] = &pwd_command;
+	(*shell)->builtins[6] = &unset_command;
+}

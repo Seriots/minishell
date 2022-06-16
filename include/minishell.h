@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 15:40:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/16 11:39:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ int					run_pipe_commands(t_tree *commands, t_shell *shell);
 int					run_tree_commands(t_tree *commands, t_shell *shell);
 int					set_heredocs(t_tree *commands, t_shell *shell);
 
-
 /*
 //	SHELL
 */
@@ -138,7 +137,7 @@ int					set_heredocs(t_tree *commands, t_shell *shell);
 int					free_shell(t_shell *shell);
 
 /*init_shell.c*/
-int					set_default_variable(t_dict **env);
+int					set_default_variable(t_shell **shell);
 t_dict				*getarg_env(char *line);
 char				*get_current_directory(void);
 int					init_shell(t_shell *shell, char **env);
@@ -167,9 +166,12 @@ int					env_command(t_shell *shell, char **arguments);
 int					unset_command(t_shell *shell, char **arguments);
 int					pwd_command(t_shell *shell, char **arguments);
 
+/*init_builtins.c*/
+void				init_builtins(t_shell **shell);
+
 /*export_utils.c*/
 int					init_export_copy(t_shell *shell, t_dict **copy,
-							t_dict **export_copy);
+						t_dict **export_copy);
 int					print_export(t_shell *shell);
 int					invalid_identifier_export(char *arg);
 int					check_key(char *arg);

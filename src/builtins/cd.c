@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:18:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/15 19:13:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/16 11:36:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ static int	update_pwd(t_shell **shell, char *path)
 	}
 	else
 	{
+		oldpwd = dict_getelem_key((*shell)->export, "OLDPWD");
+		if (oldpwd)
+			dict_delone(&(*shell)->export, oldpwd, free, free);
 		oldpwd = dict_new(ft_malloc_str("OLDPWD"), pwd->value);
 		dict_add_back(&(*shell)->env, oldpwd, free, free);
 	}
