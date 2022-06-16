@@ -6,23 +6,20 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:25:29 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 16:10:19 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/16 19:53:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *s)
 {
-	int	size;
+	size_t	i;
 
-	if (!str)
+	i = 0;
+	if (!s)
 		return (0);
-	size = 0;
-	while (*str)
-	{
-		size++;
-		str++;
-	}
-	return (size);
+	while (*(s + i))
+		i ++;
+	return (i);
 }
