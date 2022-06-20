@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/19 22:17:04 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/20 01:59:05 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define READ_CMD_LINE_H
 
 # include "tree.h"
+
+# define LEXEME_NBR 12
 
 typedef enum	e_lexeme
 {
