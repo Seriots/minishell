@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 14:12:00 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/20 15:45:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/20 18:03:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ char	*replace_wildcard(char *input)
 	return (wild_str(wildcards, input));
 }
 
-/*
+
 int	main(int argc, char *argv[])
 {
 	char	*str;
@@ -150,4 +150,4 @@ int	main(int argc, char *argv[])
 	ft_printf("%s\n", str);
 	free (str);
 	return (0);
-}*/
+}

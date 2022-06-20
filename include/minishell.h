@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/20 15:35:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/20 22:18:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@
 # define END_SEP "\t\n\v\f\r <>|&"
 # define END_SEP_NOT_WSPACE "<>|&"
 # define WHITESPACES "\t\n\v\f\r "
+
+typedef struct s_wildstr
+{
+	char	**split;
+	int		check_first;
+	int		check_last;
+}			t_wildstr;
 
 typedef struct s_std
 {
@@ -180,6 +187,21 @@ int					check_value(char *arg);
 /**************************************************************/
 /*                         WILDCARDS                          */
 /**************************************************************/
+
+/*split_input_utils.c*/
+void				skip_quote_putwords(const char *s, int *position, char *quote);
+void				skip_quote_letters(char quote, const char *s, int *i, int *count);
+void				skip_quote_words(const char *s, int *i);
+
+/*split_input.c*/
+int					ft_split_w(char *str, t_wildstr *wildstr);
+static int			get_nb_words(char const *s, char c);
+static char			*ft_put_word(char const *s, char c, int *position);
+static int			ft_count_letters(char const *s, char c, int *position);
+
+/*new_wildcards.c*/
+t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
+char				**treat_wildcards(char *str, char **args, int pos);
 
 /*wildcards_utils.c*/
 int					get_next_str(char *str, unsigned int pos);
