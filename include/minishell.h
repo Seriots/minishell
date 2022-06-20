@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/16 11:39:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/20 15:35:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ typedef struct s_shell
 
 typedef int	(*t_set_redir)(t_command *, const char *, int, int);
 
-/*
-//	COMMANDS
-*/
+/**************************************************************/
+/*                          COMMANDS                          */
+/**************************************************************/
 void				free_argv(void *argv_addr);
 void				free_command(void *command);
 void				free_commands(t_tree *commands);
@@ -130,9 +130,9 @@ int					run_pipe_commands(t_tree *commands, t_shell *shell);
 int					run_tree_commands(t_tree *commands, t_shell *shell);
 int					set_heredocs(t_tree *commands, t_shell *shell);
 
-/*
-//	SHELL
-*/
+/**************************************************************/
+/*                           SHELL                            */
+/**************************************************************/
 /*free_shell.c*/
 int					free_shell(t_shell *shell);
 
@@ -155,9 +155,9 @@ void				get_sig(int sig, siginfo_t *siginfo, void *context);
 //	init_sigact.c
 struct sigaction	init_sigact(void);
 
-/*
-* BUILTINS
-*/
+/**************************************************************/
+/*                          BUILTINS                          */
+/**************************************************************/
 int					cd_command(t_shell *shell, char **arguments);
 int					echo_command(t_shell *shell, char **arguments);
 int					export_command(t_shell *shell, char **arguments);
@@ -176,4 +176,21 @@ int					print_export(t_shell *shell);
 int					invalid_identifier_export(char *arg);
 int					check_key(char *arg);
 int					check_value(char *arg);
+
+/**************************************************************/
+/*                         WILDCARDS                          */
+/**************************************************************/
+
+/*wildcards_utils.c*/
+int					get_next_str(char *str, unsigned int pos);
+char				*get_substr(char *str, unsigned int pos);
+unsigned int		is_substr(char *input, unsigned int pos, char *substr);
+int					comp(char *s1, char *s2, size_t n);
+size_t				get_size_list_contents(t_list *wildcards);
+
+/*wildcards_check_input.c*/
+int	check_first_part(char *input, char *name);
+int	check_last_part(char *input, char *name, unsigned int last_pos);
+int	check_middle_part(char *input, char *name, unsigned int *position,
+		int *next_str);
 #endif
