@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 01:57:02 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 02:25:32 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/19 23:46:10 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "read_cmd_line.h"
 
-# define WHITESPACES "\t\v\f\r "
+# define WHITESPACES "\t\v\f\r\n "
+# define END_ARG "\t\v\f\r\n ()|&<>"
 
 # define NEWLINE_STR "\n"
 # define PARENTHESIS_LEFT_STR "("
@@ -32,13 +33,13 @@
 
 typedef struct s_lexer_state
 {
-	e_lexeme	lexeme;
+	t_lexeme	lexeme;
 	int			i;
 	int			size;
 }	t_lexer_state;
 
 int			lexer(const char *input, t_token **tokens);
-e_lexeme	lexer_get_lexeme(const char *input);
+t_lexeme	lexer_get_lexeme(const char *input);
 int			lexer_init_state(t_lexer_state *lexer, const char *input);
 int			lexer_set_size(t_lexer_state *lexer, const char *input);
 int			lexer_update_state(t_lexer_state *lexer, const char *input);

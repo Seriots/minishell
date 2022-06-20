@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:30:57 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 01:42:41 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/20 00:09:29 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 static void	lexer_skip_whitespaces(t_lexer_state *lexer, const char *input)
 {
-	while (input[lexer->i] && ft_strchr(WHITESPACES, input[lexer->i]))
+	while (input[lexer->i] && ft_strchr(WHITESPACES, input[lexer->i]) != NULL
+		&& input[lexer->i] != '\n')
 		lexer->i += 1;
 }
 

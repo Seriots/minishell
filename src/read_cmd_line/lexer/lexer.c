@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/13 02:21:24 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/20 00:12:25 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 #include "lexer.h"
 #include "read_cmd_line.h"
 
-static int	lexor_error_format(const char *input)
+static int	lexer_error_format(const char *input)
 {
 	t_lexer_state	lexer;
 
 	if (lexer_init_state(&lexer, input) == -1)
 		return (1);
 	while (lexer.lexeme != newline)
-	{
 		if (lexer_update_state(&lexer, input) == -1)
 			return (1);
-	}
 	return (0);
 }
 
@@ -44,7 +42,7 @@ static int	lexer_count_tokens(const char *input)
 	return (count);
 }
 
-static int	lexer_set_token(t_token *token, t_lexer *lexer)
+static void	lexer_set_token(t_token *token, t_lexer_state *lexer)
 {
 	token->lexeme = lexer->lexeme;
 	token->i = lexer->i;
@@ -64,7 +62,7 @@ static int	lexer_set_tokens(t_token *tokens, const char *input)
 		i_token++;
 		lexer_update_state(&lexer, input);
 	}
-	lexer_set_token(tokens + i_token);
+	lexer_set_token(tokens + i_token, &lexer);
 	return (0);
 }
 
