@@ -1,0 +1,60 @@
+pwd
+OK
+echo coucou
+OK
+echo coucou (echo salut)
+KO
+echo coucou < input
+OK
+(echo coucou < input)
+OK
+echo coucou || echo salut
+OK
+echo coucou && echo salut
+OK
+echo coucou | echo salut
+OK
+(echo coucou) || cat salut
+OK
+input < cat > output > output2
+OK
+input < cat > output > output2 < nase | cat
+OK
+input && < oui ||
+KO
+echo oui && && echo salul
+KO
+echo oui || || echo salul
+KO
+echo oui yui>poi<oiu echo salul
+OK
+((((echo salul | cat Makefile))|re)
+KO
+((((echo salul | cat Makefile) | > out ) | re))
+OK
+(comment va) | ( salut ca va et toi )
+OK
+(comment va) ( salut ca va et toi )
+KO
+( re|| salut || ca || va && et &&roi)>> loi
+OK
+( re|| salut || ca || va && et && roi )r
+KO
+(l|F|F|F||F|F||F||FF||F|F||F|F||F|F|F||F|F||F|F||F|F|F||F|l)
+OK
+(l|(F|F|F||F)|(F||F||(FF||F|F||(F)|F||F|F|F)||F|F||F|F||F|F|F||F|l))
+OK
+yourrra <<iuhg>>opo>poiuy
+OK
+yourrra cmd | cmd || ( o) && le rat | (saute &&(meurt || (la falaise)))
+OK
+(cat) |< ressources_test_checker.txt c cho la
+OK
+< input (cat)
+KO
+ya pu de nourriture | aled << here | cat
+OK
+ya pu de nourriture | aled << here && cat
+OK
+ya pu de nourriture | aled << here || cat
+OK
