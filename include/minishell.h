@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/20 22:18:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/21 18:59:25 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,18 +201,7 @@ static int			ft_count_letters(char const *s, char c, int *position);
 
 /*new_wildcards.c*/
 t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
-char				**treat_wildcards(char *str, char **args, int pos);
+int					treat_wildcards(char *str, char **args, int pos, t_wildstr *result);
+t_list				*replace_wildcards(char *str);
 
-/*wildcards_utils.c*/
-int					get_next_str(char *str, unsigned int pos);
-char				*get_substr(char *str, unsigned int pos);
-unsigned int		is_substr(char *input, unsigned int pos, char *substr);
-int					comp(char *s1, char *s2, size_t n);
-size_t				get_size_list_contents(t_list *wildcards);
-
-/*wildcards_check_input.c*/
-int	check_first_part(char *input, char *name);
-int	check_last_part(char *input, char *name, unsigned int last_pos);
-int	check_middle_part(char *input, char *name, unsigned int *position,
-		int *next_str);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:11:30 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/20 22:14:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/21 15:07:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,9 @@ int	ft_split_w(char *str, t_wildstr *wildstr)
 		return (-1);
 	wildstr = init_wildstr(str, wildstr);
 	nb_words = get_nb_words(str, '*');
-	ft_printf("%d\n", nb_words);
 	split_result = (char **)malloc(sizeof(char *) * (nb_words + 1));
 	if (!split_result)
-		return (0);
+		return (-1);
 	split_result[nb_words] = 0;
 	i = 0;
 	pos = 0;
