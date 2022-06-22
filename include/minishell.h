@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/21 18:59:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/22 13:04:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,20 @@ static int			get_nb_words(char const *s, char c);
 static char			*ft_put_word(char const *s, char c, int *position);
 static int			ft_count_letters(char const *s, char c, int *position);
 
-/*new_wildcards.c*/
+/*check_part.c*/
+int					check_last_part(char *str, char *split, size_t *pos, size_t *pos_array);
+int					check_middle_part(char *str, t_wildstr *split,
+						size_t *pos, size_t *pos_array);
+int					check_first_part(char *str, char *split, size_t *pos, size_t *pos_array);
+
+/*wildcards_utils.c*/
+int					is_addable(char *d_name, t_wildstr *split);
+t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
+char				**list_to_array(t_list *result);
+void				insert_wildcard_add(t_list **next, t_list **current,
+						t_list **new, t_list **pre);
+
+/*wildcards.c*/
 t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
 int					treat_wildcards(char *str, char **args, int pos, t_wildstr *result);
 t_list				*replace_wildcards(char *str);

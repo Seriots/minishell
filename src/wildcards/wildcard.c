@@ -1,113 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_wildcard.c                                     :+:      :+:    :+:   */
+/*   wildcard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:07:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/21 20:02:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/22 13:02:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <dirent.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
 #include "../../include/list.h"
 #include "../../include/minishell.h"
-
-t_wildstr	*init_wildstr(char *str, t_wildstr *wildstr)
-{
-	wildstr->check_first = 0;
-	wildstr->check_last = 0;
-	wildstr->split = 0;
-	if (!str || ft_strlen(str) == 0)
-		return(wildstr);
-	if (str[0] != '*')
-		wildstr->check_first = 1;
-	if (str[ft_strlen(str) - 1] != '*')
-		wildstr->check_last = 1;
-	return (wildstr);
-}
-
-int	check_first_part(char *str, char *split, size_t *pos, size_t *pos_array)
-{
-	if (ft_strncmp(str, split, ft_strlen(split)) != 0)
-		return (1);
-	*pos += ft_strlen(split);
-	*pos_array += 1;
-	return (0);
-}
-
-int	check_middle_part(char *str, t_wildstr *split,
-	size_t *pos, size_t *pos_array)
-{
-	while (str[*pos] && split->split[*pos_array]
-		&& ((split->check_last && *pos_array != ft_arraylen(split->split) - 1)
-			|| !split->check_last && *pos_array != ft_arraylen(split->split)))
-	{
-		if (ft_strncmp(&str[*pos], split->split[*pos_array],
-				ft_strlen(split->split[*pos_array])) == 0)
-		{	
-			*pos += ft_strlen(split->split[*pos_array]) - 1;
-			*pos_array += 1;
-		}
-		*pos += 1;
-	}
-	if (str[*pos] == 0
-		&& ((split->check_last && *pos_array != ft_arraylen(split->split) - 1)
-			|| *pos_array != ft_arraylen(split->split)))
-		return (1);
-	return (0);
-}
-
-int	check_last_part(char *str, char *split, size_t *pos, size_t *pos_array)
-{
-	while (str[*pos])
-	{
-		if (ft_strncmp(&str[*pos], split, ft_strlen(split) + 1) == 0)
-		{
-			*pos_array += 1;
-			return (0);
-		}
-		*pos += 1;
-	}
-	return (1);
-}
-
-int	is_addable(char *d_name, t_wildstr *split)
-{
-	size_t		pos_array;
-	size_t		pos;
-	size_t		is_ok;
-
-	if (!ft_arraylen(split->split))
-		return (1);
-	pos_array = 0;
-	pos = 0;
-	if (pos_array == 1)
-		return (ft_strncmp(d_name, split->split[0], ft_strlen(d_name) + 1));
-	if (split->check_first)
-	{
-		is_ok = check_first_part(d_name, split->split[0], &pos, &pos_array);
-		if (is_ok)
-			return (1);
-	}
-	is_ok = check_middle_part(d_name, split, &pos, &pos_array);
-	if (is_ok)
-		return (1);
-	if (split->check_last)
-	{
-		is_ok = check_last_part(d_name,
-				split->split[ft_arraylen(split->split) - 1], &pos, &pos_array);
-		if (is_ok)
-			return (1);
-	}
-	return (0);
-}
 
 void	add_to_result(t_list **result, char *elem, int hide_file)
 {
@@ -130,31 +39,6 @@ void	add_to_result(t_list **result, char *elem, int hide_file)
 			return ;
 		list_add_back(result, new);
 	}
-}
-
-char	**list_to_array(t_list *result)
-{
-	int		nb_elem;
-	char	**output;
-	int		i;
-	t_list	*pre;
-
-	if (!result)
-		return (0);
-	i = 0;
-	nb_elem = list_size(result);
-	output = ft_calloc(sizeof(char *), nb_elem + 1);
-	if (!output)
-		return (0);
-	while (result)
-	{
-		pre = result;
-		output[i] = result->content;
-		result = result->next;
-		free(pre);
-		i++;
-	}
-	return (output);
 }
 
 t_list	*replace_wildcards(char *str)
@@ -184,16 +68,6 @@ t_list	*replace_wildcards(char *str)
 	closedir(dir);
 	ft_free_tab(split.split);
 	return (result);
-}
-
-void	insert_wildcard_add(t_list **next, t_list **current,
-		t_list **new, t_list **pre)
-{
-	*next = (*current)->next;
-	*pre = list_last(*new);
-	list_last(*new)->next = *next;
-	list_delone(*current, free);
-	*current = *next;
 }
 
 void	complete_args(t_list **args)
@@ -258,10 +132,10 @@ int	main(int argc, char *argv[])
 	str = 0;
 	i = -1;
 	args = ft_calloc(sizeof(char *), 4);
-	args[0] = ft_calloc(sizeof(char *), ft_strlen("'l'") + 1);
+	args[0] = ft_calloc(sizeof(char *), ft_strlen("MakeileMakefile") + 1);
 	args[1] = ft_calloc(sizeof(char *), ft_strlen("*Ma*k*f*le") + 1);
 	args[2] = ft_calloc(sizeof(char *), ft_strlen("*e*") + 1);
-	ft_strlcpy(args[0], "'l'", ft_strlen("'l'") + 1);
+	ft_strlcpy(args[0], "MakefileMakefile", ft_strlen("MakefileMakefile") + 1);
 	ft_strlcpy(args[2], "*e*", ft_strlen("*e*") + 1);
 	ft_strlcpy(args[1], "*Ma*k*f*le", ft_strlen("*Ma*k*f*le") + 1);
 	str = replace_args(args);
