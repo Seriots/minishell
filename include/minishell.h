@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/22 13:04:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/23 15:49:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,4 +217,17 @@ t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
 int					treat_wildcards(char *str, char **args, int pos, t_wildstr *result);
 t_list				*replace_wildcards(char *str);
 
+/**************************************************************/
+/*                          ENV_ARGS                          */
+/**************************************************************/
+
+/*env_arguments_utils*/
+int					oppose_quote(int is_quoted);
+char				*get_var(char *input, int pos);
+size_t				get_size_var(char *var, t_dict *env);
+size_t				concat_var(char *var, t_dict *env, char **result, size_t nb_letters);
+int					ft_is_varchar(char c);
+
+/*env_arguments.c*/
+char				**change_vars_in_args(char **args, t_dict *env);
 #endif
