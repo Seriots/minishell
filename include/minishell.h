@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/24 18:00:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 20:04:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,4 +237,6 @@ char				**change_vars_in_args(char **args, t_dict *env);
 /**************************************************************/
 
 char				**input_modification(char **input, t_dict *dict);
+char				*remove_quotes(char *input);
+char				**removes_quotes(char **input);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:29:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 17:58:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 18:55:48 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,25 +145,3 @@ char	**change_vars_in_args(char **args, t_dict *env)
 	}
 	return (args);
 }
-
-/*
-int	main(int argc, char *argv[])
-{
-	t_dict	*dict;
-	char	**result;
-	int		i;
-
-	dict = 0;
-	i = -1;
-	dict_add_back(&dict, dict_new("oui", "nooir"), free, free);
-	dict_add_back(&dict, dict_new("ok", "ko"), free, free);
-	dict_add_back(&dict, dict_new("toi", "rip"), free, free);
-	result = change_vars_in_args(argv, dict);
-	while (result[++i])
-	{
-		ft_printf("%s\n", result[i]);
-		free (result[i]);
-	}
-	dict_clear(dict, 0, 0);
-	free(result);
-}*/

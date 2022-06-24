@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:07:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 17:39:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 20:05:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	complete_args(t_list **args)
 		}
 		else
 		{
+			current->content = remove_quotes(current->content);
 			pre = current;
 			current = current->next;
 		}

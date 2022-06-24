@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 17:59:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 19:59:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ char	**input_modification(char **input, t_dict *dict)
 	input = replace_args(input);
 	if (!input)
 		return (0);
+	//input = removes_quotes(input);
+	//if (!input)
+	//	return (0);
 	return (input);
 }
 
-/*int	main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_dict	*dict;
 	char	**result;
@@ -63,4 +66,4 @@ char	**input_modification(char **input, t_dict *dict)
 	}
 	dict_clear(dict, 0, 0);
 	free(result);
-}*/
+}
