@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/24 20:04:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/25 00:52:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_shell
 	char	**env_str;
 	t_dict	*export;
 	char	*directory;
+	char	*return_value;
 	int		(*builtins[7])(struct s_shell *shell, char **arguments);
 }	t_shell;
 
@@ -233,10 +234,21 @@ int					ft_is_varchar(char c);
 char				**change_vars_in_args(char **args, t_dict *env);
 
 /**************************************************************/
+/*                      SPECIAL_CHAR                          */
+/**************************************************************/
+
+/*question_mark.c*/
+size_t				count_q_mark(size_t *i, char *return_value);
+size_t				replace_q_mark(size_t *i, char **new, int size, char *return_value);
+
+/*replace_special_args.c*/
+char				**replace_special_args(char **input, t_shell *shell);
+
+/**************************************************************/
 /*                    INPUT_MODIFICATION                      */
 /**************************************************************/
 
-char				**input_modification(char **input, t_dict *dict);
+char				**input_modification(char **input, t_shell *shell);
 char				*remove_quotes(char *input);
 char				**removes_quotes(char **input);
 #endif

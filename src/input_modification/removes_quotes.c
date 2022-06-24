@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_parethensis.c                               :+:      :+:    :+:   */
+/*   removes_quotes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 19:11:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 19:51:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/25 00:25:13 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ void	get_str_minus_q(char **new, char *input)
 			else if (input[i] == quote)
 				quote = 0;
 		}
-		if (!(input[i] == quote || ((input[i] == '\'' || input[i] == '\"') && quote == 0)))
-			(*new)[size++] = input[i]; 
+		if (!(input[i] == quote
+				|| ((input[i] == '\'' || input[i] == '\"') && quote == 0)))
+			(*new)[size++] = input[i];
 		i ++;
 	}
 }
@@ -82,7 +83,6 @@ char	*remove_quotes(char *input)
 	get_str_minus_q(&new, input);
 	free(input);
 	return (new);
-	
 }
 
 char	**removes_quotes(char **input)
@@ -96,7 +96,12 @@ char	**removes_quotes(char **input)
 	{
 		input[i] = remove_quotes(input[i]);
 		if (!input[i])
+		{
+			while (input[++i])
+				free (input[i]);
+			ft_free_tab(input);
 			return (0);
+		}
 		i++;
 	}
 	return (input);
