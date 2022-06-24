@@ -6,15 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 15:45:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/23 15:46:26 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 17:58:36 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../../include/minishell.h"
-#include "../../include/libft.h"
-#include "../../include/dict.h"
-#include "../../include/ft_printf.h"
+#include "../../../include/minishell.h"
+#include "../../../include/libft.h"
+#include "../../../include/dict.h"
+#include "../../../include/ft_printf.h"
 
 int	oppose_quote(int is_quoted)
 {
@@ -29,8 +29,7 @@ char	*get_var(char *input, int pos)
 	size_t	size;
 
 	size = 0;
-	while (input[pos + size] != '\0' && input[pos + size] != ' '
-		&& input[pos + size] != '$')
+	while (ft_is_varchar(input[pos + size]))
 		size += 1;
 	var = ft_calloc(sizeof(char), size + 1);
 	if (!var)

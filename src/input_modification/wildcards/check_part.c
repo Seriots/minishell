@@ -6,17 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:00:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/22 13:00:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 17:04:14 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <dirent.h>
 #include <stdlib.h>
-#include "../../include/libft.h"
-#include "../../include/ft_printf.h"
-#include "../../include/list.h"
-#include "../../include/minishell.h"
+#include "../../../include/libft.h"
+#include "../../../include/ft_printf.h"
+#include "../../../include/list.h"
+#include "../../../include/minishell.h"
 
 int	check_first_part(char *str, char *split, size_t *pos, size_t *pos_array)
 {

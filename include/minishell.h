@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/23 15:49:17 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 18:00:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ void				insert_wildcard_add(t_list **next, t_list **current,
 t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
 int					treat_wildcards(char *str, char **args, int pos, t_wildstr *result);
 t_list				*replace_wildcards(char *str);
+char				**replace_args(char **argv);
 
 /**************************************************************/
 /*                          ENV_ARGS                          */
@@ -230,4 +231,10 @@ int					ft_is_varchar(char c);
 
 /*env_arguments.c*/
 char				**change_vars_in_args(char **args, t_dict *env);
+
+/**************************************************************/
+/*                    INPUT_MODIFICATION                      */
+/**************************************************************/
+
+char				**input_modification(char **input, t_dict *dict);
 #endif

@@ -6,15 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:29:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/23 15:48:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 17:58:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../../include/minishell.h"
-#include "../../include/libft.h"
-#include "../../include/dict.h"
-#include "../../include/ft_printf.h"
+#include "../../../include/minishell.h"
+#include "../../../include/libft.h"
+#include "../../../include/dict.h"
+#include "../../../include/ft_printf.h"
 
 int	make_check_char(char *input, t_dict *env, int *pos, char **result)
 {
@@ -54,12 +54,18 @@ char	*make_new_str(char *input, t_dict *env, size_t nb_letters)
 	pos = 0;
 	result = ft_calloc(sizeof(char), nb_letters + 1);
 	if (!result)
+	{
+		free (input);
 		return (0);
+	}
 	while (input[pos])
 	{
 		is_error = make_check_char(input, env, &pos, &result);
 		if (is_error)
+		{
+			free (input);
 			return (0);
+		}
 		pos += 1;
 	}
 	free(input);
@@ -105,12 +111,19 @@ char	*get_env_arguments(char *input, t_dict *env)
 	{
 		is_error = check_char(input, env, &pos, &nb_letters);
 		if (is_error)
+		{
+			free (input);
 			return (0);
+		}
 		pos ++;
 	}
 	return (make_new_str(input, env, nb_letters));
 }
 
+/*
+* Convert each array like '$...' to the corresponding value in the env.
+* If the value isn't in the dict, '\0' the array is replace by '\0'.
+*/
 char	**change_vars_in_args(char **args, t_dict *env)
 {
 	int	i;
@@ -121,6 +134,13 @@ char	**change_vars_in_args(char **args, t_dict *env)
 	while (args[i])
 	{
 		args[i] = get_env_arguments(args[i], env);
+		if (args[i] == 0)
+		{
+			while (args[++i])
+				free(args[i]);
+			ft_free_tab(args);
+			return (0);
+		}
 		i ++;
 	}
 	return (args);

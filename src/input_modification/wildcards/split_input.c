@@ -6,17 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:11:30 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/21 15:07:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 17:44:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <dirent.h>
 #include <stdlib.h>
-#include "../../include/libft.h"
-#include "../../include/ft_printf.h"
-#include "../../include/list.h"
-#include "../../include/minishell.h"
+#include "../../../include/libft.h"
+#include "../../../include/ft_printf.h"
+#include "../../../include/list.h"
+#include "../../../include/minishell.h"
 
 static int	ft_count_letters(char const *s, char c, int *position)
 {

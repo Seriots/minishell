@@ -6,17 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:07:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/22 13:02:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/24 17:39:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <dirent.h>
 #include <stdlib.h>
-#include "../../include/libft.h"
-#include "../../include/ft_printf.h"
-#include "../../include/list.h"
-#include "../../include/minishell.h"
+#include "../../../include/libft.h"
+#include "../../../include/ft_printf.h"
+#include "../../../include/list.h"
+#include "../../../include/minishell.h"
 
 void	add_to_result(t_list **result, char *elem, int hide_file)
 {
@@ -36,7 +36,10 @@ void	add_to_result(t_list **result, char *elem, int hide_file)
 			copy[i] = elem[i];
 		new = list_new(copy);
 		if (!new)
+		{
+			free(copy);
 			return ;
+		}
 		list_add_back(result, new);
 	}
 }
@@ -98,7 +101,7 @@ void	complete_args(t_list **args)
 	}
 }
 
-char	**replace_args(char *argv[])
+char	**replace_args(char **argv)
 {
 	t_list	*args;
 	t_list	*new;
@@ -113,16 +116,19 @@ char	**replace_args(char *argv[])
 		new = list_new(argv[i]);
 		if (!new)
 		{
-			list_clear(&args, free);
+			list_clear(&args, 0);
+			ft_free_tab(argv);
 			return (0);
 		}
 		list_add_back(&args, new);
 		i ++;
 	}
 	complete_args(&args);
+	free(argv);
 	return (list_to_array(args));
 }
 
+/*
 int	main(int argc, char *argv[])
 {
 	char	**str;
@@ -147,4 +153,4 @@ int	main(int argc, char *argv[])
 	free(args);
 	free(str);
 	return (0);
-}
+}*/
