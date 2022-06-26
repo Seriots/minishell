@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:40:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/13 14:59:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:46:26 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	echo_command(t_shell *shell, char **arguments)
 
 	(void)shell;
 	if (!arguments)
-		return (-1);
+		return (1);
 	if (arguments[0] == 0)
 		option = 0;
 	else if (!ft_strncmp("-n", arguments[0], ft_strlen(arguments[0])))

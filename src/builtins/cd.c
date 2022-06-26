@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:18:54 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/16 11:36:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:46:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 /*
 * cd builtin command, change the current directory to current_directory/path
-* on error, return -1 and set errno.
+* on error, return 1 and set errno.
 */
 static char	*get_path(t_shell *shell,
 		char **arguments, size_t argc)
@@ -66,7 +66,7 @@ static int	update_pwd(t_shell **shell, char *path)
 	pwd = dict_getelem_key((*shell)->env, "PWD");
 	oldpwd = dict_getelem_key((*shell)->env, "OLDPWD");
 	if (!pwd)
-		return (-1);
+		return (1);
 	if (oldpwd)
 	{
 		free(oldpwd->value);
@@ -83,7 +83,7 @@ static int	update_pwd(t_shell **shell, char *path)
 	size = ft_strlen(path);
 	new_path = ft_calloc(sizeof(char), size + 1);
 	if (!new_path)
-		return (-1);
+		return (1);
 	ft_strlcpy(new_path, path, size + 1);
 	pwd->value = new_path;
 	return (0);
@@ -100,12 +100,12 @@ int	is_minus(t_shell **shell)
 	if (!pwd)
 	{
 		ft_putstr_fd("cd: PWD not set\n", 2);
-		return (-1);
+		return (1);
 	}
 	if (!oldpwd)
 	{
 		ft_putstr_fd("cd: OLDPWD not set\n", 2);
-		return (-1);
+		return (1);
 	}
 	wit = pwd->value;
 	pwd->value = oldpwd->value;
@@ -126,7 +126,7 @@ int	cd_command(t_shell *shell, char **arguments)
 	if (argc > 1)
 	{
 		ft_putstr_fd("cd: too many arguments\n", STDERR_FILENO);
-		return (-1);
+		return (1);
 	}
 	if (argc == 1 && !ft_strncmp(arguments[0], "-", ft_strlen(arguments[0])))
 		return (is_minus(&shell));
@@ -144,9 +144,9 @@ int	cd_command(t_shell *shell, char **arguments)
 		free(shell->directory);
 		shell->directory = get_current_directory();
 		if (update_pwd(&shell, shell->directory))
-			return (-1);
+			return (1);
 		if (!shell->directory)
-			return (-1);
+			return (1);
 	}
 	return (0);
 }

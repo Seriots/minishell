@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:49:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/13 17:09:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:49:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_export_copy(t_shell *shell, t_dict **copy,
 	{
 		*copy = dict_copy(shell->env);
 		if (!*copy)
-			return (-1);
+			return (1);
 	}
 	if (shell->export)
 	{
@@ -31,7 +31,7 @@ int	init_export_copy(t_shell *shell, t_dict **copy,
 		if (!*export_copy)
 		{
 			dict_clear(*copy, free, free);
-			return (-1);
+			return (1);
 		}
 		dict_append(copy, export_copy);
 	}
@@ -47,7 +47,7 @@ int	print_export(t_shell *shell)
 	export_copy = 0;
 	copy = 0;
 	if (init_export_copy(shell, &copy, &export_copy))
-		return (-1);
+		return (1);
 	export_copy = copy;
 	while (copy)
 	{
@@ -70,7 +70,7 @@ int	invalid_identifier_export(char *arg)
 	ft_putstr_fd("export: `", 2);
 	ft_putstr_fd(arg, 2);
 	ft_putstr_fd("': not a valid identifier\n", 2);
-	return (-1);
+	return (1);
 }
 
 int	check_key(char *arg)
