@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/25 00:16:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:34:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	**input_modification(char **input, t_shell *shell)
 {
 	if (!input)
 		return (0);
-	//input = replace_special_args(input, shell);
-	//if (!input)
-	//	return (0);
+	input = replace_special_args(input, shell);
+	if (!input)
+		return (0);
 	input = change_vars_in_args(input, shell->env);
 	if (!input)
 		return (0);
@@ -31,7 +31,7 @@ char	**input_modification(char **input, t_shell *shell)
 	return (input);
 }
 
-
+/*
 int	main(int argc, char *argv[])
 {
 	t_dict	*dict;
@@ -67,4 +67,4 @@ int	main(int argc, char *argv[])
 	}
 	dict_clear(dict, 0, 0);
 	free(result);
-}
+}*/

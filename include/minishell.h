@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/25 00:52:50 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:30:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_shell
 	char	**env_str;
 	t_dict	*export;
 	char	*directory;
-	char	*return_value;
+	int		return_value;
 	int		(*builtins[7])(struct s_shell *shell, char **arguments);
 }	t_shell;
 

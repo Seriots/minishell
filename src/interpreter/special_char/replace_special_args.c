@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:20:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/25 00:52:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:35:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	count_letters_plus_special(char *input, t_shell *shell)
 	while (input[i])
 	{
 		if (!ft_strncmp(&input[i], "$?", 2))
-			size += count_q_mark(&i, shell->return_value);
+			size += count_q_mark(&i, ft_itoa(shell->return_value));
 		else
 		{
 			i ++;
@@ -45,7 +45,7 @@ size_t	input_plus_special_char(char **new, char *input, t_shell *shell)
 	while (input[i])
 	{
 		if (!ft_strncmp(&input[i], "$?", 2))
-			size += replace_q_mark(&i, new, size, shell->return_value);
+			size += replace_q_mark(&i, new, size, ft_itoa(shell->return_value));
 		else
 		{
 			(*new)[size] = input[i];
@@ -60,7 +60,7 @@ char	*replace_special_char(char *input, t_shell *shell)
 {
 	char	*new_str;
 	size_t	size;
-	
+
 	size = count_letters_plus_special(input, shell);
 	new_str = ft_calloc(sizeof(char), size + 1);
 	if (!new_str)

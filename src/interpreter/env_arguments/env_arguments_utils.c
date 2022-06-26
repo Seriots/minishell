@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 15:45:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/25 00:13:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:35:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ size_t	concat_var(char *var, t_dict *env, char **result, size_t nb_letters)
 
 int	ft_is_varchar(char c)
 {
-	if (ft_isalnum(c))  // || c == '_'
+	if (ft_isalnum(c))
 		return (1);
 	return (0);
 }
