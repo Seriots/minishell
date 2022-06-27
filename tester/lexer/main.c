@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 20:19:59 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/20 00:31:09 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:49:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "lexer.h"
-#include "libft.h"
-#include "read_cmd_line.h"
+#include "../../include/lexer.h"
+#include "../../include/libft.h"
+#include "../../include/read_cmd_line.h"
 
 int	check_crash(int ret_value)
 {

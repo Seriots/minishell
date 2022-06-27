@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:49:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/13 15:01:13 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:47:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int	add_to_export(t_shell *shell, char *copy, t_dict *new, char *arg)
 {
 	copy = ft_calloc(sizeof(char), ft_strlen(arg) + 1);
 	if (!copy)
-		return (-1);
+		return (1);
 	ft_strlcpy(copy, arg, ft_strlen(arg) + 1);
 	new = dict_new(copy, 0);
 	if (!new)
 	{
 		free (copy);
-		return (-1);
+		return (1);
 	}
 	dict_add_back(&shell->export, new, free, free);
 	return (0);
@@ -51,7 +51,7 @@ static int	treat_export(t_shell *shell, char *arg)
 	{
 		new = getarg_env(arg);
 		if (!new)
-			return (-1);
+			return (1);
 		search = dict_getelem_key(shell->export, new->key);
 		if (search)
 			dict_delone(&shell->export, search, free, free);
@@ -83,7 +83,7 @@ static int	concat_input(t_shell *shell, char *key, char *value, t_dict *search)
 		{
 			free (key);
 			free (value);
-			return (-1);
+			return (1);
 		}
 		dict_add_back(&shell->env, new, free, free);
 		search = dict_getelem_key(shell->export, new->key);
@@ -105,12 +105,12 @@ static int	treat_export_concat(t_shell *shell, char *arg)
 		i++;
 	key = ft_substr(arg, 0, i);
 	if (!key)
-		return (-1);
+		return (1);
 	value = ft_substr(arg, i + 2, ft_strlen(arg) - i - 2);
 	if (!value)
 	{
 		free (key);
-		return (-1);
+		return (1);
 	}
 	search = dict_getelem_key(shell->env, key);
 	return (concat_input(shell, key, value, search));

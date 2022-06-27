@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/20 15:35:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/27 11:19:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@
 # define END_SEP_NOT_WSPACE "<>|&"
 # define WHITESPACES "\t\n\v\f\r "
 
+typedef struct s_wildstr
+{
+	char	**split;
+	int		check_first;
+	int		check_last;
+}			t_wildstr;
+
 typedef struct s_std
 {
 	char	*pathfile;
@@ -65,6 +72,7 @@ typedef struct s_shell
 	char	**env_str;
 	t_dict	*export;
 	char	*directory;
+	int		return_value;
 	int		(*builtins[7])(struct s_shell *shell, char **arguments);
 }	t_shell;
 
@@ -181,16 +189,66 @@ int					check_value(char *arg);
 /*                         WILDCARDS                          */
 /**************************************************************/
 
-/*wildcards_utils.c*/
-int					get_next_str(char *str, unsigned int pos);
-char				*get_substr(char *str, unsigned int pos);
-unsigned int		is_substr(char *input, unsigned int pos, char *substr);
-int					comp(char *s1, char *s2, size_t n);
-size_t				get_size_list_contents(t_list *wildcards);
+/*split_input_utils.c*/
+void				skip_quote_putwords(const char *s, int *position, char *quote);
+void				skip_quote_letters(char quote, const char *s, int *i, int *count);
+void				skip_quote_words(const char *s, int *i);
 
-/*wildcards_check_input.c*/
-int	check_first_part(char *input, char *name);
-int	check_last_part(char *input, char *name, unsigned int last_pos);
-int	check_middle_part(char *input, char *name, unsigned int *position,
-		int *next_str);
+/*split_input.c*/
+int					ft_split_w(char *str, t_wildstr *wildstr);
+static int			get_nb_words(char const *s, char c);
+static char			*ft_put_word(char const *s, char c, int *position);
+static int			ft_count_letters(char const *s, char c, int *position);
+
+/*check_part.c*/
+int					check_last_part(char *str, char *split, size_t *pos, size_t *pos_array);
+int					check_middle_part(char *str, t_wildstr *split,
+						size_t *pos, size_t *pos_array);
+int					check_first_part(char *str, char *split, size_t *pos, size_t *pos_array);
+
+/*wildcards_utils.c*/
+int					is_addable(char *d_name, t_wildstr *split);
+t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
+char				**list_to_array(t_list *result);
+void				insert_wildcard_add(t_list **next, t_list **current,
+						t_list **new, t_list **pre);
+
+/*wildcards.c*/
+t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
+int					treat_wildcards(char *str, char **args, int pos, t_wildstr *result);
+t_list				*replace_wildcards(char *str);
+char				**replace_args(char **argv);
+
+/**************************************************************/
+/*                          ENV_ARGS                          */
+/**************************************************************/
+
+/*env_arguments_utils*/
+int					oppose_quote(int is_quoted);
+char				*get_var(char *input, int pos);
+size_t				get_size_var(char *var, t_dict *env);
+size_t				concat_var(char *var, t_dict *env, char **result, size_t nb_letters);
+int					ft_is_varchar(char c);
+
+/*env_arguments.c*/
+char				**change_vars_in_args(char **args, t_dict *env);
+
+/**************************************************************/
+/*                      SPECIAL_CHAR                          */
+/**************************************************************/
+
+/*question_mark.c*/
+size_t				count_q_mark(size_t *i, char *return_value);
+size_t				replace_q_mark(size_t *i, char **new, int size, char *return_value);
+
+/*replace_special_args.c*/
+char				**replace_special_args(char **input, t_shell *shell);
+
+/**************************************************************/
+/*                    INPUT_MODIFICATION                      */
+/**************************************************************/
+
+char				**interpreter(char **input, t_shell *shell);
+char				*remove_quotes(char *input);
+char				**removes_quotes(char **input);
 #endif

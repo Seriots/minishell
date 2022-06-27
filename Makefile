@@ -19,57 +19,56 @@ HEADER_NAMES= dict \
 			  list \
 			  tree
 
-SRC_NAMES	= test
-#				main \
-#			  shell/free_shell \
-#			  shell/init_shell \
-#			  shell/run_shell \
-#			  shell/utils/init_env_variable \
-#			  shell/utils/init_builtins \
-#			  signals/init_sigact \
-#			  signals/handle_signals \
-#			  builtins/utils/export_utils \
-#			  builtins/cd \
-#			  builtins/echo \
-#			  builtins/env \
-#			  builtins/exit \
-#			  builtins/export \
-#			  builtins/pwd \
-#			  builtins/unset \
-#			  commands/free_command \
-#			  commands/free_commands \
-#			  commands/get_commands/get_bzero_command \
-#			  commands/get_commands/get_command \
-#			  commands/get_commands/get_commands \
-#			  commands/get_commands/parse_input \
-#			  commands/get_commands/parse_input_and \
-#			  commands/get_commands/parse_input_brackets \
-#			  commands/get_commands/parse_input_or \
-#			  commands/get_commands/parse_input_pipe \
-#			  commands/get_commands/parse_input_simple \
-#			  commands/get_commands/set_arguments \
-#			  commands/get_commands/set_redirections \
-#			  commands/get_commands/utils/count_arguments \
-#			  commands/get_commands/utils/count_redirections \
-#			  commands/get_commands/utils/get_argument_after \
-#			  commands/get_commands/utils/get_argument \
-#			  commands/get_commands/utils/is_argument_equal_to \
-#			  commands/get_commands/utils/is_argument_in_input \
-#			  commands/get_commands/utils/is_argument_sep \
-#			  commands/get_commands/utils/is_between_brackets \
-#			  commands/get_commands/utils/is_sep_equal_to \
-#			  commands/get_commands/utils/skip_argument \
-#			  commands/get_commands/utils/skip_redirections \
-#			  commands/get_commands/utils/skip_sep \
-#			  commands/get_commands/utils/skip_to \
-#			  commands/get_commands/utils/skip_to_next_argument \
-#			  commands/get_commands/utils/skip_whitespaces \
-#			  commands/run_commands/fork_and_run_sub_commands \
-#			  commands/run_commands/run_command \
-#			  commands/run_commands/run_commands \
-#			  commands/run_commands/run_pipe_commands \
-#			  commands/run_commands/run_tree_commands \
-#			  commands/run_commands/set_heredocs
+SRC_NAMES	= main \
+			  shell/free_shell \
+			  shell/init_shell \
+			  shell/run_shell \
+			  shell/utils/init_env_variable \
+			  shell/utils/init_builtins \
+			  signals/init_sigact \
+			  signals/handle_signals \
+			  builtins/utils/export_utils \
+			  builtins/cd \
+			  builtins/echo \
+			  builtins/env \
+			  builtins/exit \
+			  builtins/export \
+			  builtins/pwd \
+			  builtins/unset \
+			  commands/free_command \
+			  commands/free_commands \
+			  commands/get_commands/get_bzero_command \
+			  commands/get_commands/get_command \
+			  commands/get_commands/get_commands \
+			  commands/get_commands/parse_input \
+			  commands/get_commands/parse_input_and \
+			  commands/get_commands/parse_input_brackets \
+			  commands/get_commands/parse_input_or \
+			  commands/get_commands/parse_input_pipe \
+			  commands/get_commands/parse_input_simple \
+			  commands/get_commands/set_arguments \
+			  commands/get_commands/set_redirections \
+			  commands/get_commands/utils/count_arguments \
+			  commands/get_commands/utils/count_redirections \
+			  commands/get_commands/utils/get_argument_after \
+			  commands/get_commands/utils/get_argument \
+			  commands/get_commands/utils/is_argument_equal_to \
+			  commands/get_commands/utils/is_argument_in_input \
+			  commands/get_commands/utils/is_argument_sep \
+			  commands/get_commands/utils/is_between_brackets \
+			  commands/get_commands/utils/is_sep_equal_to \
+			  commands/get_commands/utils/skip_argument \
+			  commands/get_commands/utils/skip_redirections \
+			  commands/get_commands/utils/skip_sep \
+			  commands/get_commands/utils/skip_to \
+			  commands/get_commands/utils/skip_to_next_argument \
+			  commands/get_commands/utils/skip_whitespaces \
+			  commands/run_commands/fork_and_run_sub_commands \
+			  commands/run_commands/run_command \
+			  commands/run_commands/run_commands \
+			  commands/run_commands/run_pipe_commands \
+			  commands/run_commands/run_tree_commands \
+			  commands/run_commands/set_heredocs
 
 LIB_DIR		= lib
 
@@ -123,8 +122,6 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-rule_begin: BEGIN = -D BEGIN
-
 $(NAME): $(LIB_FILES) $(OBJ)
 	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
@@ -132,8 +129,8 @@ $(NAME): $(LIB_FILES) $(OBJ)
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	@if [ $(BEGIN) = 0 ]; then \
 		echo "\n$(_GREEN)Start Compiling $(_NO_COLOR)"; \
+		$(eval BEGIN=1); \
 	fi
-	$(eval BEGIN=1)
 	@if [ ! -d $(dir $@) ]; then \
 		echo "\n$(_CYAN)Create $(dir $@)$(_NO_COLOR)"; \
 		mkdir -p $(dir $@); \
