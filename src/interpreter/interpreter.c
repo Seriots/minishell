@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/26 14:34:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/27 11:19:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char	**input_modification(char **input, t_shell *shell)
+char	**interpreter(char **input, t_shell *shell)
 {
 	if (!input)
 		return (0);
