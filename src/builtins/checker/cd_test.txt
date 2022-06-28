@@ -1,0 +1,14 @@
+..
+0
+minishellv3
+0
+fghjkl
+1
+src/ builtins
+1
+/
+0
+
+0
+-
+0
