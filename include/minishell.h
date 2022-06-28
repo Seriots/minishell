@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/27 11:19:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/28 17:05:17 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,11 @@ int					pwd_command(t_shell *shell, char **arguments);
 /*init_builtins.c*/
 void				init_builtins(t_shell **shell);
 
+/*cd_utils.c*/
+void				print_error_message_cd(char *path);
+char				*ft_malloc_str(const char *str);
+int					update_pwd(t_shell **shell, char *path);
+
 /*export_utils.c*/
 int					init_export_copy(t_shell *shell, t_dict **copy,
 						t_dict **export_copy);
@@ -248,7 +253,7 @@ char				**replace_special_args(char **input, t_shell *shell);
 /*                    INPUT_MODIFICATION                      */
 /**************************************************************/
 
-char				**interpreter(char **input, t_shell *shell);
+char				**input_modification(char **input, t_shell *shell);
 char				*remove_quotes(char *input);
 char				**removes_quotes(char **input);
 #endif
