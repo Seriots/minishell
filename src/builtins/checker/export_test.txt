@@ -1,0 +1,22 @@
+oui=non
+0
+oui
+0
+aled
+0
+aled=pointe
+0
+armoire+=non
+0
+boite=roi
+0
+boite+="desenfers"
+0
+vote=bisous gros=beau armure=foudre foire8798h!g
+1
+vitre=brisee foire8798h!g cho
+1
+
+0
+monntypython=best c=pasoufouf c++=camarchepo
+1

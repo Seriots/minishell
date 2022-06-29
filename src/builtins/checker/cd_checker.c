@@ -8,17 +8,17 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-int	main(int argc, char *argv[], char **env)
+void	cd_checker(int argc, char *argv[], char **env)
 {
 	t_shell	shell;
 	char	**args;
 	char	*command;
-	int		check_error;
+	char	*check_error;
 	int		fd;
 
+	printf("----------------CD----------------\n");
 	init_shell(&shell, env);
 	fd = open("src/builtins/checker/cd_test.txt", O_RDONLY);
-	printf("%d\n", fd);
 	command = get_next_line(fd);
 	if (command[ft_strlen(command) - 1] == '\n')
 		command[ft_strlen(command) - 1] = 0;
@@ -27,13 +27,14 @@ int	main(int argc, char *argv[], char **env)
 	while (args)
 	{
 		printf("-<%s\n", shell.directory);
-		check_error = cd_command(&shell, args);
-		printf("->%s\n", shell.directory);
-		if (check_error == ft_atoi(get_next_line(fd)))
+		check_error = get_next_line(fd);
+		if (cd_command(&shell, args) == ft_atoi(check_error))
 			printf("Return OK\n");
 		else
 			printf("Return KO\n");
+		printf("->%s\n", shell.directory);
 		free (command);
+		free(check_error);
 		ft_free_tab(args);
 		command = get_next_line(fd);
 		if (command && command[ft_strlen(command) - 1] == '\n')

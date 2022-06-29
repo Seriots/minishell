@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 22:18:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/13 18:15:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/29 13:53:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 int	exit_command(t_shell *shell, char **arguments)
 {
-	(void)arguments;
+	if (arguments)
+		ft_free_tab(arguments);
 	free_shell (shell);
 	ft_printf("exit\n");
 	exit (0);

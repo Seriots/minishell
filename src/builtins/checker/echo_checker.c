@@ -7,13 +7,14 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-int	main(int argc, char *argv[], char **env)
+void	echo_checker(int argc, char *argv[], char **env)
 {
 	char	**args;
 	char	*command;
-	int		check_error;
+	char	*check_error;
 	int		fd;
 
+	printf("----------------ECHO----------------\n");
 	fd = open("src/builtins/checker/echo_test.txt", O_RDONLY);
 	command = get_next_line(fd);
 	if (command[ft_strlen(command) - 1] == '\n')
@@ -22,13 +23,14 @@ int	main(int argc, char *argv[], char **env)
 	args = ft_split(command, ' ');
 	while (args)
 	{
-		check_error = echo_command(0, args);
-		if (check_error == ft_atoi(get_next_line(fd)))
+check_error = get_next_line(fd);
+		if (echo_command(0, args) == ft_atoi(check_error))
 			printf("Return OK\n");
 		else
 			printf("Return KO\n");
 		free (command);
 		ft_free_tab(args);
+		free(check_error);
 		command = get_next_line(fd);
 		if (command && command[ft_strlen(command) - 1] == '\n')
 			command[ft_strlen(command) - 1] = 0;

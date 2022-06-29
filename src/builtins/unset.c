@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:29:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/28 17:08:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/29 15:05:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static int	invalid_identifier_unset(char *arg)
 {
-	ft_putstr_fd("unset: `", 2);
+	ft_putstr_fd("minishell: unset: `", 2);
 	ft_putstr_fd(arg, 2);
 	ft_putstr_fd("': not a valid identifier\n", 2);
 	return (1);
@@ -65,12 +65,10 @@ int	unset_command(t_shell *shell, char **arguments)
 				dict_getelem_key(shell->export, arguments[i]), free, free);
 		}
 		else if (!error)
-			invalid_identifier_unset(arguments[i]);
-		if (return_error == 0)
-			return_error = error;
+			return_error = invalid_identifier_unset(arguments[i]);
 		i++;
 	}
-	return (0);
+	return (return_error);
 }
 
 /*

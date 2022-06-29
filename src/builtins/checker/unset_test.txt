@@ -1,0 +1,16 @@
+PWD
+0
+
+0
+non oui
+0
+ra=
+1
+ra
+0
+jolie
+0
+_
+0
+PATH fezf+fzef OLDPWD
+1

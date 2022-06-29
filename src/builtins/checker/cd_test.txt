@@ -12,3 +12,7 @@ src/ builtins
 0
 -
 0
+
+0
+42_cursus/minishellv3
+0

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:49:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/26 14:47:39 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/29 14:37:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,12 @@ int	export_command(t_shell *shell, char **arguments)
 		else if (is_concat == 2)
 			error = treat_export_concat(shell, arguments[i]);
 		else
-			invalid_identifier_export(arguments[i]);
+			error = invalid_identifier_export(arguments[i]);
 		if (return_error == 0)
 			return_error = error;
 		i++;
 	}
-	return (0);
+	return (return_error);
 }
 /*
 int	main(int argc, char *argv[], char **env)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:49:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/26 14:49:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/29 14:55:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	print_export(t_shell *shell)
 
 int	invalid_identifier_export(char *arg)
 {
-	ft_putstr_fd("export: `", 2);
+	ft_putstr_fd("minishell: export: `", 2);
 	ft_putstr_fd(arg, 2);
 	ft_putstr_fd("': not a valid identifier\n", 2);
 	return (1);
