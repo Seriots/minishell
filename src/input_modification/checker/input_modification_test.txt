@@ -1,0 +1,11 @@
+*
+*s*
+*e
+.*
+*M*k*fi*e
+*ke*le
+Make*f*
+$PWD
+$*PWD
+"$SHLVL"non
+faut faire des test Ma*i* g la flemme

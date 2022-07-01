@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:42:57 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/05/05 13:03:59 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/29 14:23:37 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
+	if (!s1 && !s2)
+		return (0);
+	if (!s1 || !s2)
+		return (1);
 	if (n == 0)
 		return (0);
 	i = 0;
