@@ -37,11 +37,13 @@ SRC_NAMES	= ft_error_base \
 			  ft_strdup \
 			  ft_striteri \
 			  ft_strjoin \
+			  ft_strjoin_onplace \
 			  ft_strlcat \
 			  ft_strlcpy \
 			  ft_strlen \
 			  ft_strmapi \
 			  ft_strncmp \
+			  ft_strndup \
 			  ft_strnstr \
 			  ft_strrchr \
 			  ft_strtrim \

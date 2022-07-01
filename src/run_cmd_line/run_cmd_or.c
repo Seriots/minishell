@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tree_clear.c                                       :+:      :+:    :+:   */
+/*   run_cmd_or.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 21:09:55 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 04:03:36 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/06/30 19:47:50 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/07/01 04:17:19 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "list.h"
+#include "minishell.h"
+#include "run_cmd_line.h"
 #include "tree.h"
 
-void	tree_clear(t_tree *tree, void (*free_node)(void *))
+int	run_cmd_or(t_tree *cmd_line, t_shell *shell)
 {
-	if (!tree)
-		return ;
-	if (*free_node)
-		(*free_node)(tree->content);
-	while (tree->childs)
+	t_list	*list_or;
+	int		ret_value;
+
+	list_or = cmd_line->childs;
+	ret_value = -1;
+	while (list_or && ret_value != 0)
 	{
-		tree_clear(tree->childs->content, free_node);
-		tree->childs = tree->childs->next;
+		ret_value = run_cmd_line(list_or->content, shell);
+		list_or = list_or->next;
 	}
-	free(tree);
+	return (ret_value);
 }

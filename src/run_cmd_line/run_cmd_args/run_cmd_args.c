@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tree_clear.c                                       :+:      :+:    :+:   */
+/*   run_cmd_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 21:09:55 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 04:03:36 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/07/01 02:41:24 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "tree.h"
+#include "minishell.h"
 
-void	tree_clear(t_tree *tree, void (*free_node)(void *))
+int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 {
-	if (!tree)
-		return ;
-	if (*free_node)
-		(*free_node)(tree->content);
-	while (tree->childs)
-	{
-		tree_clear(tree->childs->content, free_node);
-		tree->childs = tree->childs->next;
-	}
-	free(tree);
+	(void) cmd_line;
+	(void) shell;
+	return (0);
 }
