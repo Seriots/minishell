@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/28 17:12:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/01 14:16:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,6 @@ int	init_shell(t_shell *shell, char **env)
 	if (set_default_variable(&shell) == -1)
 		return (-1);
 	shell->env_str = dict_to_array(shell->env);
-	//init_builtins(&shell);
+	init_builtins(&shell);
 	return (0);
 }
