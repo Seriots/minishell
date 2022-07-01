@@ -6,12 +6,13 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/20 00:12:25 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/01 03:52:24 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "lexer.h"
+#include "libft.h"
 #include "read_cmd_line.h"
 
 static int	lexer_error_format(const char *input)
@@ -42,11 +43,26 @@ static int	lexer_count_tokens(const char *input)
 	return (count);
 }
 
-static void	lexer_set_token(t_token *token, t_lexer_state *lexer)
+static void	lexer_set_token(t_token *token, t_lexer_state *lexer,
+	const char *input)
 {
 	token->lexeme = lexer->lexeme;
-	token->i = lexer->i;
-	token->size = lexer->size;
+	if (token->lexeme < redir_heredoc)
+	{
+		token->i = -1;
+		token->size = -1;
+	}
+	else
+	{
+		token->i = lexer->i;
+		token->size = lexer->size;
+		while (input[token->i] == '<' || input[token->i] == '>'
+			|| ft_strchr(WHITESPACES, input[token->i]) != NULL)
+		{
+			token->i++;
+			token->size--;
+		}
+	}
 }
 
 static int	lexer_set_tokens(t_token *tokens, const char *input)
@@ -58,11 +74,11 @@ static int	lexer_set_tokens(t_token *tokens, const char *input)
 	lexer_init_state(&lexer, input);
 	while (lexer.lexeme != newline)
 	{
-		lexer_set_token(tokens + i_token, &lexer);
+		lexer_set_token(tokens + i_token, &lexer, input);
 		i_token++;
 		lexer_update_state(&lexer, input);
 	}
-	lexer_set_token(tokens + i_token, &lexer);
+	lexer_set_token(tokens + i_token, &lexer, input);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 21:25:09 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 01:20:44 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/01 04:03:55 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ typedef struct s_tree
 }	t_tree;
 
 int		tree_adopt(t_tree *parent, t_tree *child);
-void	tree_clear(t_tree *tree, void (*free_node)(void *),
-			void (*free_leaf)(void *));
+void	tree_clear(t_tree *tree, void (*free_node)(void *));
 int		tree_count_childs(t_tree *tree);
 int		tree_count_leaves(t_tree *tree);
 int		tree_depth(t_tree *tree);

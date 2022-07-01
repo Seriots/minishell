@@ -54,8 +54,4 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	fi
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-%.a:
-	$(MAKE) -C $(dir $@)
-
-
 .PHONY:			all clean fclean re

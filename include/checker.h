@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 02:16:00 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/20 22:54:57 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:14:56 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 # define FORBIDDEN_NEWLINE (4096 - 1)
 # define FORBIDDEN_PAR_LEFT (1 + 4 + 8 + 16 + 32)
-# define FORBIDDEN_PAR_RIGHT (2 + 2048)
+# define FORBIDDEN_PAR_RIGHT (2 + 64 + 128 + 256 + 512 + 1024 + 2048)
 # define FORBIDDEN_OR (1 + 4 + 8 + 16 + 32)
 # define FORBIDDEN_AND (1 + 4 + 8 + 16 + 32)
 # define FORBIDDEN_PIPE (1 + 4 + 8 + 16 + 32)

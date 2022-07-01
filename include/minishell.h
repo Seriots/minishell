@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/29 16:49:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/01 08:16:01 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,12 @@
 # include <sys/types.h>
 # include <signal.h>
 # include "dict.h"
+# include "read_cmd_line.h"
 # include "tree.h"
 
 # define _GNU_SOURCE
 
 # define SHELL_PROMPT "$> "
-
-# define AND "&&"
-# define OR "||"
-# define PIPE "|"
-
-# define REDIR_NBR 4
-# define REDIR_STDIN "<"
-# define REDIR_STDOUT ">"
-# define REDIR_STDERR "2>"
-# define REDIR_APPEND_STDOUT ">>"
-# define REDIR_HEREDOC "<<"
-
-# define END_SEP "\t\n\v\f\r <>|&"
-# define END_SEP_NOT_WSPACE "<>|&"
-# define WHITESPACES "\t\n\v\f\r "
 
 typedef struct s_wildstr
 {
@@ -43,28 +29,6 @@ typedef struct s_wildstr
 	int		check_first;
 	int		check_last;
 }			t_wildstr;
-
-typedef struct s_std
-{
-	char	*pathfile;
-	int		fd;
-	int		fd_redir;
-	int		append;
-	char	*end;
-	int		heredoc;
-}	t_std;
-
-typedef struct s_command
-{
-	char	**argv;
-	t_list	*std;
-}	t_command;
-
-typedef struct s_pipes
-{
-	int	*back;
-	int	*front;
-}	t_pipes;
 
 typedef struct s_shell
 {
@@ -76,67 +40,43 @@ typedef struct s_shell
 	int		(*builtins[7])(struct s_shell *shell, char **arguments);
 }	t_shell;
 
-typedef int	(*t_set_redir)(t_command *, const char *, int, int);
+typedef enum	e_redir_tag
+{
+	to_stdin = redir_stdin,
+	heredoc = redir_heredoc,
+	to_stdout = redir_stdout,
+	append_to_stdout = redir_append_stdout,
+	to_stderr = redir_stderr
+}	t_redir_tag;
 
-/**************************************************************/
-/*                          COMMANDS                          */
-/**************************************************************/
-void				free_argv(void *argv_addr);
-void				free_command(void *command);
-void				free_commands(t_tree *commands);
-void				free_std(void *std_addr);
+typedef struct	s_redir
+{
+	t_redir_tag	tag;
+	union
+	{
+		char	*pathfile;
+		struct
+		{
+			int		is_quoted;
+			char	*heredoc;
+		};
+	};
+}	t_redir;
 
-//	get_commands
-t_command			*get_bzero_command(void);
-t_command			*get_command(const char *input, int input_size);
-t_tree				*get_commands(t_shell *shell);
-t_tree				*parse_input(const char *input, int input_size);
-t_tree				*parse_input_and(const char *input, int input_size);
-t_tree				*parse_input_brackets(const char *input, int input_size);
-t_tree				*parse_input_or(const char *input, int input_size);
-t_tree				*parse_input_pipe(const char *input, int input_size);
-t_tree				*parse_input_simple(const char *input, int input_size);
-int					set_arguments(t_command *cmd, const char *input,
-						int input_size);
-int					set_redirections(t_command *cmd, const char *input,
-						int input_size);
+typedef enum	e_node_tag
+{
+	list_or,
+	list_and,
+	pipeline,
+	args
+}	t_node_tag;
 
-int					count_arguments(const char *input, int input_size);
-int					count_redirections(const char *input, int input_size);
-char				*get_argument(const char *input, int input_size, int start);
-char				*get_argument_after(const char *arg, const char *input,
-						int input_size);
-int					is_argument_equal_to(const char *arg, const char *input,
-						int input_size, int start);
-int					is_argument_in_input(const char *arg, const char *input,
-						int input_size);
-int					is_argument_sep(const char *input, int input_size,
-						int start);
-int					is_between_brackets(const char *input, int input_size);
-int					is_sep_equal_to(const char *sep, const char *input,
-						int input_size, int start);
-void				skip_argument(const char *input, int input_size, int *i);
-void				skip_redirections(const char *input, int input_size,
-						int *i);
-void				skip_sep(const char *input, int input_size, int *i);
-void				skip_to(const char *arg, const char *input, int input_size,
-						int *i);
-void				skip_to_next_argument(const char *input, int input_size,
-						int *i);
-void				skip_whitespaces(const char *input, int input_size, int *i);
-
-//	run_commands
-void				free_pipes_and_pids(int **pipe_fd, int *pid,
-						int nb_sub_commands);
-int					fork_and_run_sub_commands(t_list *sub_commands,
-						t_shell *shell, int *pid);
-int					init_pipes_and_pids(int ***pipe_fd, int **pid,
-						int nb_sub_commands);
-int					run_command(t_command *command, t_shell *shell);
-int					run_commands(t_tree *commands, t_shell *shell);
-int					run_pipe_commands(t_tree *commands, t_shell *shell);
-int					run_tree_commands(t_tree *commands, t_shell *shell);
-int					set_heredocs(t_tree *commands, t_shell *shell);
+typedef struct	s_node
+{
+	t_node_tag	tag;
+	char	**args;
+	t_redir	**redirs;
+}	t_node;
 
 /**************************************************************/
 /*                           SHELL                            */
@@ -201,9 +141,6 @@ void				skip_quote_words(const char *s, int *i);
 
 /*split_input.c*/
 int					ft_split_w(char *str, t_wildstr *wildstr);
-static int			get_nb_words(char const *s, char c);
-static char			*ft_put_word(char const *s, char c, int *position);
-static int			ft_count_letters(char const *s, char c, int *position);
 
 /*check_part.c*/
 int					check_last_part(char *str, char *split, size_t *pos, size_t *pos_array);
@@ -260,8 +197,10 @@ char				**removes_quotes(char **input);
 /**************************************************************/
 /*                     CHECKER_BUILTINS                       */
 /**************************************************************/
-void				export_checker(int argc, char *argv[], char **env);
-void				echo_checker(int argc, char *argv[], char **env);
-void				cd_checker(int argc, char *argv[], char **env);
-void				unset_checker(int argc, char *argv[], char **env);
+void	export_checker(int argc, char *argv[], char **env);
+void	echo_checker(int argc, char *argv[], char **env);
+void	cd_checker(int argc, char *argv[], char **env);
+void	unset_checker(int argc, char *argv[], char **env);
+
+void	free_cmd_line(void *node_addr);
 #endif

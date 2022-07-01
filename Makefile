@@ -20,13 +20,6 @@ HEADER_NAMES= dict \
 			  tree
 
 SRC_NAMES	= main \
-			  shell/free_shell \
-			  shell/init_shell \
-			  shell/run_shell \
-			  shell/utils/init_env_variable \
-			  shell/utils/init_builtins \
-			  signals/init_sigact \
-			  signals/handle_signals \
 			  builtins/utils/export_utils \
 			  builtins/cd \
 			  builtins/echo \
@@ -35,40 +28,36 @@ SRC_NAMES	= main \
 			  builtins/export \
 			  builtins/pwd \
 			  builtins/unset \
-			  commands/free_command \
-			  commands/free_commands \
-			  commands/get_commands/get_bzero_command \
-			  commands/get_commands/get_command \
-			  commands/get_commands/get_commands \
-			  commands/get_commands/parse_input \
-			  commands/get_commands/parse_input_and \
-			  commands/get_commands/parse_input_brackets \
-			  commands/get_commands/parse_input_or \
-			  commands/get_commands/parse_input_pipe \
-			  commands/get_commands/parse_input_simple \
-			  commands/get_commands/set_arguments \
-			  commands/get_commands/set_redirections \
-			  commands/get_commands/utils/count_arguments \
-			  commands/get_commands/utils/count_redirections \
-			  commands/get_commands/utils/get_argument_after \
-			  commands/get_commands/utils/get_argument \
-			  commands/get_commands/utils/is_argument_equal_to \
-			  commands/get_commands/utils/is_argument_in_input \
-			  commands/get_commands/utils/is_argument_sep \
-			  commands/get_commands/utils/is_between_brackets \
-			  commands/get_commands/utils/is_sep_equal_to \
-			  commands/get_commands/utils/skip_argument \
-			  commands/get_commands/utils/skip_redirections \
-			  commands/get_commands/utils/skip_sep \
-			  commands/get_commands/utils/skip_to \
-			  commands/get_commands/utils/skip_to_next_argument \
-			  commands/get_commands/utils/skip_whitespaces \
-			  commands/run_commands/fork_and_run_sub_commands \
-			  commands/run_commands/run_command \
-			  commands/run_commands/run_commands \
-			  commands/run_commands/run_pipe_commands \
-			  commands/run_commands/run_tree_commands \
-			  commands/run_commands/set_heredocs
+			  free_cmd_line \
+			  read_cmd_line/checker \
+			  read_cmd_line/interpreter/interpreter_input \
+			  read_cmd_line/interpreter/set_expression_heredoc \
+			  read_cmd_line/lexer/lexer \
+			  read_cmd_line/lexer/lexer_get_lexeme \
+			  read_cmd_line/lexer/lexer_init_state \
+			  read_cmd_line/lexer/lexer_set_size \
+			  read_cmd_line/lexer/lexer_update_state \
+			  read_cmd_line/parser/parser_and \
+			  read_cmd_line/parser/parser_args \
+			  read_cmd_line/parser/parser \
+			  read_cmd_line/parser/parser_or \
+			  read_cmd_line/parser/parser_pipe \
+			  read_cmd_line/parser/utils \
+			  read_cmd_line/read_cmd_line \
+			  run_cmd_line/run_cmd_and \
+			  run_cmd_line/run_cmd_args/run_cmd_args \
+			  run_cmd_line/run_cmd_line \
+			  run_cmd_line/run_cmd_or \
+			  run_cmd_line/run_cmd_pipe/run_cmd_pipe \
+			  run_cmd_line/run_cmd_pipe/run_pipeline \
+			  shell/free_shell \
+			  shell/init_shell \
+			  shell/run_shell \
+			  shell/utils/init_env_variable \
+			  shell/utils/init_builtins \
+			  signals/init_sigact \
+			  signals/handle_signals
+
 
 LIB_DIR		= lib
 
@@ -98,7 +87,10 @@ _CYAN		= \033[36m
 _WHITE		= \033[37m
 _NO_COLOR	= \033[0m
 
-BEGIN = 0
+
+.PHONY:			all clean fclean re rule_begin
+.INTERMEDIATE:	start_compiling
+
 
 all:			$(NAME)
 
@@ -122,28 +114,20 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
+start_compiling:
+	@echo "\n$(_GREEN)Start Compiling $(_NO_COLOR)"
+
+
 $(NAME): $(LIB_FILES) $(OBJ)
 	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
-	@if [ $(BEGIN) = 0 ]; then \
-		echo "\n$(_GREEN)Start Compiling $(_NO_COLOR)"; \
-		$(eval BEGIN=1); \
-	fi
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c start_compiling
 	@if [ ! -d $(dir $@) ]; then \
-		echo "\n$(_CYAN)Create $(dir $@)$(_NO_COLOR)"; \
 		mkdir -p $(dir $@); \
-		echo "\n$(_CYAN)Create $(dir $@)$(_NO_COLOR)"; \
 	fi
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-%.a: $($(MAKE) -C $(dir %.a))
+%.a:
 	@echo "\n$(_GREEN)$(dir $@): make$(_NO_COLOR)"
 	@$(MAKE) --no-print-directory -C $(dir $@)
-
-
-.PHONY:			all clean echo_compiling fclean re rule_begin
-
-
-.SILENT: make_lib

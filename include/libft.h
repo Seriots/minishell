@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:33:36 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/15 17:07:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/01 04:06:17 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 
+size_t	ft_arraylen(char **array);
 double	ft_atod(const char *str);
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
@@ -45,12 +46,13 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strjoin(char const *s1, char const *s2);
+void	ft_strjoin_onplace(char **s1, const char *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
-size_t	ft_arraylen(char **array);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strndup(const char *str, int size);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);

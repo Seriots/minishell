@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/11 01:44:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/01 04:21:09 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include "../../include/libft.h"
 #include "../../include/minishell.h"
+#include "run_cmd_line.h"
 
 /*
 * Check th return value of get_commands and if return is Null, quit the program.
@@ -42,9 +43,10 @@ int	run_shell(t_shell *shell)
 	sigaction(SIGQUIT, &sigact, NULL);
 	while (!end)
 	{
-		commands = get_commands(shell);
+		if (read_cmd_line(&commands) == -1)
+			return (-1);
 		end = is_exit(commands);
-		run_commands(commands, shell);
+		run_cmd_line(commands, shell);
 		shell->env_str = dict_to_array(shell->env);
 	}
 	return (0);
