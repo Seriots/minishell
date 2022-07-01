@@ -6,21 +6,22 @@ MAKE		= /bin/make
 NAME		= minishell
 
 LIB_NAMES	= dict \
+			  tree \
 			  ft_printf \
 			  ft \
 			  list \
-			  tree
 
 LIBEXT_NAMES= readline
 
 HEADER_NAMES= dict \
+			  tree \
 			  ft \
 			  ft_printf \
 			  list \
-			  tree
 
 SRC_NAMES	= main \
 			  builtins/utils/export_utils \
+			  builtins/utils/cd_utils \
 			  builtins/cd \
 			  builtins/echo \
 			  builtins/env \
@@ -56,8 +57,18 @@ SRC_NAMES	= main \
 			  shell/utils/init_env_variable \
 			  shell/utils/init_builtins \
 			  signals/init_sigact \
-			  signals/handle_signals
-
+			  signals/handle_signals \
+			  input_modification/input_modification \
+			  input_modification/removes_quotes \
+			  input_modification/wildcards/check_part \
+			  input_modification/wildcards/split_input_utils \
+			  input_modification/wildcards/split_input \
+			  input_modification/wildcards/wildcard \
+			  input_modification/wildcards/wildcards_utils \
+			  input_modification/special_char/question_mark \
+			  input_modification/special_char/replace_special_args \
+			  input_modification/env_arguments/env_arguments_utils \
+			  input_modification/env_arguments/env_arguments \
 
 LIB_DIR		= lib
 

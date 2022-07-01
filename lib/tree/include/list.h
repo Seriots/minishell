@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:33:36 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 01:20:16 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/01 08:38:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int		ft_lstappend(t_list **lst, void *content);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstnew(void *content);
-int		ft_lstsize(t_list *lst);
+void	list_add_back(t_list **lst, t_list *new);
+void	list_add_front(t_list **lst, t_list *new);
+int		list_append(t_list **lst, void *content);
+int		list_append_back(t_list **lst, void *content);
+void	list_clear(t_list **lst, void (*del)(void *));
+void	list_delone(t_list *lst, void (*del)(void *));
+void	list_iter(t_list *lst, void (*f)(void *));
+t_list	*list_last(t_list *lst);
+t_list	*list_map(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list	*list_new(void *content);
+void	list_rev(t_list **l);
+int		list_size(t_list *lst);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:11:30 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 17:44:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/01 08:32:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	ft_split_w(char *str, t_wildstr *wildstr)
 {
 	char			**split_result;
 	unsigned int	nb_words;
-	int				i;
+	unsigned int	i;
 	int				pos;
 
 	if (!str)

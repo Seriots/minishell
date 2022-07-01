@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:00:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 17:04:14 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/01 08:31:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_middle_part(char *str, t_wildstr *split,
 {
 	while (str[*pos] && split->split[*pos_array]
 		&& ((split->check_last && *pos_array != ft_arraylen(split->split) - 1)
-			|| !split->check_last && *pos_array != ft_arraylen(split->split)))
+			|| (!split->check_last && *pos_array != ft_arraylen(split->split))))
 	{
 		if (ft_strncmp(&str[*pos], split->split[*pos_array],
 				ft_strlen(split->split[*pos_array])) == 0)

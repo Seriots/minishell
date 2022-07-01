@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   tree_adopt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 21:29:18 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 01:21:22 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/01 08:38:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
-#include "tree.h"
+#include "../include/list.h"
+#include "../include/tree.h"
 
 int	tree_adopt(t_tree *parent, t_tree *child)
 {
 	t_list	*child_l;
 
-	child_l = ft_lstnew(child);
+	child_l = list_new(child);
 	if (!child_l)
 		return (-1);
-	ft_lstadd_front(&parent->childs, child_l);
+	list_add_front(&parent->childs, child_l);
 	return (0);
 }
