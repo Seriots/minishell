@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/29 15:19:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/06/29 16:49:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,8 +260,8 @@ char				**removes_quotes(char **input);
 /**************************************************************/
 /*                     CHECKER_BUILTINS                       */
 /**************************************************************/
-void	export_checker(int argc, char *argv[], char **env);
-void	echo_checker(int argc, char *argv[], char **env);
-void	cd_checker(int argc, char *argv[], char **env);
-void	unset_checker(int argc, char *argv[], char **env);
+void				export_checker(int argc, char *argv[], char **env);
+void				echo_checker(int argc, char *argv[], char **env);
+void				cd_checker(int argc, char *argv[], char **env);
+void				unset_checker(int argc, char *argv[], char **env);
 #endif
