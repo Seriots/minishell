@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 08:26:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 01:36:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,13 @@ void				get_sig(int sig, siginfo_t *siginfo, void *context);
 struct sigaction	init_sigact(void);
 
 /**************************************************************/
+/*                            RUN                             */
+/**************************************************************/
+
+/*set_cmd_path.c*/
+int					set_cmd_path(t_shell *shell, char **cmd);
+
+/**************************************************************/
 /*                          BUILTINS                          */
 /**************************************************************/
 int					cd_command(t_shell *shell, char **arguments);
@@ -113,6 +120,15 @@ int					exit_command(t_shell *shell, char **arguments);
 int					env_command(t_shell *shell, char **arguments);
 int					unset_command(t_shell *shell, char **arguments);
 int					pwd_command(t_shell *shell, char **arguments);
+
+/*run_builtin.c*/
+int					manage_redirections(t_tree *cmd_line);
+int					backup_redirections(int fd_backup[3]);
+int					manage_redirections_builtin(t_shell *shell, int fd_backup[3], t_tree *cmd_line);
+int					get_my_builtin(char *name);
+int					execute_builtin(t_shell *shell, char **cmd);
+int					execute_builtins(t_shell *shell, t_tree *cmd);
+int					run_builtin(t_shell *shell, t_tree *cmd_line);
 
 /*init_builtins.c*/
 void				init_builtins(t_shell **shell);
