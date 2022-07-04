@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 01:43:59 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 14:35:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,19 @@ int	run_executable(t_tree *cmd_line, t_shell *shell)
 int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 {
 	t_node	*content;
+	int		ret_value;
 
 	content = (t_node *)cmd_line->content;
 	content->args = input_modification(content->args, shell);
 	if (get_my_builtin(content->args[0]) != -1)
-		return (run_builtin(shell, cmd_line));
+		ret_value = run_builtin(shell, cmd_line);
 	else
-		return (run_executable(cmd_line, shell));
-	return (0);
+		ret_value = run_executable(cmd_line, shell);
+	free_cmd_line(content);
+	return (ret_value);
 }
 
+/*
 int	main(int argc, char *argv[], char **env)
 {
 	t_shell shell;
@@ -110,4 +113,4 @@ int	main(int argc, char *argv[], char **env)
 	ret_value = run_cmd_args(&cmd_line, &shell);
 	printf("%d\n", ret_value);
 	free_shell(&shell);
-}
+}*/

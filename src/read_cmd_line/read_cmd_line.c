@@ -6,18 +6,18 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 09:54:36 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 14:16:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/history.h>
 #include <readline/readline.h>
 #include <stdlib.h>
-#include "checker.h"
-#include "lexer.h"
-#include "minishell.h"
-#include "read_cmd_line.h"
-#include "tree.h"
+#include "../../include/checker.h"
+#include "../../include/lexer.h"
+#include "../../include/minishell.h"
+#include "../../include/read_cmd_line.h"
+#include "../../include/tree.h"
 
 static void	free_expressions(t_expression *expressions)
 {

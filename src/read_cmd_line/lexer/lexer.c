@@ -3,27 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 03:52:24 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:25:56 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "lexer.h"
-#include "libft.h"
-#include "read_cmd_line.h"
+#include <stdio.h>
+#include "../../../include/lexer.h"
+#include "../../../include/libft.h"
+#include "../../../include/read_cmd_line.h"
 
 static int	lexer_error_format(const char *input)
 {
 	t_lexer_state	lexer;
-
+	
 	if (lexer_init_state(&lexer, input) == -1)
 		return (1);
 	while (lexer.lexeme != newline)
+	{
 		if (lexer_update_state(&lexer, input) == -1)
 			return (1);
+	}
 	return (0);
 }
 

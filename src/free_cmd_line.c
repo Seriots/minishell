@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_cmd_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 03:55:02 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 04:01:36 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/04 13:50:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
-#include "minishell.h"
+#include "../include/libft.h"
+#include "../include/minishell.h"
 
 static void	free_redirs(t_redir **redirs)
 {

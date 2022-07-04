@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/03 17:23:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:53:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	manage_redirections_builtin(t_shell *shell, int fd_backup[3], t_tree *cmd_li
 	* 
 	*/
 	int	ret_value;
-
+	
+	(void)shell;
 	fd_backup[0] = dup(0);
 	fd_backup[1] = dup(1);
 	fd_backup[2] = dup(2);
@@ -85,7 +86,6 @@ int	execute_builtin(t_shell *shell, char **cmd)
 	if (num_builtin < 0)
 		return (ft_free_tab(cmd), num_builtin);
 	ret_value = shell->builtins[num_builtin](shell, &cmd[1]);	
-	ft_free_tab(cmd);
 	return (ret_value);
 }
 

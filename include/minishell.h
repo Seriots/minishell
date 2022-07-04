@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 01:36:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:43:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ struct sigaction	init_sigact(void);
 
 /*set_cmd_path.c*/
 int					set_cmd_path(t_shell *shell, char **cmd);
+
+/*run_cmd_args.c*/
+int					run_cmd_args(t_tree *cmd_line, t_shell *shell);
 
 /**************************************************************/
 /*                          BUILTINS                          */

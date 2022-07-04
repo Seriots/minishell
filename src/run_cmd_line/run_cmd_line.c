@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   run_cmd_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:34:15 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 02:29:31 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:15:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "run_cmd_line.h"
-#include "tree.h"
+#include "../../include/minishell.h"
+#include "../../include/run_cmd_line.h"
+#include "../../include/tree.h"
+#include <stdio.h>
 
 int	run_cmd_line(t_tree *cmd_line, t_shell *shell)
 {

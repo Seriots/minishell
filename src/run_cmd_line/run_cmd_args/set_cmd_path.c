@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 10:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/01 12:17:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:52:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*join_path_and_cmd(char *path, char *cmd)
 
 int	check_each_path(char **all_path, char **cmd)
 {
-	int		i;
+	size_t	i;
 	char	*cmd_join;
 
 	i = -1;
@@ -73,8 +73,6 @@ int	check_in_path(t_dict *path, char **cmd)
 
 int	set_cmd_path(t_shell *shell, char **cmd)
 {
-	int	ret_value;
-
 	if (!access(*cmd, F_OK) && !access(*cmd, X_OK))
 		return (0);
 	else if (!access(*cmd, F_OK) && access(*cmd, X_OK))

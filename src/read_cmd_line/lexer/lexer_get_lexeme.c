@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_get_lexeme.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 01:42:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/19 23:32:10 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:36:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
-#include "libft.h"
-#include "read_cmd_line.h"
+#include "../../../include/lexer.h"
+#include "../../../include/libft.h"
+#include "../../../include/read_cmd_line.h"
+#include <stdio.h>
 
 t_lexeme	lexer_get_lexeme(const char *input)
 {
@@ -24,7 +25,7 @@ t_lexeme	lexer_get_lexeme(const char *input)
 
 	lex = 0;
 	while (lex != argument
-		&& ft_strncmp(input, lexeme_str[lex], ft_strlen(lexeme_str[lex])) != 0)
+		&& ft_strncmp(input, lexeme_str[lex], ft_strlen(lexeme_str[lex]) + 1) != 0)
 		lex++;
 	return (lex);
 }
