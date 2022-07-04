@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unset_checker.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/04 23:26:04 by lgiband           #+#    #+#             */
+/*   Updated: 2022/07/04 23:26:51 by lgiband          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../include/libft.h"
 #include "../../../include/get_next_line.h"
 #include "../../../include/minishell.h"
@@ -20,8 +32,10 @@ int	dict_compare_unset(t_dict	*dict_avant, t_dict *dict_now)
 		copy_avant = dict_avant;
 		while (copy_avant)
 		{
-			//printf("je compare tu declare=%s %s %s %s\n", (char *)copy_avant->value, (char *)copy_now->value, (char *)copy_avant->key, (char *)copy_now->key);
-			if (!ft_strncmp(copy_avant->value, copy_now->value, ft_strlen(copy_avant->value) + 1) && !ft_strncmp(copy_avant->key, copy_now->key, ft_strlen(copy_avant->key) + 1))
+			if (!ft_strncmp(copy_avant->value, copy_now->value,
+					ft_strlen(copy_avant->value) + 1)
+				&& !ft_strncmp(copy_avant->key, copy_now->key,
+					ft_strlen(copy_avant->key) + 1))
 				found = 1;
 			copy_avant = copy_avant->next;
 		}
@@ -37,13 +51,16 @@ int	dict_compare_unset(t_dict	*dict_avant, t_dict *dict_now)
 		copy_now = dict_now;
 		while (copy_now)
 		{
-			//printf("je compare tu declare=%s %s %s %s\n", (char *)copy_now->value, (char *)copy_avant->value, (char *)copy_now->key, (char *)copy_avant->key);
-			if (!ft_strncmp(copy_now->value, copy_avant->value, ft_strlen(copy_now->value) + 1) && !ft_strncmp(copy_now->key, copy_avant->key, ft_strlen(copy_now->key) + 1))
+			if (!ft_strncmp(copy_now->value, copy_avant->value,
+					ft_strlen(copy_now->value) + 1)
+				&& !ft_strncmp(copy_now->key, copy_avant->key,
+					ft_strlen(copy_now->key) + 1))
 				found = 1;
 			copy_now = copy_now->next;
 		}
 		if (found == 0)
-			printf("<%s=%s\n", (char *)copy_avant->key, (char *)copy_avant->value);
+			printf("<%s=%s\n", (char *)copy_avant->key,
+				(char *)copy_avant->value);
 		copy_avant = copy_avant->next;
 	}
 	return (1);

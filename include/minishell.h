@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 13:43:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 23:37:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_shell
 	int		(*builtins[7])(struct s_shell *shell, char **arguments);
 }	t_shell;
 
-typedef enum	e_redir_tag
+typedef enum e_redir_tag
 {
 	to_stdin = redir_stdin,
 	heredoc = redir_heredoc,
@@ -49,7 +49,7 @@ typedef enum	e_redir_tag
 	to_stderr = redir_stderr
 }	t_redir_tag;
 
-typedef struct	s_redir
+typedef struct s_redir
 {
 	t_redir_tag	tag;
 	union
@@ -63,7 +63,7 @@ typedef struct	s_redir
 	};
 }	t_redir;
 
-typedef enum	e_node_tag
+typedef enum e_node_tag
 {
 	list_or,
 	list_and,
@@ -71,11 +71,11 @@ typedef enum	e_node_tag
 	args
 }	t_node_tag;
 
-typedef struct	s_node
+typedef struct s_node
 {
 	t_node_tag	tag;
-	char	**args;
-	t_redir	**redirs;
+	char		**args;
+	t_redir		**redirs;
 }	t_node;
 
 /**************************************************************/
@@ -83,6 +83,20 @@ typedef struct	s_node
 /**************************************************************/
 /*free_shell.c*/
 int					free_shell(t_shell *shell);
+
+/*init_envpath.c*/
+int					add_envpath(t_dict **env, int *error);
+
+/*init_shlvl.c*/
+int					update_shlvl(t_dict **search, int *error);
+int					add_shlvl(t_dict **env, int *error);
+
+/*init_pwd.c*/
+int					add_pwd(t_dict **env, int *error);
+int					add_oldpwd(t_dict **env, int *error);
+
+/*init_env_variable.c*/
+int					free_and_set_error(char *key, char *value, int *error);
 
 /*init_shell.c*/
 int					set_default_variable(t_shell **shell);
@@ -93,9 +107,9 @@ int					init_shell(t_shell *shell, char **env);
 /*run_shell.c*/
 int					run_shell(t_shell *shell);
 
-/*
-// SIGNALS
-*/
+/**************************************************************/
+/*                          SIGNAL                            */
+/**************************************************************/
 
 //	handle_signals.c
 void				get_sig(int sig, siginfo_t *siginfo, void *context);
@@ -127,7 +141,8 @@ int					pwd_command(t_shell *shell, char **arguments);
 /*run_builtin.c*/
 int					manage_redirections(t_tree *cmd_line);
 int					backup_redirections(int fd_backup[3]);
-int					manage_redirections_builtin(t_shell *shell, int fd_backup[3], t_tree *cmd_line);
+int					manage_redirections_builtin(t_shell *shell,
+						int fd_backup[3], t_tree *cmd_line);
 int					get_my_builtin(char *name);
 int					execute_builtin(t_shell *shell, char **cmd);
 int					execute_builtins(t_shell *shell, t_tree *cmd);
@@ -154,18 +169,22 @@ int					check_value(char *arg);
 /**************************************************************/
 
 /*split_input_utils.c*/
-void				skip_quote_putwords(const char *s, int *position, char *quote);
-void				skip_quote_letters(char quote, const char *s, int *i, int *count);
+void				skip_quote_putwords(const char *s,
+						int *position, char *quote);
+void				skip_quote_letters(char quote, const char *s,
+						int *i, int *count);
 void				skip_quote_words(const char *s, int *i);
 
 /*split_input.c*/
 int					ft_split_w(char *str, t_wildstr *wildstr);
 
 /*check_part.c*/
-int					check_last_part(char *str, char *split, size_t *pos, size_t *pos_array);
+int					check_last_part(char *str, char *split,
+						size_t *pos, size_t *pos_array);
 int					check_middle_part(char *str, t_wildstr *split,
 						size_t *pos, size_t *pos_array);
-int					check_first_part(char *str, char *split, size_t *pos, size_t *pos_array);
+int					check_first_part(char *str, char *split,
+						size_t *pos, size_t *pos_array);
 
 /*wildcards_utils.c*/
 int					is_addable(char *d_name, t_wildstr *split);
@@ -176,7 +195,8 @@ void				insert_wildcard_add(t_list **next, t_list **current,
 
 /*wildcards.c*/
 t_wildstr			*init_wildstr(char *str, t_wildstr *wildstr);
-int					treat_wildcards(char *str, char **args, int pos, t_wildstr *result);
+int					treat_wildcards(char *str, char **args,
+						int pos, t_wildstr *result);
 t_list				*replace_wildcards(char *str);
 char				**replace_args(char **argv);
 
@@ -188,7 +208,8 @@ char				**replace_args(char **argv);
 int					oppose_quote(int is_quoted);
 char				*get_var(char *input, int pos);
 size_t				get_size_var(char *var, t_dict *env);
-size_t				concat_var(char *var, t_dict *env, char **result, size_t nb_letters);
+size_t				concat_var(char *var, t_dict *env,
+						char **result, size_t nb_letters);
 int					ft_is_varchar(char c);
 
 /*env_arguments.c*/
@@ -200,7 +221,8 @@ char				**change_vars_in_args(char **args, t_dict *env);
 
 /*question_mark.c*/
 size_t				count_q_mark(size_t *i, char *return_value);
-size_t				replace_q_mark(size_t *i, char **new, int size, char *return_value);
+size_t				replace_q_mark(size_t *i, char **new,
+						int size, char *return_value);
 
 /*replace_special_args.c*/
 char				**replace_special_args(char **input, t_shell *shell);
@@ -216,10 +238,10 @@ char				**removes_quotes(char **input);
 /**************************************************************/
 /*                     CHECKER_BUILTINS                       */
 /**************************************************************/
-void	export_checker(int argc, char *argv[], char **env);
-void	echo_checker(int argc, char *argv[], char **env);
-void	cd_checker(int argc, char *argv[], char **env);
-void	unset_checker(int argc, char *argv[], char **env);
+void				export_checker(int argc, char *argv[], char **env);
+void				echo_checker(int argc, char *argv[], char **env);
+void				cd_checker(int argc, char *argv[], char **env);
+void				unset_checker(int argc, char *argv[], char **env);
 
-void	free_cmd_line(void *node_addr);
+void				free_cmd_line(void *node_addr);
 #endif

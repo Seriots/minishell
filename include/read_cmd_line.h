@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 01:26:30 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 01:42:11 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define PROMPT_SHELL "$> "
 # define PROMPT_HEREDOC "> "
 
-typedef enum	e_lexeme
+typedef enum e_lexeme
 {
 	newline,
 	parenthesis_left,
@@ -33,14 +33,14 @@ typedef enum	e_lexeme
 	argument
 }	t_lexeme;
 
-typedef struct	s_token
+typedef struct s_token
 {
 	t_lexeme	lexeme;
 	int			i;
 	int			size;
 }	t_token;
 
-typedef struct	s_expression
+typedef struct s_expression
 {
 	t_lexeme	lexeme;
 	void		*content;

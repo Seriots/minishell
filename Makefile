@@ -58,6 +58,9 @@ SRC_NAMES	= main \
 			  shell/init_shell \
 			  shell/run_shell \
 			  shell/utils/init_env_variable \
+			  shell/utils/init_pwd \
+			  shell/utils/init_shlvl \
+			  shell/utils/init_envpath \
 			  shell/utils/init_builtins \
 			  signals/init_sigact \
 			  signals/handle_signals \

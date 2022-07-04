@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_modification_checker.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/04 23:27:24 by lgiband           #+#    #+#             */
+/*   Updated: 2022/07/04 23:27:47 by lgiband          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../include/minishell.h"
 #include "../../../include/get_next_line.h"
 #include "../../../include/libft.h"
@@ -8,7 +20,7 @@
 
 int	main(int argc, char *argv[], char **env)
 {
-	t_shell shell;
+	t_shell	shell;
 	char	**result;
 	char	**input;
 	int		i;
@@ -17,7 +29,8 @@ int	main(int argc, char *argv[], char **env)
 	char	*line;
 
 	init_shell(&shell, env);
-	fd = open("src/input_modification/checker/input_modification_test.txt", O_RDONLY);
+	fd = open("src/input_modification/checker/input_modification_test.txt",
+			O_RDONLY);
 	line = get_next_line(fd);
 	if (line && line[ft_strlen(line) - 1] == '\n')
 		line[ft_strlen(line) - 1] = '\0';
