@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 22:51:20 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 00:26:44 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 static int	lexer_error_format(const char *input)
 {
 	t_lexer_state	lexer;
-	
+
 	if (lexer_init_state(&lexer, input) == -1)
 		return (1);
 	while (lexer.lexeme != newline)

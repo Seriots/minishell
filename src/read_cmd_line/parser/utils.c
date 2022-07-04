@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 22:20:22 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/27 23:57:32 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 01:37:54 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	get_indice_next_lexeme(t_expression *expressions, int i, t_lexeme lexeme)
 	par_to_close = 0;
 	while (expressions[i].lexeme != newline)
 	{
-		par_to_close += expressions->lexeme == parenthesis_left;
-		par_to_close -= expressions->lexeme == parenthesis_right;
+		par_to_close += expressions[i].lexeme == parenthesis_left;
+		par_to_close -= expressions[i].lexeme == parenthesis_right;
 		if (par_to_close == 0 && expressions[i].lexeme == lexeme)
 			return (i);
 		i++;

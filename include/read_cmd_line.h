@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 04:11:55 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 01:26:30 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	parser(t_tree **cmd_line, t_expression *expressions);
 int	parser_and(t_tree **cmd_line, t_expression *expressions);
 int	parser_args(t_tree **cmd_line, t_expression *expressions);
 int	parser_or(t_tree **cmd_line, t_expression *expressions);
+int	parser_parenthesis(t_tree **cmd_line, t_expression *expressions);
 int	parser_pipe(t_tree **cmd_line, t_expression *expressions);
 
 /*

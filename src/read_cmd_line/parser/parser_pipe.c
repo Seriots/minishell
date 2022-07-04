@@ -6,13 +6,14 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 20:45:57 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 04:10:51 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 00:10:38 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "minishell.h"
 #include "read_cmd_line.h"
+#include "tree.h"
 
 static int	set_node_pipe(t_tree **cmd_line)
 {
@@ -30,24 +31,24 @@ static int	set_node_pipe(t_tree **cmd_line)
 
 static int	add_pipeline(t_tree *cmd_line, t_expression *expressions)
 {
-	t_tree	*cmd_or;
+	t_tree	*cmd_pipe;
 	int		i;
 	int		j;
 
 	i = 0;
-	j = get_indice_next_lexeme(expressions, 0, pipe_lexeme);
-	while (i != -1)
+	j = 0;
+	while (i != 0 || j == 0)
 	{
+		j = get_indice_next_lexeme(expressions, i, pipe_lexeme);
 		if (j != -1)
 			expressions[j].lexeme = newline;
-		if (parser(&cmd_or, expressions + i + 1) == -1)
+		if (parser(&cmd_pipe, expressions + i) == -1)
 			return (-1);
 		if (j != -1)
 			expressions[j].lexeme = pipe_lexeme;
-		if (tree_adopt(cmd_line, cmd_or) == -1)
-			return (tree_clear(cmd_or, &free_cmd_line), -1);
-		i = j;
-		j = get_indice_next_lexeme(expressions, j + 1, pipe_lexeme);
+		if (tree_adopt(cmd_line, cmd_pipe) == -1)
+			return (tree_clear(cmd_pipe, &free_cmd_line), -1);
+		i = j + 1;
 	}
 	return (0);
 }

@@ -42,6 +42,7 @@ SRC_NAMES	= main \
 			  read_cmd_line/parser/parser_args \
 			  read_cmd_line/parser/parser \
 			  read_cmd_line/parser/parser_or \
+			  read_cmd_line/parser/parser_parenthesis \
 			  read_cmd_line/parser/parser_pipe \
 			  read_cmd_line/parser/utils \
 			  read_cmd_line/read_cmd_line \

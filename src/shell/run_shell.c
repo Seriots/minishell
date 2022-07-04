@@ -6,12 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 22:51:58 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 00:55:40 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <signal.h>
+#include <stddef.h>
 #include <stdio.h>
 #include "../../include/libft.h"
 #include "../../include/minishell.h"
@@ -42,6 +43,7 @@ int	run_shell(t_shell *shell)
 		else if (ret_value == -2)
 			return (printf("exit\n"), -1);
 		run_cmd_line(commands, shell);
+		tree_clear(commands, &free_cmd_line);
 		shell->env_str = dict_to_array(shell->env);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 14:35:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/05 00:55:20 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 		ret_value = run_builtin(shell, cmd_line);
 	else
 		ret_value = run_executable(cmd_line, shell);
-	free_cmd_line(content);
 	return (ret_value);
 }
 

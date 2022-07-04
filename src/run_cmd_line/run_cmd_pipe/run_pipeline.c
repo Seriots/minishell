@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 04:20:47 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 00:25:34 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ static int	run_piped_subshell(t_tree *cmd_subshell, t_shell *shell,
 	pid = fork();
 	if (pid == 0)
 	{
-		if (pipes[0][1] != -1 && dup2(0, pipes[0][1]) == -1)
+		if (pipes[0][0] != -1 && dup2(pipes[0][0], 0) == -1)
 		{
 			close_pipe(pipes[0]);
 			close_pipe(pipes[1]);
 			exit(-1);
 		}
 		close_pipe(pipes[0]);
-		if (pipes[1][0] != -1 && dup2(1, pipes[1][0]) == -1)
+		if (pipes[1][1] != -1 && dup2(pipes[1][1], 1) == -1)
 		{
 			close_pipe(pipes[1]);
 			exit(-1);

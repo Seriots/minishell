@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 20:44:45 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 03:53:07 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/04 23:44:59 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,24 @@ static int	set_node_and(t_tree **cmd_line)
 
 static int	add_list_and(t_tree *cmd_line, t_expression *expressions)
 {
-	t_tree	*cmd_or;
+	t_tree	*cmd_and;
 	int		i;
 	int		j;
 
 	i = 0;
-	j = get_indice_next_lexeme(expressions, 0, logical_and);
-	while (i != -1)
+	j = 0;
+	while (i != 0 || j == 0)
 	{
+		j = get_indice_next_lexeme(expressions, i, logical_and);
 		if (j != -1)
 			expressions[j].lexeme = newline;
-		if (parser(&cmd_or, expressions + i + 1) == -1)
+		if (parser(&cmd_and, expressions + i) == -1)
 			return (-1);
 		if (j != -1)
 			expressions[j].lexeme = logical_and;
-		if (tree_adopt(cmd_line, cmd_or) == -1)
-			return (tree_clear(cmd_or, &free_cmd_line), -1);
-		i = j;
-		j = get_indice_next_lexeme(expressions, j + 1, logical_and);
+		if (tree_adopt(cmd_line, cmd_and) == -1)
+			return (tree_clear(cmd_and, &free_cmd_line), -1);
+		i = j + 1;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 21:29:18 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 08:38:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 23:34:05 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int	tree_adopt(t_tree *parent, t_tree *child)
 	child_l = list_new(child);
 	if (!child_l)
 		return (-1);
-	list_add_front(&parent->childs, child_l);
+	list_add_back(&parent->childs, child_l);
 	return (0);
 }

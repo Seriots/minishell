@@ -6,13 +6,14 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 03:38:44 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 04:09:56 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 00:05:51 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "minishell.h"
 #include "read_cmd_line.h"
+#include "tree.h"
 
 static int	set_node_or(t_tree **cmd_line)
 {
@@ -35,19 +36,19 @@ static int	add_list_or(t_tree *cmd_line, t_expression *expressions)
 	int		j;
 
 	i = 0;
-	j = get_indice_next_lexeme(expressions, 0, logical_or);
-	while (i != -1)
+	j = 0;
+	while (i != 0 || j == 0)
 	{
+		j = get_indice_next_lexeme(expressions, i, logical_or);
 		if (j != -1)
 			expressions[j].lexeme = newline;
-		if (parser(&cmd_or, expressions + i + 1) == -1)
+		if (parser(&cmd_or, expressions + i) == -1)
 			return (-1);
 		if (j != -1)
 			expressions[j].lexeme = logical_or;
 		if (tree_adopt(cmd_line, cmd_or) == -1)
 			return (tree_clear(cmd_or, &free_cmd_line), -1);
-		i = j;
-		j = get_indice_next_lexeme(expressions, j + 1, logical_or);
+		i = j + 1;
 	}
 	return (0);
 }
