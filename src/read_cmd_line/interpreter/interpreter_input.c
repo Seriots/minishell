@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:09:56 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 03:34:50 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:33:02 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	count_tokens(t_token *tokens)
 	i = 0;
 	while (tokens[i].lexeme != newline)
 		i++;
+	i++;
 	return (i);
 }
 

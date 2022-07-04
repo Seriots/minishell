@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 01:15:32 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/20 00:10:23 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:07:59 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,17 @@ static int	lexer_get_argument_size(const char *input)
 		if (input[j] == '\"')
 		{
 			j++;
-			while (input[j] && input[j] != '\"')
+			while (input[j] && input[j] != '\n' && input[j] != '\"')
 				j++;
 		}
 		if (input[j] == '\'')
 		{
 			j++;
-			while (input[j] && input[j] != '\'')
+			while (input[j] && input[j] != '\n' && input[j] != '\'')
 				j++;
 		}
-		j++;
+		if (input[j] && input[j] != '\n')
+			j++;
 	}
 	return (j);
 }

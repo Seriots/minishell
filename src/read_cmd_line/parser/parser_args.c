@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 22:28:22 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 04:07:50 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:44:37 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ static int	set_redirs(t_node *leaf, t_expression *expressions)
 	int		i;
 	int		j;
 
-	redirs_size = count_lexeme(expressions, argument);
+	redirs_size = get_indice_next_lexeme(expressions, 0, newline)
+		- count_lexeme(expressions, argument);
 	redirs = malloc(sizeof(t_redir *) * (redirs_size + 1));
-	if (!args)
+	if (!redirs)
 		return (-1);
 	i = 0;
 	j = 0;
@@ -59,7 +60,7 @@ static int	set_redirs(t_node *leaf, t_expression *expressions)
 			redirs[i++] = expressions[j].content;
 		j++;
 	}
-	redirs[j] = NULL;
+	redirs[i] = NULL;
 	leaf->redirs = redirs;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 01:42:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 14:36:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/04 22:26:03 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ t_lexeme	lexer_get_lexeme(const char *input)
 		REDIR_STDOUT_STR, REDIR_STDERR_STR};
 	t_lexeme	lex;
 
+	if (!*input)
+		return (newline);
 	lex = 0;
 	while (lex != argument
-		&& ft_strncmp(input, lexeme_str[lex], ft_strlen(lexeme_str[lex]) + 1) != 0)
+		&& ft_strncmp(input, lexeme_str[lex], ft_strlen(lexeme_str[lex])) != 0)
 		lex++;
 	return (lex);
 }
