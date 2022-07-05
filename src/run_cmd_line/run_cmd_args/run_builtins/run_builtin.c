@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 13:53:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/05 22:43:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,10 @@ int	backup_redirections(int fd_backup[3])
 		ret_value = dup2(fd_backup[1], 1);
 	if (ret_value != -1)
 		ret_value = dup2(fd_backup[2], 2);
+	close (fd_backup[0]);
+	close (fd_backup[1]);
+	close (fd_backup[2]);
 	return (ret_value);
-}
-
-int	manage_redirections(t_tree *cmd_line)
-{
-	(void)cmd_line;
-	return (0);
 }
 
 int	manage_redirections_builtin(t_shell *shell, int fd_backup[3], t_tree *cmd_line)
