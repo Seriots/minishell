@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 22:28:22 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 22:44:37 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 02:24:20 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	set_args(t_node *leaf, t_expression *expressions)
 			args[i++] = expressions[j].content;
 		j++;
 	}
-	args[j] = NULL;
+	args[i] = NULL;
 	leaf->args = args;
 	return (0);
 }

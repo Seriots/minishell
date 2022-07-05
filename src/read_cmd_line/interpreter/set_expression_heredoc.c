@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 03:51:52 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 02:49:57 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,32 @@ static int	is_end_quoted(const char *end)
 		end++;
 	}
 	return (count_quote >= 2 || count_double_quote >= 2);
+}
+
+static void	remove_quotes_onplace(char *end)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (end[i])
+	{
+		if (end[i] == '\'')
+		{
+			i++;
+			while (end[i++] != '\'')
+				end[j++] = end[i];
+		}
+		else if (end[i] == '\'')
+		{
+			i++;
+			while (end[i++] != '\'')
+				end[j++] = end[i];
+		}
+		else
+			end[j++] = end[i++];
+	}
 }
 
 static char	*get_heredoc(const char *end)
@@ -64,9 +90,8 @@ int	set_expression_heredoc(t_expression *expression, t_token *token,
 	end = ft_strndup(input + token->i, token->size + 1);
 	if (!end)
 		return (-1);
-	end[ft_strlen(end) - 1] = '\n';
 	redir->is_quoted = is_end_quoted(end);
-	remove_quotes(end);
+	remove_quotes_onplace(end);
 	redir->heredoc = get_heredoc(end);
 	free(end);
 	if (!redir->heredoc)
