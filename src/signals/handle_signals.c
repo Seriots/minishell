@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/15 15:29:37 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/05 15:43:32 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,26 @@
 #include "../../include/minishell.h"
 #include "../../include/ft_printf.h"
 
+extern int stop_run;
+
 /*
 * get sigint (Ctrl + C)
 */
 int	get_sigint(void)
 {
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	ft_printf("\n");
-	rl_redisplay();
+	if (stop_run == 0 || stop_run == 2)
+	{
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		printf("\n");
+		rl_redisplay();
+		stop_run = 2;
+	}
+	else if (stop_run == 1 || stop_run == 3)
+	{
+		stop_run = 4;
+		printf("\n");
+	}
 	return (0);
 }
 

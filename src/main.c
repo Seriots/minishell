@@ -6,11 +6,11 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:34:50 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/01 02:50:38 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 13:53:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 int	main(int argc, char *argv[], char **env)
 {

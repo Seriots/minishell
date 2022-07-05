@@ -6,12 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 00:55:20 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 13:25:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
 #include "../../../include/libft.h"
+#include <sys/types.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -90,26 +92,3 @@ int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 		ret_value = run_executable(cmd_line, shell);
 	return (ret_value);
 }
-
-/*
-int	main(int argc, char *argv[], char **env)
-{
-	t_shell shell;
-	t_tree	cmd_line;
-	t_node	content;
-	int	ret_value;
-	int	i;
-
-	i = 0;
-	content.args = ft_calloc(sizeof(char *), argc);
-	while (++i < argc)
-		content.args[i - 1] = ft_strdup(argv[i]);
-	content.redirs = 0;
-	content.tag = 0;
-	cmd_line.childs = 0;
-	cmd_line.content = &content;
-	init_shell(&shell, env);
-	ret_value = run_cmd_args(&cmd_line, &shell);
-	printf("%d\n", ret_value);
-	free_shell(&shell);
-}*/

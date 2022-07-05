@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 00:54:04 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/05 15:42:44 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 #include <stdlib.h>
 #include "../../include/checker.h"
 #include "../../include/lexer.h"
+#include "../../include/libft.h"
 #include "../../include/minishell.h"
 #include "../../include/read_cmd_line.h"
 #include "../../include/tree.h"
+
+extern int stop_run;
 
 static void	free_expressions(t_expression *expressions)
 {
@@ -60,9 +63,16 @@ int	read_cmd_line(t_tree **cmd_line)
 	char	*input;
 	int		ret_value;
 
+	stop_run = 0;
 	input = readline(PROMPT_SHELL);
+	if (stop_run == 0)
+		stop_run = 1;
+	else
+		stop_run = 3;
 	if (!input)
 		return (-2);
+	if (!ft_strlen(input))
+		return (-3);
 	add_history(input);
 	ret_value = set_cmd_line(input, cmd_line);
 	free(input);

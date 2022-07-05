@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 10:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 13:52:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/05 10:30:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ int	check_each_path(char **all_path, char **cmd)
 		}
 		else if (!access(cmd_join, F_OK) && access(cmd_join, X_OK))
 			return (ft_free_tab(all_path), access(cmd_join, X_OK));
-		else if (i == ft_arraylen(all_path) - 1)
-			return (ft_free_tab(all_path), free(cmd_join), -1);
 		free(cmd_join);
 	}
-	return (-1);
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(cmd[0], 2);
+	ft_putstr_fd(": command not found\n", 2);
+	return (ft_free_tab(all_path), -1);
 }
 
 int	check_in_path(t_dict *path, char **cmd)
