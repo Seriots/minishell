@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:34:15 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 15:59:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 04:57:24 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../include/run_cmd_line.h"
 #include "../../include/tree.h"
 
-extern int stop_run;
+extern int	g_stop_run;
 
 int	run_cmd_line(t_tree *cmd_line, t_shell *shell)
 {

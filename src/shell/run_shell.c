@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 16:02:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 04:55:49 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 * 3=ctrl+c in lecture + exec
 * 4=ctrl+c in exec
 */
-int stop_run = 0;
+int	g_stop_run = 0;
+
 /*
 * Main loop to read user input in the shell
 */

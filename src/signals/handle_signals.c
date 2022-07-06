@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/05 15:43:32 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 05:15:51 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "../../include/minishell.h"
 #include "../../include/ft_printf.h"
 
-extern int stop_run;
+extern int	g_stop_run;
 
 /*
 * get sigint (Ctrl + C)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 15:42:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 04:56:56 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "../../include/read_cmd_line.h"
 #include "../../include/tree.h"
 
-extern int stop_run;
+extern int	g_stop_run;
 
 static void	free_expressions(t_expression *expressions)
 {

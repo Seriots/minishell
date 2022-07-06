@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/05 22:43:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 05:15:10 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 int	backup_redirections(int fd_backup[3])
 {
-	int ret_value;
-	
+	int	ret_value;
+
 	ret_value = dup2(fd_backup[0], 0);
 	if (ret_value != -1)
 		ret_value = dup2(fd_backup[1], 1);
@@ -33,16 +33,17 @@ int	backup_redirections(int fd_backup[3])
 	return (ret_value);
 }
 
-int	manage_redirections_builtin(t_shell *shell, int fd_backup[3], t_tree *cmd_line)
+/*
+* C'ets qu'un test j'ai pas compris le fonctionnent de t_redirs, 
+* mais avec les test que j'ai fait je me demande si on doit pas
+* faire un join avec pwd pour l'open du fichier creer voila voila
+* 
+*/
+int	manage_redirections_builtin(t_shell *shell, int fd_backup[3],
+	t_tree *cmd_line)
 {
-	/*
-	* C'ets qu'un test j'ai pas compris le fonctionnent de t_redirs, 
-	* mais avec les test que j'ai fait je me demande si on doit pas
-	* faire un join avec pwd pour l'open du fichier creer voila voila
-	* 
-	*/
 	int	ret_value;
-	
+
 	(void)shell;
 	fd_backup[0] = dup(0);
 	fd_backup[1] = dup(1);
@@ -72,30 +73,20 @@ int	get_my_builtin(char *name)
 	return (-1);
 }
 
-int	execute_builtin(t_shell *shell, char **cmd)
+int	execute_builtin(t_shell *shell, t_tree *cmd)
 {
+	char	**args;
 	int		num_builtin;
-	int		ret_value;
-
-	if (!cmd)
-		return (-1);
-	num_builtin = get_my_builtin(cmd[0]);
-	if (num_builtin < 0)
-		return (ft_free_tab(cmd), num_builtin);
-	ret_value = shell->builtins[num_builtin](shell, &cmd[1]);	
-	return (ret_value);
-}
-
-int	execute_builtins(t_shell *shell, t_tree *cmd)
-{
-	t_node	*content;
-	int		return_value;
 
 	if (!cmd || !cmd->content)
 		return (-1);
-	content = (t_node *)cmd->content;
-	return_value = execute_builtin(shell, content->args);
-	return (return_value);
+	args = ((t_node *) cmd->content)->args;
+	if (!args)
+		return (-1);
+	num_builtin = get_my_builtin(args[0]);
+	if (num_builtin < 0)
+		return (num_builtin);
+	return (shell->builtins[num_builtin](shell, args + 1));
 }
 
 int	run_builtin(t_shell *shell, t_tree *cmd_line)
@@ -106,7 +97,7 @@ int	run_builtin(t_shell *shell, t_tree *cmd_line)
 	ret_value = manage_redirections_builtin(shell, fd_backup, cmd_line);
 	if (ret_value)
 		return (ret_value);
-	ret_value = execute_builtins(shell, cmd_line);
+	ret_value = execute_builtin(shell, cmd_line);
 	backup_redirections(fd_backup);
 	return (ret_value);
 }
