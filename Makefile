@@ -51,7 +51,7 @@ SRC_NAMES	= main \
 			  run_cmd_line/run_cmd_args/set_cmd_path \
 			  run_cmd_line/run_cmd_args/manage_redirections \
 			  run_cmd_line/run_cmd_args/all_redirections \
-			  run_cmd_line/run_cmd_args/run_builtins/run_builtin \
+			  run_cmd_line/run_cmd_args/run_builtin \
 			  run_cmd_line/run_cmd_line \
 			  run_cmd_line/run_cmd_or \
 			  run_cmd_line/run_cmd_pipe/run_cmd_pipe \

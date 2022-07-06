@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   set_expression_heredoc.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 04:16:57 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 15:14:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
 #include <stdlib.h>
-#include "get_next_line.h"
-#include "libft.h"
-#include "minishell.h"
-#include "read_cmd_line.h"
+#include "../../../include/get_next_line.h"
+#include "../../../include/ft_printf.h"
+#include "../../../include/libft.h"
+#include "../../../include/minishell.h"
+#include "../../../include/read_cmd_line.h"
+
+extern int	g_stop_run;
 
 static int	is_end_quoted(const char *end)
 {
@@ -61,22 +64,43 @@ static void	remove_quotes_onplace(char *end)
 	}
 }
 
-static char	*get_heredoc(const char *end)
+char	*get_line_heredoc(void)
 {
 	char	*line;
-	char	*heredoc;
+
+	ft_printf(PROMPT_HEREDOC);
+	line = get_next_line(0);
+	if (line && line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = '\0';
+	return (line);
+}
+
+static char	*get_heredoc(const char *end)
+{
+	char				*heredoc;
+	char				*line;
+	struct sigaction	sigact;
 
 	heredoc = NULL;
-	line = readline(PROMPT_HEREDOC);
-	while (ft_strcmp(line, end) != 0)
+	sigact = init_sigact_heredoc();
+	sigaction(SIGINT, &sigact, NULL);
+	line = get_line_heredoc();
+	while (line && ft_strcmp(line, end) != 0)
 	{
 		ft_strjoin_onplace(&heredoc, line);
 		ft_strjoin_onplace(&heredoc, "\n");
 		if (!heredoc)
 			return (NULL);
-		line = readline(PROMPT_HEREDOC);
+		free(line);
+		line = get_line_heredoc();
 	}
-	return (heredoc);
+	if (g_stop_run == 4)
+		printf("\n");
+	if (!line && g_stop_run != 4)
+		ft_putstr_fd("-minishell: warning ta mere\n", 2);
+	if (heredoc == NULL)
+		heredoc = ft_calloc(sizeof(char), 1);
+	return (free(line), heredoc);
 }
 
 int	set_expression_heredoc(t_expression *expression, t_token *token,

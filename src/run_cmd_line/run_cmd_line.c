@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:34:15 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 04:57:24 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 10:05:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	run_cmd_line(t_tree *cmd_line, t_shell *shell)
 		run_cmd_pipe, run_cmd_args};
 	int						i_node;
 
-	if (stop_run == 4)
+	if (g_stop_run == 4)
 		return (1);
 	i_node = ((t_node *) cmd_line->content)->tag;
 	return ((run_cmd_node[i_node])(cmd_line, shell));

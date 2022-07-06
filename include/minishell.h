@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 23:12:54 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 14:39:30 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,11 @@ int					run_shell(t_shell *shell);
 /**************************************************************/
 
 //	handle_signals.c
+void				get_sig_heredoc(int sig, siginfo_t *siginfo, void *context);
 void				get_sig(int sig, siginfo_t *siginfo, void *context);
 
 //	init_sigact.c
+struct sigaction	init_sigact_heredoc(void);
 struct sigaction	init_sigact(void);
 
 /**************************************************************/
@@ -151,7 +153,7 @@ int					backup_redirections(int fd_backup[3]);
 int					manage_redirections_builtin(t_shell *shell,
 						int fd_backup[3], t_tree *cmd_line);
 int					get_my_builtin(char *name);
-int					execute_builtin(t_shell *shell, char **cmd);
+int					execute_builtin(t_shell *shell, t_tree *cmd);
 int					execute_builtins(t_shell *shell, t_tree *cmd);
 int					run_builtin(t_shell *shell, t_tree *cmd_line);
 

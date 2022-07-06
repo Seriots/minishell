@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   interpreter_input.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:09:56 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 22:33:02 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 13:59:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft.h"
 #include "minishell.h"
 #include "read_cmd_line.h"

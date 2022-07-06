@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/06 05:15:51 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 15:07:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,30 @@ extern int	g_stop_run;
 */
 int	get_sigint(void)
 {
-	if (stop_run == 0 || stop_run == 2)
+	//printf("get_sigint\n");
+	if (g_stop_run == 0 || g_stop_run == 2)
 	{
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		printf("\n");
 		rl_redisplay();
-		stop_run = 2;
+		g_stop_run = 2;
 	}
-	else if (stop_run == 1 || stop_run == 3)
+	else if (g_stop_run == 1 || g_stop_run == 3)
 	{
-		stop_run = 4;
+		g_stop_run = 4;
 		printf("\n");
 	}
+	return (0);
+}
+
+int	get_sigint_heredoc(void)
+{
+	char	end;
+
+	end = EOF;
+	rl_replace_line(&end, 1);
+	g_stop_run = 4;
 	return (0);
 }
 
@@ -52,4 +63,12 @@ void	get_sig(int sig, siginfo_t *siginfo, void *context)
 	(void)context;
 	if (sig == SIGINT)
 		get_sigint();
+}
+
+void	get_sig_heredoc(int sig, siginfo_t *siginfo, void *context)
+{
+	(void)siginfo;
+	(void)context;
+	if (sig == SIGINT)
+		get_sigint_heredoc();
 }

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 04:56:56 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 14:06:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void	free_expressions(t_expression *expressions)
 
 	if (!expressions)
 		return ;
-	while (expressions[i].lexeme != newline)
+	i = 0;
+	while (expressions[i].lexeme && expressions[i].lexeme != newline)
 	{
 		if (expressions[i].lexeme >= redir_heredoc)
 			free_cmd_line(expressions[i].content);
@@ -63,12 +64,12 @@ int	read_cmd_line(t_tree **cmd_line)
 	char	*input;
 	int		ret_value;
 
-	stop_run = 0;
+	g_stop_run = 0;
 	input = readline(PROMPT_SHELL);
-	if (stop_run == 0)
-		stop_run = 1;
+	if (g_stop_run == 0)
+		g_stop_run = 1;
 	else
-		stop_run = 3;
+		g_stop_run = 3;
 	if (!input)
 		return (-2);
 	if (!ft_strlen(input))

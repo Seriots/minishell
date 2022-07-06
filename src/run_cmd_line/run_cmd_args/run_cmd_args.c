@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 05:02:42 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 10:02:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int	execute_parent(pid_t pid)
 	return (ret_value);
 }
 
-int	manage_execve_error(int ret_value)
+int	manage_execve_error(void)
 {
-	(void)ret_value;
 	return (-1);
 }
 
@@ -56,7 +55,7 @@ int	run_executable(t_tree *cmd_line, t_shell *shell)
 	if (pid == 0)
 	{
 		if (execute_child(cmd_line, shell) == -1)
-			exit(manage_execve_error(ret_value));
+			exit(manage_execve_error());
 		exit(0);
 	}
 	return (execute_parent(pid));

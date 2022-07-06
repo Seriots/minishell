@@ -6,14 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/06 05:15:10 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 10:13:21 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../include/tree.h"
-#include "../../../../include/minishell.h"
-#include "../../../../include/libft.h"
-#include "../../../../include/dict.h"
+#include "../../../include/tree.h"
+#include "../../../include/minishell.h"
+#include "../../../include/libft.h"
+#include "../../../include/dict.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
