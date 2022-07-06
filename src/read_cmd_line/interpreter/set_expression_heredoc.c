@@ -6,12 +6,13 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 02:49:57 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 04:16:57 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
 #include <stdlib.h>
+#include "get_next_line.h"
 #include "libft.h"
 #include "minishell.h"
 #include "read_cmd_line.h"
@@ -70,6 +71,7 @@ static char	*get_heredoc(const char *end)
 	while (ft_strcmp(line, end) != 0)
 	{
 		ft_strjoin_onplace(&heredoc, line);
+		ft_strjoin_onplace(&heredoc, "\n");
 		if (!heredoc)
 			return (NULL);
 		line = readline(PROMPT_HEREDOC);
@@ -87,7 +89,7 @@ int	set_expression_heredoc(t_expression *expression, t_token *token,
 	if (!redir)
 		return (-1);
 	redir->tag = (t_redir_tag) token->lexeme;
-	end = ft_strndup(input + token->i, token->size + 1);
+	end = ft_strndup(input + token->i, token->size);
 	if (!end)
 		return (-1);
 	redir->is_quoted = is_end_quoted(end);
