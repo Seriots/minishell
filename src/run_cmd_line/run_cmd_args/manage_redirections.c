@@ -6,7 +6,11 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 20:32:11 by lgiband           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/07/06 16:56:08 by lgiband          ###   ########.fr       */
+=======
+/*   Updated: 2022/07/07 01:05:42 by rgarrigo         ###   ########.fr       */
+>>>>>>> f4cbb5e9e15a5a04eb6c7d76b23625581900217e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +41,8 @@ int	manage_redirections(t_tree *cmd_line)
 			ret_value = manage_heredoc(redirs[i]);
 		else if (redirs[i]->tag == to_stderr)
 			ret_value = manage_stderr(redirs[i]);
-		if (ret_value)
-			return (ret_value);
+		if (ret_value == -1)
+			return (-1);
 		i++;
 	}
 	return (0);

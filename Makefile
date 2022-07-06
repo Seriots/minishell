@@ -18,6 +18,9 @@ HEADER_NAMES= dict \
 			  ft \
 			  ft_printf \
 			  list \
+			  minishell \
+			  read_cmd_line \
+			  run_cmd_line
 
 SRC_NAMES	= main \
 			  builtins/utils/export_utils \
@@ -137,11 +140,11 @@ start_compiling:
 	@echo "\n$(_GREEN)Start Compiling $(_NO_COLOR)"
 
 
-$(NAME): $(LIB_FILES) $(OBJ)
+$(NAME): $(LIB_FILES) $(OBJ) $(HEADER)
 	@echo "\n$(_BLUE)Linkage $(NAME)$(_NO_COLOR)"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c start_compiling
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADER) start_compiling
 	@if [ ! -d $(dir $@) ]; then \
 		mkdir -p $(dir $@); \
 	fi

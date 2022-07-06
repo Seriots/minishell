@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 14:39:30 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 23:14:52 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include "tree.h"
 
 # define _GNU_SOURCE
-
-# define SHELL_PROMPT "$> "
 
 typedef struct s_wildstr
 {
