@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/06 10:13:21 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 23:08:42 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 
 int	backup_redirections(int fd_backup[3])
 {
-	int	ret_value;
-
-	ret_value = dup2(fd_backup[0], 0);
-	if (ret_value != -1)
-		ret_value = dup2(fd_backup[1], 1);
-	if (ret_value != -1)
-		ret_value = dup2(fd_backup[2], 2);
-	close (fd_backup[0]);
-	close (fd_backup[1]);
-	close (fd_backup[2]);
-	return (ret_value);
+	if (dup2(fd_backup[0], 0) == -1)
+		return (close(fd_backup[0]), close(fd_backup[1]),
+			close(fd_backup[2]), -1);
+	close(fd_backup[0]);
+	if (dup2(fd_backup[1], 1) == -1)
+		return (close(fd_backup[1]), close(fd_backup[2]), -1);
+	close(fd_backup[1]);
+	if (dup2(fd_backup[2], 2) == -1)
+		return (close(fd_backup[2]), -1);
+	close(fd_backup[2]);
+	return (0);
 }
 
 /*
@@ -42,34 +42,28 @@ int	backup_redirections(int fd_backup[3])
 int	manage_redirections_builtin(t_shell *shell, int fd_backup[3],
 	t_tree *cmd_line)
 {
-	int	ret_value;
-
 	(void)shell;
 	fd_backup[0] = dup(0);
 	fd_backup[1] = dup(1);
 	fd_backup[2] = dup(2);
-	ret_value = manage_redirections(cmd_line);
-	if (ret_value)
-		backup_redirections(fd_backup);
-	return (ret_value);
+	if (manage_redirections(cmd_line) == -1)
+		return (backup_redirections(fd_backup), -1);
+	return (0);
 }
 
 int	get_my_builtin(char *name)
 {
-	if (!ft_strncmp(name, "cd", ft_strlen(name) + 1))
-		return (0);
-	else if (!ft_strncmp(name, "echo", ft_strlen(name) + 1))
-		return (1);
-	else if (!ft_strncmp(name, "env", ft_strlen(name) + 1))
-		return (2);
-	else if (!ft_strncmp(name, "exit", ft_strlen(name) + 1))
-		return (3);
-	else if (!ft_strncmp(name, "export", ft_strlen(name) + 1))
-		return (4);
-	else if (!ft_strncmp(name, "pwd", ft_strlen(name) + 1))
-		return (5);
-	else if (!ft_strncmp(name, "unset", ft_strlen(name) + 1))
-		return (6);
+	const char	*builtin_name[] = {"cd", "echo", "env", "exit", "export",
+		"pwd", "unset"};
+	int			i;
+
+	i = 0;
+	while (i < 7)
+	{
+		if (!ft_strncmp(name, builtin_name[i], ft_strlen(name) + 1))
+			return (i);
+		i++;
+	}
 	return (-1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 10:02:11 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/06 23:06:46 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	execute_child(t_tree *cmd_line, t_shell *shell)
 	t_node	*content;
 
 	if (manage_redirections(cmd_line) == -1)
-		return (-1);
+		exit(-1);
 	content = (t_node *)cmd_line->content;
 	if (set_cmd_path(shell, content->args) == -1)
 		return (-1);
@@ -67,6 +67,7 @@ int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 
 	content = (t_node *)cmd_line->content;
 	content->args = input_modification(content->args, shell);
+//	protection de input_modification a faire
 	if (get_my_builtin(content->args[0]) != -1)
 		return (run_builtin(shell, cmd_line));
 	return (run_executable(cmd_line, shell));

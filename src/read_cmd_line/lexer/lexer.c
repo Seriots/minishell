@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 00:26:44 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 01:03:41 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ static void	lexer_set_token(t_token *token, t_lexer_state *lexer,
 	{
 		token->i = lexer->i;
 		token->size = lexer->size;
+		if (input[token->i] == '2')
+		{
+			token->i++;
+			token->size--;
+		}
 		while (input[token->i] == '<' || input[token->i] == '>'
 			|| ft_strchr(WHITESPACES, input[token->i]) != NULL)
 		{
