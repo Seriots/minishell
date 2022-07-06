@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 23:10:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/06 05:08:59 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 17:03:27 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	manage_stdin(t_redir *redir)
 	if (fd == -1)
 		return (-1);
 	ret_value = dup2(fd, 0);
-	return (close(fd), ret_value);
+		if (ret_value == -1)
+		return (close(fd), -1);
+	return (close(fd), 0);
 }
 
 int	manage_stdout(t_redir *redir)
@@ -38,7 +40,9 @@ int	manage_stdout(t_redir *redir)
 	if (fd == -1)
 		return (-1);
 	ret_value = dup2(fd, 1);
-	return (close(fd), ret_value);
+	if (ret_value == -1)
+		return (close(fd), -1);
+	return (close(fd), 0);
 }
 
 int	manage_append_stdout(t_redir *redir)
@@ -51,7 +55,9 @@ int	manage_append_stdout(t_redir *redir)
 	if (fd <= -1)
 		return (fd);
 	ret_value = dup2(fd, 1);
-	return (close(fd), ret_value);
+	if (ret_value == -1)
+		return (close(fd), -1);
+	return (close(fd), 0);
 }
 
 int	manage_heredoc(t_redir *redir)
@@ -63,7 +69,9 @@ int	manage_heredoc(t_redir *redir)
 		return (-1);
 	ft_putstr_fd(redir->heredoc, pipefd[1]);
 	ret_value = dup2(pipefd[0], 0);
-	return (close(pipefd[0]), close(pipefd[1]), ret_value);
+	if (ret_value == -1)
+		return (close(pipefd[0]), close(pipefd[1]), -1);
+	return (close(pipefd[0]), close(pipefd[1]), 0);
 }
 
 int	manage_stderr(t_redir *redir)
@@ -76,5 +84,7 @@ int	manage_stderr(t_redir *redir)
 	if (fd == -1)
 		return (-1);
 	ret_value = dup2(fd, 2);
-	return (close(fd), ret_value);
+		if (ret_value == -1)
+		return (close(fd), -1);
+	return (close(fd), 0);
 }

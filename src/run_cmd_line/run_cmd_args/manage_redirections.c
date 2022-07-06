@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 20:32:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/06 05:08:31 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:56:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	manage_redirections(t_tree *cmd_line)
 	while (redirs[i])
 	{
 		ret_value = -1;
-		if (redirs[i]->tag == to_stdin)
-			ret_value = manage_stdin(redirs[i]);
-		else if (redirs[i]->tag == to_stdout)
+		if (redirs[i]->tag == to_stdout)
 			ret_value = manage_stdout(redirs[i]);
+		else if (redirs[i]->tag == to_stdin)
+			ret_value = manage_stdin(redirs[i]);
 		else if (redirs[i]->tag == append_to_stdout)
 			ret_value = manage_append_stdout(redirs[i]);
 		else if (redirs[i]->tag == heredoc)
