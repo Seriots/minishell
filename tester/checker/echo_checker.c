@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 23:23:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 23:23:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 01:29:42 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/libft.h"
-#include "../../../include/get_next_line.h"
-#include "../../../include/minishell.h"
+#include "../../include/libft.h"
+#include "../../include/get_next_line.h"
+#include "../../include/minishell.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdio.h>
@@ -27,7 +27,7 @@ void	echo_checker(int argc, char *argv[], char **env)
 	int		fd;
 
 	printf("----------------ECHO----------------\n");
-	fd = open("src/builtins/checker/echo_test.txt", O_RDONLY);
+	fd = open("src/tester/checker/echo_test.txt", O_RDONLY);
 	command = get_next_line(fd);
 	if (command[ft_strlen(command) - 1] == '\n')
 		command[ft_strlen(command) - 1] = 0;

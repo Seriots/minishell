@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 23:23:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 23:23:12 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 01:29:23 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/libft.h"
-#include "../../../include/get_next_line.h"
-#include "../../../include/minishell.h"
+#include "../../include/libft.h"
+#include "../../include/get_next_line.h"
+#include "../../include/minishell.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdio.h>
@@ -29,7 +29,7 @@ void	cd_checker(int argc, char *argv[], char **env)
 
 	printf("----------------CD----------------\n");
 	init_shell(&shell, env);
-	fd = open("src/builtins/checker/cd_test.txt", O_RDONLY);
+	fd = open("src/tester/checker/cd_test.txt", O_RDONLY);
 	command = get_next_line(fd);
 	if (command[ft_strlen(command) - 1] == '\n')
 		command[ft_strlen(command) - 1] = 0;

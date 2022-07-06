@@ -6,14 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 23:27:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 23:27:47 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 01:30:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/minishell.h"
-#include "../../../include/get_next_line.h"
-#include "../../../include/libft.h"
-#include "../../../include/dict.h"
+#include "../../include/minishell.h"
+#include "../../include/get_next_line.h"
+#include "../../include/libft.h"
+#include "../../include/dict.h"
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -29,7 +29,7 @@ int	main(int argc, char *argv[], char **env)
 	char	*line;
 
 	init_shell(&shell, env);
-	fd = open("src/input_modification/checker/input_modification_test.txt",
+	fd = open("src/tester/checker/input_modification_test.txt",
 			O_RDONLY);
 	line = get_next_line(fd);
 	if (line && line[ft_strlen(line) - 1] == '\n')

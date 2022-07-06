@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export_checker.c                                   :+:      :+:    :+:   */
+/*   unset_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 23:23:35 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 23:25:44 by lgiband          ###   ########.fr       */
+/*   Created: 2022/07/04 23:26:04 by lgiband           #+#    #+#             */
+/*   Updated: 2022/07/07 01:30:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/libft.h"
-#include "../../../include/get_next_line.h"
-#include "../../../include/minishell.h"
+#include "../../include/libft.h"
+#include "../../include/get_next_line.h"
+#include "../../include/minishell.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
 
-int	dict_compare_export(t_dict	*dict_avant, t_dict *dict_now)
+int	dict_compare_unset(t_dict	*dict_avant, t_dict *dict_now)
 {
 	t_dict	*copy_avant;
 	t_dict	*copy_now;
@@ -40,7 +40,7 @@ int	dict_compare_export(t_dict	*dict_avant, t_dict *dict_now)
 			copy_avant = copy_avant->next;
 		}
 		if (found == 0)
-			printf(">%s=%s\n", (char *)copy_now->key, (char *)copy_now->value);
+			printf("<%s=%s\n", (char *)copy_now->key, (char *)copy_now->value);
 		copy_now = copy_now->next;
 	}
 	copy_now = dict_now;
@@ -51,8 +51,8 @@ int	dict_compare_export(t_dict	*dict_avant, t_dict *dict_now)
 		copy_now = dict_now;
 		while (copy_now)
 		{
-			if (!ft_strncmp(copy_now->value,
-					copy_avant->value, ft_strlen(copy_now->value) + 1)
+			if (!ft_strncmp(copy_now->value, copy_avant->value,
+					ft_strlen(copy_now->value) + 1)
 				&& !ft_strncmp(copy_now->key, copy_avant->key,
 					ft_strlen(copy_now->key) + 1))
 				found = 1;
@@ -66,7 +66,7 @@ int	dict_compare_export(t_dict	*dict_avant, t_dict *dict_now)
 	return (1);
 }
 
-void	export_checker(int argc, char *argv[], char **env)
+void	unset_checker(int argc, char *argv[], char **env)
 {
 	char	**args;
 	char	*command;
@@ -76,9 +76,9 @@ void	export_checker(int argc, char *argv[], char **env)
 	t_dict	*export_avant;
 	int		fd;
 
-	printf("----------------EXPORT----------------\n");
+	printf("----------------UNSET----------------\n");
 	init_shell(&shell, env);
-	fd = open("src/builtins/checker/export_test.txt", O_RDONLY);
+	fd = open("src/tester/checker/unset_test.txt", O_RDONLY);
 	command = get_next_line(fd);
 	if (command[ft_strlen(command) - 1] == '\n')
 		command[ft_strlen(command) - 1] = 0;
@@ -89,14 +89,14 @@ void	export_checker(int argc, char *argv[], char **env)
 		env_avant = dict_copy(shell.env);
 		export_avant = dict_copy(shell.export);
 		check_error = get_next_line(fd);
-		if (export_command(&shell, args) == ft_atoi(check_error))
+		if (unset_command(&shell, args) == ft_atoi(check_error))
 			printf("Return OK\n");
 		else
 			printf("Return KO\n");
 		printf("diff env:\n");
-		dict_compare_export(env_avant, shell.env);
+		dict_compare_unset(env_avant, shell.env);
 		printf("diff export:\n");
-		dict_compare_export(export_avant, shell.export);
+		dict_compare_unset(export_avant, shell.export);
 		free (command);
 		free(check_error);
 		ft_free_tab(args);
