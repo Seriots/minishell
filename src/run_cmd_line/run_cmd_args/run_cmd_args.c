@@ -6,34 +6,24 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 23:06:46 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 02:54:05 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/minishell.h"
-#include "../../../include/libft.h"
-#include <sys/types.h>
-#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/types.h>
 #include <sys/wait.h>
+#include "libft.h"
+#include "minishell.h"
 
-int	execute_parent(pid_t pid)
+static int	manage_execve_error(void)
 {
-	int	ret_value;
-
-	waitpid(pid, &ret_value, 0);
-	return (ret_value);
-}
-
-int	manage_execve_error(void)
-{
+	perror(NULL);
 	return (-1);
 }
 
-int	execute_child(t_tree *cmd_line, t_shell *shell)
+static int	execute_child(t_tree *cmd_line, t_shell *shell)
 {
 	t_node	*content;
 
@@ -41,24 +31,24 @@ int	execute_child(t_tree *cmd_line, t_shell *shell)
 		exit(-1);
 	content = (t_node *)cmd_line->content;
 	if (set_cmd_path(shell, content->args) == -1)
-		return (-1);
-	return (execve(content->args[0], content->args, shell->env_str));
+		exit(-1);
+	if (execve(content->args[0], content->args, shell->env_str) == -1)
+		exit(manage_execve_error());
+	exit(0);
 }
 
-int	run_executable(t_tree *cmd_line, t_shell *shell)
+static int	run_executable(t_tree *cmd_line, t_shell *shell)
 {
 	pid_t	pid;
+	int		ret_value;
 
 	pid = fork();
 	if (pid == -1)
 		return (-1);
 	if (pid == 0)
-	{
-		if (execute_child(cmd_line, shell) == -1)
-			exit(manage_execve_error());
-		exit(0);
-	}
-	return (execute_parent(pid));
+		execute_child(cmd_line, shell);
+	waitpid(pid, &ret_value, 0);
+	return (ret_value);
 }
 
 int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
@@ -67,7 +57,8 @@ int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 
 	content = (t_node *)cmd_line->content;
 	content->args = input_modification(content->args, shell);
-//	protection de input_modification a faire
+	if (!content->args)
+		return (-1);
 	if (get_my_builtin(content->args[0]) != -1)
 		return (run_builtin(shell, cmd_line));
 	return (run_executable(cmd_line, shell));

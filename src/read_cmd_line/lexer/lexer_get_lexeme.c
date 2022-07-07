@@ -6,14 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 01:42:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/04 22:26:03 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 03:55:24 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/lexer.h"
-#include "../../../include/libft.h"
-#include "../../../include/read_cmd_line.h"
-#include <stdio.h>
+#include "lexer.h"
+#include "libft.h"
+#include "read_cmd_line.h"
 
 t_lexeme	lexer_get_lexeme(const char *input)
 {

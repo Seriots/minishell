@@ -6,14 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:31:08 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/06 14:38:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:13:49 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
 #include <signal.h>
-#include "../../include/minishell.h"
-#include "../../include/libft.h"
+#include "libft.h"
+#include "minishell.h"
 
 /*
 *Initialisation of signal handler object

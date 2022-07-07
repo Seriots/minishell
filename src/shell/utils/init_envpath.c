@@ -6,15 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 23:36:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 23:37:01 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 04:01:51 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/dict.h"
-#include "../../../include/libft.h"
-#include "../../../include/ft_printf.h"
-#include "../../../include/minishell.h"
 #include <stdlib.h>
+#include "dict.h"
+#include "libft.h"
+#include "minishell.h"
 
 int	add_envpath(t_dict **env, int *error)
 {

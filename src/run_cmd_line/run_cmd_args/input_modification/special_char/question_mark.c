@@ -6,14 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:50:10 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/26 14:35:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 02:46:02 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/minishell.h"
-#include "../../../include/libft.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
 size_t	count_q_mark(size_t *i, char *return_value)
 {

@@ -6,17 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 16:15:25 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:52:50 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
 #include <stdlib.h>
-#include "../../../include/get_next_line.h"
-#include "../../../include/ft_printf.h"
-#include "../../../include/libft.h"
-#include "../../../include/minishell.h"
-#include "../../../include/read_cmd_line.h"
+#include "ft_printf.h"
+#include "get_next_line.h"
+#include "libft.h"
+#include "minishell.h"
+#include "read_cmd_line.h"
 
 extern int	g_stop_run;
 
@@ -70,12 +70,10 @@ char	*get_line_heredoc(void)
 
 	ft_printf(PROMPT_HEREDOC);
 	line = get_next_line(0);
-	if (line && line[ft_strlen(line) - 1] == '\n')
-		line[ft_strlen(line) - 1] = '\0';
 	return (line);
 }
 
-static char	*get_heredoc(const char *end)
+static char	*get_heredoc(char *end)
 {
 	char				*heredoc;
 	char				*line;
@@ -85,10 +83,9 @@ static char	*get_heredoc(const char *end)
 	sigact = init_sigact_heredoc();
 	sigaction(SIGINT, &sigact, NULL);
 	line = get_line_heredoc();
-	while (line && ft_strcmp(line, end) != 0)
+	while (line && ft_strcmp(ft_strtrim(line, "\n"), end) != 0)
 	{
 		ft_strjoin_onplace(&heredoc, line);
-		ft_strjoin_onplace(&heredoc, "\n");
 		if (!heredoc)
 			return (NULL);
 		free(line);
@@ -97,9 +94,11 @@ static char	*get_heredoc(const char *end)
 	if (g_stop_run == 4)
 		printf("\n");
 	if (!line && g_stop_run != 4)
-		ft_putstr_fd("-minishell: warning ta mere\n", 2);
-	if (heredoc == NULL)
-		heredoc = ft_calloc(sizeof(char), 1);
+	{
+		ft_putstr_fd(WARNING_EOF_EXPECTED, 2);
+		ft_putstr_fd(end, 2);
+		ft_putstr_fd("')\n", 2);
+	}
 	return (free(line), heredoc);
 }
 

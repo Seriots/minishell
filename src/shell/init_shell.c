@@ -6,16 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 00:42:15 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 03:57:56 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "../../include/minishell.h"
-#include "../../include/libft.h"
-#include "../../include/ft_printf.h"
+#include "libft.h"
+#include "minishell.h"
 
 char	*get_space(char *str, size_t *length)
 {

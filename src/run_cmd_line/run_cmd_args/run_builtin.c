@@ -6,17 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/06 23:08:42 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 02:52:23 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/tree.h"
-#include "../../../include/minishell.h"
-#include "../../../include/libft.h"
-#include "../../../include/dict.h"
 #include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
+#include "dict.h"
+#include "libft.h"
+#include "minishell.h"
+#include "tree.h"
 
 int	backup_redirections(int fd_backup[3])
 {

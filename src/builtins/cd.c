@@ -6,20 +6,16 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:21:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/28 17:13:53 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 02:58:09 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <stdio.h>
-#include <errno.h>
-#include "../../include/minishell.h"
-#include "../../include/libft.h"
-#include "../../include/dict.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include "dict.h"
+#include "libft.h"
+#include "minishell.h"
 
 int	is_minus(t_shell **shell)
 {

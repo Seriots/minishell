@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 03:55:02 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 10:20:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:21:40 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../include/libft.h"
-#include "../include/minishell.h"
+#include "libft.h"
+#include "minishell.h"
 
 static void	free_redirs(t_redir **redirs)
 {

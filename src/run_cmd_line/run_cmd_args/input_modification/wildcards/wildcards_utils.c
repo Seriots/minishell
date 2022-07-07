@@ -6,17 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:01:20 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 17:41:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:20:46 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <dirent.h>
 #include <stdlib.h>
-#include "../../../include/libft.h"
-#include "../../../include/ft_printf.h"
-#include "../../../include/list.h"
-#include "../../../include/minishell.h"
+#include "libft.h"
+#include "list.h"
+#include "minishell.h"
 
 void	insert_wildcard_add(t_list **next, t_list **current,
 		t_list **new, t_list **pre)

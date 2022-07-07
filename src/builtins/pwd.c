@@ -6,13 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:25:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 23:39:42 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:03:26 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
-#include "../../include/minishell.h"
 #include <stdio.h>
+#include "minishell.h"
 
 /*
 * pwd builtin command, IDK if a '\n' is needed.

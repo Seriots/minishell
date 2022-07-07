@@ -6,15 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:29:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 18:55:48 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:13:14 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../../../include/minishell.h"
-#include "../../../include/libft.h"
-#include "../../../include/dict.h"
-#include "../../../include/ft_printf.h"
+#include "dict.h"
+#include "libft.h"
+#include "minishell.h"
 
 int	make_check_char(char *input, t_dict *env, int *pos, char **result)
 {

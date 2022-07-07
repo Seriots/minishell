@@ -6,15 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:49:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/29 14:37:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:01:03 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/dict.h"
-#include "../../include/libft.h"
-#include "../../include/ft_printf.h"
-#include "../../include/minishell.h"
 #include <stdlib.h>
+#include "dict.h"
+#include "libft.h"
+#include "minishell.h"
 
 /*
 * Export builtins command, type export -> show all env variable

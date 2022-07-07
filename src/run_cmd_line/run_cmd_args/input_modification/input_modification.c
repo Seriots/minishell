@@ -6,16 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/27 11:19:18 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 02:41:23 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-#include "../../include/libft.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "minishell.h"
 
-char	**interpreter(char **input, t_shell *shell)
+char	**input_modification(char **input, t_shell *shell)
 {
 	if (!input)
 		return (0);
@@ -26,8 +23,6 @@ char	**interpreter(char **input, t_shell *shell)
 	if (!input)
 		return (0);
 	input = replace_args(input);
-	if (!input)
-		return (0);
 	return (input);
 }
 

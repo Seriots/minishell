@@ -6,15 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 01:03:41 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 03:55:09 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
-#include "../../../include/lexer.h"
-#include "../../../include/libft.h"
-#include "../../../include/read_cmd_line.h"
+#include <stdlib.h>
+#include "lexer.h"
+#include "libft.h"
+#include "read_cmd_line.h"
 
 static int	lexer_error_format(const char *input)
 {

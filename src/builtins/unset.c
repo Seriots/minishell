@@ -6,15 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:29:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/29 15:05:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:12:02 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/dict.h"
-#include "../../include/libft.h"
-#include "../../include/ft_printf.h"
-#include "../../include/minishell.h"
 #include <stdlib.h>
+#include "dict.h"
+#include "libft.h"
+#include "minishell.h"
 
 static int	invalid_identifier_unset(char *arg)
 {

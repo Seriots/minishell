@@ -6,15 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 23:10:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 01:15:51 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 02:50:55 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/minishell.h"
-#include "../../../include/libft.h"
-#include <stdio.h>
-#include <unistd.h>
 #include <fcntl.h>
+#include <unistd.h>
+#include "libft.h"
+#include "minishell.h"
 
 int	manage_stdin(t_redir *redir)
 {

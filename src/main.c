@@ -6,13 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:34:50 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 15:33:40 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:23:41 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
 #include <readline/readline.h>
-#include <readline/history.h>
+#include "minishell.h"
 
 int	main(int argc, char *argv[], char **env)
 {

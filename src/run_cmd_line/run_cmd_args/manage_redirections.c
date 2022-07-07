@@ -6,15 +6,11 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 20:32:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 01:16:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 02:51:36 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/minishell.h"
-#include "../../../include/libft.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
+#include "minishell.h"
 
 int	manage_redirections(t_tree *cmd_line)
 {

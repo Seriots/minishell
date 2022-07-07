@@ -6,19 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 16:53:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 04:00:21 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
 #include <signal.h>
 #include <stddef.h>
-#include <stdio.h>
-#include "../../include/libft.h"
-#include "../../include/minishell.h"
-#include "../../include/run_cmd_line.h"
-
-#define _GNU_SOURCE
+#include "libft.h"
+#include "minishell.h"
+#include "read_cmd_line.h"
+#include "run_cmd_line.h"
+#include "tree.h"
 
 /*
 * 0=read

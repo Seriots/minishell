@@ -6,19 +6,19 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 00:25:22 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 03:56:00 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/history.h>
 #include <readline/readline.h>
 #include <stdlib.h>
-#include "../../include/checker.h"
-#include "../../include/lexer.h"
-#include "../../include/libft.h"
-#include "../../include/minishell.h"
-#include "../../include/read_cmd_line.h"
-#include "../../include/tree.h"
+#include "checker.h"
+#include "lexer.h"
+#include "libft.h"
+#include "minishell.h"
+#include "read_cmd_line.h"
+#include "tree.h"
 
 extern int	g_stop_run;
 

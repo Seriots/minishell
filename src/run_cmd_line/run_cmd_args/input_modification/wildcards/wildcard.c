@@ -6,17 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:07:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/24 20:05:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 03:19:40 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
 #include <dirent.h>
 #include <stdlib.h>
-#include "../../../include/libft.h"
-#include "../../../include/ft_printf.h"
-#include "../../../include/list.h"
-#include "../../../include/minishell.h"
+#include "libft.h"
+#include "list.h"
+#include "minishell.h"
 
 void	add_to_result(t_list **result, char *elem, int hide_file)
 {

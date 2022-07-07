@@ -50,11 +50,22 @@ SRC_NAMES	= main \
 			  read_cmd_line/parser/utils \
 			  read_cmd_line/read_cmd_line \
 			  run_cmd_line/run_cmd_and \
+			  run_cmd_line/run_cmd_args/all_redirections \
+			  run_cmd_line/run_cmd_args/input_modification/input_modification \
+			  run_cmd_line/run_cmd_args/input_modification/remove_quotes \
+			  run_cmd_line/run_cmd_args/input_modification/wildcards/check_part \
+			  run_cmd_line/run_cmd_args/input_modification/wildcards/split_input_utils \
+			  run_cmd_line/run_cmd_args/input_modification/wildcards/split_input \
+			  run_cmd_line/run_cmd_args/input_modification/wildcards/wildcard \
+			  run_cmd_line/run_cmd_args/input_modification/wildcards/wildcards_utils \
+			  run_cmd_line/run_cmd_args/input_modification/special_char/question_mark \
+			  run_cmd_line/run_cmd_args/input_modification/special_char/replace_special_args \
+			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments_utils \
+			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments \
+			  run_cmd_line/run_cmd_args/manage_redirections \
+			  run_cmd_line/run_cmd_args/run_builtin \
 			  run_cmd_line/run_cmd_args/run_cmd_args \
 			  run_cmd_line/run_cmd_args/set_cmd_path \
-			  run_cmd_line/run_cmd_args/manage_redirections \
-			  run_cmd_line/run_cmd_args/all_redirections \
-			  run_cmd_line/run_cmd_args/run_builtin \
 			  run_cmd_line/run_cmd_line \
 			  run_cmd_line/run_cmd_or \
 			  run_cmd_line/run_cmd_pipe/run_cmd_pipe \
@@ -68,18 +79,7 @@ SRC_NAMES	= main \
 			  shell/utils/init_envpath \
 			  shell/utils/init_builtins \
 			  signals/init_sigact \
-			  signals/handle_signals \
-			  input_modification/input_modification \
-			  input_modification/removes_quotes \
-			  input_modification/wildcards/check_part \
-			  input_modification/wildcards/split_input_utils \
-			  input_modification/wildcards/split_input \
-			  input_modification/wildcards/wildcard \
-			  input_modification/wildcards/wildcards_utils \
-			  input_modification/special_char/question_mark \
-			  input_modification/special_char/replace_special_args \
-			  input_modification/env_arguments/env_arguments_utils \
-			  input_modification/env_arguments/env_arguments \
+			  signals/handle_signals
 
 LIB_DIR		= lib
 

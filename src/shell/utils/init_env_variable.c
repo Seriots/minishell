@@ -6,15 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 22:50:05 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/04 23:37:27 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 04:04:15 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/dict.h"
-#include "../../../include/libft.h"
-#include "../../../include/ft_printf.h"
-#include "../../../include/minishell.h"
 #include <stdlib.h>
+#include "dict.h"
+#include "libft.h"
+#include "minishell.h"
 
 int	free_and_set_error(char *key, char *value, int *error)
 {

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 00:47:26 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 03:39:48 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "tree.h"
 # define PROMPT_SHELL "\033[48:5:235m\033[0J\033[38:5:33mGsh$> \033[38:5:15m"
 # define PROMPT_HEREDOC "> "
+# define WARNING_EOF_EXPECTED "warning: here-document at line 1 delimited by \
+end-of-file (wanted `"
 
 typedef enum e_lexeme
 {

@@ -6,14 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:20:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/26 14:35:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 02:40:43 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/minishell.h"
-#include "../../../include/libft.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
+#include "minishell.h"
 
 size_t	count_letters_plus_special(char *input, t_shell *shell)
 {
