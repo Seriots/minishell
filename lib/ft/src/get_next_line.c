@@ -6,13 +6,16 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:46:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/15 15:23:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/07 22:35:54 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+#include <stdio.h>
 
 char	*ft_cut_last_read(char *prev_read)
 {
@@ -90,6 +93,9 @@ char	*ft_read(int fd, char *prev_read)
 		}
 		buf_tampon[readed] = 0;
 		prev_read = ft_strjoin_gnl(prev_read, buf_tampon);
+		if (readed && buf_tampon[readed - 1] != '\n')
+			break ;
+		ft_bzero(buf_tampon, BUFFER_SIZE);
 	}
 	free(buf_tampon);
 	return (prev_read);

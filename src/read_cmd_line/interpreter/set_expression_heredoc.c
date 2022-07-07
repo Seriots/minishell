@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 03:52:50 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 22:45:51 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	*get_line_heredoc(void)
 	char	*line;
 
 	ft_printf(PROMPT_HEREDOC);
+	line = 0;
 	line = get_next_line(0);
 	return (line);
 }
@@ -88,11 +89,19 @@ static char	*get_heredoc(char *end)
 		ft_strjoin_onplace(&heredoc, line);
 		if (!heredoc)
 			return (NULL);
+		if (line[ft_strlen(line) - 1] != '\n')
+		{
+			printf("\n");
+			break ;
+		}
 		free(line);
 		line = get_line_heredoc();
+			
 	}
 	if (g_stop_run == 4)
 		printf("\n");
+	if (!heredoc)
+		heredoc = ft_calloc(sizeof(char), 1);
 	if (!line && g_stop_run != 4)
 	{
 		ft_putstr_fd(WARNING_EOF_EXPECTED, 2);

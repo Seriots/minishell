@@ -124,7 +124,6 @@ clean:
 	fi
 
 fclean:			clean
-	rm -Rf .vscode
 	@echo "\n$(_GREEN)Removing $(NAME)$(_NO_COLOR)"
 	rm -f $(NAME)
 	@for lib in $(LIB_NAMES); do \

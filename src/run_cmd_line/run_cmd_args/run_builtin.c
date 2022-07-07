@@ -6,11 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 02:52:23 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:41:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "dict.h"
 #include "libft.h"
 #include "minishell.h"
@@ -31,21 +33,29 @@ int	backup_redirections(int fd_backup[3])
 	return (0);
 }
 
-/*
-* C'ets qu'un test j'ai pas compris le fonctionnent de t_redirs, 
-* mais avec les test que j'ai fait je me demande si on doit pas
-* faire un join avec pwd pour l'open du fichier creer voila voila
-* 
-*/
+static int	manage_redir_error(char *cmd)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(cmd, 2);
+	perror(": ");
+	return (1);
+}
+
 int	manage_redirections_builtin(t_shell *shell, int fd_backup[3],
 	t_tree *cmd_line)
 {
+	char	*redir_error;
+
 	(void)shell;
+	redir_error = 0;
 	fd_backup[0] = dup(0);
 	fd_backup[1] = dup(1);
 	fd_backup[2] = dup(2);
-	if (manage_redirections(cmd_line) == -1)
+	if (manage_redirections(cmd_line, &redir_error) == -1)
+	{
+		manage_redir_error(redir_error);
 		return (backup_redirections(fd_backup), -1);
+	}
 	return (0);
 }
 

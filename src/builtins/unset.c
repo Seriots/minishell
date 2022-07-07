@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:29:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 03:12:02 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:00:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,3 @@ int	unset_command(t_shell *shell, char **arguments)
 	}
 	return (return_error);
 }
-
-/*
-int	main(int argc, char *argv[], char **env)
-{
-	t_shell	shell;
-
-	init_shell(&shell, env);
-	argv = &argv[1];
-	unset_command(&shell, argv);
-	dict_print(shell.env, 0);
-	free_shell(&shell);
-}*/

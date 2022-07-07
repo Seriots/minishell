@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:03:47 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/06 23:14:52 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:52:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,13 @@ int					run_shell(t_shell *shell);
 /**************************************************************/
 
 //	handle_signals.c
-void				get_sig_heredoc(int sig, siginfo_t *siginfo, void *context);
-void				get_sig(int sig, siginfo_t *siginfo, void *context);
+void				get_sig_heredoc(int sig);
+void				get_sig_child(int sig);
+void				get_sig(int sig);
 
 //	init_sigact.c
 struct sigaction	init_sigact_heredoc(void);
+struct sigaction	init_sigact_child(void);
 struct sigaction	init_sigact(void);
 
 /**************************************************************/
@@ -125,11 +127,11 @@ struct sigaction	init_sigact(void);
 int					set_cmd_path(t_shell *shell, char **cmd);
 
 /*all_redirections.c*/
-int					manage_stdin(t_redir *redir);
-int					manage_stdout(t_redir *redir);
-int					manage_append_stdout(t_redir *redir);
+int					manage_stdin(t_redir *redir, char **cmd_error);
+int					manage_stdout(t_redir *redir, char **cmd_error);
+int					manage_append_stdout(t_redir *redir, char **cmd_error);
 int					manage_heredoc(t_redir *redir);
-int					manage_stderr(t_redir *redir);
+int					manage_stderr(t_redir *redir, char **cmd_error);
 
 /*run_cmd_args.c*/
 int					run_cmd_args(t_tree *cmd_line, t_shell *shell);
@@ -146,7 +148,7 @@ int					unset_command(t_shell *shell, char **arguments);
 int					pwd_command(t_shell *shell, char **arguments);
 
 /*run_builtin.c*/
-int					manage_redirections(t_tree *cmd_line);
+int					manage_redirections(t_tree *cmd_line, char **cmd_error);
 int					backup_redirections(int fd_backup[3]);
 int					manage_redirections_builtin(t_shell *shell,
 						int fd_backup[3], t_tree *cmd_line);

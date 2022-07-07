@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:21:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 02:58:09 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:00:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,3 @@ int	cd_command(t_shell *shell, char **arguments)
 		return (1);
 	return (0);
 }
-
-/*
-int	main(int argc, char *argv[], char **env)
-{
-	t_shell	shell;
-
-	init_shell(&shell, env);
-	argv = &argv[1];
-	printf("-<%s\n", shell.directory);
-	cd_command(&shell, argv);
-	printf("->%s\n", shell.directory);
-	free_shell(&shell);
-}*/

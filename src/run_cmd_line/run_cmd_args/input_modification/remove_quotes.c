@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   removes_quotes.c                                   :+:      :+:    :+:   */
+/*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 19:11:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 02:30:20 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:00:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,18 +106,3 @@ char	**removes_quotes(char **input)
 	}
 	return (input);
 }
-
-/*
-int main(int argc, char *argv[])
-{
-	char	**new;
-	int		i;
-
-	i = -1;
-	new = removes_quotes(argv);
-	while (new[++i])
-	{
-		printf("%s\n", new[i]);
-		free (new[i]);
-	}
-}*/

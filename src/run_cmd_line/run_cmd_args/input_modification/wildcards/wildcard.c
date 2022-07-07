@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:07:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 03:19:40 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:00:20 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,30 +126,3 @@ char	**replace_args(char **argv)
 	free(argv);
 	return (list_to_array(args));
 }
-
-/*
-int	main(int argc, char *argv[])
-{
-	char	**str;
-	int		i;
-	char	**args;
-
-	str = 0;
-	i = -1;
-	args = ft_calloc(sizeof(char *), 4);
-	args[0] = ft_calloc(sizeof(char *), ft_strlen("MakeileMakefile") + 1);
-	args[1] = ft_calloc(sizeof(char *), ft_strlen("*Ma*k*f*le") + 1);
-	args[2] = ft_calloc(sizeof(char *), ft_strlen("*e*") + 1);
-	ft_strlcpy(args[0], "MakefileMakefile", ft_strlen("MakefileMakefile") + 1);
-	ft_strlcpy(args[2], "*e*", ft_strlen("*e*") + 1);
-	ft_strlcpy(args[1], "*Ma*k*f*le", ft_strlen("*Ma*k*f*le") + 1);
-	str = replace_args(args);
-	while (str[++i])
-	{
-		printf("%s\n", str[i]);
-		free(str[i]);
-	}
-	free(args);
-	free(str);
-	return (0);
-}*/

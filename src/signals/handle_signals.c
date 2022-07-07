@@ -6,13 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 04:04:48 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:51:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
 #include <signal.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "libft.h"
 
 extern int	g_stop_run;
@@ -41,9 +42,15 @@ int	get_sigint(void)
 int	get_sigint_heredoc(void)
 {
 	char	end;
-
+	
 	end = EOF;
 	rl_replace_line(&end, 1);
+	g_stop_run = 4;
+	return (0);
+}
+
+int	get_sigint_child(void)
+{
 	g_stop_run = 4;
 	return (0);
 }
@@ -51,18 +58,20 @@ int	get_sigint_heredoc(void)
 /*
 *Signal getter, actually small but easy to improve
 */
-void	get_sig(int sig, siginfo_t *siginfo, void *context)
+void	get_sig(int sig)
 {
-	(void)siginfo;
-	(void)context;
 	if (sig == SIGINT)
 		get_sigint();
 }
 
-void	get_sig_heredoc(int sig, siginfo_t *siginfo, void *context)
+void	get_sig_heredoc(int sig)
 {
-	(void)siginfo;
-	(void)context;
 	if (sig == SIGINT)
 		get_sigint_heredoc();
+}
+
+void	get_sig_child(int sig)
+{
+	if (sig == SIGINT)
+		get_sigint_child();
 }

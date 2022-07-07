@@ -6,21 +6,24 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 23:10:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 02:50:55 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:40:11 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "libft.h"
 #include "minishell.h"
 
-int	manage_stdin(t_redir *redir)
+int	manage_stdin(t_redir *redir, char **cmd_error)
 {
 	int	fd;
 	int	ret_value;
 
 	fd = open(redir->pathfile, O_RDONLY);
+	if (fd == -1)
+		*cmd_error = ft_strdup(redir->pathfile);
 	if (fd == -1)
 		return (-1);
 	ret_value = dup2(fd, 0);
@@ -28,7 +31,7 @@ int	manage_stdin(t_redir *redir)
 	return (ret_value);
 }
 
-int	manage_stdout(t_redir *redir)
+int	manage_stdout(t_redir *redir, char **cmd_error)
 {
 	int	fd;
 	int	ret_value;
@@ -36,20 +39,24 @@ int	manage_stdout(t_redir *redir)
 	fd = open(redir->pathfile, O_CREAT | O_WRONLY | O_TRUNC,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd == -1)
+		*cmd_error = ft_strdup(redir->pathfile);
+	if (fd == -1)
 		return (-1);
 	ret_value = dup2(fd, 1);
 	close(fd);
 	return (ret_value);
 }
 
-int	manage_append_stdout(t_redir *redir)
+int	manage_append_stdout(t_redir *redir, char **cmd_error)
 {
 	int	fd;
 	int	ret_value;
 
 	fd = open(redir->pathfile, O_CREAT | O_WRONLY | O_APPEND,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	if (fd <= -1)
+	if (fd == -1)
+		*cmd_error = ft_strdup(redir->pathfile);
+	if (fd == -1)
 		return (fd);
 	ret_value = dup2(fd, 1);
 	close(fd);
@@ -70,13 +77,15 @@ int	manage_heredoc(t_redir *redir)
 	return (ret_value);
 }
 
-int	manage_stderr(t_redir *redir)
+int	manage_stderr(t_redir *redir, char **cmd_error)
 {
 	int	fd;
 	int	ret_value;
 
 	fd = open(redir->pathfile, O_CREAT | O_WRONLY | O_TRUNC,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (fd == -1)
+		*cmd_error = ft_strdup(redir->pathfile);
 	if (fd == -1)
 		return (-1);
 	ret_value = dup2(fd, 2);

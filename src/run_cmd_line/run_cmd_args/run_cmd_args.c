@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 02:54:05 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:38:55 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,38 @@
 #include "libft.h"
 #include "minishell.h"
 
+extern int	g_stop_run;
+
 static int	manage_execve_error(void)
 {
 	perror(NULL);
-	return (-1);
+	return (1);
+}
+
+static int	manage_redir_error(char *cmd)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(":", 2);
+	ft_putstr_fd(" ", 2);
+	perror(NULL);
+	free(cmd);
+	return (1);
 }
 
 static int	execute_child(t_tree *cmd_line, t_shell *shell)
 {
 	t_node	*content;
+	char	*redir_error;
+	int		ret_value;
 
-	if (manage_redirections(cmd_line) == -1)
-		exit(-1);
+	redir_error = 0;
+	if (manage_redirections(cmd_line, &redir_error) == -1)
+		exit(manage_redir_error(redir_error));
 	content = (t_node *)cmd_line->content;
-	if (set_cmd_path(shell, content->args) == -1)
-		exit(-1);
+	ret_value = set_cmd_path(shell, content->args);
+	if (ret_value != 0)
+		exit(ret_value);
 	if (execve(content->args[0], content->args, shell->env_str) == -1)
 		exit(manage_execve_error());
 	exit(0);
@@ -41,13 +58,22 @@ static int	run_executable(t_tree *cmd_line, t_shell *shell)
 {
 	pid_t	pid;
 	int		ret_value;
+	struct sigaction	sig_in_child;
+	struct sigaction	sig_reset;
 
+	sig_in_child = init_sigact_child();
+	sig_reset = init_sigact();
+	ret_value = -2;
+	sigaction(SIGINT, &sig_in_child, 0);
 	pid = fork();
 	if (pid == -1)
 		return (-1);
 	if (pid == 0)
 		execute_child(cmd_line, shell);
-	waitpid(pid, &ret_value, 0);
+	while (ret_value == -2)
+		waitpid(pid, &ret_value, 0);
+	sigaction(SIGINT, &sig_reset, 0);
+	ret_value = WEXITSTATUS(ret_value);
 	return (ret_value);
 }
 

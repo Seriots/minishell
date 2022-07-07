@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 04:00:21 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/07 18:00:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 * 2=ctrl+c in read
 * 3=ctrl+c in lecture + exec
 * 4=ctrl+c in exec
+* 5=ctrl+c in child
 */
 int	g_stop_run = 0;
 
@@ -49,14 +50,16 @@ void	end_cmd_line(t_shell *shell, t_tree *commands, int ret_value, int *end)
 
 int	run_shell(t_shell *shell)
 {
-	int					end;
-	t_tree				*commands;
 	struct sigaction	sigact;
+	t_tree				*commands;
+	int					end;
 	int					ret_value;
 
 	end = 0;
 	sigact = init_sigact();
+	sigact.sa_handler = SIG_IGN;
 	sigaction(SIGQUIT, &sigact, NULL);
+	sigact.sa_handler = &get_sig;
 	while (!end)
 	{
 		sigaction(SIGINT, &sigact, NULL);
