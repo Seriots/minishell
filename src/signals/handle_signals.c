@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 17:51:58 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/08 11:38:28 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,9 @@ int	get_sigint(void)
 int	get_sigint_heredoc(void)
 {
 	char	end;
-	
+
 	end = EOF;
 	rl_replace_line(&end, 1);
-	g_stop_run = 4;
-	return (0);
-}
-
-int	get_sigint_child(void)
-{
 	g_stop_run = 4;
 	return (0);
 }
@@ -73,5 +67,5 @@ void	get_sig_heredoc(int sig)
 void	get_sig_child(int sig)
 {
 	if (sig == SIGINT)
-		get_sigint_child();
+		g_stop_run = 4;
 }

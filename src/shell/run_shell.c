@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 18:00:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/08 11:36:24 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ void	end_cmd_line(t_shell *shell, t_tree *commands, int ret_value, int *end)
 		shell->return_value = ret_value;
 }
 
+void	init_run_var(int *end, struct sigaction *sigact)
+{
+	*end = 0;
+	*sigact = init_sigact();
+	sigact->sa_handler = SIG_IGN;
+	sigaction(SIGQUIT, sigact, NULL);
+	sigact->sa_handler = &get_sig;
+}
+
 int	run_shell(t_shell *shell)
 {
 	struct sigaction	sigact;
@@ -55,11 +64,7 @@ int	run_shell(t_shell *shell)
 	int					end;
 	int					ret_value;
 
-	end = 0;
-	sigact = init_sigact();
-	sigact.sa_handler = SIG_IGN;
-	sigaction(SIGQUIT, &sigact, NULL);
-	sigact.sa_handler = &get_sig;
+	init_run_var(&end, &sigact);
 	while (!end)
 	{
 		sigaction(SIGINT, &sigact, NULL);

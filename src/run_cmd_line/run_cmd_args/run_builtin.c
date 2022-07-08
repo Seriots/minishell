@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 13:41:24 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/08 11:41:45 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,47 +17,6 @@
 #include "libft.h"
 #include "minishell.h"
 #include "tree.h"
-
-int	backup_redirections(int fd_backup[3])
-{
-	if (dup2(fd_backup[0], 0) == -1)
-		return (close(fd_backup[0]), close(fd_backup[1]),
-			close(fd_backup[2]), -1);
-	close(fd_backup[0]);
-	if (dup2(fd_backup[1], 1) == -1)
-		return (close(fd_backup[1]), close(fd_backup[2]), -1);
-	close(fd_backup[1]);
-	if (dup2(fd_backup[2], 2) == -1)
-		return (close(fd_backup[2]), -1);
-	close(fd_backup[2]);
-	return (0);
-}
-
-static int	manage_redir_error(char *cmd)
-{
-	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(cmd, 2);
-	perror(": ");
-	return (1);
-}
-
-int	manage_redirections_builtin(t_shell *shell, int fd_backup[3],
-	t_tree *cmd_line)
-{
-	char	*redir_error;
-
-	(void)shell;
-	redir_error = 0;
-	fd_backup[0] = dup(0);
-	fd_backup[1] = dup(1);
-	fd_backup[2] = dup(2);
-	if (manage_redirections(cmd_line, &redir_error) == -1)
-	{
-		manage_redir_error(redir_error);
-		return (backup_redirections(fd_backup), -1);
-	}
-	return (0);
-}
 
 int	get_my_builtin(char *name)
 {

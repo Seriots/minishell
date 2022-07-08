@@ -36,6 +36,7 @@ SRC_NAMES	= main \
 			  read_cmd_line/checker \
 			  read_cmd_line/interpreter/interpreter_input \
 			  read_cmd_line/interpreter/set_expression_heredoc \
+			  read_cmd_line/interpreter/check_quotes_heredoc \
 			  read_cmd_line/lexer/lexer \
 			  read_cmd_line/lexer/lexer_get_lexeme \
 			  read_cmd_line/lexer/lexer_init_state \
@@ -63,6 +64,7 @@ SRC_NAMES	= main \
 			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments_utils \
 			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments \
 			  run_cmd_line/run_cmd_args/manage_redirections \
+			  run_cmd_line/run_cmd_args/manage_redirections_builtin \
 			  run_cmd_line/run_cmd_args/run_builtin \
 			  run_cmd_line/run_cmd_args/run_cmd_args \
 			  run_cmd_line/run_cmd_args/set_cmd_path \

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 19:22:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/08 11:51:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define PROMPT_HEREDOC "> "
 # define WARNING_EOF_EXPECTED "warning: here-document delimited by \
 end-of-file (wanted `"
+# define BUFFER_HEREDOC	8192
 
 typedef enum e_lexeme
 {
@@ -51,9 +52,11 @@ typedef struct s_expression
 /*
 //	INTERPRETER
 */
-int	interpreter_input(t_expression **expressions, t_token *tokens,
+int		is_end_quoted(const char *end);
+void	remove_quotes_onplace(char *end);
+int		interpreter_input(t_expression **expressions, t_token *tokens,
 		const char *input);
-int	set_expression_heredoc(t_expression *expression, t_token *token,
+int		set_expression_heredoc(t_expression *expression, t_token *token,
 		const char *input);
 typedef int	(*t_set_expression_content)(t_expression *, t_token *,
 	const char *);
@@ -61,18 +64,18 @@ typedef int	(*t_set_expression_content)(t_expression *, t_token *,
 /*
 //	PARSER
 */
-int	count_lexeme(t_expression *expressions, t_lexeme lexeme);
-int	get_indice_next_lexeme(t_expression *expressions, int i, t_lexeme lexeme);
-int	parser(t_tree **cmd_line, t_expression *expressions);
-int	parser_and(t_tree **cmd_line, t_expression *expressions);
-int	parser_args(t_tree **cmd_line, t_expression *expressions);
-int	parser_or(t_tree **cmd_line, t_expression *expressions);
-int	parser_parenthesis(t_tree **cmd_line, t_expression *expressions);
-int	parser_pipe(t_tree **cmd_line, t_expression *expressions);
+int		count_lexeme(t_expression *expressions, t_lexeme lexeme);
+int		get_indice_next_lexeme(t_expression *expressions, int i, t_lexeme lexeme);
+int		parser(t_tree **cmd_line, t_expression *expressions);
+int		parser_and(t_tree **cmd_line, t_expression *expressions);
+int		parser_args(t_tree **cmd_line, t_expression *expressions);
+int		parser_or(t_tree **cmd_line, t_expression *expressions);
+int		parser_parenthesis(t_tree **cmd_line, t_expression *expressions);
+int		parser_pipe(t_tree **cmd_line, t_expression *expressions);
 
 /*
 //	READ_CMD_LINE
 */
-int	read_cmd_line(t_tree **cmd_line);
+int		read_cmd_line(t_tree **cmd_line);
 
 #endif

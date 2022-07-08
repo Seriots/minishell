@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 16:38:55 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/08 11:43:31 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static int	execute_child(t_tree *cmd_line, t_shell *shell)
 
 static int	run_executable(t_tree *cmd_line, t_shell *shell)
 {
-	pid_t	pid;
-	int		ret_value;
+	pid_t				pid;
+	int					ret_value;
 	struct sigaction	sig_in_child;
 	struct sigaction	sig_reset;
 
