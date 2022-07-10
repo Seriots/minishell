@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   init_signals.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 22:18:25 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/09 22:00:52 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/07/10 13:31:01 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/07/10 13:35:40 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include <signal.h>
+#include <stddef.h>
+#include "signals.h"
 
-int	exit_command(t_shell *shell, char **arguments)
+void	init_signals(void)
 {
-	(void)shell;
-	(void)arguments;
-	return (-2);
+	struct sigaction	sigact;
+
+	sigact = init_sigact();
+	sigaction(SIGINT, &sigact, NULL);
+	sigact = init_sigact_ignore();
+	sigaction(SIGQUIT, &sigact, NULL);
 }

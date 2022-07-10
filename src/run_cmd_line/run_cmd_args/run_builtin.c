@@ -6,16 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:21:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/08 11:41:45 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/09 22:20:14 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "dict.h"
 #include "libft.h"
-#include "minishell.h"
+#include "run_cmd_line.h"
+#include "shell.h"
 #include "tree.h"
 
 int	get_my_builtin(char *name)

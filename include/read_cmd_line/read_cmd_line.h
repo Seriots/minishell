@@ -6,19 +6,22 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/08 11:51:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 22:51:32 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef READ_CMD_LINE_H
 # define READ_CMD_LINE_H
 
+# include "shell.h"
 # include "tree.h"
-# define PROMPT_SHELL "\033[48:5:235m\033[0J\033[38:5:33mGsh$> \033[38:5:15m"
+
+# define PROMPT_SHELL "\1\033[48:5:235m\033[0J\033[38:5:33m\2Gsh$> \
+\1\033[38:5:15m\2"
 # define PROMPT_HEREDOC "> "
-# define WARNING_EOF_EXPECTED "warning: here-document delimited by \
+# define WARNING_USE_EOF_IN_HEREDOC_1 "warning: here-document delimited by \
 end-of-file (wanted `"
-# define BUFFER_HEREDOC	8192
+# define WARNING_USE_EOF_IN_HEREDOC_2 "')\n"
 
 typedef enum e_lexeme
 {
@@ -52,30 +55,30 @@ typedef struct s_expression
 /*
 //	INTERPRETER
 */
-int		is_end_quoted(const char *end);
-void	remove_quotes_onplace(char *end);
-int		interpreter_input(t_expression **expressions, t_token *tokens,
-		const char *input);
-int		set_expression_heredoc(t_expression *expression, t_token *token,
-		const char *input);
 typedef int	(*t_set_expression_content)(t_expression *, t_token *,
-	const char *);
+	t_shell *);
+
+int		interpreter_input(t_expression **expressions, t_token *tokens,
+			t_shell *shell);
+int		set_expression_heredoc(t_expression *expression, t_token *token,
+			t_shell *shell);
 
 /*
 //	PARSER
 */
 int		count_lexeme(t_expression *expressions, t_lexeme lexeme);
 int		get_indice_next_lexeme(t_expression *expressions, int i, t_lexeme lexeme);
-int		parser(t_tree **cmd_line, t_expression *expressions);
 int		parser_and(t_tree **cmd_line, t_expression *expressions);
 int		parser_args(t_tree **cmd_line, t_expression *expressions);
 int		parser_or(t_tree **cmd_line, t_expression *expressions);
 int		parser_parenthesis(t_tree **cmd_line, t_expression *expressions);
 int		parser_pipe(t_tree **cmd_line, t_expression *expressions);
+int		parser(t_tree **cmd_line, t_expression *expressions);
 
 /*
 //	READ_CMD_LINE
 */
-int		read_cmd_line(t_tree **cmd_line);
+int		read_cmd_line(t_tree **cmd_line, t_shell *shell);
+void	set_input(const char *prompt, t_shell *shell);
 
 #endif

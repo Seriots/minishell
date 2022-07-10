@@ -6,12 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:34:50 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 03:23:41 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/09 22:02:05 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
-#include "minishell.h"
+#include "shell.h"
 
 int	main(int argc, char *argv[], char **env)
 {

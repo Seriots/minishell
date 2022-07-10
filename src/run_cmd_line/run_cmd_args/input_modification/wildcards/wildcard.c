@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:07:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 13:00:20 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 21:46:32 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "list.h"
-#include "minishell.h"
+#include "run_cmd_line.h"
+#include "wildcards.h"
 
-void	add_to_result(t_list **result, char *elem, int hide_file)
+static void	add_to_result(t_list **result, char *elem, int hide_file)
 {
 	char	*copy;
 	t_list	*new;
@@ -42,7 +43,7 @@ void	add_to_result(t_list **result, char *elem, int hide_file)
 	}
 }
 
-t_list	*replace_wildcards(char *str)
+static t_list	*replace_wildcards(char *str)
 {
 	DIR				*dir;
 	struct dirent	*dire;
@@ -71,7 +72,7 @@ t_list	*replace_wildcards(char *str)
 	return (result);
 }
 
-void	complete_args(t_list **args)
+static void	complete_args(t_list **args)
 {
 	t_list	*new;
 	t_list	*next;

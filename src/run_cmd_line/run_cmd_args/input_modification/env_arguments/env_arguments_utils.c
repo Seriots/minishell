@@ -6,14 +6,14 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 15:45:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 03:13:03 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/09 22:22:44 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "dict.h"
 #include "libft.h"
-#include "minishell.h"
+#include "run_cmd_line.h"
 
 int	oppose_quote(int is_quoted)
 {

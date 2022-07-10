@@ -6,11 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 20:32:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 15:33:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/09 22:18:59 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "cmd_line.h"
+#include "run_cmd_line.h"
+#include "tree.h"
 
 int	manage_redirections(t_tree *cmd_line, char **cmd_error)
 {

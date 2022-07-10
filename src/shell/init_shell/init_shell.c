@@ -1,19 +1,18 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
+/*                                                                            */ /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:03:49 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 03:57:56 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 13:25:02 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft.h"
-#include "minishell.h"
+#include "shell.h"
 
 char	*get_space(char *str, size_t *length)
 {
@@ -122,5 +121,6 @@ int	init_shell(t_shell *shell, char **env)
 		return (-1);
 	shell->env_str = dict_to_array(shell->env);
 	init_builtins(&shell);
+	init_signals();
 	return (0);
 }

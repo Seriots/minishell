@@ -6,15 +6,16 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 10:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/08 11:43:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/09 22:21:14 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "dict.h"
 #include "libft.h"
-#include "minishell.h"
+#include "shell.h"
 
 void	manage_error_access(char *cmd)
 {

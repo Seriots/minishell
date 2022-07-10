@@ -6,15 +6,17 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 00:25:34 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 22:04:26 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "list.h"
-#include "minishell.h"
+#include "shell.h"
 #include "run_cmd_line.h"
+
+extern t_shell_status	g_shell_status;
 
 static void	init_pipes(int pipes[2][2])
 {
@@ -76,7 +78,7 @@ int	run_pipeline(t_list *pipeline, t_shell *shell, int *pid)
 	int		pipes[2][2];
 
 	init_pipes(pipes);
-	while (pipeline)
+	while (g_shell_status == running_cmd_line && pipeline)
 	{
 		if (set_pipes(pipes, pipeline->next) == -1)
 			return (close_pipe(pipes[0]), -1);
@@ -88,5 +90,7 @@ int	run_pipeline(t_list *pipeline, t_shell *shell, int *pid)
 		pipeline = pipeline->next;
 	}
 	*pid = 0;
+	if (g_shell_status == reading_cmd_line)
+		return (-1);
 	return (0);
 }

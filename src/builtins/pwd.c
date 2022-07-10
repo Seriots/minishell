@@ -6,12 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:25:34 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 03:03:26 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/09 22:01:21 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "minishell.h"
+#include "shell.h"
 
 /*
 * pwd builtin command, IDK if a '\n' is needed.

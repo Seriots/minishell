@@ -6,106 +6,94 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/08 12:16:43 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 22:51:01 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <readline/readline.h>
 #include <stdlib.h>
-#include "ft_printf.h"
-#include "get_next_line.h"
+#include "cmd_line.h"
 #include "libft.h"
-#include "minishell.h"
 #include "read_cmd_line.h"
+#include "shell.h"
 
-extern int	g_stop_run;
+extern t_shell_status	g_shell_status;
 
-char	*get_line_heredoc(void)
+static int	is_end_quoted(const char *end)
 {
-	char	*line;
-	char	tmp[1 + BUFFER_HEREDOC];
-	int		readed;
+	int	count_quote;
+	int	count_double_quote;
 
-	ft_printf(PROMPT_HEREDOC);
-	readed = BUFFER_HEREDOC;
-	line = 0;
-	while (readed == BUFFER_HEREDOC)
+	count_quote = 0;
+	count_double_quote = 0;
+	while (*end)
 	{
-		readed = read(0, tmp, BUFFER_HEREDOC);
-		tmp[readed] = 0;
-		ft_strjoin_onplace(&line, tmp);
-		if (!line)
-			return (0);
-		if (ft_strlen(line) > 0 && line[ft_strlen(line) - 1] == '\n')
-			return (line);
+		if (*end == '\'')
+			count_quote++;
+		if (*end == '\"')
+			count_double_quote++;
+		end++;
 	}
-	return (line);
+	return (count_quote >= 2 || count_double_quote >= 2);
 }
 
-char	*manage_error_heredoc(char *heredoc, char *line, char *end)
+static void	remove_quotes_onplace(char *end)
 {
-	if (g_stop_run == 4)
-		printf("\n");
-	if (!heredoc)
-		heredoc = ft_calloc(sizeof(char), 1);
-	if (!line && g_stop_run != 4)
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (end[i])
 	{
-		ft_putstr_fd(WARNING_EOF_EXPECTED, 2);
-		ft_putstr_fd(end, 2);
-		ft_putstr_fd("')\n", 2);
+		if (end[i] == '\'')
+		{
+			while (end[++i] != '\'')
+				end[j++] = end[i];
+			i++;
+		}
+		else if (end[i] == '\'')
+		{
+			while (end[++i] != '\'')
+				end[j++] = end[i];
+			i++;
+		}
+		else
+			end[j++] = end[i++];
 	}
-	free(line);
+	end[j] = 0;
+}
+
+static void	manage_warning_use_eof_in_heredoc(const char *end)
+{
+	ft_putstr_fd(WARNING_USE_EOF_IN_HEREDOC_1, 2);
+	ft_putstr_fd(end, 2);
+	ft_putstr_fd(WARNING_USE_EOF_IN_HEREDOC_2, 2);
+}
+
+static char	*get_heredoc(char *end, t_shell *shell)
+{
+	char				*heredoc;
+
+	heredoc = NULL;
+	while (1)
+	{
+		set_input(PROMPT_HEREDOC, shell);
+		if (g_shell_status == reading_cmd_line)
+			return (free(heredoc), NULL);
+		if (!shell->input)
+			manage_warning_use_eof_in_heredoc(end);
+		if (!shell->input || ft_strcmp(shell->input, end) == 0)
+			break ;
+		if (ft_strjoin_onplace(&heredoc, shell->input) == -1)
+			return (free(heredoc), NULL);
+		if (ft_strjoin_onplace(&heredoc, "\n") == -1)
+			return (free(heredoc), NULL);
+	}
 	return (heredoc);
 }
 
-int	read_heredoc(char **heredoc, char **line, char **line_cpy)
-{
-	ft_strjoin_onplace(heredoc, *line);
-	if (!*heredoc)
-		return (free(*line), free(*line_cpy), 1);
-	if (!ft_strlen(*line) || (*line)[ft_strlen(*line) - 1] != '\n')
-	{
-		printf("\n");
-		return (2);
-	}
-	free(*line_cpy);
-	free(*line);
-	*line = get_line_heredoc();
-	*line_cpy = ft_strtrim(*line, "\n");
-	if (!*line_cpy)
-		return (free(*line), free(*heredoc), 1);
-	return (0);
-}	
-
-static char	*get_heredoc(char *end)
-{
-	char				*heredoc;
-	char				*line;
-	char				*line_cpy;
-	int					ret;
-	struct sigaction	sigact;
-
-	heredoc = NULL;
-	sigact = init_sigact_heredoc();
-	sigaction(SIGINT, &sigact, NULL);
-	line = get_line_heredoc();
-	line_cpy = ft_strtrim(line, "\n");
-	if (!line_cpy)
-		return (free(line), free(heredoc), NULL);
-	while (line && ft_strcmp(line_cpy, end) != 0)
-	{
-		ret = read_heredoc(&heredoc, &line, &line_cpy);
-		if (ret == 2)
-			break ;
-		if (ret == 1)
-			return (0);
-	}
-	free(line_cpy);
-	return (manage_error_heredoc(heredoc, line, end));
-}
-
 int	set_expression_heredoc(t_expression *expression, t_token *token,
-	const char *input)
+	t_shell *shell)
 {
 	char	*end;
 	t_redir	*redir;
@@ -114,12 +102,12 @@ int	set_expression_heredoc(t_expression *expression, t_token *token,
 	if (!redir)
 		return (-1);
 	redir->tag = (t_redir_tag) token->lexeme;
-	end = ft_strndup(input + token->i, token->size);
+	end = ft_strndup(shell->input + token->i, token->size);
 	if (!end)
 		return (-1);
 	redir->is_quoted = is_end_quoted(end);
 	remove_quotes_onplace(end);
-	redir->heredoc = get_heredoc(end);
+	redir->heredoc = get_heredoc(end, shell);
 	free(end);
 	if (!redir->heredoc)
 		return (free(redir), -1);

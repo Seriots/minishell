@@ -6,15 +6,17 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:39:30 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/08 11:42:16 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 21:47:02 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "libft.h"
-#include "minishell.h"
+#include "run_cmd_line.h"
+#include "shell.h"
+#include "tree.h"
 
 static int	manage_redir_error(char *cmd)
 {

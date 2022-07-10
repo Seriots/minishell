@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_pwd.c                                         :+:      :+:    :+:   */
+/*   init_shlvl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 23:29:04 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 04:03:09 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/07/04 23:34:49 by lgiband           #+#    #+#             */
+/*   Updated: 2022/07/09 22:13:16 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "dict.h"
 #include "libft.h"
-#include "minishell.h"
+#include "shell.h"
 
-int	add_pwd(t_dict **env, int *error)
+int	add_shlvl(t_dict **env, int *error)
 {
 	t_dict	*new;
 	char	*key;
@@ -23,13 +23,14 @@ int	add_pwd(t_dict **env, int *error)
 
 	value = 0;
 	key = 0;
-	key = ft_calloc(sizeof(char), 4);
+	key = ft_calloc(sizeof(char), 6);
 	if (!key)
 		return (free_and_set_error(key, value, error));
-	ft_strlcpy(key, "PWD", 4);
-	value = get_current_directory();
+	ft_strlcpy(key, "SHLVL", 6);
+	value = ft_calloc(sizeof(char), 2);
 	if (!value)
 		return (free_and_set_error(key, value, error));
+	ft_strlcpy(value, "1", 2);
 	new = dict_new(key, value);
 	if (!new)
 		return (free_and_set_error(key, value, error));
@@ -37,21 +38,17 @@ int	add_pwd(t_dict **env, int *error)
 	return (*error);
 }
 
-int	add_oldpwd(t_dict **env, int *error)
+int	update_shlvl(t_dict **search, int *error)
 {
-	t_dict	*new;
-	char	*key;
-	char	*value;
+	char	*new_shlvl;
 
-	value = 0;
-	key = 0;
-	key = ft_calloc(sizeof(char), 7);
-	if (!key)
-		return (free_and_set_error(key, value, error));
-	ft_strlcpy(key, "OLDPWD", 7);
-	new = dict_new(key, value);
-	if (!new)
-		return (free_and_set_error(key, value, error));
-	dict_add_back(env, new, free, free);
+	new_shlvl = ft_itoa(ft_atoi((*search)->value) + 1);
+	if (!new_shlvl)
+	{
+		*error -= 1;
+		return (-1);
+	}
+	free ((*search)->value);
+	(*search)->value = new_shlvl;
 	return (*error);
 }

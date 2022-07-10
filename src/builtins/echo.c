@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:40:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 02:59:04 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/09 22:00:26 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-#include "minishell.h"
+#include "shell.h"
 
 /*
 * echo builtin command, handle the option -n at first

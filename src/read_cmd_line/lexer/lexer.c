@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 03:55:09 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/09 19:27:28 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static int	lexer_set_tokens(t_token *tokens, const char *input)
 	return (0);
 }
 
-int	lexer(const char *input, t_token **tokens)
+int	lexer(t_token **tokens, const char *input)
 {
 	int	nbr_tokens;
 

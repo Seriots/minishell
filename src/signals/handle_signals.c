@@ -6,46 +6,45 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:53 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/08 11:38:28 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 22:40:05 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <readline/readline.h>
 #include <signal.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
+#include "read_cmd_line.h"
+#include "shell.h"
 
-extern int	g_stop_run;
+extern t_shell_status	g_shell_status;
 
 /*
 * get sigint (Ctrl + C)
 */
 int	get_sigint(void)
 {
-	if (g_stop_run == 0 || g_stop_run == 2)
+	if (g_shell_status == reading_cmd_line)
 	{
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		printf("\n");
 		rl_redisplay();
-		g_stop_run = 2;
 	}
-	else if (g_stop_run == 1 || g_stop_run == 3)
+	if (g_shell_status == parsing_cmd_line)
 	{
-		g_stop_run = 4;
+		g_shell_status = reading_cmd_line;
+		rl_replace_line("", 0);
+		rl_set_prompt(PROMPT_SHELL);
+		rl_on_new_line();
+		printf("\n");
+		rl_redisplay();
+	}
+	if (g_shell_status == running_cmd_line)
+	{
+		g_shell_status = reading_cmd_line;
 		printf("\n");
 	}
-	return (0);
-}
-
-int	get_sigint_heredoc(void)
-{
-	char	end;
-
-	end = EOF;
-	rl_replace_line(&end, 1);
-	g_stop_run = 4;
 	return (0);
 }
 
@@ -56,16 +55,4 @@ void	get_sig(int sig)
 {
 	if (sig == SIGINT)
 		get_sigint();
-}
-
-void	get_sig_heredoc(int sig)
-{
-	if (sig == SIGINT)
-		get_sigint_heredoc();
-}
-
-void	get_sig_child(int sig)
-{
-	if (sig == SIGINT)
-		g_stop_run = 4;
 }

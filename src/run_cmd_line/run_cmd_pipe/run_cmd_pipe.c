@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:52:51 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 00:08:11 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/09 22:16:26 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <sys/wait.h>
 #include "libft.h"
 #include "list.h"
-#include "minishell.h"
+#include "shell.h"
 #include "run_cmd_line.h"
 #include "tree.h"
 

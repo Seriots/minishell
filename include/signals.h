@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_parenthesis.c                               :+:      :+:    :+:   */
+/*   signals.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 01:21:58 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/09 22:04:40 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/07/09 19:41:38 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/07/10 22:05:28 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "read_cmd_line.h"
-#include "tree.h"
+#ifndef SIGNALS_H
+# define SIGNALS_H
 
-int	parser_parenthesis(t_tree **cmd_line, t_expression *expressions)
-{
-	int	i;
-	int	ret_value;
+# include <sys/types.h>
+# include <signal.h>
 
-	i = get_indice_next_lexeme(expressions, 0, parenthesis_right);
-	expressions[i].lexeme = newline;
-	ret_value = parser(cmd_line, expressions + 1);
-	expressions[i].lexeme = parenthesis_right;
-	return (ret_value);
-}
+//	handle_signals.c
+void				get_sig_heredoc(int sig);
+void				get_sig_child(int sig);
+void				get_sig(int sig);
+
+//	init_sigact.c
+struct sigaction	init_sigact(void);
+struct sigaction	init_sigact_child(void);
+struct sigaction	init_sigact_ignore(void);
+
+#endif

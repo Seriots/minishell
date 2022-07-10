@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_shlvl.c                                       :+:      :+:    :+:   */
+/*   init_envpath.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 23:34:49 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 04:04:07 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/07/04 23:36:28 by lgiband           #+#    #+#             */
+/*   Updated: 2022/07/09 22:11:07 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "dict.h"
 #include "libft.h"
-#include "minishell.h"
+#include "shell.h"
 
-int	add_shlvl(t_dict **env, int *error)
+int	add_envpath(t_dict **env, int *error)
 {
 	t_dict	*new;
 	char	*key;
@@ -23,32 +23,17 @@ int	add_shlvl(t_dict **env, int *error)
 
 	value = 0;
 	key = 0;
-	key = ft_calloc(sizeof(char), 6);
+	key = ft_calloc(sizeof(char), 2);
 	if (!key)
 		return (free_and_set_error(key, value, error));
-	ft_strlcpy(key, "SHLVL", 6);
-	value = ft_calloc(sizeof(char), 2);
+	ft_strlcpy(key, "_", 2);
+	value = ft_calloc(sizeof(char), 13);
 	if (!value)
 		return (free_and_set_error(key, value, error));
-	ft_strlcpy(value, "1", 2);
+	ft_strlcpy(value, "/usr/bin/env", 13);
 	new = dict_new(key, value);
 	if (!new)
 		return (free_and_set_error(key, value, error));
 	dict_add_back(env, new, free, free);
-	return (*error);
-}
-
-int	update_shlvl(t_dict **search, int *error)
-{
-	char	*new_shlvl;
-
-	new_shlvl = ft_itoa(ft_atoi((*search)->value) + 1);
-	if (!new_shlvl)
-	{
-		*error -= 1;
-		return (-1);
-	}
-	free ((*search)->value);
-	(*search)->value = new_shlvl;
 	return (*error);
 }

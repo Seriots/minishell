@@ -6,18 +6,19 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:21:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 13:00:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 21:24:09 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "builtins.h"
 #include "dict.h"
 #include "libft.h"
-#include "minishell.h"
+#include "shell.h"
 
-int	is_minus(t_shell **shell)
+static int	is_minus(t_shell **shell)
 {
 	char	*wit;
 	t_dict	*pwd;
@@ -41,7 +42,7 @@ int	is_minus(t_shell **shell)
 	return (0);
 }
 
-int	set_pwd_to_home(t_shell **shell)
+static int	set_pwd_to_home(t_shell **shell)
 {
 	t_dict	*home;
 	char	*home_path;
@@ -59,7 +60,7 @@ int	set_pwd_to_home(t_shell **shell)
 	return (0);
 }
 
-int	change_directory(char *path)
+static int	change_directory(char *path)
 {
 	int	error;
 

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/07 03:56:00 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 22:45:40 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 #include <readline/readline.h>
 #include <stdlib.h>
 #include "checker.h"
+#include "cmd_line.h"
 #include "lexer.h"
 #include "libft.h"
-#include "minishell.h"
 #include "read_cmd_line.h"
+#include "shell.h"
 #include "tree.h"
 
-extern int	g_stop_run;
+extern t_shell_status	g_shell_status;
+
+void	set_input(const char *prompt, t_shell *shell)
+{
+	shell->input = readline(prompt);
+	if (!shell->input && g_shell_status == reading_cmd_line)
+		g_shell_status = terminating_shell;
+}
 
 static void	free_expressions(t_expression *expressions)
 {
@@ -37,7 +45,7 @@ static void	free_expressions(t_expression *expressions)
 	}
 }
 
-static int	set_cmd_line(const char *input, t_tree **cmd_line)
+static int	set_cmd_line(t_tree **cmd_line, t_shell *shell)
 {
 	t_token			*tokens;
 	t_expression	*expressions;
@@ -47,9 +55,9 @@ static int	set_cmd_line(const char *input, t_tree **cmd_line)
 	expressions = NULL;
 	*cmd_line = NULL;
 	ret_value = 0;
-	if (lexer(input, &tokens) == -1
-		|| checker(tokens, input) == -1
-		|| interpreter_input(&expressions, tokens, input) == -1
+	if (lexer(&tokens, shell->input) == -1
+		|| checker(tokens, shell->input) == -1
+		|| interpreter_input(&expressions, tokens, shell) == -1
 		|| parser(cmd_line, expressions) == -1)
 		ret_value = -1;
 	free(tokens);
@@ -59,23 +67,23 @@ static int	set_cmd_line(const char *input, t_tree **cmd_line)
 	return (ret_value);
 }
 
-int	read_cmd_line(t_tree **cmd_line)
+int	read_cmd_line(t_tree **cmd_line, t_shell *shell)
 {
-	char	*input;
 	int		ret_value;
 
-	g_stop_run = 0;
-	input = readline(PROMPT_SHELL);
-	if (g_stop_run == 0)
-		g_stop_run = 1;
-	else
-		g_stop_run = 3;
-	if (!input)
-		return (-2);
-	if (!ft_strlen(input))
-		return (-3);
-	add_history(input);
-	ret_value = set_cmd_line(input, cmd_line);
-	free(input);
+	g_shell_status = reading_cmd_line;
+	set_input(PROMPT_SHELL, shell);
+	if (g_shell_status == terminating_shell)
+		return (0);
+	while (g_shell_status == reading_cmd_line)
+	{
+		add_history(shell->input);
+		g_shell_status = parsing_cmd_line;
+		ret_value = set_cmd_line(cmd_line, shell);
+		if (g_shell_status == reading_cmd_line)
+			shell->return_value = 130;
+	}
+	free(shell->input);
+	shell->input = NULL;
 	return (ret_value);
 }

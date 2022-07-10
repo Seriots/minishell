@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 01:57:02 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/19 23:46:10 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:43:17 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_lexer_state
 	int			size;
 }	t_lexer_state;
 
-int			lexer(const char *input, t_token **tokens);
+int			lexer(t_token **tokens, const char *input);
 t_lexeme	lexer_get_lexeme(const char *input);
 int			lexer_init_state(t_lexer_state *lexer, const char *input);
 int			lexer_set_size(t_lexer_state *lexer, const char *input);

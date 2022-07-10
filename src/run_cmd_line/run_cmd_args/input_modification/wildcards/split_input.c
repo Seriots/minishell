@@ -6,13 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:11:30 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 03:16:16 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/09 22:24:41 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-#include "minishell.h"
+#include "wildcards.h"
 
 static int	ft_count_letters(char const *s, char c, int *position)
 {

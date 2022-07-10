@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_parenthesis.c                               :+:      :+:    :+:   */
+/*   builtins_checker.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 01:21:58 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/09 22:04:40 by rgarrigo         ###   ########.fr       */
+/*   Created: 2022/07/09 20:20:43 by rgarrigo          #+#    #+#             */
+/*   Updated: 2022/07/09 20:21:06 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "read_cmd_line.h"
-#include "tree.h"
+#ifndef BUILTINS_CHECKER_H
+# define BUILTINS_CHECKER_H
 
-int	parser_parenthesis(t_tree **cmd_line, t_expression *expressions)
-{
-	int	i;
-	int	ret_value;
+void	export_checker(int argc, char *argv[], char **env);
+void	echo_checker(int argc, char *argv[], char **env);
+void	cd_checker(int argc, char *argv[], char **env);
+void	unset_checker(int argc, char *argv[], char **env);
 
-	i = get_indice_next_lexeme(expressions, 0, parenthesis_right);
-	expressions[i].lexeme = newline;
-	ret_value = parser(cmd_line, expressions + 1);
-	expressions[i].lexeme = parenthesis_right;
-	return (ret_value);
-}
+#endif

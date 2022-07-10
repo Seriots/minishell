@@ -6,11 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:42:07 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 04:00:44 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:47:25 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "builtins.h"
+#include "shell.h"
 
 void	init_builtins(t_shell **shell)
 {

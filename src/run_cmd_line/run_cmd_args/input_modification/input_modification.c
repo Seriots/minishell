@@ -6,11 +6,13 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 13:00:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 21:46:01 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "run_cmd_line.h"
+#include "shell.h"
+#include "wildcards.h"
 
 char	**input_modification(char **input, t_shell *shell)
 {

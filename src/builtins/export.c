@@ -6,14 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:49:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 13:00:46 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 21:24:25 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "builtins.h"
 #include "dict.h"
 #include "libft.h"
-#include "minishell.h"
+#include "shell.h"
 
 /*
 * Export builtins command, type export -> show all env variable

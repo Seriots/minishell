@@ -6,15 +6,15 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:49:48 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 03:11:50 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/09 22:01:53 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "dict.h"
-#include "libft.h"
 #include "ft_printf.h"
-#include "minishell.h"
+#include "libft.h"
+#include "shell.h"
 
 int	init_export_copy(t_shell *shell, t_dict **copy,
 		t_dict **export_copy)

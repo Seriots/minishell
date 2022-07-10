@@ -13,14 +13,20 @@ LIB_NAMES	= dict \
 
 LIBEXT_NAMES= readline
 
-HEADER_NAMES= dict \
-			  tree \
-			  ft \
-			  ft_printf \
-			  list \
-			  minishell \
-			  read_cmd_line \
-			  run_cmd_line
+HEADER_NAMES= builtins \
+			  cmd_line \
+			  lib/ft \
+			  lib/ft_printf \
+			  lib/libft \
+			  lib/list \
+			  lib/tree \
+			  read_cmd_line/checker \
+			  read_cmd_line/lexer \
+			  read_cmd_line/read_cmd_line \
+			  run_cmd_line \
+			  shell \
+			  signals \
+			  wildcards
 
 SRC_NAMES	= main \
 			  builtins/utils/export_utils \
@@ -36,7 +42,6 @@ SRC_NAMES	= main \
 			  read_cmd_line/checker \
 			  read_cmd_line/interpreter/interpreter_input \
 			  read_cmd_line/interpreter/set_expression_heredoc \
-			  read_cmd_line/interpreter/check_quotes_heredoc \
 			  read_cmd_line/lexer/lexer \
 			  read_cmd_line/lexer/lexer_get_lexeme \
 			  read_cmd_line/lexer/lexer_init_state \
@@ -52,17 +57,17 @@ SRC_NAMES	= main \
 			  read_cmd_line/read_cmd_line \
 			  run_cmd_line/run_cmd_and \
 			  run_cmd_line/run_cmd_args/all_redirections \
+			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments_utils \
+			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments \
 			  run_cmd_line/run_cmd_args/input_modification/input_modification \
 			  run_cmd_line/run_cmd_args/input_modification/remove_quotes \
-			  run_cmd_line/run_cmd_args/input_modification/wildcards/check_part \
+			  run_cmd_line/run_cmd_args/input_modification/special_char/question_mark \
+			  run_cmd_line/run_cmd_args/input_modification/special_char/replace_special_args \
+			  run_cmd_line/run_cmd_args/input_modification/wildcards/is_addable \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/split_input_utils \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/split_input \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/wildcard \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/wildcards_utils \
-			  run_cmd_line/run_cmd_args/input_modification/special_char/question_mark \
-			  run_cmd_line/run_cmd_args/input_modification/special_char/replace_special_args \
-			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments_utils \
-			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments \
 			  run_cmd_line/run_cmd_args/manage_redirections \
 			  run_cmd_line/run_cmd_args/manage_redirections_builtin \
 			  run_cmd_line/run_cmd_args/run_builtin \
@@ -73,13 +78,14 @@ SRC_NAMES	= main \
 			  run_cmd_line/run_cmd_pipe/run_cmd_pipe \
 			  run_cmd_line/run_cmd_pipe/run_pipeline \
 			  shell/free_shell \
-			  shell/init_shell \
+			  shell/init_shell/init_builtins \
+			  shell/init_shell/init_env_variable \
+			  shell/init_shell/init_envpath \
+			  shell/init_shell/init_pwd \
+			  shell/init_shell/init_shell \
+			  shell/init_shell/init_shlvl \
+			  shell/init_shell/init_signals \
 			  shell/run_shell \
-			  shell/utils/init_env_variable \
-			  shell/utils/init_pwd \
-			  shell/utils/init_shlvl \
-			  shell/utils/init_envpath \
-			  shell/utils/init_builtins \
 			  signals/init_sigact \
 			  signals/handle_signals
 
@@ -89,11 +95,14 @@ LIB			= $(LIBEXT_NAMES:%=-l%) \
 			  $(LIB_NAMES:%=-L$(LIB_DIR)/%) \
 			  $(LIB_NAMES:%=-l%)
 
+INCLUDE_DIRS= include \
+			  include/lib \
+			  include/read_cmd_line
 HEADER_DIR	= include
 SRC_DIR		= src
 OBJ_DIR		= obj
 
-INCLUDE		= -I$(HEADER_DIR)
+INCLUDE		= $(INCLUDE_DIRS:%=-I%)
 
 HEADER		= $(HEADER_NAMES:%=$(HEADER_DIR)/%.h)
 OBJ			= $(SRC_NAMES:%=$(OBJ_DIR)/%.o)
