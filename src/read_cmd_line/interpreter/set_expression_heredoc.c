@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 23:16:42 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 23:31:47 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ static char	*get_heredoc(char *end, t_shell *shell)
 {
 	char	*heredoc;
 
-	heredoc = NULL;
+	heredoc = malloc(1);
+	if (!heredoc)
+		return (NULL);
+	*heredoc = 0;
 	while (1)
 	{
 		set_input(PROMPT_HEREDOC, shell);
