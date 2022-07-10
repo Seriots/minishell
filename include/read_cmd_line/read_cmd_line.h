@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 02:05:05 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 22:51:32 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 23:24:32 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int		set_expression_heredoc(t_expression *expression, t_token *token,
 //	PARSER
 */
 int		count_lexeme(t_expression *expressions, t_lexeme lexeme);
-int		get_indice_next_lexeme(t_expression *expressions, int i, t_lexeme lexeme);
+int		get_indice_next_lexeme(t_expression *expressions, int i,
+			t_lexeme lexeme);
 int		parser_and(t_tree **cmd_line, t_expression *expressions);
 int		parser_args(t_tree **cmd_line, t_expression *expressions);
 int		parser_or(t_tree **cmd_line, t_expression *expressions);

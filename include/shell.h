@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 19:37:37 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 21:49:10 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 23:11:37 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_shell
 	t_dict	*export;
 	char	*directory;
 	char	*input;
+	char	*cmd_line_input;
 	int		return_value;
 	int		(*builtins[7])(struct s_shell *shell, char **arguments);
 }	t_shell;

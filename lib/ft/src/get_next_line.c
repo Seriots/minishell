@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:46:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/08 11:07:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/10 23:23:36 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,5 @@ char	*get_next_line(int fd)
 	prev_read = ft_cut_last_read(prev_read);
 	ft_copy2_gnl(save[fd], prev_read);
 	free(prev_read);
-	return(result);
+	return (result);
 }

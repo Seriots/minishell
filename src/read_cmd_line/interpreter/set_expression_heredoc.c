@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 22:51:01 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 23:16:42 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	manage_warning_use_eof_in_heredoc(const char *end)
 
 static char	*get_heredoc(char *end, t_shell *shell)
 {
-	char				*heredoc;
+	char	*heredoc;
 
 	heredoc = NULL;
 	while (1)
@@ -85,10 +85,12 @@ static char	*get_heredoc(char *end, t_shell *shell)
 		if (!shell->input || ft_strcmp(shell->input, end) == 0)
 			break ;
 		if (ft_strjoin_onplace(&heredoc, shell->input) == -1)
-			return (free(heredoc), NULL);
+			return (free(shell->input), free(heredoc), NULL);
 		if (ft_strjoin_onplace(&heredoc, "\n") == -1)
-			return (free(heredoc), NULL);
+			return (free(shell->input), free(heredoc), NULL);
+		free(shell->input);
 	}
+	free(shell->input);
 	return (heredoc);
 }
 
@@ -102,7 +104,7 @@ int	set_expression_heredoc(t_expression *expression, t_token *token,
 	if (!redir)
 		return (-1);
 	redir->tag = (t_redir_tag) token->lexeme;
-	end = ft_strndup(shell->input + token->i, token->size);
+	end = ft_strndup(shell->cmd_line_input + token->i, token->size);
 	if (!end)
 		return (-1);
 	redir->is_quoted = is_end_quoted(end);

@@ -6,14 +6,14 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 20:16:28 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 21:24:43 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 23:24:18 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CMD_LINE_H
 # define CMD_LINE_H
 
-#include "read_cmd_line.h"
+# include "read_cmd_line.h"
 
 typedef enum e_redir_tag
 {

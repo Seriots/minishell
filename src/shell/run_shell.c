@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 22:09:38 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 23:00:54 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	run_shell(t_shell *shell)
 			return (-1);
 		if (g_shell_status == terminating_shell)
 			return (ft_putstr_fd("exit\n", 2), 0);
+		g_shell_status = running_cmd_line;
 		ret_value = run_cmd_line(commands, shell);
 		end_cmd_line(shell, commands, ret_value);
 	}

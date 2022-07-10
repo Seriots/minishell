@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:09:56 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 22:33:58 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 23:24:56 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int	count_tokens(t_token *tokens)
 static int	set_expression_argument(t_expression *expression, t_token *token,
 	t_shell *shell)
 {
-	expression->content = ft_strndup(shell->input + token->i, token->size);
+	expression->content = ft_strndup(shell->cmd_line_input + token->i,
+			token->size);
 	if (!expression->content)
 		return (-1);
 	return (0);
@@ -46,7 +47,7 @@ static int	set_expression_redir(t_expression *expression, t_token *token,
 	if (!redir)
 		return (-1);
 	redir->tag = (t_redir_tag) token->lexeme;
-	redir->pathfile = ft_strndup(shell->input + token->i, token->size);
+	redir->pathfile = ft_strndup(shell->cmd_line_input + token->i, token->size);
 	if (!redir->pathfile)
 	{
 		free(redir);

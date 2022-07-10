@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 22:45:40 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/10 23:20:41 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ int	read_cmd_line(t_tree **cmd_line, t_shell *shell)
 		return (0);
 	while (g_shell_status == reading_cmd_line)
 	{
-		add_history(shell->input);
+		shell->cmd_line_input = shell->input;
+		add_history(shell->cmd_line_input);
 		g_shell_status = parsing_cmd_line;
 		ret_value = set_cmd_line(cmd_line, shell);
 		if (g_shell_status == reading_cmd_line)
 			shell->return_value = 130;
 	}
-	free(shell->input);
-	shell->input = NULL;
+	free(shell->cmd_line_input);
 	return (ret_value);
 }
