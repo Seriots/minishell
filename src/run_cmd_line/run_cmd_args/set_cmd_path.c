@@ -6,28 +6,29 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 10:17:42 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/09 22:21:14 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 01:36:35 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
 #include "dict.h"
 #include "libft.h"
 #include "shell.h"
 
-void	manage_error_access(char *cmd)
+static void	manage_error_access(char *cmd)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(":", 2);
-	ft_putstr_fd(" ", 2);
+	ft_putstr_fd(": ", 2);
 	perror(NULL);
 	return ;
 }
 
-char	*join_path_and_cmd(char *path, char *cmd)
+static char	*join_path_and_cmd(char *path, char *cmd)
 {
 	size_t	size;
 	char	*join;
@@ -45,7 +46,15 @@ char	*join_path_and_cmd(char *path, char *cmd)
 	return (join);
 }
 
-int	check_each_path(char **all_path, char **cmd)
+static void	manage_error_command_not_found(char **cmd, char **all_path)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(cmd[0], 2);
+	ft_putstr_fd(": command not found\n", 2);
+	ft_free_tab(all_path);
+}
+
+static int	check_each_path(char **all_path, char **cmd)
 {
 	size_t	i;
 	char	*cmd_join;
@@ -66,13 +75,10 @@ int	check_each_path(char **all_path, char **cmd)
 			return (ft_free_tab(all_path), access(cmd_join, X_OK), 127);
 		free(cmd_join);
 	}
-	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(cmd[0], 2);
-	ft_putstr_fd(": command not found\n", 2);
-	return (ft_free_tab(all_path), 127);
+	return (manage_error_command_not_found(cmd, all_path), 127);
 }
 
-int	check_in_path(t_dict *path, char **cmd)
+static int	check_in_path(t_dict *path, char **cmd)
 {
 	char	**all_path;
 
@@ -84,10 +90,30 @@ int	check_in_path(t_dict *path, char **cmd)
 	return (check_each_path(all_path, cmd));
 }
 
+static int	is_dir(char *pathfile)
+{
+	struct stat	pathfile_info;
+
+	stat(pathfile, &pathfile_info);
+	return (S_ISDIR(pathfile_info.st_mode));
+}
+
+static void	manage_error_is_a_directory(char *cmd)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(": Is a directory\n", 2);
+	return ;
+}
+
 int	set_cmd_path(t_shell *shell, char **cmd)
 {
 	if (!access(*cmd, F_OK) && !access(*cmd, X_OK))
+	{
+		if (is_dir(*cmd))
+			return (manage_error_is_a_directory(*cmd), 126);
 		return (0);
+	}
 	if (!access(*cmd, F_OK) && access(*cmd, X_OK))
 		return (manage_error_access(*cmd), 126);
 	return (check_in_path(dict_getelem_key(shell->env, "PATH"), cmd));

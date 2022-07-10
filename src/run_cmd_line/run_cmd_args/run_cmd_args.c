@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 21:56:47 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 01:22:20 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@
 #include "shell.h"
 #include "signals.h"
 
-static int	manage_execve_error(void)
+static int	manage_execve_error(char *cmd)
 {
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(":", 2);
+	ft_putstr_fd(" ", 2);
 	perror(NULL);
-	return (1);
+	return (126);
 }
 
 static int	manage_redir_error(char *cmd)
@@ -36,39 +40,45 @@ static int	manage_redir_error(char *cmd)
 	return (1);
 }
 
-static int	execute_child(t_tree *cmd_line, t_shell *shell)
+static void	execute_child(t_tree *cmd_line, char **args, t_shell *shell)
 {
-	t_node				*content;
 	char				*redir_error;
 	struct sigaction	sig_in_child;
-	int					ret_value;
 
 	sig_in_child = init_sigact_child();
 	sigaction(SIGINT, &sig_in_child, 0);
+	sigaction(SIGQUIT, &sig_in_child, 0);
 	redir_error = 0;
 	if (manage_redirections(cmd_line, &redir_error) == -1)
 		exit(manage_redir_error(redir_error));
-	content = (t_node *)cmd_line->content;
-	ret_value = set_cmd_path(shell, content->args);
-	if (ret_value != 0)
-		exit(ret_value);
-	if (execve(content->args[0], content->args, shell->env_str) == -1)
-		exit(manage_execve_error());
-	exit(0);
+	if (execve(args[0], args, shell->env_str) == -1)
+		exit(manage_execve_error(args[0]));
 }
 
 static int	run_executable(t_tree *cmd_line, t_shell *shell)
 {
+	t_node	*content;
 	pid_t	pid;
 	int		ret_value;
 
+	content = (t_node *)cmd_line->content;
+	ret_value = set_cmd_path(shell, content->args);
+	if (ret_value != 0)
+		return (ret_value);
 	pid = fork();
 	if (pid == -1)
 		return (-1);
 	if (pid == 0)
-		execute_child(cmd_line, shell);
+		execute_child(cmd_line, content->args, shell);
 	waitpid(pid, &ret_value, 0);
-	ret_value = WEXITSTATUS(ret_value);
+	if (WCOREDUMP(ret_value))
+		ft_putstr_fd("Quit (core dumped)\n", 2);
+	if (WIFEXITED(ret_value))
+		ret_value = WEXITSTATUS(ret_value);
+	else if (WIFSIGNALED(ret_value))
+		ret_value = WTERMSIG(ret_value) + 128;
+	else if (WIFSTOPPED(ret_value))
+		ret_value = WSTOPSIG(ret_value) + 128;
 	return (ret_value);
 }
 
