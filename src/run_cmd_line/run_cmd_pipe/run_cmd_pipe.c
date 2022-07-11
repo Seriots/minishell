@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:52:51 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/09 22:16:26 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 22:27:30 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	wait_pipeline(int *pid)
 {
 	int	ret_value;
 
+	ret_value = 0;
 	while (*pid)
 	{
 		waitpid(*pid, &ret_value, 0);

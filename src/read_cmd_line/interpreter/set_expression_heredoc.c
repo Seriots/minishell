@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 23:31:47 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 22:28:38 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	set_expression_heredoc(t_expression *expression, t_token *token,
 	redir->tag = (t_redir_tag) token->lexeme;
 	end = ft_strndup(shell->cmd_line_input + token->i, token->size);
 	if (!end)
-		return (-1);
+		return (free(redir), -1);
 	redir->is_quoted = is_end_quoted(end);
 	remove_quotes_onplace(end);
 	redir->heredoc = get_heredoc(end, shell);

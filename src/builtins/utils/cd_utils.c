@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:58:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/09 22:01:39 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 23:25:46 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_malloc_str(const char *str)
 
 	result = ft_calloc(sizeof(char), ft_strlen(str) + 1);
 	if (!result)
-		return (0);
+		return (NULL);
 	ft_strlcpy(result, str, ft_strlen(str) + 1);
 	return (result);
 }
@@ -48,8 +48,10 @@ void	change_oldpwd(t_dict *oldpwd, t_dict *pwd, t_shell **shell)
 		oldpwd = dict_getelem_key((*shell)->export, "OLDPWD");
 		if (oldpwd)
 			dict_delone(&(*shell)->export, oldpwd, free, free);
+//		Protection a faire
 		oldpwd = dict_new(ft_malloc_str("OLDPWD"), pwd->value);
 		dict_add_back(&(*shell)->env, oldpwd, free, free);
+//
 	}
 }
 
@@ -61,7 +63,9 @@ int	update_pwd(t_shell **shell, char *path)
 	size_t	size;
 
 	pwd = dict_getelem_key((*shell)->env, "PWD");
+//	Protection a faire
 	oldpwd = dict_getelem_key((*shell)->env, "OLDPWD");
+//
 	if (!pwd)
 		return (1);
 	change_oldpwd(oldpwd, pwd, shell);

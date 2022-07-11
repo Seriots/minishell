@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 23:00:54 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 23:33:55 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ static void	end_cmd_line(t_shell *shell, t_tree *commands, int ret_value)
 {
 	tree_clear(commands, &free_cmd_line);
 	ft_free_tab(shell->env_str);
+//	Il serait bon de faire une verfication et de terminer le shell si shell->env_str est NULL
 	shell->env_str = dict_to_array(shell->env);
+//
 	if (g_shell_status == running_cmd_line)
 		shell->return_value = ret_value;
 	if (g_shell_status == reading_cmd_line)

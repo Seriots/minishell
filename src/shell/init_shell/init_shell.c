@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:56:16 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 22:56:21 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 23:34:30 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ t_dict	*getarg_env(char *line)
 		free(key);
 		return (0);
 	}
+//	Protection a faire (free(key), free(value) ?)
 	elem = dict_new(key, value);
+//
 	return (elem);
 }
 
@@ -120,7 +122,9 @@ int	init_shell(t_shell *shell, char **env)
 		return (-1);
 	if (set_default_variable(&shell) == -1)
 		return (-1);
+//	Il serait bon de faire une verfication et de terminer le shell si shell->env_str est NULL
 	shell->env_str = dict_to_array(shell->env);
+//
 	init_builtins(&shell);
 	init_signals();
 	return (0);
