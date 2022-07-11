@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:07:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/10 21:46:32 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:12:53 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ static t_list	*replace_wildcards(char *str)
 	return (result);
 }
 
+static void	switch_first(t_list	**pre, t_list **args, t_list **new)
+{
+	if (*pre == 0)
+		*args = *new;
+	else
+		(*pre)->next = *new;
+}
+
 static void	complete_args(t_list **args)
 {
 	t_list	*new;
@@ -86,10 +94,8 @@ static void	complete_args(t_list **args)
 		new = replace_wildcards(current->content);
 		if (new)
 		{
-			if (pre == 0)
-				*args = new;
-			else
-				pre->next = new;
+			new = sort_wildcard_result(new);
+			switch_first(&pre, args, &new);
 			insert_wildcard_add(&next, &current, &new, &pre);
 		}
 		else

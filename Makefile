@@ -68,6 +68,7 @@ SRC_NAMES	= main \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/split_input \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/wildcard \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/wildcards_utils \
+			  run_cmd_line/run_cmd_args/input_modification/wildcards/sort_wildcards \
 			  run_cmd_line/run_cmd_args/manage_redirections \
 			  run_cmd_line/run_cmd_args/manage_redirections_builtin \
 			  run_cmd_line/run_cmd_args/run_builtin \

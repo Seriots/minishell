@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 20:08:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/09 22:14:03 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:09:00 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int			ft_split_w(char *str, t_wildstr *wildstr);
 
 /*is_addable.c*/
 int			is_addable(char *d_name, t_wildstr *split);
+
+/*sort_wildcards.c*/
+t_list		*sort_wildcard_result(t_list *lst);
+t_list		*default_sort(t_list *lst);
 
 /*wildcards_utils.c*/
 t_wildstr	*init_wildstr(char *str, t_wildstr *wildstr);

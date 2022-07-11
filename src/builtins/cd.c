@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:21:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/10 21:24:09 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:07:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	cd_command(t_shell *shell, char **arguments)
 	int	error;
 
 	error = 0;
+	printf("arguments[0] = %s\n", arguments[1]);
 	if (ft_arraylen(arguments) > 1)
 		return (ft_putstr_fd("minishell: cd: too many arguments\n",
 				STDERR_FILENO), 1);
@@ -82,6 +83,8 @@ int	cd_command(t_shell *shell, char **arguments)
 		error = set_pwd_to_home(&shell);
 	else if (!ft_strncmp(arguments[0], "-", ft_strlen(arguments[0])))
 		error = is_minus(&shell);
+	else if (!ft_strncmp(arguments[0], ".", ft_strlen(arguments[0])))
+		error = 0;
 	else
 		error = change_directory(arguments[0]);
 	if (error)
