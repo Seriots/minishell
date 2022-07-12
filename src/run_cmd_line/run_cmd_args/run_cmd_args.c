@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/11 01:22:20 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:35:10 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "shell.h"
 #include "signals.h"
 
+#include <stdio.h>
 static int	manage_execve_error(char *cmd)
 {
 	ft_putstr_fd("minishell: ", 2);
@@ -87,6 +88,8 @@ int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 	t_node	*content;
 
 	content = (t_node *)cmd_line->content;
+	if (ft_arraylen(content->args) == 0)
+		return (0);
 	content->args = input_modification(content->args, shell);
 	if (!content->args)
 		return (-1);
