@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:49:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/10 21:24:25 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 23:49:08 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ int	export_command(t_shell *shell, char **arguments)
 	int		return_error;
 
 	i = 0;
-	error = 0;
 	return_error = 0;
 	if (ft_arraylen(arguments) == 0)
 		return (print_export(shell));

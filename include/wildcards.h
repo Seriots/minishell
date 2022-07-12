@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 20:08:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/11 17:09:00 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 16:07:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			is_addable(char *d_name, t_wildstr *split);
 
 /*sort_wildcards.c*/
 t_list		*sort_wildcard_result(t_list *lst);
+t_list		*woutcase_sort(t_list *lst);
 t_list		*default_sort(t_list *lst);
 
 /*wildcards_utils.c*/

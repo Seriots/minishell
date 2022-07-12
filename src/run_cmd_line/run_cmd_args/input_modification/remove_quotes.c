@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 19:11:31 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/07 13:00:08 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 16:16:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char	*remove_quotes(char *input)
 	size_t	size;
 	char	*new;
 
+	if (!input)
+		return (0);
 	size = get_size_minus_q(input);
 	new = ft_calloc(sizeof(char), size + 1);
 	if (!new)

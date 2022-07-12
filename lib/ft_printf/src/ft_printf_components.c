@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_components.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 00:44:28 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/06/09 00:55:03 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:32:41 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ t_arg	ft_parse(const char *s, int *position)
 
 	i = *position;
 	ft_setzero(flags);
-	elem.min_champs = 0;
-	elem.precision = 0;
+	ft_init(&elem);
 	while (ft_is_base(s[++i], FLAG_BASE) != -1 && s[i])
 		flags[ft_is_base(s[i], FLAG_BASE)] = 1;
 	elem = ft_convert_flags(flags, elem);

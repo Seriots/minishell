@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:07:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/12 02:16:52 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:59:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,14 @@ static t_list	*replace_wildcards(char *str)
 
 static void	switch_first(t_list	**pre, t_list **args, t_list **new)
 {
+	*new = sort_wildcard_result(*new);
 	if (*pre == 0)
 		*args = *new;
 	else
 		(*pre)->next = *new;
 }
 
-static void	complete_args(t_list **args)
+static int	complete_args(t_list **args)
 {
 	t_list	*new;
 	t_list	*next;
@@ -94,19 +95,19 @@ static void	complete_args(t_list **args)
 		new = replace_wildcards(current->content);
 		if (new)
 		{
-			new = sort_wildcard_result(new);
 			switch_first(&pre, args, &new);
 			insert_wildcard_add(&next, &current, &new, &pre);
 		}
 		else
 		{
-//			Protection a faire (if (current->content == NULL) ...)
 			current->content = remove_quotes(current->content);
-//
+			if (!current->content)
+				return (list_clear(args, free), 1);
 			pre = current;
 			current = current->next;
 		}
 	}
+	return (0);
 }
 
 char	**replace_args(char **argv)
@@ -114,12 +115,13 @@ char	**replace_args(char **argv)
 	t_list	*args;
 	t_list	*new;
 	int		i;
+	int		error;
 
-	i = 0;
+	i = -1;
 	args = 0;
 	if (!argv)
 		return (0);
-	while (argv[i])
+	while (argv[++i])
 	{
 		new = list_new(argv[i]);
 		if (!new)
@@ -129,9 +131,10 @@ char	**replace_args(char **argv)
 			return (0);
 		}
 		list_add_back(&args, new);
-		i ++;
 	}
-	complete_args(&args);
 	free(argv);
+	error = complete_args(&args);
+	if (error)
+		return (0);
 	return (list_to_array(args));
 }

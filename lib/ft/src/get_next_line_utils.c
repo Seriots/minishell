@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:47:03 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/15 15:24:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 15:52:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	ft_strlen_gnl(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (*(s + i))
 		i ++;
 	return (i);
@@ -96,8 +98,8 @@ char	*ft_strchr_gnl(const char *s, int c)
 
 void	ft_copy2_gnl(char *dest, char *src)
 {
-	int	size;
-	int	i;
+	int		size;
+	int		i;
 
 	i = 0;
 	if (!dest)

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:10:37 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/08 22:43:38 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:12:18 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_dict	*dict_new(void *key, void *value)
 {
 	t_dict	*new;
 
+	if (!key)
+		return (0);
 	new = malloc(sizeof(t_dict));
 	if (!new)
 		return (0);

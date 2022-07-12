@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:56:16 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/11 23:34:30 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:59:49 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <unistd.h>
 #include "libft.h"
 #include "shell.h"
+
+extern t_shell_status	g_shell_status;
 
 char	*get_space(char *str, size_t *length)
 {
@@ -82,13 +84,10 @@ t_dict	*getarg_env(char *line)
 		return (0);
 	value = ft_substr(line, key_count + 1, value_count);
 	if (!value)
-	{
-		free(key);
-		return (0);
-	}
-//	Protection a faire (free(key), free(value) ?)
+		return (free(key), (void *)0);
 	elem = dict_new(key, value);
-//
+	if (!elem)
+		return (free(key), free(value), (void *)0);
 	return (elem);
 }
 
@@ -114,17 +113,21 @@ t_dict	*get_env(char **env)
 
 int	init_shell(t_shell *shell, char **env)
 {
-	shell->env = get_env(env);
 	shell->return_value = 0;
 	shell->export = 0;
+	shell->directory = 0;
+	shell->env_str = 0;
+	shell->env = get_env(env);
+	if (env && !shell->env)
+		return (-1);
 	shell->directory = get_current_directory();
 	if (shell->directory == 0)
 		return (-1);
 	if (set_default_variable(&shell) == -1)
 		return (-1);
-//	Il serait bon de faire une verfication et de terminer le shell si shell->env_str est NULL
 	shell->env_str = dict_to_array(shell->env);
-//
+	if (!shell->env_str)
+		return (-1);
 	init_builtins(&shell);
 	init_signals();
 	return (0);

@@ -6,12 +6,12 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:00:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/09 22:24:25 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/11 23:18:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "libft.h"
+#include "../../../../../lib/ft/include/libft.h"
 #include "wildcards.h"
 
 static int	check_first_part(char *str, char *split, size_t *pos,
@@ -67,7 +67,7 @@ int	is_addable(char *d_name, t_wildstr *split)
 	size_t		pos;
 	size_t		is_ok;
 
-	if (!ft_arraylen(split->split))
+	if (!ft_arraylen(split->split) || ft_arraylen(split->split) == 1)
 		return (1);
 	pos_array = 0;
 	pos = 0;

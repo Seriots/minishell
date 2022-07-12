@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:58:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/11 23:25:46 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:15:02 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ char	*ft_malloc_str(const char *str)
 	return (result);
 }
 
-void	change_oldpwd(t_dict *oldpwd, t_dict *pwd, t_shell **shell)
+int	change_oldpwd(t_dict *oldpwd, t_dict *pwd, t_shell **shell)
 {
+	char	*new_key;
+
 	if (oldpwd)
 	{
 		free(oldpwd->value);
@@ -48,11 +50,15 @@ void	change_oldpwd(t_dict *oldpwd, t_dict *pwd, t_shell **shell)
 		oldpwd = dict_getelem_key((*shell)->export, "OLDPWD");
 		if (oldpwd)
 			dict_delone(&(*shell)->export, oldpwd, free, free);
-//		Protection a faire
-		oldpwd = dict_new(ft_malloc_str("OLDPWD"), pwd->value);
+		new_key = ft_malloc_str("OLDPWD");
+		if (!new_key)
+			return (1);
+		oldpwd = dict_new(new_key, pwd->value);
+		if (!oldpwd)
+			return (1);
 		dict_add_back(&(*shell)->env, oldpwd, free, free);
-//
 	}
+	return (0);
 }
 
 int	update_pwd(t_shell **shell, char *path)
@@ -61,14 +67,15 @@ int	update_pwd(t_shell **shell, char *path)
 	t_dict	*oldpwd;
 	char	*new_path;
 	size_t	size;
+	int		error;
 
 	pwd = dict_getelem_key((*shell)->env, "PWD");
-//	Protection a faire
 	oldpwd = dict_getelem_key((*shell)->env, "OLDPWD");
-//
 	if (!pwd)
 		return (1);
-	change_oldpwd(oldpwd, pwd, shell);
+	error = change_oldpwd(oldpwd, pwd, shell);
+	if (error)
+		return (error);
 	size = ft_strlen(path);
 	new_path = ft_calloc(sizeof(char), size + 1);
 	if (!new_path)

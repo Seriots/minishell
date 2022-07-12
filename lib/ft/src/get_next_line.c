@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:46:23 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/10 23:23:36 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:51:47 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ char	*get_next_line(int fd)
 	if (prev_read == 0)
 		return (0);
 	result = ft_get_line(prev_read);
-	if (result && result[0] == 0)
+	if (result && ft_strlen_gnl(result) == 0)
 	{
 		free(prev_read);
 		free(result);

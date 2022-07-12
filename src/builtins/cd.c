@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:21:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/11 23:28:08 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:22:40 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	cd_command(t_shell *shell, char **arguments)
 {
 	int	error;
 
-	error = 0;
 	if (ft_arraylen(arguments) > 1)
 		return (ft_putstr_fd("minishell: cd: too many arguments\n",
 				STDERR_FILENO), 1);

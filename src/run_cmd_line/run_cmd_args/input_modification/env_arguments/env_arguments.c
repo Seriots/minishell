@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:29:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/09 22:22:22 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:23:38 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	check_char(char *input, t_dict *env, int *pos, size_t *nb_letters)
 		if (!var)
 			return (-1);
 		*nb_letters += get_size_var(var, env);
-		pos += ft_strlen(var);
+		*pos += ft_strlen(var);
 		free(var);
 	}
 	else
@@ -105,7 +105,6 @@ char	*get_env_arguments(char *input, t_dict *env)
 
 	pos = 0;
 	nb_letters = 0;
-	is_error = 0;
 	while (input[pos])
 	{
 		is_error = check_char(input, env, &pos, &nb_letters);
