@@ -1,5 +1,5 @@
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -g
 MAKE		= /bin/make
 
 
@@ -153,6 +153,10 @@ re:
 .INTERMEDIATE:	start_compiling
 start_compiling:
 	@echo "\n$(_GREEN)Start Compiling $(_NO_COLOR)"
+
+.PHONY:		malloc_test
+malloc_test: $(OBJ) $(LIB_FILES)
+	$(CC) $(CFLAGS) -fsanitize=undefined -rdynamic -o $@ $(OBJ) $(LIB) -lm -ldl -L. -lmallocator
 
 
 $(NAME): $(LIB_FILES) $(OBJ) $(HEADER)

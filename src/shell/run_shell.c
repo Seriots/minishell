@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 17:30:02 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 19:24:19 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	run_shell(t_shell *shell)
 		g_shell_status = running_cmd_line;
 		ret_value = run_cmd_line(commands, shell);
 		if (ret_value == -1)
-			return (-1);
+			return (tree_clear(commands, &free_cmd_line), -1);
 		end_cmd_line(shell, commands, ret_value);
 	}
 	return (ft_putstr_fd("exit\n", 2), 0);

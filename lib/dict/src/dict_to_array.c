@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:22:11 by lgiband           #+#    #+#             */
-/*   Updated: 2022/06/15 17:06:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 18:44:39 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**dict_to_array(t_dict *dict)
 	{
 		result[i] = dict_to_str(dict);
 		if (!result[i])
-			ft_free_tab(result);
+			return (ft_free_tab(result), (void *)0);
 		dict = dict->next;
 		i++;
 	}

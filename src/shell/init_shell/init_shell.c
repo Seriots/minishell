@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:56:16 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 16:59:49 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 18:47:15 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*get_current_directory(void)
 	length = ft_strlen(path);
 	try = ft_calloc(sizeof(char), length + 1);
 	if (!try)
-		return (0);
+		return (free(path), (void *)0);
 	ft_strlcpy(try, path, length + 1);
 	free(path);
 	return (try);

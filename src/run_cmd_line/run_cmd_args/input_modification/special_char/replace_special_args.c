@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:20:24 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/11 16:13:23 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 19:25:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*replace_special_char(char *input, t_shell *shell)
 	size_t	size;
 
 	size = count_letters_plus_special(input, shell);
+	(void)size;
 	new_str = ft_calloc(sizeof(char), size + 1);
 	if (!new_str)
 	{
