@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:52:51 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/11 22:27:30 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 03:36:22 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ static int	wait_pipeline(int *pid)
 		waitpid(*pid, &ret_value, 0);
 		pid++;
 	}
+	if (WIFEXITED(ret_value))
+		ret_value = WEXITSTATUS(ret_value);
+	else if (WIFSIGNALED(ret_value))
+		ret_value = WTERMSIG(ret_value) + 128;
+	else if (WIFSTOPPED(ret_value))
+		ret_value = WSTOPSIG(ret_value) + 128;
 	return (ret_value);
 }
 
