@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 23:09:56 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 23:24:56 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 21:15:39 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ static int	set_expression_redir(t_expression *expression, t_token *token,
 	redir->tag = (t_redir_tag) token->lexeme;
 	redir->pathfile = ft_strndup(shell->cmd_line_input + token->i, token->size);
 	if (!redir->pathfile)
-	{
-		free(redir);
-		return (-1);
-	}
+		return (free(redir), -1);
 	expression->content = redir;
 	return (0);
 }
@@ -64,13 +61,16 @@ static int	set_expression(t_expression *expression, t_token *token,
 		NULL, NULL, NULL, NULL, &set_expression_heredoc, &set_expression_redir,
 		&set_expression_redir, &set_expression_redir, &set_expression_redir,
 		&set_expression_argument};
+	int								ret_value;
 
 	expression->lexeme = token->lexeme;
 	expression->content = NULL;
-	if (set_expression_content[token->lexeme])
-		return ((set_expression_content[token->lexeme])(expression, token,
-			shell));
-	return (0);
+	if (!set_expression_content[token->lexeme])
+		return (0);
+	ret_value = set_expression_content[token->lexeme](expression, token, shell);
+	if (ret_value == -1)
+		expression->lexeme = newline;
+	return (ret_value);
 }
 
 int	interpreter_input(t_expression **expressions, t_token *tokens,

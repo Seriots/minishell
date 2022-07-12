@@ -6,13 +6,22 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 03:55:02 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 01:47:52 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 20:55:25 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "cmd_line.h"
+
+void	free_redir(t_redir *redir)
+{
+	if (redir->tag == heredoc && redir->heredoc)
+		free(redir->heredoc);
+	else if (redir->pathfile)
+		free(redir->pathfile);
+	free(redir);
+}
 
 static void	free_redirs(t_redir **redirs)
 {
@@ -21,11 +30,7 @@ static void	free_redirs(t_redir **redirs)
 	i = 0;
 	while (redirs[i])
 	{
-		if (redirs[i]->tag == heredoc && redirs[i]->heredoc)
-			free(redirs[i]->heredoc);
-		else if (redirs[i]->pathfile)
-			free(redirs[i]->pathfile);
-		free(redirs[i]);
+		free_redir(redirs[i]);
 		i++;
 	}
 	free(redirs);

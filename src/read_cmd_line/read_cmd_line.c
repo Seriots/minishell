@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 17:25:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 20:57:12 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ static void	free_expressions(t_expression *expressions)
 	i = 0;
 	while (expressions[i].lexeme && expressions[i].lexeme != newline)
 	{
-		if (expressions[i].lexeme >= redir_heredoc)
-			free_cmd_line(expressions[i].content);
+		if (expressions[i].lexeme == argument)
+			free(expressions[i].content);
+		else if (expressions[i].lexeme >= redir_heredoc)
+			free_redir(expressions[i].content);
 		i++;
 	}
 	free(expressions);
