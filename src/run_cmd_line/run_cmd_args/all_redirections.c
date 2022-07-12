@@ -6,12 +6,11 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 23:10:41 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/09 22:19:38 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 22:51:36 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <stdio.h>
 #include <unistd.h>
 #include "cmd_line.h"
 #include "libft.h"

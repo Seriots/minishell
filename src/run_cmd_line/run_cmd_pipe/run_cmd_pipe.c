@@ -6,13 +6,12 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:52:51 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 03:36:22 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 22:49:47 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <sys/wait.h>
 #include "libft.h"
 #include "list.h"

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:56:16 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 18:47:15 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/12 22:45:20 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	init_shell(t_shell *shell, char **env)
 	shell->directory = 0;
 	shell->env_str = 0;
 	shell->env = get_env(env);
-	if (env && !shell->env)
+	if (env && env[0] && !shell->env)
 		return (-1);
 	shell->directory = get_current_directory();
 	if (shell->directory == 0)
