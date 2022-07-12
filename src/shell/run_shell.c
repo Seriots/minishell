@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:59:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/11 23:33:55 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 02:54:10 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ static void	end_cmd_line(t_shell *shell, t_tree *commands, int ret_value)
 	if (g_shell_status == reading_cmd_line)
 		shell->return_value = 130;
 	if (g_shell_status == terminating_shell)
-	{
-		ft_putstr_fd("exit\n", 2);
-		shell->return_value = 0;
-	}
+		shell->return_value = ret_value;
 }
 
 int	run_shell(t_shell *shell)
@@ -54,10 +51,12 @@ int	run_shell(t_shell *shell)
 		if (ret_value == -1)
 			return (-1);
 		if (g_shell_status == terminating_shell)
-			return (ft_putstr_fd("exit\n", 2), 0);
+			break ;
 		g_shell_status = running_cmd_line;
 		ret_value = run_cmd_line(commands, shell);
+		if (ret_value == -1)
+			return (-1);
 		end_cmd_line(shell, commands, ret_value);
 	}
-	return (0);
+	return (ft_putstr_fd("exit\n", 2), 0);
 }

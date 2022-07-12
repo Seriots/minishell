@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 20:16:28 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 23:24:18 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 01:49:55 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ typedef struct s_node
 }	t_node;
 
 void	free_cmd_line(void *node_addr);
+void	free_cmd_line_struct(void *node_addr);
 
 #endif

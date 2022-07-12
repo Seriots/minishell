@@ -6,10 +6,11 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 22:03:43 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/05 01:40:20 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 02:09:36 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include "read_cmd_line.h"
 #include "tree.h"
 
@@ -31,6 +32,7 @@ static int	contain_lexeme(t_lexeme lexeme, t_expression *expressions)
 
 int	parser(t_tree **cmd_line, t_expression *expressions)
 {
+	*cmd_line = NULL;
 	if (contain_lexeme(logical_or, expressions))
 		return (parser_or(cmd_line, expressions));
 	if (contain_lexeme(logical_and, expressions))

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 03:55:02 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/09 21:58:30 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 01:47:52 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ static void	free_redirs(t_redir **redirs)
 		i++;
 	}
 	free(redirs);
+}
+
+void	free_cmd_line_struct(void *node_addr)
+{
+	t_node	*node;
+
+	if (!node_addr)
+		return ;
+	node = (t_node *) node_addr;
+	if (node->tag == args && node->args)
+		free(node->args);
+	if (node->tag == args && node->redirs)
+		free(node->redirs);
+	free(node);
 }
 
 void	free_cmd_line(void *node_addr)

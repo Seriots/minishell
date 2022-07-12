@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 22:28:22 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/09 22:04:12 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 02:09:54 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	parser_args(t_tree **cmd_line, t_expression *expressions)
 	if (set_args(leaf, expressions) == -1)
 		return (free(leaf), -1);
 	if (set_redirs(leaf, expressions) == -1)
-		return (ft_free_tab(leaf->args), free(leaf), -1);
+		return (free(leaf->args), free(leaf), -1);
 	*cmd_line = tree_new_leaf(leaf);
 	if (!*cmd_line)
-		return (free_cmd_line(leaf), -1);
+		return (free(leaf->args), free(leaf->redirs), free(leaf), -1);
 	return (0);
 }

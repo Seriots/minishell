@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 23:20:41 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 01:50:11 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	free_expressions(t_expression *expressions)
 			free_cmd_line(expressions[i].content);
 		i++;
 	}
+	free(expressions);
 }
 
 static int	set_cmd_line(t_tree **cmd_line, t_shell *shell)
@@ -61,10 +62,14 @@ static int	set_cmd_line(t_tree **cmd_line, t_shell *shell)
 		|| parser(cmd_line, expressions) == -1)
 		ret_value = -1;
 	free(tokens);
-	if (!*cmd_line)
+	if (ret_value == -1)
+	{
 		free_expressions(expressions);
+		tree_clear(*cmd_line, &free_cmd_line_struct);
+		return (-1);
+	}
 	free(expressions);
-	return (ret_value);
+	return (0);
 }
 
 int	read_cmd_line(t_tree **cmd_line, t_shell *shell)

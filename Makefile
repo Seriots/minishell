@@ -1,5 +1,5 @@
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -g
+CFLAGS		= -Wall -Werror -Wextra
 MAKE		= /bin/make
 
 
@@ -122,12 +122,11 @@ _WHITE		= \033[37m
 _NO_COLOR	= \033[0m
 
 
-.PHONY:			all clean fclean re rule_begin
-.INTERMEDIATE:	start_compiling
 
-
+.PHONY:			all
 all:			$(NAME)
 
+.PHONY:			clean
 clean:
 	@echo "$(_GREEN)Removing objects$(_NO_COLOR)"
 	rm -f $(OBJ)
@@ -135,6 +134,7 @@ clean:
 		find $(OBJ_DIR) -type d | xargs rmdir -p --ignore-fail-on-non-empty; \
 	fi
 
+.PHONY:			fclean
 fclean:			clean
 	@echo "\n$(_GREEN)Removing $(NAME)$(_NO_COLOR)"
 	rm -f $(NAME)
@@ -143,10 +143,12 @@ fclean:			clean
 		$(MAKE) --no-print-directory -C $(LIB_DIR)/$${lib}/ fclean; \
 	done
 
+.PHONY:			re
 re:				
 	$(MAKE) fclean
 	$(MAKE) all
 
+.INTERMEDIATE:	start_compiling
 start_compiling:
 	@echo "\n$(_GREEN)Start Compiling $(_NO_COLOR)"
 
