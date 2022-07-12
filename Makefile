@@ -57,6 +57,7 @@ SRC_NAMES	= main \
 			  read_cmd_line/read_cmd_line \
 			  run_cmd_line/run_cmd_and \
 			  run_cmd_line/run_cmd_args/all_redirections \
+			  run_cmd_line/run_cmd_args/check_in_path \
 			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments_utils \
 			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments \
 			  run_cmd_line/run_cmd_args/input_modification/input_modification \

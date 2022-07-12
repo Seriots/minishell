@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:06:46 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/09 20:42:14 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/12 03:19:44 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int		run_pipeline(t_list *pipeline, t_shell *shell, int *pid);
 
 /*set_cmd_path.c*/
 int		set_cmd_path(t_shell *shell, char **cmd);
+
+/*check_in_path.c*/
+int		check_in_path(t_dict *path, char **cmd);
 
 /*all_redirections.c*/
 int		manage_stdin(t_redir *redir, char **cmd_error);
