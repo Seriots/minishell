@@ -51,9 +51,7 @@ SRC_NAMES	= ft_error_base \
 			  ft_toupper \
 			  ft_tolower \
 			  ft_ultoa_base \
-			  ft_utoa_base \
-			  get_next_line \
-			  get_next_line_utils
+			  ft_utoa_base
 
 HEADER_DIR	= include
 SRC_DIR		= src
