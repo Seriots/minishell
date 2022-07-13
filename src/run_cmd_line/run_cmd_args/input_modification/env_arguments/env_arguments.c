@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:29:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/12 15:23:38 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 21:48:06 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char	*make_new_str(char *input, t_dict *env, size_t nb_letters)
 		if (is_error)
 		{
 			free (input);
+			free (result);
 			return (0);
 		}
 		pos += 1;
