@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:19:32 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 15:23:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 22:49:03 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char	*make_new_str_heredoc(char *input, t_dict *env, size_t nb_letters)
 		if (is_error)
 		{
 			free (input);
+			free (result);
 			return (0);
 		}
 		pos += 1;

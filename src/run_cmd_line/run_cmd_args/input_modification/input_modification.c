@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 21:40:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 22:42:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,10 @@ int	redirs_modification(char **input_addr, t_shell *shell)
 	return (0);
 }
 
-
 int	all_redirs_modification(t_redir ***redirs_addr, t_shell *shell)
 {
-	int	i;
-	int	error;
+	int		i;
+	int		error;
 	t_redir	**redirs;
 
 	i = 0;
@@ -105,7 +104,8 @@ int	all_redirs_modification(t_redir ***redirs_addr, t_shell *shell)
 	{
 		if (redirs[i]->tag == heredoc)
 		{
-			redirs[i]->heredoc = input_modification_heredoc(redirs[i]->heredoc, redirs[i]->is_quoted, shell);
+			redirs[i]->heredoc = input_modification_heredoc(redirs[i]->heredoc,
+					redirs[i]->is_quoted, shell);
 			if (!redirs[i]->heredoc)
 				return (1);
 		}

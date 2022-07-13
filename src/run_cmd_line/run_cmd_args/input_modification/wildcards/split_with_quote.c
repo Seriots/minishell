@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:47:44 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 22:38:41 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 22:49:35 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,15 @@
 #include "wildcards.h"
 #include <stdlib.h>
 
-#include <stdio.h>
-
 int	add_to_lst(t_list **lst_addr, char **array)
 {
-	static	int	oui;
 	t_list	*new;
 	int		i;
 
 	i = 0;
 	while (array[i])
 	{
-		if (oui)
-			new = list_new(array[i]);
-		else
-			new = 0;
+		new = list_new(array[i]);
 		if (!new)
 		{
 			while (array[i])
@@ -58,10 +52,12 @@ char	**split_with_quote(char	**input)
 	{
 		split_result = ft_split_quoted(input[i], " \t\n\r\v\f");
 		if (!split_result)
-			return (ft_free_tab(input), list_clear(&list_input, free), (void *)0);
+			return (ft_free_tab(input),
+				list_clear(&list_input, free), (void *)0);
 		error = add_to_lst(&list_input, split_result);
 		if (error)
-			return (ft_free_tab(input), list_clear(&list_input, free), free(split_result), (void *)0);
+			return (ft_free_tab(input), list_clear(&list_input, free),
+					free(split_result), (void *)0);
 		free(split_result);
 		i ++;
 	}
