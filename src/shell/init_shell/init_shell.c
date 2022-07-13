@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:56:16 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 22:45:20 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 10:33:05 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,12 @@ t_dict	*get_env(char **env)
 	while (env[i])
 	{
 		new = getarg_env(env[i]);
-		if (new)
-			dict_add_back(&dict, new, free, free);
+		if (!new)
+		{
+			dict_clear(dict, free, free);
+			return (0);
+		}
+		dict_add_back(&dict, new, free, free);
 		i ++;
 	}
 	return (dict);

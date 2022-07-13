@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 23:36:28 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/09 22:11:07 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 10:35:04 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	add_envpath(t_dict **env, int *error)
 	if (!key)
 		return (free_and_set_error(key, value, error));
 	ft_strlcpy(key, "_", 2);
-	value = ft_calloc(sizeof(char), 13);
+	value = ft_calloc(sizeof(char), 12);
 	if (!value)
 		return (free_and_set_error(key, value, error));
-	ft_strlcpy(value, "/usr/bin/env", 13);
+	ft_strlcpy(value, "./minishell", 12);
 	new = dict_new(key, value);
 	if (!new)
 		return (free_and_set_error(key, value, error));
