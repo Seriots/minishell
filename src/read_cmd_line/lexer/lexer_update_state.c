@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:30:57 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 01:54:06 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 23:41:53 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ static void	manage_size_error(t_lexer_state *lexer, const char *input)
 	lexer_skip_whitespaces(lexer, input);
 	next_lexeme = lexer_get_lexeme(input + lexer->i);
 	ft_putstr_fd("minishell: syntax error near unexpected token `", 2);
-	ft_putstr_fd(lexeme_str[next_lexeme], 2);
+	if (next_lexeme == newline)
+		ft_putstr_fd("newline", 2);
+	else
+		ft_putstr_fd(lexeme_str[next_lexeme], 2);
 	ft_putstr_fd("'\n", 2);
 }
 

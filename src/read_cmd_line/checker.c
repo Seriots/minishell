@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:07:00 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 01:50:03 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 23:40:07 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int	checker_error(t_lexeme lexeme)
 {
-	const char	*lexeme_str[] = {NEWLINE_STR, PARENTHESIS_LEFT_STR,
+	const char	*lexeme_str[] = {"newline", PARENTHESIS_LEFT_STR,
 		PARENTHESIS_RIGHT_STR, LOGICAL_OR_STR, LOGICAL_AND_STR, PIPE_STR,
 		REDIR_HEREDOC_STR, REDIR_STDIN_STR, REDIR_APPEND_STDOUT_STR,
 		REDIR_STDOUT_STR, REDIR_STDERR_STR, ARGUMENT_STR};

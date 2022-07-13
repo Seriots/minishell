@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 15:45:33 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 21:47:44 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/14 00:41:26 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,27 @@
 #include "libft.h"
 #include "run_cmd_line.h"
 
-int	oppose_quote(int is_quoted)
+int	update_quote(char last_quote, char quote_seen)
 {
-	if (is_quoted)
+	if (last_quote == 0)
+		return (quote_seen);
+	if (last_quote == quote_seen)
 		return (0);
-	return (1);
+	return (last_quote);
 }
 
-char	*get_var(char *input, int pos)
+int	set_var(char **var, char *input, int pos)
 {
-	char	*var;
 	size_t	size;
 
 	size = 0;
 	while (ft_is_varchar(input[pos + size]))
-		size += 1;
-	var = ft_calloc(sizeof(char), size + 1);
-	if (!var)
-		return (0);
-	ft_strlcpy(var, &input[pos], size + 1);
-	return (var);
+		size++;
+	*var = ft_calloc(sizeof(char), size + 1);
+	if (!*var)
+		return (-1);
+	ft_strlcpy(*var, &input[pos], size + 1);
+	return (0);
 }
 
 size_t	get_size_var(char *var, t_dict *env)

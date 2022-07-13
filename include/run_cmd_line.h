@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:06:46 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 23:34:05 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/14 00:42:22 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ char	**replace_special_args(char **input, t_shell *shell);
 /**************************************************************/
 
 /*env_arguments_utils*/
-int		oppose_quote(int is_quoted);
-char	*get_var(char *input, int pos);
+int		update_quote(char last_quote, char quote_seen);
+int		set_var(char **var, char *input, int pos);
 size_t	get_size_var(char *var, t_dict *env);
 size_t	concat_var(char *var, t_dict *env, char **result, size_t nb_letters);
 int		ft_is_varchar(char c);

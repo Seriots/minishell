@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:19:32 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 22:49:03 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/14 00:47:01 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	make_check_char_heredoc(char *input, t_dict *env, int *pos, char **result)
 
 	if (input[*pos] == '$' && ft_is_varchar(input[*pos + 1]))
 	{
-		var = get_var(input, *pos + 1);
-		if (!var)
+		if (set_var(&var, input, *pos + 1) == -1)
 			return (-1);
 		nb_letters += concat_var(var, env, result, nb_letters);
 		*pos += ft_strlen(var);
@@ -31,7 +30,7 @@ int	make_check_char_heredoc(char *input, t_dict *env, int *pos, char **result)
 	}
 	else
 		(*result)[nb_letters++] = input[*pos];
-	if (input[*pos + 1] == '\0')
+	if (!input[*pos] || !input[*pos + 1])
 		nb_letters = 0;
 	return (0);
 }
@@ -43,8 +42,7 @@ int	check_char_heredoc(char *input, t_dict *env, int *pos, size_t *nb_letters)
 	var = 0;
 	if (input[*pos] == '$' && ft_is_varchar(input[*pos + 1]))
 	{
-		var = get_var(&input[1], *pos);
-		if (!var)
+		if (set_var(&var, &input[1], *pos) == -1)
 			return (-1);
 		*nb_letters += get_size_var(var, env);
 		*pos += ft_strlen(var);
@@ -77,7 +75,8 @@ char	*make_new_str_heredoc(char *input, t_dict *env, size_t nb_letters)
 			free (result);
 			return (0);
 		}
-		pos += 1;
+		if (input[pos])
+			pos++;
 	}
 	free(input);
 	return (result);

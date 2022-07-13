@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 17:29:52 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 21:48:06 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/14 00:45:32 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@
 
 int	make_check_char(char *input, t_dict *env, int *pos, char **result)
 {
-	static int		is_quoted;
+	static char		quote;
 	static size_t	nb_letters;
 	char			*var;
 
-	if (input[*pos] == '\'')
+	if (input[*pos] == '\'' || input[*pos] == '\"')
 	{
-		is_quoted = oppose_quote(is_quoted);
-		(*result)[nb_letters] = input[*pos];
-		nb_letters ++;
+		quote = update_quote(quote, input[*pos]);
+		(*result)[nb_letters++] = input[*pos];
 	}
 	else if (input[*pos] == '$'
-		&& is_quoted == 0 && ft_is_varchar(input[*pos + 1]))
+		&& quote != '\'' && ft_is_varchar(input[*pos + 1]))
 	{
-		var = get_var(input, *pos + 1);
-		if (!var)
+		if (set_var(&var, input, *pos + 1) == -1)
 			return (-1);
 		nb_letters += concat_var(var, env, result, nb_letters);
 		*pos += ft_strlen(var);
@@ -39,7 +37,9 @@ int	make_check_char(char *input, t_dict *env, int *pos, char **result)
 	}
 	else
 		(*result)[nb_letters++] = input[*pos];
-	if (input[*pos + 1] == '\0')
+	if (!input[*pos] || !input[*pos + 1])
+		quote = 0;
+	if (!input[*pos] || !input[*pos + 1])
 		nb_letters = 0;
 	return (0);
 }
@@ -66,7 +66,8 @@ char	*make_new_str(char *input, t_dict *env, size_t nb_letters)
 			free (result);
 			return (0);
 		}
-		pos += 1;
+		if (input[pos])
+			pos++;
 	}
 	free(input);
 	return (result);
@@ -74,20 +75,19 @@ char	*make_new_str(char *input, t_dict *env, size_t nb_letters)
 
 int	check_char(char *input, t_dict *env, int *pos, size_t *nb_letters)
 {
-	static int	is_quoted;
+	static char	quote;
 	char		*var;
 
 	var = 0;
-	if (input[*pos] == '\'')
+	if (input[*pos] == '\'' || input[*pos] == '\"')
 	{
-		is_quoted = oppose_quote(is_quoted);
+		quote = update_quote(quote, input[*pos]);
 		*nb_letters += 1;
 	}
 	else if (input[*pos] == '$'
-		&& is_quoted == 0 && ft_is_varchar(input[*pos + 1]))
+		&& quote != '\'' && ft_is_varchar(input[*pos + 1]))
 	{
-		var = get_var(&input[1], *pos);
-		if (!var)
+		if (set_var(&var, &input[1], *pos) == -1)
 			return (-1);
 		*nb_letters += get_size_var(var, env);
 		*pos += ft_strlen(var);
@@ -95,6 +95,8 @@ int	check_char(char *input, t_dict *env, int *pos, size_t *nb_letters)
 	}
 	else
 		*nb_letters += 1;
+	if (!input[*pos] || !input[*pos + 1])
+		quote = 0;
 	return (0);
 }
 
@@ -114,7 +116,8 @@ char	*get_env_arguments(char *input, t_dict *env)
 			free (input);
 			return (0);
 		}
-		pos ++;
+		if (input[pos])
+			pos ++;
 	}
 	return (make_new_str(input, env, nb_letters));
 }
