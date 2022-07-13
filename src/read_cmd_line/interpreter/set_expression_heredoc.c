@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 20:42:35 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:56:39 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	is_end_quoted(const char *end)
 			count_double_quote++;
 		end++;
 	}
-	return (count_quote >= 2 || count_double_quote >= 2);
+	return (count_quote >= 1 || count_double_quote >= 1);
 }
 
 static void	remove_quotes_onplace(char *end)
