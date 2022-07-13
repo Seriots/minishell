@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 03:55:02 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 20:55:25 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 21:40:09 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 void	free_redir(t_redir *redir)
 {
-	if (redir->tag == heredoc && redir->heredoc)
+	if (redir->tag == heredoc)
 		free(redir->heredoc);
-	else if (redir->pathfile)
+	else
 		free(redir->pathfile);
 	free(redir);
 }
