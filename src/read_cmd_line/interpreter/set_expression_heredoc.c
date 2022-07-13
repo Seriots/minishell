@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 15:32:22 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 17:01:42 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static void	remove_quotes_onplace(char *end)
 				end[j++] = end[i];
 			i++;
 		}
-		else if (end[i] == '\'')
+		else if (end[i] == '\"')
 		{
-			while (end[++i] != '\'')
+			while (end[++i] != '\"')
 				end[j++] = end[i];
 			i++;
 		}
@@ -82,7 +82,8 @@ static char	*get_heredoc(char *end, t_shell *shell)
 	while (1)
 	{
 		set_input(PROMPT_HEREDOC, shell);
-		if (g_shell_status == reading_cmd_line)
+		if (g_shell_status == reading_cmd_line
+			|| g_shell_status == terminating_shell)
 			return (free(heredoc), NULL);
 		if (!shell->input)
 			manage_warning_use_eof_in_heredoc(end);
@@ -117,8 +118,6 @@ int	set_expression_heredoc(t_expression *expression, t_token *token,
 	free(end);
 	if (!redir->heredoc)
 		return (free(redir), -1);
-	redir->heredoc = input_modification_heredoc(redir->heredoc,
-			redir->is_quoted, shell);
 	if (!redir->heredoc)
 		return (free(redir), -1);
 	expression->content = redir;
