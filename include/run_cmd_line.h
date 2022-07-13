@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_cmd_line.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:06:46 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 03:19:44 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 15:24:52 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int		run_cmd_args(t_tree *cmd_line, t_shell *shell);
 /*                    INPUT_MODIFICATION                      */
 /**************************************************************/
 char	*remove_quotes(char *input);
+char	*input_modification_heredoc(char *heredoc, int is_quoted,
+			t_shell *shell);
 char	**input_modification(char **input, t_shell *shell);
 char	*remove_quotes(char *input);
 char	**removes_quotes(char **input);
@@ -71,6 +73,8 @@ size_t	count_q_mark(size_t *i, char *return_value);
 size_t	replace_q_mark(size_t *i, char **new, int size, char *return_value);
 
 /*replace_special_args.c*/
+char	*replace_special_char_heredoc(char *input, t_shell *shell);
+char	*replace_special_char(char *input, t_shell *shell);
 char	**replace_special_args(char **input, t_shell *shell);
 
 /**************************************************************/
@@ -85,6 +89,8 @@ size_t	concat_var(char *var, t_dict *env, char **result, size_t nb_letters);
 int		ft_is_varchar(char c);
 
 /*env_arguments.c*/
+char	*get_env_arguments_heredoc(char *input, t_dict *env);
+char	*get_env_arguments(char *input, t_dict *env);
 char	**change_vars_in_args(char **args, t_dict *env);
 
 #endif

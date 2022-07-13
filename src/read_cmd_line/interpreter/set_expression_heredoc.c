@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 21:16:39 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 15:32:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "cmd_line.h"
 #include "libft.h"
 #include "read_cmd_line.h"
+#include "run_cmd_line.h"
 #include "shell.h"
 
 extern t_shell_status	g_shell_status;
@@ -114,6 +115,10 @@ int	set_expression_heredoc(t_expression *expression, t_token *token,
 	remove_quotes_onplace(end);
 	redir->heredoc = get_heredoc(end, shell);
 	free(end);
+	if (!redir->heredoc)
+		return (free(redir), -1);
+	redir->heredoc = input_modification_heredoc(redir->heredoc,
+			redir->is_quoted, shell);
 	if (!redir->heredoc)
 		return (free(redir), -1);
 	expression->content = redir;

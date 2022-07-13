@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/11 23:01:44 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 15:32:29 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,20 @@ char	**input_modification(char **input, t_shell *shell)
 		return (0);
 	input = replace_args(input);
 	return (input);
+}
+
+char	*input_modification_heredoc(char *heredoc, int is_quoted,
+	t_shell *shell)
+{
+	if (!heredoc)
+		return (0);
+	if (is_quoted)
+		return (heredoc);
+	heredoc = replace_special_char_heredoc(heredoc, shell);
+	if (!heredoc)
+		return (0);
+	heredoc = get_env_arguments_heredoc(heredoc, shell->env);
+	if (!heredoc)
+		return (0);
+	return (heredoc);
 }
