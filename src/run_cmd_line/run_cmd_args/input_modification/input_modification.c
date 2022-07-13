@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 19:50:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 20:59:33 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,25 @@ int	redirs_modification(char **input_addr, t_shell *shell)
 	if (!array_input[0])
 		return (free(array_input), free(input), 1);
 	if (!array_input)
-		return (free(input), 1);
+		return (free(input), free(array_input), 1);
 	array_input = replace_special_args(array_input, shell);
 	if (!array_input)
-		return (free(input), 1);
+		return (free(input), free(array_input), 1);
 	array_input = change_vars_in_args(array_input, shell->env);
 	if (!array_input)
-		return (free(input), 1);
+		return (free(input), free(array_input), 1);
 	array_input = split_with_quote(array_input);
 	if (!array_input)
-		return (free(input), 1);
+		return (free(input), free(array_input), 1);
 	array_input = replace_args(array_input);
 	if (!array_input)
-		return (free(input), 1);
+		return (free(input), free(array_input), 1);
 	if (ft_arraylen(array_input) > 1)
 		return (redirs_modification_error(input), ft_free_tab(array_input), 2);
 	free(input);
 	*input_addr = array_input[0];
-	return (free(array_input), 0);
+	free(array_input);
+	return (0);
 }
 
 
