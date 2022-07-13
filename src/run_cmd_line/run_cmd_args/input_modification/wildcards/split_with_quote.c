@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:47:44 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 21:14:32 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 21:34:58 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	add_to_lst(t_list **lst_addr, char **array)
 	{
 		new = list_new(array[i]);
 		if (!new)
-			return (ft_free_tab(&array[i]), 1);
+			return (1);
 		list_add_back(lst_addr, new);
+		array[i] = 0;
 		i ++;
 	}
 	return (0);
@@ -47,7 +48,7 @@ char	**split_with_quote(char	**input)
 		if (!split_result)
 			return (ft_free_tab(input), list_clear(&list_input, free), ft_free_tab(split_result), (void *)0);
 		error = add_to_lst(&list_input, split_result);
-		free(split_result);
+		ft_free_tab(split_result);
 		if (error)
 			return (ft_free_tab(input), list_clear(&list_input, free), (void *)0);
 		i ++;
