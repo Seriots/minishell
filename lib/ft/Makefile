@@ -33,6 +33,7 @@ SRC_NAMES	= ft_error_base \
 			  ft_putendl_fd \
 			  ft_putnbr_fd \
 			  ft_split \
+			  ft_split_quoted \
 			  ft_strchr \
 			  ft_strcmp \
 			  ft_strdup \

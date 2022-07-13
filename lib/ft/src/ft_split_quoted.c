@@ -6,14 +6,14 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:50:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 19:43:35 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 19:47:12 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-static int	skip_word(const char **str, const char *sep)
+static void	skip_word(const char **str, const char *sep)
 {
 	while (**str && ft_strchr(sep, **str) != NULL)
 		(*str)++;
