@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:31:52 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 22:49:32 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 01:45:30 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	lexer(t_token **tokens, const char *input)
 	int	nbr_tokens;
 
 	if (lexer_error_format(input))
-		return (-1);
+		return (2);
 	nbr_tokens = lexer_count_tokens(input);
 	*tokens = malloc(sizeof(t_token) * nbr_tokens);
 	if (!*tokens)

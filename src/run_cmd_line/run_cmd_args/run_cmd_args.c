@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 19:17:56 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 02:05:51 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "shell.h"
 #include "signals.h"
 
-#include <stdio.h>
 static int	manage_execve_error(char *cmd)
 {
 	ft_putstr_fd("minishell: ", 2);

@@ -20,6 +20,7 @@ SRC_NAMES	= ft_error_base \
 			  ft_isascii \
 			  ft_isdouble \
 			  ft_isint \
+			  ft_islong \
 			  ft_isprint \
 			  ft_itoa \
 			  ft_memchr \
@@ -76,7 +77,7 @@ clean:
 fclean:			clean
 	rm -f $(NAME)
 
-re:				fclean re
+re:				fclean all
 
 
 $(NAME): $(LIB_FILES) $(OBJ)

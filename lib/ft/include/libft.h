@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:33:36 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 21:41:51 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 01:11:48 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isdouble(const char *str);
 int		ft_isint(const char *str);
+int		ft_islong(const char *str);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
 void	*ft_memchr(const void *s, int c, size_t n);

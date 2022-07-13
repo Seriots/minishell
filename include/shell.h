@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 19:37:37 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/10 23:11:37 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 01:00:38 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef enum e_shell_status
 	reading_cmd_line,
 	parsing_cmd_line,
 	running_cmd_line,
+	running_subshell_cmd_line,
 	terminating_shell
 }	t_shell_status;
 

@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:42:20 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/12 22:35:26 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 01:47:46 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	set_input(const char *prompt, t_shell *shell)
 {
 	shell->input = readline(prompt);
 	if (!shell->input && g_shell_status == reading_cmd_line)
+	{
+		ft_putstr_fd("exit\n", 2);
 		g_shell_status = terminating_shell;
+	}
 }
 
 static void	free_expressions(t_expression *expressions)
@@ -57,19 +60,20 @@ static int	set_cmd_line(t_tree **cmd_line, t_shell *shell)
 	tokens = NULL;
 	expressions = NULL;
 	*cmd_line = NULL;
-	ret_value = 0;
-	if (lexer(&tokens, shell->input) == -1
-		|| checker(tokens, shell->input) == -1
-		|| interpreter_input(&expressions, tokens, shell) == -1
+	ret_value = lexer(&tokens, shell->input);
+	if (ret_value != 0)
+		return (free(tokens), ret_value);
+	ret_value = checker(tokens, shell->input);
+	if (ret_value != 0)
+		return (free(tokens), ret_value);
+	if (interpreter_input(&expressions, tokens, shell) == -1
 		|| parser(cmd_line, expressions) == -1)
 		ret_value = -1;
 	free(tokens);
 	if (ret_value == -1)
-	{
-		free_expressions(expressions);
-		tree_clear(*cmd_line, &free_cmd_line_struct);
-		return (-1);
-	}
+		return (free_expressions(expressions),
+			tree_clear(*cmd_line, &free_cmd_line_struct),
+			-1);
 	free(expressions);
 	return (0);
 }
