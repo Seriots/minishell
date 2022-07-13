@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 18:47:07 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 21:12:12 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 	content->args = input_modification(content->args, shell);
 	if (!content->args)
 		return (-1);
-	error = all_redirs_modification(&content->redirs, shell);
+	error = all_redirs_modification(&(content->redirs), shell);
 	if (error == 1)
 		return (-1);
 	if (error == 2)

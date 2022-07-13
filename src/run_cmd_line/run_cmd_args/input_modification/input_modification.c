@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 20:59:33 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 21:09:34 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	redirs_modification_error(char *input)
 	ft_putstr_fd(": ambiguous redirect\n", 2);
 }
 
+#include <stdio.h>
 int	redirs_modification(char **input_addr, t_shell *shell)
 {
 	char	**array_input;
