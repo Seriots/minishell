@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:47:44 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 22:49:35 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 23:19:08 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	**split_with_quote(char	**input)
 		error = add_to_lst(&list_input, split_result);
 		if (error)
 			return (ft_free_tab(input), list_clear(&list_input, free),
-					free(split_result), (void *)0);
+				free(split_result), (void *)0);
 		free(split_result);
 		i ++;
 	}

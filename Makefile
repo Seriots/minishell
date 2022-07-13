@@ -1,5 +1,5 @@
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -g
+CFLAGS		= -Wall -Werror -Wextra
 MAKE		= /bin/make
 
 
@@ -58,6 +58,7 @@ SRC_NAMES	= main \
 			  run_cmd_line/run_cmd_and \
 			  run_cmd_line/run_cmd_args/all_redirections \
 			  run_cmd_line/run_cmd_args/check_in_path \
+			  run_cmd_line/run_cmd_args/input_modification/all_redirs_modification \
 			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments_utils \
 			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments \
 			  run_cmd_line/run_cmd_args/input_modification/env_arguments/env_arguments_heredoc \
