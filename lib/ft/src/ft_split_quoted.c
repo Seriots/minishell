@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:50:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 19:47:12 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:36:38 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 static void	skip_word(const char **str, const char *sep)
 {
-	while (**str && ft_strchr(sep, **str) != NULL)
-		(*str)++;
 	while (**str && ft_strchr(sep, **str) == NULL)
 	{
 		if (**str == '\'')
@@ -34,8 +32,6 @@ static void	skip_word(const char **str, const char *sep)
 		else
 			(*str)++;
 	}
-	while (**str && ft_strchr(sep, **str) != NULL)
-		(*str)++;
 }
 
 static int	count_words_quoted(const char *str, const char *sep)
@@ -49,6 +45,8 @@ static int	count_words_quoted(const char *str, const char *sep)
 	{
 		count++;
 		skip_word(&str, sep);
+		while (**str && ft_strchr(sep, **str) != NULL)
+			(*str)++;
 	}
 	return (count);
 }
@@ -59,6 +57,8 @@ static char	*get_word_quoted(const char **str, const char *sep)
 	char		*word;
 	int			i;
 
+	while (**str && ft_strchr(sep, **str) != NULL)
+		(*str)++;
 	str_start = *str;
 	skip_word(str, sep);
 	i = 0;
@@ -81,7 +81,7 @@ char	**ft_split_quoted(const char *str, const char *sep)
 {
 	char	**strs;
 	int		strs_size;
-	int	i;
+	int		i;
 
 	strs_size = count_words_quoted(str, sep);
 	strs = malloc(sizeof(char *) * (strs_size + 1));
