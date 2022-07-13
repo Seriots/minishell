@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:53:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 17:01:42 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:42:35 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ static void	remove_quotes_onplace(char *end)
 	{
 		if (end[i] == '\'')
 		{
-			while (end[++i] != '\'')
-				end[j++] = end[i];
 			i++;
+			while (end[i] && end[i] != '\'')
+				end[j++] = end[i++];
 		}
 		else if (end[i] == '\"')
 		{
-			while (end[++i] != '\"')
-				end[j++] = end[i];
 			i++;
+			while (end[i] && end[i] != '\"')
+				end[j++] = end[i++];
 		}
 		else
 			end[j++] = end[i++];
