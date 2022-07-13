@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:53:26 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/13 21:09:34 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 21:27:09 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	redirs_modification_error(char *input)
 	ft_putstr_fd(": ambiguous redirect\n", 2);
 }
 
-#include <stdio.h>
 int	redirs_modification(char **input_addr, t_shell *shell)
 {
 	char	**array_input;
@@ -66,25 +65,25 @@ int	redirs_modification(char **input_addr, t_shell *shell)
 	input = *input_addr;
 	array_input = malloc(sizeof(char *) * 2);
 	if (!array_input)
-		return (free(input), 1);
+		return (1);
 	array_input[1] = 0;
 	array_input[0] = ft_strdup(input);
 	if (!array_input[0])
-		return (free(array_input), free(input), 1);
+		return (free(array_input), 1);
 	if (!array_input)
-		return (free(input), free(array_input), 1);
+		return (free(array_input), 1);
 	array_input = replace_special_args(array_input, shell);
 	if (!array_input)
-		return (free(input), free(array_input), 1);
+		return (free(array_input), 1);
 	array_input = change_vars_in_args(array_input, shell->env);
 	if (!array_input)
-		return (free(input), free(array_input), 1);
+		return (free(array_input), 1);
 	array_input = split_with_quote(array_input);
 	if (!array_input)
-		return (free(input), free(array_input), 1);
+		return (free(array_input), 1);
 	array_input = replace_args(array_input);
 	if (!array_input)
-		return (free(input), free(array_input), 1);
+		return (free(array_input), 1);
 	if (ft_arraylen(array_input) > 1)
 		return (redirs_modification_error(input), ft_free_tab(array_input), 2);
 	free(input);
