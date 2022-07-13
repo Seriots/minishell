@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:50:42 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 20:36:38 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:41:06 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static int	count_words_quoted(const char *str, const char *sep)
 	{
 		count++;
 		skip_word(&str, sep);
-		while (**str && ft_strchr(sep, **str) != NULL)
-			(*str)++;
+		while (*str && ft_strchr(sep, *str) != NULL)
+			str++;
 	}
 	return (count);
 }
