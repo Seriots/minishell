@@ -6,7 +6,7 @@
 /*   By: rgarrigo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:21 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 01:03:48 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 18:08:34 by rgarrigo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ int	run_pipeline(t_list *pipeline, t_shell *shell, int *pid)
 	int		pipes[2][2];
 
 	init_pipes(pipes);
-	while (g_shell_status == running_cmd_line && pipeline)
+	while ((g_shell_status == running_cmd_line
+			|| g_shell_status == running_subshell_cmd_line)
+		&& pipeline)
 	{
 		if (set_pipes(pipes, pipeline->next) == -1)
 			return (close_pipe(pipes[0]), -1);
