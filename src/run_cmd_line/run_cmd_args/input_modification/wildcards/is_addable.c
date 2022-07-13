@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:00:17 by lgiband           #+#    #+#             */
-/*   Updated: 2022/07/11 23:18:04 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 19:37:22 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ int	is_addable(char *d_name, t_wildstr *split)
 	size_t		pos;
 	size_t		is_ok;
 
-	if (!ft_arraylen(split->split) || ft_arraylen(split->split) == 1)
+	if (!ft_arraylen(split->split))
+		return (1);
+	if (ft_arraylen(split->split) == 1 && split->check_first && split->check_last)
 		return (1);
 	pos_array = 0;
 	pos = 0;

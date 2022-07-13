@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:40:41 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 02:05:51 by rgarrigo         ###   ########.fr       */
+/*   Updated: 2022/07/13 18:47:07 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static int	run_executable(t_tree *cmd_line, t_shell *shell)
 int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 {
 	t_node	*content;
+	int		error;
 
 	content = (t_node *)cmd_line->content;
 	if (ft_arraylen(content->args) == 0)
@@ -92,6 +93,11 @@ int	run_cmd_args(t_tree *cmd_line, t_shell *shell)
 	content->args = input_modification(content->args, shell);
 	if (!content->args)
 		return (-1);
+	error = all_redirs_modification(&content->redirs, shell);
+	if (error == 1)
+		return (-1);
+	if (error == 2)
+		return (1);
 	if (get_my_builtin(content->args[0]) != -1)
 		return (run_builtin(shell, cmd_line));
 	return (run_executable(cmd_line, shell));

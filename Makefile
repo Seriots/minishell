@@ -69,6 +69,7 @@ SRC_NAMES	= main \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/is_addable \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/split_input_utils \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/split_input \
+			  run_cmd_line/run_cmd_args/input_modification/wildcards/split_with_quote \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/wildcard \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/wildcards_utils \
 			  run_cmd_line/run_cmd_args/input_modification/wildcards/sort_wildcards \

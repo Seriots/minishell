@@ -6,7 +6,7 @@
 /*   By: lgiband <lgiband@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 02:06:46 by rgarrigo          #+#    #+#             */
-/*   Updated: 2022/07/13 15:24:52 by lgiband          ###   ########.fr       */
+/*   Updated: 2022/07/13 20:07:50 by lgiband          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ int		run_cmd_args(t_tree *cmd_line, t_shell *shell);
 /**************************************************************/
 /*                    INPUT_MODIFICATION                      */
 /**************************************************************/
+char	**split_with_quote(char	**input);
 char	*remove_quotes(char *input);
+int		all_redirs_modification(t_redir ***redirs_addr, t_shell *shell);
 char	*input_modification_heredoc(char *heredoc, int is_quoted,
 			t_shell *shell);
 char	**input_modification(char **input, t_shell *shell);
